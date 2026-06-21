@@ -1,6 +1,6 @@
 # BePlus Smart Search — agent briefing
 
-Use this file when changing code under `wp-content/plugins/beplus-smart-search/`. **Architecture and naming standards** live in [`Document Plugin.md`](./Document Plugin.md). Reference implementation: [`../giftflow/`](../giftflow/) (Beplus container-based plugin pattern).
+Use this file when changing code under `wp-content/plugins/beplus-smart-search/`. **Architecture and naming standards** live in [`Document Plugin.md`](./Document Plugin.md).
 
 ## Cursor rules and skills
 
@@ -133,16 +133,11 @@ Husky **pre-push** runs: `ensure:composer` → `typecheck` → `lint:php:all` �
 - REST: explicit `permission_callback` per route
 - Nonce verification for admin forms and AJAX
 
-## Related projects
-
-- **GiftFlow** (`plugins/giftflow/`) — reference for `Plugin`, `Container`, `AbstractModule`, `BlockRegistry`, `SettingsRegistry`, REST controllers.
-- **Nextora theme** (`themes/nextora-develop/`) — reference for block editor UX and spotlight-search interaction patterns (adapt for plugin blocks).
-
 ## Feature reference docs
 
 | Doc | Purpose |
 |-----|---------|
 | [`docs/advanced-woo-search-block.md`](./docs/advanced-woo-search-block.md) | **Primary feature** — Advanced Woo Search block spec (filters, REST, no reload, shop template) |
-| [`docs/spotlight-search-reference.md`](./docs/spotlight-search-reference.md) | Deep study of Nextora spotlight search — PHP/JS/CSS patterns to adopt in this plugin |
+| [`docs/search-ux-patterns.md`](./docs/search-ux-patterns.md) | Live search UX, DOM contract, debounce, accessibility |
 | [`docs/mcp-setup.md`](./docs/mcp-setup.md) | Connect Cursor MCP to `plugin.local` Site Editor + WordPress Abilities API |
 | [`Document Plugin.md`](./Document Plugin.md) | Plugin architecture, naming, directory structure |

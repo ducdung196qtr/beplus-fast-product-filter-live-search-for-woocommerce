@@ -32,7 +32,7 @@ alwaysApply: false
 - Empty state: visible text, not icon-only.
 - Headings in results block: proper `<h2>`–`<h6>` hierarchy.
 
-Reference UX: Nextora `spotlight-search` block (adapt combobox pattern for plugin).
+Reference UX: [`docs/search-ux-patterns.md`](../../docs/search-ux-patterns.md) § Accessibility.
 
 After `render.php` edits: verify escaping. After block JS/CSS: **`npm run build`**.
 

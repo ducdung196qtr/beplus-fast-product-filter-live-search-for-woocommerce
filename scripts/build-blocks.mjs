@@ -1,6 +1,6 @@
 /**
  * build-blocks.mjs
- * Builds all blocks in ./blocks using esbuild (Nextora theme pattern).
+ * Builds all blocks in ./blocks using esbuild.
  *
  * Usage:
  *   node ./scripts/build-blocks.mjs           → production build

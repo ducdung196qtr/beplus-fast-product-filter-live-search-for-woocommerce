@@ -1,6 +1,6 @@
 # BePlus Smart Search — Plugin Structure Documentation
 
-> This document defines the architecture standards, naming conventions, and build checklist for the **BePlus Smart Search** plugin, based on the real-world patterns from the **GiftFlow** plugin (Beplus).
+> This document defines the architecture standards, naming conventions, and build checklist for the **BePlus Smart Search** plugin.
 
 ---
 
@@ -27,7 +27,7 @@
 
 ## 2. Architecture Overview
 
-GiftFlow uses a **container-based architecture** — every module registers hooks inside `register()`, with no side effects when files are `require`d.
+This plugin uses a **container-based architecture** — every module registers hooks inside `register()`, with no side effects when files are `require`d.
 
 ```
 beplus-smart-search.php          ← Bootstrap: constants, autoload, activation hooks
@@ -46,7 +46,7 @@ BePlusSmartSearch\Core\Plugin    ← Entry point: boot(), activate(), deactivate
         └── Services               ← SearchService, IndexService, ...
 ```
 
-**Core principles (from GiftFlow):**
+**Core principles:**
 
 1. **Single entry point** — the `Plugin` class boots the entire plugin.
 2. **No side effects on file load** — only declare classes/functions; attach hooks in `register()`.
@@ -167,7 +167,7 @@ beplus-smart-search/
 └── vendor/                       # Composer autoload (dev)
 ```
 
-> **Note:** GiftFlow still keeps legacy `includes/` + `admin/` alongside `src/` for backward compatibility. A new plugin **should start with `src/` only** — no duplicate legacy layer unless migrating old code.
+> **Note:** This plugin keeps procedural helpers in `includes/` alongside PSR-4 code in `src/`. Prefer `src/` for new classes; use `includes/` for template/render helpers tied to blocks.
 
 ---
 
@@ -284,12 +284,12 @@ function beplus_smart_search_deactivate() {
 
 ### 5.1 Constants
 
-| GiftFlow | BePlus Smart Search |
-|----------|---------------------|
-| `GIFTFLOW_VERSION` | `BEPLUS_SMART_SEARCH_VERSION` |
-| `GIFTFLOW_PLUGIN_DIR` | `BEPLUS_SMART_SEARCH_PLUGIN_DIR` |
-| `GIFTFLOW_PLUGIN_URL` | `BEPLUS_SMART_SEARCH_PLUGIN_URL` |
-| `GIFTFLOW_PLUGIN_BASENAME` | `BEPLUS_SMART_SEARCH_PLUGIN_BASENAME` |
+| Constant | Purpose |
+|----------|---------|
+| `BEPLUS_SMART_SEARCH_VERSION` | Plugin version string |
+| `BEPLUS_SMART_SEARCH_PLUGIN_DIR` | Absolute path to plugin root |
+| `BEPLUS_SMART_SEARCH_PLUGIN_URL` | Plugin URL |
+| `BEPLUS_SMART_SEARCH_PLUGIN_BASENAME` | Relative path from `wp-content/plugins/` |
 
 - Always **UPPER_SNAKE_CASE** with the plugin prefix.
 
@@ -297,14 +297,16 @@ function beplus_smart_search_deactivate() {
 
 **Pattern:** `{prefix}_{module}_{action}`
 
-| GiftFlow | BePlus Smart Search |
-|----------|---------------------|
-| `giftflow_boot()` | `beplus_smart_search_boot()` |
-| `giftflow_init()` | `beplus_smart_search_init()` |
-| `giftflow_activate()` | `beplus_smart_search_activate()` |
-| `giftflow_get_global_currency()` | `beplus_smart_search_get_settings()` |
-| `giftflow_sanitize_array()` | `beplus_smart_search_sanitize_array()` |
-| `giftflow_render_currency_formatted_amount()` | `beplus_smart_search_render_result_item()` |
+**Examples:**
+
+| Function | Purpose |
+|----------|---------|
+| `beplus_smart_search_boot()` | Boot plugin container |
+| `beplus_smart_search_init()` | Late init hook |
+| `beplus_smart_search_activate()` | Activation handler |
+| `beplus_smart_search_get_settings()` | Read merged settings |
+| `beplus_smart_search_sanitize_array()` | Recursive array sanitize |
+| `beplus_smart_search_render_result_item()` | Render a search result row |
 
 **Rules:**
 
@@ -315,7 +317,7 @@ function beplus_smart_search_deactivate() {
 
 ### 5.3 Namespaced functions (`src/Functions/`)
 
-GiftFlow wraps global functions in the `GiftFlow\Functions` namespace:
+Optional namespaced wrappers live in `src/Functions/`:
 
 ```php
 namespace BePlusSmartSearch\Functions;
@@ -332,16 +334,15 @@ function get_settings(): array {
 
 ### 5.4 Class naming
 
-| Type | Convention | GiftFlow example | Smart Search example |
-|------|------------|------------------|----------------------|
-| Core | PascalCase | `Plugin`, `Container` | `Plugin`, `Container` |
-| Abstract base | `Abstract` + name | `AbstractModule`, `AbstractGateway` | `AbstractModule`, `AbstractProvider` |
-| Interface | name + `Interface` | `GatewayInterface` | `ProviderInterface` |
-| Registry | name + `Registry` | `BlockRegistry`, `SettingsRegistry` | `SearchRegistry`, `BlockRegistry` |
-| REST controller | name + `Controller` | `SettingsController` | `SearchController` |
-| Service | name + `Service` | `EmailService`, `CurrencyService` | `IndexService`, `AnalyticsService` |
-| Trait | `Has` + name + `Trait` | `HasSettingsTrait` | `HasSettingsTrait` |
-| Legacy class file | `class-{kebab}.php` | `class-gateway-base.php` | `class-search-engine.php` |
+| Type | Convention | Example |
+|------|------------|---------|
+| Core | PascalCase | `Plugin`, `Container` |
+| Abstract base | `Abstract` + name | `AbstractModule`, `AbstractProvider` |
+| Interface | name + `Interface` | `ProviderInterface` |
+| Registry | name + `Registry` | `SearchRegistry`, `BlockRegistry` |
+| REST controller | name + `Controller` | `ProductsController` |
+| Service | name + `Service` | `FacetService`, `SearchEngine` |
+| Trait | `Has` + name + `Trait` | `HasSettingsTrait` |
 
 **Namespace mapping (PSR-4):**
 
@@ -365,7 +366,7 @@ BePlusSmartSearch\REST\SearchController → src/REST/SearchController.php
 
 ### 5.6 Hooks, Filters, and Actions
 
-GiftFlow uses **two styles** — new plugins should prefer the modern style (`HookManager` constants):
+The plugin uses **two hook naming styles** — prefer modern `HookManager` constants for new code:
 
 **Modern style (recommended) — dot/slash notation:**
 
@@ -457,7 +458,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ### 6.2 AbstractModule — base for all modules
 
-Based on GiftFlow `AbstractModule`:
+Standard module base:
 
 ```php
 namespace BePlusSmartSearch\Core;
@@ -550,7 +551,7 @@ class Plugin {
 
 ### 6.4 Container — dependency injection
 
-GiftFlow `Container` supports:
+The `Container` supports:
 
 - `set( $id, $factory )` — register a factory
 - `get( $id )` — lazy-resolve singleton
@@ -655,7 +656,7 @@ class SettingsRegistry extends AbstractModule {
 
 ## 7. Gutenberg Blocks
 
-Block structure (following GiftFlow):
+Block structure:
 
 ```
 blocks/search-bar/
@@ -698,7 +699,7 @@ apply_filters( 'beplus_smart_search.blocks', array() );
 
 ## 8. Assets (JS/CSS)
 
-**AssetLoader** (GiftFlow pattern):
+**AssetLoader** pattern:
 
 - Admin: `build/admin.js` + `build/admin.asset.php` (wp-scripts)
 - Frontend: `build/frontend.js`
@@ -743,7 +744,7 @@ templates/
     └── result-item.php
 ```
 
-**Load template (GiftFlow style):**
+**Load template:**
 
 ```php
 function beplus_smart_search_get_template( $template_name, $args = array() ) {
@@ -886,20 +887,22 @@ add_action( HookManager::CRON_REINDEX, array( $index_service, 'rebuild' ) );
 
 ---
 
-## 15. GiftFlow → BePlus Smart Search Mapping
+## 15. Core class map
 
-| GiftFlow | BePlus Smart Search |
-|----------|---------------------|
-| `GiftFlow\Core\Plugin` | `BePlusSmartSearch\Core\Plugin` |
-| `GatewayRegistry` | `SearchRegistry` |
-| `AbstractGateway` | `AbstractProvider` |
-| `Donation`, `Campaign` CPT | (optional) `SearchLog` CPT or custom table |
-| `SettingsRegistry` | `SettingsRegistry` |
-| `BlockRegistry` | `BlockRegistry` |
-| `giftflow/v2` REST | `beplus-smart-search/v1` REST |
-| `giftflow.services` filter | `beplus_smart_search.services` filter |
-| `giftflow/donation.created` action | `beplus-smart-search/search.completed` action |
-| `blocks/donation-button` | `blocks/search-bar` |
+| Class | Path | Role |
+|-------|------|------|
+| `BePlusSmartSearch\Core\Plugin` | `src/Core/Plugin.php` | Boot, activate, deactivate |
+| `SearchRegistry` | `src/Search/SearchRegistry.php` | Register search providers |
+| `AbstractProvider` | `src/Search/Providers/AbstractProvider.php` | Provider base |
+| `FacetService` | `src/Search/FacetService.php` | Facet counts |
+| `SettingsRegistry` | `src/Settings/SettingsRegistry.php` | Options + defaults |
+| `BlockRegistry` | `src/Blocks/BlockRegistry.php` | Auto-discover blocks |
+| `ProductsController` | `src/REST/ProductsController.php` | `GET /products` |
+| `FacetsController` | `src/REST/FacetsController.php` | `GET /facets` |
+| REST namespace | `beplus-smart-search/v1` | Public API |
+| Services filter | `beplus_smart_search.services` | Container extensions |
+| Search completed action | `beplus-smart-search/search.completed` | After search runs |
+| Primary block | `blocks/advanced-woo-search/` | Advanced Woo Search |
 
 ---
 
@@ -931,32 +934,33 @@ That document specifies the `beplus-smart-search/advanced-woo-search` block: Woo
 
 ---
 
-## 18. Spotlight Search Reference (Nextora Theme)
+## 18. Search UX patterns
 
-Before building search UI, live autocomplete, or the `search-bar` block, read:
+Before building live autocomplete or front-end filter behavior, read:
 
-**[`docs/spotlight-search-reference.md`](./docs/spotlight-search-reference.md)**
+**[`docs/search-ux-patterns.md`](./docs/search-ux-patterns.md)**
 
-That document analyzes the Nextora theme's spotlight search implementation (PHP feature bundle, debounced REST fetch, combobox ARIA, modal integration, block pattern) and maps each pattern to BePlus Smart Search equivalents.
+That document covers `window.bpssData`, DOM `data-*` contracts, debounced REST fetch, combobox accessibility, and the Advanced Woo Search block flow.
 
 ---
 
-## 18. Internal Reference Files
+## 19. Internal reference files
 
-When implementing, read these GiftFlow files directly:
+When implementing, read these plugin files directly:
 
 | File | Purpose |
 |------|---------|
-| `giftflow/giftflow.php` | Bootstrap pattern |
-| `giftflow/src/Core/Plugin.php` | Boot flow, activate/deactivate |
-| `giftflow/src/Core/Container.php` | DI container |
-| `giftflow/src/Core/AbstractModule.php` | Module base |
-| `giftflow/src/Core/AssetLoader.php` | Asset enqueue |
-| `giftflow/src/Core/HookManager.php` | Hook constants |
-| `giftflow/src/Settings/SettingsRegistry.php` | Settings pattern |
-| `giftflow/src/Blocks/BlockRegistry.php` | Block auto-discovery |
-| `giftflow/src/REST/SettingsController.php` | REST API pattern |
-| `giftflow/blocks/donation-button/block.json` | Block metadata |
+| `beplus-smart-search.php` | Bootstrap pattern |
+| `src/Core/Plugin.php` | Boot flow, activate/deactivate |
+| `src/Core/Container.php` | DI container |
+| `src/Core/AbstractModule.php` | Module base |
+| `src/Core/AssetLoader.php` | Asset enqueue |
+| `src/Settings/SettingsRegistry.php` | Settings pattern |
+| `src/Blocks/BlockRegistry.php` | Block auto-discovery |
+| `src/REST/ProductsController.php` | Product REST API |
+| `src/REST/FacetsController.php` | Facet REST API |
+| `blocks/advanced-woo-search/block.json` | Primary block metadata |
+| `blocks/advanced-woo-search/view.source.ts` | Storefront filter JS |
 
 ---
 

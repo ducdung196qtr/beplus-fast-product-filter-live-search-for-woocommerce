@@ -2,7 +2,7 @@
 
 WordPress plugin: **Advanced Woo Search** Gutenberg block for WooCommerce — live filters without page reload.
 
-Built with **PHP 7.4+**, **TypeScript**, **esbuild**, **PHPStan**, and **PHP CS Fixer** (same toolchain pattern as the [Nextora theme](../../themes/nextora-develop/)).
+Built with **PHP 7.4+**, **TypeScript**, **esbuild**, **PHPStan**, and **PHP CS Fixer**.
 
 **For AI / Cursor agents:** [`AGENTS.md`](./AGENTS.md) — architecture, naming, hooks, and file conventions.
 
@@ -183,7 +183,7 @@ Creates `beplus-smart-search-v{version}.zip` in the plugin root (excludes `node_
 | [`AGENTS.md`](./AGENTS.md) | Agent / contributor briefing |
 | [`Document Plugin.md`](./Document Plugin.md) | Architecture & naming standards |
 | [`docs/advanced-woo-search-block.md`](./docs/advanced-woo-search-block.md) | Primary block spec |
-| [`docs/spotlight-search-reference.md`](./docs/spotlight-search-reference.md) | UX reference from Nextora |
+| [`docs/search-ux-patterns.md`](./docs/search-ux-patterns.md) | Live search UX, DOM contract, a11y |
 
 ---
 

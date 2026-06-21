@@ -48,11 +48,11 @@ Full build spec: [`docs/advanced-woo-search-block.md`](../../docs/advanced-woo-s
 
 ## Reference
 
-- GiftFlow block pattern: `plugins/giftflow/blocks/donation-button/block.json`
-- Nextora spotlight search UX (theme): `themes/nextora-develop/blocks/spotlight-search/` — adapt combobox ARIA for plugin block
+- Primary block: `blocks/advanced-woo-search/` — see [`docs/advanced-woo-search-block.md`](../../docs/advanced-woo-search-block.md)
+- UX patterns: [`docs/search-ux-patterns.md`](../../docs/search-ux-patterns.md)
 
 ```text
-❌ New block named giftflow/search-bar or category widgets
+❌ New block named woocommerce/search-bar or category widgets
 ✅ beplus-smart-search/search-bar, category beplus-smart-search
 
 ❌ Inline <script> in render.php for autocomplete

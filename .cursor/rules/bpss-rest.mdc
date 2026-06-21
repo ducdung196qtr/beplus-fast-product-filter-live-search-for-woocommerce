@@ -59,7 +59,7 @@ array(
 
 Apply `beplus-smart-search/search.results` filter before returning.
 
-Reference: `giftflow/src/REST/SettingsController.php`.
+Reference: `src/REST/ProductsController.php`, `src/REST/FacetsController.php`.
 
 ```text
 ❌ register_rest_route without permission_callback

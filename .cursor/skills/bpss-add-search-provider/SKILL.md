@@ -9,7 +9,7 @@ disable-model-invocation: true
 ## Before you edit
 
 - Read [`Document Plugin.md`](../../../Document Plugin.md) § **Abstract Provider** and **SearchRegistry**.
-- Reference GiftFlow gateway pattern: `giftflow/src/Gateways/AbstractGateway.php`, `GatewayRegistry.php`.
+- See `src/Search/Providers/AbstractProvider.php` and `src/Search/SearchRegistry.php` for the provider registration pattern.
 
 ## Provider contract
 

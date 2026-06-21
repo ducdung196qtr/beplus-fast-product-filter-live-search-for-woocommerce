@@ -10,7 +10,7 @@ disable-model-invocation: true
 
 - Read [`AGENTS.md`](../../../AGENTS.md) § **Gutenberg blocks** and [`Document Plugin.md`](../../../Document Plugin.md) § **Gutenberg Blocks**.
 - Read [`docs/advanced-woo-search-block.md`](../../../docs/advanced-woo-search-block.md) when building the primary **Advanced Woo Search** block.
-- Read [`docs/spotlight-search-reference.md`](../../../docs/spotlight-search-reference.md) for live search UX, debounce, combobox ARIA, and result rendering patterns from Nextora.
+- Read [`docs/search-ux-patterns.md`](../../../docs/search-ux-patterns.md) for live search UX, debounce, combobox ARIA, and result rendering.
 - Registration: [`src/Blocks/BlockRegistry.php`](../../../src/Blocks/BlockRegistry.php) — auto-discovers `blocks/*/block.json`.
 
 ## Scaffold
@@ -53,9 +53,9 @@ disable-model-invocation: true
 
 | Source | Use for |
 |--------|---------|
-| `plugins/giftflow/blocks/donation-button/block.json` | block.json structure, render callback |
-| `plugins/giftflow/src/Blocks/BlockRegistry.php` | auto-discovery |
-| `themes/nextora-develop/blocks/spotlight-search/` | combobox UX, modal/live search (adapt for plugin) |
+| `blocks/advanced-woo-search/block.json` | Primary block metadata, attributes, render callback |
+| `src/Blocks/BlockRegistry.php` | Auto-discovery |
+| `docs/search-ux-patterns.md` | Combobox UX, live search, DOM contract |
 
 ## Checklist
 

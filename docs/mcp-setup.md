@@ -182,4 +182,3 @@ Requires [WP-CLI](https://wp-cli.org/) on PATH. HTTP transport above works witho
 - [WordPress MCP Adapter](https://github.com/WordPress/mcp-adapter)
 - [@automattic/mcp-wordpress-remote](https://www.npmjs.com/package/@automattic/mcp-wordpress-remote)
 - [Playwright MCP](https://playwright.dev/docs/getting-started-mcp)
-- Nextora codegraph MCP (theme only): `themes/nextora-develop/.cursor/mcp.json`

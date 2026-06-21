@@ -33,9 +33,9 @@ Before finishing PHP work:
 | Legacy file | `class-{kebab}.php` | `includes/class-base.php` |
 | Hook constant | `HookManager::CONST` | `FILTER_SERVICES` |
 
-## GiftFlow alignment
+## Infrastructure patterns
 
-Mirror patterns from `giftflow/src/Core/Plugin.php`, `Container.php`, `SettingsRegistry.php`, and REST controllers when adding new infrastructure.
+Follow existing classes in `src/Core/Plugin.php`, `Container.php`, `SettingsRegistry.php`, and `src/REST/*Controller.php` when adding new infrastructure.
 
 ```text
 ❌ function get_settings() without prefix in includes/common.php

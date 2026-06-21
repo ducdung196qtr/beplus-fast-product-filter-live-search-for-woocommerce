@@ -8,7 +8,7 @@
 |--------------------|---------|
 | [`Document Plugin.md`](../Document%20Plugin.md) | Architecture, naming, folder structure, REST, security |
 | [`AGENTS.md`](../AGENTS.md) | Module registry, boot flow, quality gates |
-| [`docs/spotlight-search-reference.md`](./spotlight-search-reference.md) | Live search UX: debounce, abort, combobox ARIA, loading states |
+| [`docs/search-ux-patterns.md`](./search-ux-patterns.md) | Live search UX: debounce, abort, combobox ARIA, loading states |
 | [`.cursor/rules/bpss-core.mdc`](../.cursor/rules/bpss-core.mdc) | Prefix, build output, no side effects |
 | [`.cursor/rules/bpss-blocks.mdc`](../.cursor/rules/bpss-blocks.mdc) | block.json, render.php, viewScript |
 | [`.cursor/rules/bpss-rest.mdc`](../.cursor/rules/bpss-rest.mdc) | REST routes, permissions, sanitization |
@@ -36,7 +36,7 @@
 | Tag filter | `product_tag` taxonomy |
 | Attribute filter | `pa_*` taxonomies (WooCommerce attributes) |
 | Stock filter | `instock` / `outofstock` / `onbackorder` |
-| Debounced typing | Same pattern as spotlight-search (280ms default) |
+| Debounced typing | Same pattern as [`search-ux-patterns.md`](./search-ux-patterns.md) (280ms default) |
 | WooCommerce required | Block hidden or admin notice if WC inactive |
 
 ---
@@ -139,7 +139,7 @@ Inspector panels (match [`bpss-blocks.mdc`](../.cursor/rules/bpss-blocks.mdc)):
 | **Results** | `filter-collection` vs `own-grid`; CSS selector for collection target |
 | **Behavior** | `enableLiveSearch`, `debounceMs`, `minChars`, `perPage` |
 
-Use **ServerSideRender** in editor (GiftFlow / Nextora spotlight pattern) inside `<Disabled>` wrapper.
+Use **ServerSideRender** in the block editor preview (`edit.tsx`) so the inspector matches PHP `render.php` output.
 
 ### 3.4 render.php markup contract
 
@@ -214,7 +214,7 @@ Register in `block.json`:
 "style": "file:./style.css"
 ```
 
-**Init contract** (from spotlight-search-reference):
+**Init contract** (see [`search-ux-patterns.md`](./search-ux-patterns.md)):
 
 ```javascript
 // Select [data-bpss-advanced-woo-search] — idempotent via data-bpss-search-inited
@@ -613,7 +613,7 @@ The workspace includes `plugins/advanced-woo-search` (AWS). **Do not fork it.** 
 2. Follow [`bpss-add-plugin-block`](../.cursor/skills/bpss-add-plugin-block/SKILL.md) for block scaffold.
 3. Follow [`bpss-add-search-provider`](../.cursor/skills/bpss-add-search-provider/SKILL.md) for `ProductProvider`.
 4. Apply [`.cursor/rules/bpss-rest.mdc`](../.cursor/rules/bpss-rest.mdc) for controllers.
-5. Apply [spotlight-search-reference](./spotlight-search-reference.md) for `view.js` debounce/abort/loading.
+5. Apply [`search-ux-patterns.md`](./search-ux-patterns.md) for `view.js` debounce/abort/loading.
 6. Run `npm run build` after JS/CSS changes.
 7. Test on shop template per §9.
 
@@ -625,7 +625,7 @@ The workspace includes `plugins/advanced-woo-search` (AWS). **Do not fork it.** 
 |----------|------|
 | Plugin structure | [`Document Plugin.md`](../Document%20Plugin.md) |
 | Agent briefing | [`AGENTS.md`](../AGENTS.md) |
-| Spotlight UX reference | [`docs/spotlight-search-reference.md`](./spotlight-search-reference.md) |
+| Search UX patterns | [`docs/search-ux-patterns.md`](./search-ux-patterns.md) |
 | MCP / Site Editor | [`docs/mcp-setup.md`](./mcp-setup.md) |
 | Block rule | [`.cursor/rules/bpss-blocks.mdc`](../.cursor/rules/bpss-blocks.mdc) |
 | Add block skill | [`.cursor/skills/bpss-add-plugin-block/SKILL.md`](../.cursor/skills/bpss-add-plugin-block/SKILL.md) |

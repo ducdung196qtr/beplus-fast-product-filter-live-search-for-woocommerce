@@ -12,7 +12,7 @@ alwaysApply: true
 - **After editing** `admin/js/**`, `assets/**`, or block sources under `blocks/**`, run **`npm run build`** or **`npm run start`** from the plugin root.
 - **Do not treat as source** (regenerate via npm): `build/admin.js`, `build/admin.asset.php`, `build/frontend.js`, `build/blocks/**`.
 - **Target:** WordPress 6.0+; PHP 7.4+ (prefer `declare(strict_types=1);` in new PHP under `src/`).
-- **Reference plugin:** [`plugins/giftflow/`](../../../giftflow/) for `Container`, `BlockRegistry`, `SettingsRegistry`, REST patterns.
+- **Architecture reference:** [`Document Plugin.md`](../../Document Plugin.md) § Core class map.
 
 ```text
 ❌ add_action() at top level in src/Search/SearchEngine.php
