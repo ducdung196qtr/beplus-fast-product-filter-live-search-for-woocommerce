@@ -1,14 +1,29 @@
 # Find php.exe for Local WP / Laragon / XAMPP (Windows).
-# Run from plugin root: powershell -File scripts/find-php.ps1
+# Run from plugin root: npm run find-php
 
-$paths = @()
+$script:paths = @()
+
+function Add-PhpFromLightningRoot($root) {
+	if (-not (Test-Path $root)) {
+		return
+	}
+
+	Get-ChildItem $root -Directory -Filter 'php-*' -ErrorAction SilentlyContinue |
+		ForEach-Object {
+			$phpExe = Join-Path $_.FullName 'bin\win64\php.exe'
+			if (Test-Path $phpExe) {
+				$script:paths += $phpExe
+			}
+		}
+}
+
+if ($env:APPDATA) {
+	Add-PhpFromLightningRoot (Join-Path $env:APPDATA 'Local\lightning-services')
+}
 
 if ($env:LOCALAPPDATA) {
-	$localRoot = Join-Path $env:LOCALAPPDATA 'Programs\Local\lightning-services'
-	if (Test-Path $localRoot) {
-		$paths += Get-ChildItem $localRoot -Recurse -Filter 'php.exe' -ErrorAction SilentlyContinue |
-			Select-Object -ExpandProperty FullName
-	}
+	Add-PhpFromLightningRoot (Join-Path $env:LOCALAPPDATA 'Programs\Local\lightning-services')
+	Add-PhpFromLightningRoot (Join-Path $env:LOCALAPPDATA 'Programs\Local\resources\extraResources\lightning-services')
 }
 
 $extras = @(
@@ -18,24 +33,24 @@ $extras = @(
 
 foreach ($extra in $extras) {
 	if (Test-Path $extra) {
-		$paths += $extra
+		$script:paths += $extra
 	}
 }
 
 try {
 	$global = (Get-Command php -ErrorAction Stop).Source
-	$paths = @($global) + $paths
+	$script:paths = @($global) + $script:paths
 } catch {
 	# php not on PATH
 }
 
-$paths = $paths | Select-Object -Unique
+$paths = $script:paths | Select-Object -Unique
 
 if (-not $paths.Count) {
 	Write-Host 'No php.exe found.'
 	Write-Host ''
 	Write-Host 'Try one of these:'
-	Write-Host '  1. Local → Open site shell → npm run composer:install'
+	Write-Host '  1. Start the "plugin" site in Local WP, then rerun npm run find-php'
 	Write-Host '  2. winget install PHP.PHP.8.2'
 	Write-Host '  3. Set PHP_BIN manually in .env (see .env.example)'
 	exit 1

@@ -26,9 +26,11 @@ From `wp-content/plugins/beplus-smart-search/`:
 
 ```bash
 npm install
-npm run composer:install   # PHP dev tools → vendor/
+npm run composer:install   # PHP dev tools → vendor/  (NOT `composer install`)
 npm run build
 ```
+
+> **Windows:** `composer install` fails without global Composer. Use `npm run composer:install` or `.\composer.ps1 install` from this folder instead.
 
 Activate **BePlus Smart Search** under **Plugins**.
 
@@ -64,10 +66,10 @@ If you use regular PowerShell/CMD:
 2. Set the full path to `php.exe`, for example:
 
 ```env
-PHP_BIN=C:\Users\you\AppData\Local\Programs\Local\lightning-services\php-8.2.27+1\bin\win64\php.exe
+PHP_BIN=C:\Users\you\AppData\Roaming\Local\lightning-services\php-8.2.29+0\bin\win64\php.exe
 ```
 
-Find `php.exe` under `%LOCALAPPDATA%\Programs\Local\lightning-services\`.
+Run `npm run find-php` to list detected paths under `%APPDATA%\Local\lightning-services\`.
 
 3. Run:
 
@@ -191,6 +193,6 @@ Creates `beplus-smart-search-v{version}.zip` in the plugin root (excludes `node_
 |---------|-----|
 | `git is not recognized` | Run `npm run setup:git-path`, reopen terminal, or use `npm run git -- status` |
 | `composer is not recognized` | Use `npm run composer:install`, not `composer install` |
-| `Could not find PHP` | Run `npm run find-php`, set `PHP_BIN` in `.env`, or use Local site shell |
+| `Could not find PHP` | Start the **plugin** site in Local WP, then run `npm run composer:install` |
 | Block missing in editor | Run `npm run build:blocks`, reload wp-admin |
 | Styles/scripts stale | Run `npm run build` or `npm run watch` |

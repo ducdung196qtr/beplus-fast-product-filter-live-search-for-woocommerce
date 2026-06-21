@@ -52,9 +52,151 @@ function loadEnvFile() {
 	}
 }
 
-function phpWorks( phpBin ) {
-	const result = spawnSync( phpBin, [ '-v' ], { stdio: 'ignore', shell: false } );
+function getLocalPluginSite() {
+	if ( ! process.env.APPDATA ) {
+		return null;
+	}
+
+	const sitesPath = path.join( process.env.APPDATA, 'Local', 'sites.json' );
+	if ( ! fs.existsSync( sitesPath ) ) {
+		return null;
+	}
+
+	try {
+		const sites = JSON.parse( fs.readFileSync( sitesPath, 'utf8' ) );
+		const pluginRoot = ROOT.replace( /\\/g, '/' ).toLowerCase();
+		let fallback = null;
+
+		for ( const [ siteId, site ] of Object.entries( sites ) ) {
+			if ( ! site || typeof site !== 'object' ) {
+				continue;
+			}
+
+			if ( site.name === 'plugin' ) {
+				return { siteId, site };
+			}
+
+			const rawPath = site.path ?? '';
+			const sitePath = rawPath
+				.replace( /^~\\?/, `${process.env.USERPROFILE}\\` )
+				.replace( /\\/g, '/' )
+				.toLowerCase();
+
+			if (
+				pluginRoot.includes( sitePath )
+				|| pluginRoot.includes( 'local sites/plugin' )
+			) {
+				fallback = { siteId, site };
+			}
+		}
+
+		return fallback;
+	} catch {
+		return null;
+	}
+}
+
+function findLocalSitePhpIni() {
+	const match = getLocalPluginSite();
+	if ( ! match ) {
+		return null;
+	}
+
+	const iniPath = path.join(
+		process.env.APPDATA,
+		'Local',
+		'run',
+		match.siteId,
+		'conf',
+		'php',
+		'php.ini',
+	);
+
+	return fs.existsSync( iniPath ) ? iniPath : null;
+}
+
+function phpArgs( phpBin, phpIni, args ) {
+	const base = phpIni ? [ '-c', phpIni ] : [];
+	return [ ...base, ...args ];
+}
+
+function phpWorks( phpBin, phpIni = null ) {
+	const result = spawnSync( phpBin, phpArgs( phpBin, phpIni, [ '-v' ] ), {
+		stdio: 'ignore',
+		shell: false,
+	} );
 	return result.status === 0;
+}
+
+function findLocalLightningPhp() {
+	const bases = [];
+
+	if ( process.env.APPDATA ) {
+		bases.push( path.join( process.env.APPDATA, 'Local', 'lightning-services' ) );
+	}
+
+	if ( process.env.LOCALAPPDATA ) {
+		bases.push(
+			path.join( process.env.LOCALAPPDATA, 'Programs', 'Local', 'lightning-services' ),
+			path.join(
+				process.env.LOCALAPPDATA,
+				'Programs',
+				'Local',
+				'resources',
+				'extraResources',
+				'lightning-services',
+			),
+		);
+	}
+
+	const candidates = [];
+
+	for ( const base of bases ) {
+		if ( ! base || ! fs.existsSync( base ) ) {
+			continue;
+		}
+
+		const fromSite = findPhpFromLocalSitesJson( base );
+		if ( fromSite ) {
+			candidates.push( fromSite );
+		}
+
+		const matches = globSync( 'php-*/bin/win64/php.exe', {
+			cwd: base,
+			absolute: true,
+			nocase: true,
+		} );
+		candidates.push( ...matches.reverse() );
+	}
+
+	return candidates;
+}
+
+function findPhpFromLocalSitesJson( lightningBase ) {
+	const match = getLocalPluginSite();
+	if ( ! match ) {
+		return null;
+	}
+
+	const version = match.site.services?.php?.version;
+	if ( ! version ) {
+		return null;
+	}
+
+	const dirs = globSync( `php-${version}*`, {
+		cwd: lightningBase,
+		absolute: true,
+		nocase: true,
+	} );
+
+	for ( const dir of dirs ) {
+		const phpExe = path.join( dir, 'bin', 'win64', 'php.exe' );
+		if ( fs.existsSync( phpExe ) ) {
+			return phpExe;
+		}
+	}
+
+	return null;
 }
 
 function findPhpCandidates() {
@@ -65,19 +207,7 @@ function findPhpCandidates() {
 	}
 
 	candidates.push( 'php' );
-
-	const localBase = process.env.LOCALAPPDATA
-		? path.join( process.env.LOCALAPPDATA, 'Programs', 'Local', 'lightning-services' )
-		: null;
-
-	if ( localBase && fs.existsSync( localBase ) ) {
-		const localPhp = globSync( '**/php.exe', {
-			cwd: localBase,
-			absolute: true,
-			nocase: true,
-		} );
-		candidates.push( ...localPhp.reverse() );
-	}
+	candidates.push( ...findLocalLightningPhp() );
 
 	const extras = [
 		'C:\\laragon\\bin\\php\\php.exe',
@@ -92,13 +222,19 @@ function findPhpCandidates() {
 }
 
 function findPhp() {
+	const phpIni = findLocalSitePhpIni();
+
 	for ( const candidate of findPhpCandidates() ) {
 		if ( candidate !== 'php' && ! fs.existsSync( candidate ) ) {
 			continue;
 		}
 
+		if ( phpWorks( candidate, phpIni ) ) {
+			return { php: candidate, phpIni };
+		}
+
 		if ( phpWorks( candidate ) ) {
-			return candidate;
+			return { php: candidate, phpIni: null };
 		}
 	}
 
@@ -150,11 +286,11 @@ Could not find PHP on this machine.
 
 Fix (pick one):
 
-  1) Local WP — open the site in Local → "Open site shell", then run:
+  1) Start the "plugin" site in Local WP, then run:
        npm run composer:install
 
   2) Set PHP path in .env (copy .env.example):
-       PHP_BIN=C:\\path\\to\\php.exe
+       npm run find-php
 
   3) Install PHP globally, then reopen the terminal:
        winget install PHP.PHP.8.2
@@ -172,18 +308,26 @@ async function main() {
 		args.push( '--version' );
 	}
 
-	const php = findPhp();
-	if ( ! php ) {
+	const phpInfo = findPhp();
+	if ( ! phpInfo ) {
 		printHelp();
 		process.exit( 1 );
 	}
 
+	if ( phpInfo.phpIni ) {
+		console.log( `Using Local WP php.ini: ${phpInfo.phpIni}` );
+	}
+
 	const phar = await ensureComposerPhar();
-	const result = spawnSync( php, [ phar, ...args ], {
-		cwd: ROOT,
-		stdio: 'inherit',
-		shell: false,
-	} );
+	const result = spawnSync(
+		phpInfo.php,
+		phpArgs( phpInfo.php, phpInfo.phpIni, [ phar, ...args ] ),
+		{
+			cwd: ROOT,
+			stdio: 'inherit',
+			shell: false,
+		},
+	);
 
 	process.exit( result.status ?? 1 );
 }
