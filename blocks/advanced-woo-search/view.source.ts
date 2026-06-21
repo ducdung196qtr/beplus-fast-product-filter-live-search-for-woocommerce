@@ -748,7 +748,11 @@
 					params.min_rating = rating;
 				}
 			} else if ( type === 'price_segment' ) {
-				if ( ! input.checked || ! value ) {
+				if (
+					! ( input instanceof HTMLInputElement ) ||
+					! input.checked ||
+					! value
+				) {
 					return;
 				}
 				const min = parseFloat( input.dataset.priceMin || '0' );
@@ -1052,21 +1056,19 @@
 				panelEl?.dataset.bpssAttrSlug ||
 				attrEl?.dataset.bpssAttrSlug ||
 				'';
-			const input =
-				( item.querySelector(
-					'[data-bpss-filter]'
-				) as HTMLInputElement | null ) ||
-				( item.tagName === 'OPTION' ? ( item as HTMLInputElement ) : null );
+			const input = item.querySelector(
+				'[data-bpss-filter]'
+			) as HTMLInputElement | null;
+			const option =
+				item.tagName === 'OPTION' ? ( item as HTMLOptionElement ) : null;
 
 			let isSelected = false;
 			if ( input ) {
 				if ( input.type === 'checkbox' || input.type === 'radio' ) {
 					isSelected = input.checked && !! input.value;
-				} else if ( input.tagName === 'OPTION' ) {
-					isSelected =
-						( input as HTMLOptionElement ).selected &&
-						!! input.value;
 				}
+			} else if ( option ) {
+				isSelected = option.selected && !! option.value;
 			}
 
 			let count = 0;

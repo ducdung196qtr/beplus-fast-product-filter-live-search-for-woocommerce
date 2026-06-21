@@ -10,38 +10,11 @@ import {
 	ToggleControl,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import { BlockEditProps } from '@wordpress/blocks';
 import ServerSideRender from '@wordpress/server-side-render';
 import AttributeFilters from './attribute-filters';
 import SortTab from './sort-tab';
-
-interface Attributes {
-	[key: string]: string | number | boolean | string[] | undefined;
-	placeholder: string;
-	showKeyword: boolean;
-	showCategory: boolean;
-	showTag: boolean;
-	showStock: boolean;
-	showOnSale: boolean;
-	showRating: boolean;
-	showFeatured: boolean;
-	showBrand: boolean;
-	showCustomTaxonomies: boolean;
-	attributeSlugs: string[];
-	filterOrder: string[];
-	layout: 'inline' | 'sidebar';
-	debounceMs: number;
-	minChars: number;
-	perPage: number;
-	enableLiveSearch: boolean;
-	showResultCount: boolean;
-	showClearButton: boolean;
-	showPrice: boolean;
-}
-
-interface EditProps {
-	attributes: Attributes;
-	setAttributes: ( attrs: Partial< Attributes > ) => void;
-}
+import type { BlockAttributes } from './types';
 
 const INSPECTOR_TABS = [
 	{ name: 'filters', title: __( 'Filters', 'beplus-smart-search' ) },
@@ -49,7 +22,10 @@ const INSPECTOR_TABS = [
 	{ name: 'layout', title: __( 'Layout', 'beplus-smart-search' ) },
 ];
 
-export default function Edit( { attributes, setAttributes }: EditProps ) {
+export default function Edit( {
+	attributes,
+	setAttributes,
+}: BlockEditProps< BlockAttributes > ) {
 	const blockProps = useBlockProps();
 
 	return (
@@ -161,7 +137,7 @@ export default function Edit( { attributes, setAttributes }: EditProps ) {
 											'beplus-smart-search'
 										) }
 										onChange={ ( value ) =>
-											setAttributes( { layout: value as Attributes['layout'] } )
+											setAttributes( { layout: value as BlockAttributes['layout'] } )
 										}
 									/>
 								</PanelBody>

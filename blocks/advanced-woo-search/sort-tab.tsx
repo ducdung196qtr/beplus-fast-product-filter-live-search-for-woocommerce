@@ -1,33 +1,12 @@
+import { BlockEditProps } from '@wordpress/blocks';
 import { Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-
-interface Attributes {
-	showKeyword: boolean;
-	showCategory: boolean;
-	showTag: boolean;
-	showStock: boolean;
-	showOnSale: boolean;
-	showRating: boolean;
-	showFeatured: boolean;
-	showBrand: boolean;
-	showCustomTaxonomies: boolean;
-	showPrice: boolean;
-	filterOrder: string[];
-	attributeSlugs: string[];
-}
+import type { BlockAttributes } from './types';
+import './types';
 
 interface SortTabProps {
-	attributes: Attributes;
-	setAttributes: ( attrs: Partial< Attributes > ) => void;
-}
-
-declare global {
-	interface Window {
-		bpssData?: {
-			filterSections?: Record< string, string >;
-			attributeDefinitions?: Array< { slug: string; label: string } >;
-		};
-	}
+	attributes: BlockAttributes;
+	setAttributes: BlockEditProps< BlockAttributes >['setAttributes'];
 }
 
 function getAllAttributeSlugs(): string[] {
@@ -38,7 +17,7 @@ function getAllAttributeSlugs(): string[] {
 
 function isAttributeSectionEnabled(
 	sectionId: string,
-	attributes: Attributes
+	attributes: BlockAttributes
 ): boolean {
 	const slug = sectionId.slice( 'attribute:'.length );
 	const selected = attributes.attributeSlugs ?? [];
@@ -78,7 +57,7 @@ function resolveFilterOrder(
 	return merged;
 }
 
-function isSectionEnabled( sectionId: string, attributes: Attributes ): boolean {
+function isSectionEnabled( sectionId: string, attributes: BlockAttributes ): boolean {
 	if ( sectionId === 'keyword' ) {
 		return attributes.showKeyword;
 	}

@@ -1,21 +1,10 @@
 import { ToggleControl } from '@wordpress/components';
-
-interface AttributeDefinition {
-	slug: string;
-	label: string;
-}
+import type { AttributeDefinition } from './types';
+import './types';
 
 interface AttributeFiltersProps {
 	attributeSlugs: string[];
 	setAttributes: ( attrs: { attributeSlugs?: string[] } ) => void;
-}
-
-declare global {
-	interface Window {
-		bpssData?: {
-			attributeDefinitions?: AttributeDefinition[];
-		};
-	}
 }
 
 function getAttributeDefinitions(): AttributeDefinition[] {
