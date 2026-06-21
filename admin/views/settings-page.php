@@ -13,13 +13,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound, WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- Template view variables.
+
 $option_key            = BePlusSmartSearch\Settings\SettingsRegistry::OPTION_KEY;
 $modes                 = isset( $sidebar['taxonomy_modes'] ) && is_array( $sidebar['taxonomy_modes'] ) ? $sidebar['taxonomy_modes'] : array();
 $sub_modes             = isset( $sidebar['taxonomy_sub_modes'] ) && is_array( $sidebar['taxonomy_sub_modes'] ) ? $sidebar['taxonomy_sub_modes'] : array();
 $price                 = beplus_smart_search_get_price_settings();
 $price_display         = $price['display'] ?? 'range';
 $price_segments        = isset( $price['segments'] ) && is_array( $price['segments'] ) ? $price['segments'] : array();
-$accent_color          = $sidebar['accent_color'] ?? '#f5c518';
+$accent_color          = $sidebar['accent_color'] ?? '#000000';
 $facet_display_mode    = $sidebar['facet_display_mode'] ?? 'all';
 $facets                = isset( $sidebar['facets'] ) && is_array( $sidebar['facets'] ) ? $sidebar['facets'] : array();
 $brand_facet           = isset( $facets['brand'] ) && is_array( $facets['brand'] ) ? $facets['brand'] : array();
@@ -81,7 +83,7 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 }
 ?>
 <div class="wrap bpss-settings">
-	<h1><?php esc_html_e( 'Smart Search Settings', 'beplus-smart-search' ); ?></h1>
+	<h1><?php esc_html_e( 'Advanced Search Settings', 'beplus-smart-search' ); ?></h1>
 	<p class="description bpss-settings__intro">
 		<?php esc_html_e( 'Configure search behavior and how each product filter works on the storefront.', 'beplus-smart-search' ); ?>
 	</p>
@@ -171,7 +173,7 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 					<tr>
 						<th scope="row"><label for="bpss-accent"><?php esc_html_e( 'Accent color', 'beplus-smart-search' ); ?></label></th>
 						<td>
-							<input type="text" id="bpss-accent" class="bpss-color-picker" name="<?php echo esc_attr( $option_key ); ?>[sidebar][accent_color]" value="<?php echo esc_attr( $accent_color ); ?>" data-default-color="#f5c518" />
+							<input type="text" id="bpss-accent" class="bpss-color-picker" name="<?php echo esc_attr( $option_key ); ?>[sidebar][accent_color]" value="<?php echo esc_attr( $accent_color ); ?>" data-default-color="#000000" />
 							<p class="description"><?php esc_html_e( 'Used for price slider and highlights in the sidebar.', 'beplus-smart-search' ); ?></p>
 						</td>
 					</tr>

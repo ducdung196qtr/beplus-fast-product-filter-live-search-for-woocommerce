@@ -6,7 +6,7 @@
 	"title": "Advanced Woo Search",
 	"category": "woocommerce",
 	"icon": "filter",
-	"description": "Live WooCommerce product search with category, tag, attribute, and stock filters — no page reload.",
+	"description": "Let shoppers search and filter your catalog on the spot—category, price, stock, and more, without reloading the page.",
 	"keywords": [ "search", "woocommerce", "filter", "products", "advanced", "woo" ],
 	"example": {
 		"attributes": {
@@ -76,7 +76,7 @@
 		"layout": {
 			"type": "string",
 			"enum": [ "inline", "sidebar" ],
-			"default": "inline"
+			"default": "sidebar"
 		},
 		"resultsMode": {
 			"type": "string",
@@ -118,6 +118,10 @@
 		"filterOrder": {
 			"type": "array",
 			"default": []
+		},
+		"enableResponsive": {
+			"type": "boolean",
+			"default": false
 		}
 	},
 	"render": "file:./render.php",

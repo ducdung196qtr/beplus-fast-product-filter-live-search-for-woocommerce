@@ -34,6 +34,7 @@ export interface BlockAttributes {
 	showClearButton: boolean;
 	showPrice: boolean;
 	filterOrder: string[];
+	enableResponsive: boolean;
 }
 
 declare global {

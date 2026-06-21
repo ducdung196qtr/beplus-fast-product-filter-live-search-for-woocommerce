@@ -11,6 +11,31 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Whether WooCommerce is installed and active.
+ *
+ * @return bool
+ */
+function beplus_smart_search_is_woocommerce_active(): bool {
+	if ( class_exists( 'WooCommerce' ) ) {
+		return true;
+	}
+
+	if ( ! function_exists( 'is_plugin_active' ) ) {
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+	}
+
+	if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+		return true;
+	}
+
+	if ( is_multisite() && function_exists( 'is_plugin_active_for_network' ) ) {
+		return is_plugin_active_for_network( 'woocommerce/woocommerce.php' );
+	}
+
+	return false;
+}
+
+/**
  * Get merged plugin settings.
  *
  * @return array<string, mixed>
@@ -45,7 +70,7 @@ function beplus_smart_search_get_sidebar_settings(): array {
 			'show_term_counts'      => true,
 			'collapsible_sections'  => true,
 			'sections_open_default' => true,
-			'accent_color'          => '#f5c518',
+			'accent_color'          => '#000000',
 			'facet_display_mode'    => 'all',
 			'taxonomy_modes'        => array(
 				'product_cat' => 'radio',
@@ -590,7 +615,7 @@ function beplus_smart_search_get_relevant_template_slugs(): array {
  */
 function beplus_smart_search_get_default_catalog_orderby(): string {
 	$default = apply_filters(
-		'woocommerce_default_catalog_orderby',
+		'woocommerce_default_catalog_orderby', // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 		get_option( 'woocommerce_default_catalog_orderby', 'menu_order' ),
 	);
 

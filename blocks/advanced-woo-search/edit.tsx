@@ -140,6 +140,17 @@ export default function Edit( {
 											setAttributes( { layout: value as BlockAttributes['layout'] } )
 										}
 									/>
+									<ToggleControl
+										label={ __( 'Responsive mobile drawer', 'beplus-smart-search' ) }
+										checked={ attributes.enableResponsive ?? false }
+										help={ __(
+											'On small screens, hide the filter column and show a floating filter button. Tapping it opens filters in a slide-in panel from the left.',
+											'beplus-smart-search'
+										) }
+										onChange={ ( value ) =>
+											setAttributes( { enableResponsive: value } )
+										}
+									/>
 								</PanelBody>
 							);
 						}

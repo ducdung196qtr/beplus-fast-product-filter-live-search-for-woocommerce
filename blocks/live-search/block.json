@@ -6,7 +6,7 @@
 	"title": "Live Search",
 	"category": "beplus-smart-search",
 	"icon": "search",
-	"description": "Live product search with suggestions dropdown, keyword highlighting, and add to cart.",
+	"description": "Quick product search with suggestions as you type—highlighted matches and optional add to cart.",
 	"keywords": [ "search", "woocommerce", "live", "autocomplete", "suggestions", "dropdown" ],
 	"example": {
 		"attributes": {

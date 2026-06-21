@@ -1,18 +1,35 @@
-=== BePlus Smart Search ===
+=== Beplus Smart Search ===
 Contributors: beplus
 Tags: search, woocommerce, filter, gutenberg
-Requires at least: 6.0
-Tested up to: 6.8
+Requires at least: 6.5
+Tested up to: 7.0
 Requires PHP: 7.4
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Advanced WooCommerce search block with live filters — no page reload.
+Give shoppers a faster way to browse your store. Search and filter products by keyword, category, price, and more—results update instantly.
 
 == Description ==
 
-BePlus Smart Search adds an **Advanced Woo Search** Gutenberg block for WooCommerce shop pages. Filter products by keyword, category, tag, attributes, and stock status without reloading the page.
+**Beplus Smart Search** makes it easier for customers to find what they want on your WooCommerce shop.
+
+Add the **Advanced Woo Search** block to your shop template. Shoppers can search and narrow products without waiting for the page to reload—smoother browsing, fewer dead ends.
+
+= Why store owners like it =
+
+* **Instant results** — filters apply right away, no full page refresh
+* **Flexible filters** — keyword, category, tag, attributes, price, stock, rating, and more
+* **Fits your layout** — sidebar or horizontal bar, styled to match your theme
+* **Built for modern WooCommerce** — works with block themes and the product collection block
+
+= Who it's for =
+
+* WooCommerce stores with medium or large catalogs
+* Shops built with the Site Editor (e.g. Twenty Twenty-Five)
+* Anyone who wants a cleaner, faster product discovery experience
+
+**Requires WooCommerce.**
 
 == Installation ==
 

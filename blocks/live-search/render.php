@@ -15,6 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once BEPLUS_SMART_SEARCH_PLUGIN_DIR . 'includes/facets.php';
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Block render template variables.
+
 $defaults = array(
 	'placeholder'        => __( 'Search products…', 'beplus-smart-search' ),
 	'showCategory'       => true,
@@ -80,7 +82,7 @@ if ( $attrs['showCategory'] ) {
 $show_category_filter = $attrs['showCategory'] && count( $filter_terms ) > 1;
 
 $sidebar_settings = beplus_smart_search_get_sidebar_settings();
-$accent_color     = $sidebar_settings['accent_color'] ?? '#e53935';
+$accent_color     = $sidebar_settings['accent_color'] ?? '#000000';
 
 $search_fields = array_values(
 	array_filter(
@@ -138,13 +140,7 @@ $wrapper_attrs = get_block_wrapper_attributes(
 						data-bpss-live-category
 					>
 						<option value="">
-							<?php
-							echo esc_html(
-								$is_limited
-									? __( 'All selected categories', 'beplus-smart-search' )
-									: __( 'All Categories', 'beplus-smart-search' ),
-							);
-							?>
+							<?php esc_html_e( 'All categories', 'beplus-smart-search' ); ?>
 						</option>
 						<?php foreach ( $filter_terms as $term ) : ?>
 							<option value="<?php echo esc_attr( $term->slug ); ?>">
@@ -169,7 +165,9 @@ $wrapper_attrs = get_block_wrapper_attributes(
 						<span class="beplus-smart-search__live-ghost-prefix" data-bpss-live-ghost-prefix></span><span class="beplus-smart-search__live-ghost-suffix" data-bpss-live-ghost-suffix></span>
 					</div>
 					<input
-						type="search"
+						type="text"
+						inputmode="search"
+						enterkeyhint="search"
 						id="<?php echo esc_attr( $input_id ); ?>"
 						name="s"
 						class="beplus-smart-search__live-input"

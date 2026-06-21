@@ -120,6 +120,7 @@ class AssetLoader extends AbstractModule {
 			'i18n'    => array(
 				'searching'    => __( 'Searching…', 'beplus-smart-search' ),
 				'noResults'    => __( 'No products found.', 'beplus-smart-search' ),
+				/* translators: %d: number of products found */
 				'resultsFound' => __( '%d products found', 'beplus-smart-search' ),
 				'error'        => __( 'Search failed. Please try again.', 'beplus-smart-search' ),
 				'cleared'      => __( 'Filters cleared.', 'beplus-smart-search' ),

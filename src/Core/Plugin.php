@@ -61,7 +61,6 @@ class Plugin {
 		$this->boot_registered_modules();
 
 		add_action( 'init', array( $this, 'on_init' ) );
-		add_action( 'init', array( $this, 'load_textdomain' ) );
 		add_filter( 'block_categories_all', array( $this, 'register_block_category' ) );
 	}
 
@@ -72,19 +71,6 @@ class Plugin {
 	 */
 	public function on_init(): void {
 		ProductTemplateRenderer::register();
-	}
-
-	/**
-	 * Load plugin textdomain.
-	 *
-	 * @return void
-	 */
-	public function load_textdomain(): void {
-		load_plugin_textdomain(
-			'beplus-smart-search',
-			false,
-			dirname( BEPLUS_SMART_SEARCH_PLUGIN_BASENAME ) . '/languages',
-		);
 	}
 
 	/**
@@ -115,7 +101,7 @@ class Plugin {
 	public function register_block_category( array $categories ): array {
 		$categories[] = array(
 			'slug'  => 'beplus-smart-search',
-			'title' => __( 'BePlus Smart Search', 'beplus-smart-search' ),
+			'title' => __( 'Beplus Smart Search', 'beplus-smart-search' ),
 			'icon'  => 'search',
 		);
 
@@ -154,7 +140,7 @@ class Plugin {
 	 * @return void
 	 */
 	private function register_services_from_filter(): void {
-		$extra = apply_filters( HookManager::FILTER_SERVICES, array() );
+		$extra = apply_filters( 'beplus_smart_search.services', array() );
 
 		if ( ! is_array( $extra ) ) {
 			return;

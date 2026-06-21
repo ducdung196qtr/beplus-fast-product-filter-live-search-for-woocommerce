@@ -68,7 +68,7 @@ class SettingsRegistry extends AbstractModule {
 				'show_term_counts'      => true,
 				'collapsible_sections'  => true,
 				'sections_open_default' => true,
-				'accent_color'          => '#f5c518',
+				'accent_color'          => '#000000',
 				'facet_display_mode'    => 'all',
 				'taxonomy_modes'        => array(
 					'product_cat' => 'radio',
@@ -238,7 +238,7 @@ class SettingsRegistry extends AbstractModule {
 				'show_term_counts'      => ! empty( $sidebar_input['show_term_counts'] ),
 				'collapsible_sections'  => ! empty( $sidebar_input['collapsible_sections'] ),
 				'sections_open_default' => ! empty( $sidebar_input['sections_open_default'] ),
-				'accent_color'          => sanitize_hex_color( $sidebar_input['accent_color'] ?? '#f5c518' ) ?: '#f5c518',
+				'accent_color'          => sanitize_hex_color( $sidebar_input['accent_color'] ?? '#000000' ) ?: '#000000',
 				'facet_display_mode'    => $this->sanitize_facet_mode( $sidebar_input['facet_display_mode'] ?? 'all' ),
 				'taxonomy_modes'        => $taxonomy_modes,
 				'taxonomy_sub_modes'    => $taxonomy_sub_modes,

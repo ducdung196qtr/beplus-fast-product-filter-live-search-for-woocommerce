@@ -1981,6 +1981,74 @@
 		window.addEventListener( 'load', neutralizeWcHandlers, { once: true } );
 	}
 
+	function initResponsiveDrawer( root: HTMLElement ): void {
+		if ( root.dataset.responsive !== '1' ) {
+			return;
+		}
+
+		const trigger = root.querySelector(
+			'[data-bpss-filter-trigger]'
+		) as HTMLButtonElement | null;
+		const backdrop = root.querySelector(
+			'[data-bpss-drawer-backdrop]'
+		) as HTMLElement | null;
+
+		if ( ! trigger || ! backdrop ) {
+			return;
+		}
+
+		const openDrawer = (): void => {
+			root.classList.add( 'is-filter-drawer-open' );
+			trigger.setAttribute( 'aria-expanded', 'true' );
+			backdrop.hidden = false;
+			document.body.classList.add( 'bpss-filter-drawer-open' );
+		};
+
+		const closeDrawer = (): void => {
+			root.classList.remove( 'is-filter-drawer-open' );
+			trigger.setAttribute( 'aria-expanded', 'false' );
+			backdrop.hidden = true;
+			document.body.classList.remove( 'bpss-filter-drawer-open' );
+		};
+
+		trigger.addEventListener( 'click', () => {
+			if ( root.classList.contains( 'is-filter-drawer-open' ) ) {
+				closeDrawer();
+			} else {
+				openDrawer();
+			}
+		} );
+
+		backdrop.addEventListener( 'click', closeDrawer );
+
+		root.querySelectorAll( '[data-bpss-drawer-close]' ).forEach( ( el ) => {
+			el.addEventListener( 'click', closeDrawer );
+		} );
+
+		document.addEventListener( 'keydown', ( event ) => {
+			if (
+				event.key === 'Escape' &&
+				root.classList.contains( 'is-filter-drawer-open' )
+			) {
+				closeDrawer();
+				trigger.focus();
+			}
+		} );
+
+		const media = window.matchMedia( '(max-width: 781px)' );
+		const handleBreakpoint = (): void => {
+			if ( ! media.matches ) {
+				closeDrawer();
+			}
+		};
+
+		if ( typeof media.addEventListener === 'function' ) {
+			media.addEventListener( 'change', handleBreakpoint );
+		} else {
+			media.addListener( handleBreakpoint );
+		}
+	}
+
 	function initBlock( root: HTMLElement ): void {
 		if ( root.dataset.bpssSearchInited ) {
 			return;
@@ -2326,6 +2394,7 @@
 		}
 
 		initCatalogOrdering( root, runSearch );
+		initResponsiveDrawer( root );
 
 		if ( hasUrlSearchState() ) {
 			root.dataset.bpssAjaxActive = '1';

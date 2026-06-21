@@ -110,6 +110,15 @@
 		return div.innerHTML;
 	}
 
+	const CART_ICON =
+		'<svg class="beplus-smart-search__live-cart-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>';
+
+	const VIEW_ICON =
+		'<svg class="beplus-smart-search__live-cart-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
+
+	const CHECK_ICON =
+		'<svg class="beplus-smart-search__live-cart-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>';
+
 	function highlightKeywords( text: string, keyword: string ): string {
 		const trimmed = keyword.trim();
 		if ( ! trimmed ) {
@@ -183,20 +192,43 @@
 
 	function markButtonAdded( button: HTMLButtonElement ): void {
 		const i18n = getBpssData().i18n;
+		const iconEl = button.querySelector( '.beplus-smart-search__live-cart-icon' );
+		const labelEl = button.querySelector( '.beplus-smart-search__live-cart-label' );
 
-		if ( ! button.dataset.bpssLabel ) {
-			button.dataset.bpssLabel = button.textContent || '';
+		if ( iconEl && ! button.dataset.bpssIcon ) {
+			button.dataset.bpssIcon = iconEl.innerHTML;
 		}
 
-		button.textContent = i18n.added || 'Added';
+		if ( labelEl && ! button.dataset.bpssLabel ) {
+			button.dataset.bpssLabel = labelEl.textContent || '';
+		}
+
+		if ( iconEl ) {
+			iconEl.innerHTML = CHECK_ICON;
+		}
+
+		if ( labelEl ) {
+			labelEl.textContent = i18n.added || 'Added';
+		}
+
 		button.classList.add( 'is-added' );
 		button.setAttribute( 'aria-label', i18n.addedToCart || 'Added to cart' );
 
 		window.setTimeout( () => {
-			button.textContent =
-				button.dataset.bpssLabel || i18n.addToCart || 'Add to cart';
+			if ( iconEl ) {
+				iconEl.innerHTML = button.dataset.bpssIcon || CART_ICON;
+			}
+
+			if ( labelEl ) {
+				labelEl.textContent =
+					button.dataset.bpssLabel || i18n.addToCart || 'Add to cart';
+			}
+
 			button.classList.remove( 'is-added' );
-			button.removeAttribute( 'aria-label' );
+			button.setAttribute(
+				'aria-label',
+				i18n.addToCart || 'Add to cart',
+			);
 		}, 2200 );
 	}
 
@@ -381,12 +413,34 @@
 			return url.toString();
 		}
 
+		function measureKeywordWidth( keyword: string ): number {
+			const style = window.getComputedStyle( inputEl );
+			const canvas = document.createElement( 'canvas' );
+			const context = canvas.getContext( '2d' );
+
+			if ( ! context ) {
+				return 0;
+			}
+
+			context.font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+			return context.measureText( keyword ).width;
+		}
+
 		function clearGhost(): void {
 			ghostPrefixEl.textContent = '';
 			ghostSuffixEl.textContent = '';
+			ghostSuffixEl.style.left = '';
 			ghostLayer.hidden = true;
+			ghostLayer.style.transform = '';
 			suggestions = [];
 			suggestionIndex = 0;
+		}
+
+		function syncGhostScroll(): void {
+			const offset = inputEl.scrollLeft;
+			ghostLayer.style.transform = offset
+				? `translateX(${-offset}px)`
+				: '';
 		}
 
 		function cancelPendingRequests(): void {
@@ -427,13 +481,13 @@
 				return;
 			}
 
-			ghostPrefixEl.textContent = keyword;
+			ghostPrefixEl.textContent = '';
 			ghostSuffixEl.textContent = suffix;
+			const inputStyle = window.getComputedStyle( inputEl );
+			const padLeft = Number.parseFloat( inputStyle.paddingLeft ) || 0;
+			ghostSuffixEl.style.left = `${padLeft + measureKeywordWidth( keyword )}px`;
 			ghostLayer.hidden = false;
-
-			if ( inputStack ) {
-				inputStack.scrollLeft = inputEl.scrollLeft;
-			}
+			syncGhostScroll();
 		}
 
 		function acceptSuggestion(): boolean {
@@ -527,6 +581,10 @@
 			}
 
 			const i18n = getBpssData().i18n;
+			const addLabel = escapeHtml( i18n.addToCart || 'Add to cart' );
+			const viewLabel = escapeHtml( i18n.viewProduct || 'View product' );
+			const cartContent = `<span class="beplus-smart-search__live-cart-icon" aria-hidden="true">${CART_ICON}</span><span class="beplus-smart-search__live-cart-label">${addLabel}</span>`;
+			const viewContent = `<span class="beplus-smart-search__live-cart-icon" aria-hidden="true">${VIEW_ICON}</span><span class="beplus-smart-search__live-cart-label">${viewLabel}</span>`;
 
 			if ( item.ajax_add_to_cart ) {
 				return `<button type="button"
@@ -535,12 +593,11 @@
 					data-product_id="${item.id}"
 					data-product_url="${escapeHtml( item.url )}"
 					data-quantity="1"
-				>${escapeHtml( i18n.addToCart || 'Add to cart' )}</button>`;
+					aria-label="${addLabel}"
+				>${cartContent}</button>`;
 			}
 
-			return `<a href="${escapeHtml( item.url )}" class="beplus-smart-search__live-cart beplus-smart-search__live-cart--view">${escapeHtml(
-				i18n.viewProduct || 'View product',
-			)}</a>`;
+			return `<a href="${escapeHtml( item.url )}" class="beplus-smart-search__live-cart beplus-smart-search__live-cart--view" aria-label="${viewLabel}">${viewContent}</a>`;
 		}
 
 		async function ajaxAddToCart(
@@ -746,9 +803,7 @@
 		} );
 
 		inputEl.addEventListener( 'scroll', () => {
-			if ( inputStack ) {
-				inputStack.scrollLeft = inputEl.scrollLeft;
-			}
+			syncGhostScroll();
 		} );
 
 		inputEl.addEventListener( 'focus', () => {

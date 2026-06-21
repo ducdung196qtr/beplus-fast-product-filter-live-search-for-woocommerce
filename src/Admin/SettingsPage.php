@@ -74,28 +74,20 @@ class SettingsPage extends AbstractModule {
 	}
 
 	/**
-	 * Add top-level settings menu.
+	 * Add settings under WooCommerce admin menu.
 	 *
 	 * @return void
 	 */
 	public function register_menu(): void {
-		$cap = class_exists( 'WooCommerce' ) ? 'manage_woocommerce' : 'manage_options';
-
-		add_menu_page(
-			__( 'Smart Search', 'beplus-smart-search' ),
-			__( 'Smart Search', 'beplus-smart-search' ),
-			$cap,
-			self::MENU_SLUG,
-			array( $this, 'render_page' ),
-			'dashicons-search',
-			56,
-		);
+		if ( ! beplus_smart_search_is_woocommerce_active() ) {
+			return;
+		}
 
 		add_submenu_page(
-			self::MENU_SLUG,
-			__( 'Settings', 'beplus-smart-search' ),
-			__( 'Settings', 'beplus-smart-search' ),
-			$cap,
+			'woocommerce',
+			__( 'Advanced Search', 'beplus-smart-search' ),
+			__( 'Advanced Search', 'beplus-smart-search' ),
+			'manage_woocommerce',
 			self::MENU_SLUG,
 			array( $this, 'render_page' ),
 		);
@@ -144,7 +136,7 @@ class SettingsPage extends AbstractModule {
 	 * @return void
 	 */
 	public function render_page(): void {
-		if ( ! current_user_can( class_exists( 'WooCommerce' ) ? 'manage_woocommerce' : 'manage_options' ) ) {
+		if ( ! current_user_can( 'manage_woocommerce' ) ) {
 			return;
 		}
 

@@ -10,7 +10,6 @@
 namespace BePlusSmartSearch\Search;
 
 use BePlusSmartSearch\Core\Container;
-use BePlusSmartSearch\Core\HookManager;
 use BePlusSmartSearch\Search\Providers\AbstractProvider;
 use BePlusSmartSearch\Search\Providers\ProductProvider;
 
@@ -47,7 +46,7 @@ class SearchEngine {
 	 * @return array{items: array<int, array<string, mixed>>, total: int, totalPages: int, page: int, perPage: int}
 	 */
 	public function search( SearchQuery $query ): array {
-		$query = apply_filters( HookManager::FILTER_SEARCH_QUERY, $query );
+		$query = apply_filters( 'beplus_smart_search_search_query', $query );
 
 		$provider = $this->get_provider( 'product' );
 
@@ -63,9 +62,9 @@ class SearchEngine {
 
 		$result = $provider->search( $query );
 
-		$result['items'] = apply_filters( HookManager::FILTER_SEARCH_RESULTS, $result['items'], $query );
+		$result['items'] = apply_filters( 'beplus_smart_search_search_results', $result['items'], $query );
 
-		do_action( HookManager::ACTION_SEARCH_COMPLETED, $query, $result['items'] );
+		do_action( 'beplus_smart_search_search_completed', $query, $result['items'] );
 
 		return $result;
 	}

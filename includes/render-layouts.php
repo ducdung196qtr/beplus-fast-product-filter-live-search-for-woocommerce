@@ -153,7 +153,11 @@ function beplus_smart_search_render_sidebar_taxonomy_item(
 						class="beplus-smart-search__term-toggle"
 						data-bpss-term-toggle
 						aria-expanded="<?php echo $is_expanded ? 'true' : 'false'; ?>"
-						aria-label="<?php echo esc_attr( sprintf( __( 'Toggle %s subcategories', 'beplus-smart-search' ), $term->name ) ); ?>"
+						<?php
+						/* translators: %s: product category name */
+						$toggle_label = sprintf( __( 'Toggle %s subcategories', 'beplus-smart-search' ), $term->name );
+						?>
+						aria-label="<?php echo esc_attr( $toggle_label ); ?>"
 					>
 						<span class="beplus-smart-search__term-toggle-icon" aria-hidden="true"></span>
 					</button>
@@ -895,7 +899,11 @@ function beplus_smart_search_render_inline_filter_section(
 					<?php echo esc_html( $brand_label ); ?>
 				</label>
 				<select name="<?php echo esc_attr( $brand_taxonomy ); ?>" id="<?php echo esc_attr( $block_id ); ?>-brand" class="beplus-smart-search__select" data-bpss-filter="brand" data-taxonomy-slug="<?php echo esc_attr( $brand_taxonomy ); ?>" data-bpss-facet-group="brand">
-					<option value=""><?php echo esc_html( sprintf( __( 'All %s', 'beplus-smart-search' ), $brand_label ) ); ?></option>
+					<?php
+					/* translators: %s: brand taxonomy label */
+					$all_brands_label = sprintf( __( 'All %s', 'beplus-smart-search' ), $brand_label );
+					?>
+					<option value=""><?php echo esc_html( $all_brands_label ); ?></option>
 					<?php foreach ( $brand_terms as $term ) : ?>
 						<option value="<?php echo esc_attr( $term->slug ); ?>" data-bpss-term-slug="<?php echo esc_attr( $term->slug ); ?>"><?php echo esc_html( $term->name ); ?></option>
 					<?php endforeach; ?>
@@ -925,7 +933,11 @@ function beplus_smart_search_render_inline_filter_section(
 						data-bpss-facet-group="attribute"
 						data-bpss-attr-slug="<?php echo esc_attr( $attribute['slug'] ); ?>"
 					>
-						<option value=""><?php echo esc_html( sprintf( __( 'All %s', 'beplus-smart-search' ), $attribute['label'] ) ); ?></option>
+						<?php
+						/* translators: %s: product attribute label */
+						$all_attribute_label = sprintf( __( 'All %s', 'beplus-smart-search' ), $attribute['label'] );
+						?>
+						<option value=""><?php echo esc_html( $all_attribute_label ); ?></option>
 						<?php foreach ( $attribute['terms'] as $term ) : ?>
 							<option value="<?php echo esc_attr( $term->slug ); ?>" data-bpss-term-slug="<?php echo esc_attr( $term->slug ); ?>"><?php echo esc_html( $term->name ); ?></option>
 						<?php endforeach; ?>
@@ -948,7 +960,11 @@ function beplus_smart_search_render_inline_filter_section(
 						<?php echo esc_html( $label ); ?>
 					</label>
 					<select name="<?php echo esc_attr( $taxonomy ); ?>" id="<?php echo esc_attr( $block_id . '-tax-' . $taxonomy ); ?>" class="beplus-smart-search__select" data-bpss-filter="custom_tax" data-taxonomy-slug="<?php echo esc_attr( $taxonomy ); ?>" data-bpss-facet-group="custom_tax">
-						<option value=""><?php echo esc_html( sprintf( __( 'All %s', 'beplus-smart-search' ), $label ) ); ?></option>
+						<?php
+						/* translators: %s: custom taxonomy label */
+						$all_taxonomy_label = sprintf( __( 'All %s', 'beplus-smart-search' ), $label );
+						?>
+						<option value=""><?php echo esc_html( $all_taxonomy_label ); ?></option>
 						<?php foreach ( $terms as $term ) : ?>
 							<option value="<?php echo esc_attr( $term->slug ); ?>" data-bpss-term-slug="<?php echo esc_attr( $term->slug ); ?>"><?php echo esc_html( $term->name ); ?></option>
 						<?php endforeach; ?>

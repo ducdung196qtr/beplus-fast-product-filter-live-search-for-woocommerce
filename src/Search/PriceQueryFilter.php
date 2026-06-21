@@ -134,7 +134,11 @@ final class PriceQueryFilter {
 			return '';
 		}
 
-		$product_tax_classes = $wpdb->get_col( "SELECT DISTINCT tax_class FROM {$wpdb->wc_product_meta_lookup};" );
+		if ( ! in_array( $column, array( 'min_price', 'max_price' ), true ) ) {
+			return '';
+		}
+
+		$product_tax_classes = $wpdb->get_col( "SELECT DISTINCT tax_class FROM {$wpdb->wc_product_meta_lookup};" ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Mirrors WooCommerce price filter lookup.
 
 		if ( empty( $product_tax_classes ) ) {
 			return '';
@@ -151,13 +155,13 @@ final class PriceQueryFilter {
 			);
 		}
 
-		return $wpdb->prepare(
-			' AND (
-				wc_product_meta_lookup.tax_status = "taxable" AND ( 0=1 OR ' . implode( ' OR ', $or_queries ) . ')
-				OR ( wc_product_meta_lookup.tax_status != "taxable" AND wc_product_meta_lookup.`' . esc_sql( $column ) . '` ' . esc_sql( $operator ) . ' %f )
-			) ',
+		$non_taxable = $wpdb->prepare(
+			'( wc_product_meta_lookup.tax_status != "taxable" AND wc_product_meta_lookup.`' . esc_sql( $column ) . '` ' . esc_sql( $operator ) . ' %f )',
 			$price_filter,
 		);
+
+		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Each entry in $or_queries is individually prepared.
+		return ' AND ( wc_product_meta_lookup.tax_status = "taxable" AND ( 0=1 OR ' . implode( ' OR ', $or_queries ) . ' ) OR ' . $non_taxable . ' ) ';
 	}
 
 	/**
@@ -174,6 +178,7 @@ final class PriceQueryFilter {
 		$base_tax_rates = \WC_Tax::get_base_tax_rates( $tax_class );
 
 		if ( 'incl' === $tax_display ) {
+			// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce core filter.
 			$taxes = apply_filters( 'woocommerce_adjust_non_base_location_prices', true )
 				? \WC_Tax::calc_tax( $price_filter, $base_tax_rates, true )
 				: \WC_Tax::calc_tax( $price_filter, $tax_rates, true );

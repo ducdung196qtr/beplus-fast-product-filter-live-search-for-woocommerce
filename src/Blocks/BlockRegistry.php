@@ -11,7 +11,6 @@ namespace BePlusSmartSearch\Blocks;
 
 use BePlusSmartSearch\Core\AbstractModule;
 use BePlusSmartSearch\Core\Container;
-use BePlusSmartSearch\Core\HookManager;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -70,7 +69,7 @@ class BlockRegistry extends AbstractModule {
 			register_block_type_from_metadata( $block_dir );
 		}
 
-		$third_party = apply_filters( HookManager::FILTER_BLOCKS, array() );
+		$third_party = apply_filters( 'beplus_smart_search.blocks', array() );
 
 		if ( is_array( $third_party ) ) {
 			foreach ( $third_party as $block_dir ) {

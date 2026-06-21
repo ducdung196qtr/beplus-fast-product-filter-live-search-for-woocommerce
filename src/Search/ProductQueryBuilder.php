@@ -101,7 +101,7 @@ final class ProductQueryBuilder {
 			if ( count( $tax_query ) > 1 ) {
 				$tax_query['relation'] = 'AND';
 			}
-			$args['tax_query'] = $tax_query;
+			$args['tax_query'] = $tax_query; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Required for WooCommerce product filtering.
 		}
 
 		if ( $query->get_stock_status() ) {
@@ -240,7 +240,7 @@ final class ProductQueryBuilder {
 		$args['order']   = $ordering['order'];
 
 		if ( ! empty( $ordering['meta_key'] ) ) {
-			$args['meta_key'] = $ordering['meta_key'];
+			$args['meta_key'] = $ordering['meta_key']; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- WooCommerce catalog ordering.
 		}
 	}
 

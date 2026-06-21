@@ -10,7 +10,6 @@
 namespace BePlusSmartSearch\Search;
 
 use BePlusSmartSearch\Core\AbstractModule;
-use BePlusSmartSearch\Core\HookManager;
 use BePlusSmartSearch\Search\Providers\AbstractProvider;
 use BePlusSmartSearch\Search\Providers\ProductProvider;
 
@@ -47,7 +46,7 @@ class SearchRegistry extends AbstractModule {
 	private function register_default_providers(): void {
 		$this->add_provider( new ProductProvider() );
 
-		$extra = apply_filters( HookManager::FILTER_PROVIDERS, array() );
+		$extra = apply_filters( 'beplus_smart_search.providers', array() );
 
 		if ( is_array( $extra ) ) {
 			foreach ( $extra as $provider ) {

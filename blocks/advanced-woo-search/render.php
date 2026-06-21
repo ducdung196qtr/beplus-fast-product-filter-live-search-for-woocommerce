@@ -16,6 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once BEPLUS_SMART_SEARCH_PLUGIN_DIR . 'includes/facets.php';
 require_once BEPLUS_SMART_SEARCH_PLUGIN_DIR . 'includes/render-layouts.php';
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Block render template variables.
+
 $defaults = array(
 	'placeholder'       => __( 'Search products…', 'beplus-smart-search' ),
 	'showKeyword'       => true,
@@ -29,7 +31,7 @@ $defaults = array(
 	'showBrand'         => true,
 	'showCustomTaxonomies' => false,
 	'attributeSlugs'    => array(),
-	'layout'            => 'inline',
+	'layout'            => 'sidebar',
 	'resultsMode'       => 'filter-collection',
 	'resultsSelector'   => '.wp-block-woocommerce-product-collection',
 	'debounceMs'        => 280,
@@ -40,6 +42,7 @@ $defaults = array(
 	'showClearButton'   => true,
 	'showPrice'       => true,
 	'filterOrder'     => array(),
+	'enableResponsive' => false,
 );
 
 $attrs = wp_parse_args( $attributes, $defaults );
@@ -70,13 +73,24 @@ $layout_mod  = $is_sidebar ? 'sidebar' : 'inline';
 $form_class  = 'beplus-smart-search__form beplus-smart-search__form--' . $layout_mod;
 
 $sidebar_settings = beplus_smart_search_get_sidebar_settings();
-$accent_color     = $sidebar_settings['accent_color'] ?? '#f5c518';
+$accent_color     = $sidebar_settings['accent_color'] ?? '#000000';
 $facet_mode       = beplus_smart_search_get_facet_display_mode();
 $filter_taxonomies = beplus_smart_search_get_configured_filter_taxonomies();
+$enable_responsive = ! empty( $attrs['enableResponsive'] );
+
+$wrapper_classes = array(
+	'beplus-smart-search',
+	'beplus-smart-search--advanced-woo',
+	'beplus-smart-search--' . $layout_mod,
+);
+
+if ( $enable_responsive ) {
+	$wrapper_classes[] = 'beplus-smart-search--responsive';
+}
 
 $wrapper_attrs = get_block_wrapper_attributes(
 	array(
-		'class'                         => 'beplus-smart-search beplus-smart-search--advanced-woo beplus-smart-search--' . $layout_mod,
+		'class'                         => implode( ' ', $wrapper_classes ),
 		'style'                         => '--bpss-accent:' . esc_attr( $accent_color ) . ';',
 		'data-bpss-advanced-woo-search' => '',
 		'data-results-mode'             => esc_attr( $attrs['resultsMode'] ),
@@ -88,6 +102,7 @@ $wrapper_attrs = get_block_wrapper_attributes(
 		'data-show-result-count'        => $attrs['showResultCount'] ? '1' : '0',
 		'data-facet-mode'               => esc_attr( $facet_mode ),
 		'data-bpss-filter-taxonomies'   => esc_attr( implode( ',', $filter_taxonomies ) ),
+		'data-responsive'               => $enable_responsive ? '1' : '0',
 	),
 );
 
@@ -100,13 +115,38 @@ $attributes_list         = ! empty( $enabled_attribute_slugs )
 
 ?>
 <div <?php echo $wrapper_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>>
+	<?php if ( $enable_responsive ) : ?>
+		<button
+			type="button"
+			class="beplus-smart-search__filter-trigger"
+			data-bpss-filter-trigger
+			aria-expanded="false"
+			aria-controls="<?php echo esc_attr( $block_id ); ?>-drawer"
+		>
+			<span class="beplus-smart-search__filter-trigger-icon" aria-hidden="true"></span>
+			<span class="screen-reader-text"><?php esc_html_e( 'Open filters', 'beplus-smart-search' ); ?></span>
+		</button>
+		<div class="beplus-smart-search__drawer-backdrop" data-bpss-drawer-backdrop hidden></div>
+	<?php endif; ?>
 	<form
 		class="<?php echo esc_attr( $form_class ); ?>"
 		role="search"
 		method="get"
 		action="<?php echo esc_url( $shop_url ); ?>"
 		data-bpss-search-form
+		<?php if ( $enable_responsive ) : ?>
+			id="<?php echo esc_attr( $block_id ); ?>-drawer"
+			data-bpss-filter-drawer
+		<?php endif; ?>
 	>
+		<?php if ( $enable_responsive ) : ?>
+			<div class="beplus-smart-search__drawer-header">
+				<span class="beplus-smart-search__drawer-title"><?php esc_html_e( 'Filters', 'beplus-smart-search' ); ?></span>
+				<button type="button" class="beplus-smart-search__drawer-close" data-bpss-drawer-close aria-label="<?php esc_attr_e( 'Close filters', 'beplus-smart-search' ); ?>">
+					<span class="beplus-smart-search__drawer-close-icon" aria-hidden="true"></span>
+				</button>
+			</div>
+		<?php endif; ?>
 		<?php
 		if ( $is_sidebar ) {
 			beplus_smart_search_render_sidebar_form( $attrs, $block_id, $categories, $tags, $attributes_list, $sidebar_settings );

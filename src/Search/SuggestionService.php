@@ -197,10 +197,16 @@ final class SuggestionService {
 	 */
 	private function normalize_cat_param( $value ): array {
 		if ( is_array( $value ) ) {
-			return array_values( array_filter( array_map( 'sanitize_text_field', $value ) ) );
+			$terms = array_map( 'sanitize_text_field', $value );
+			return array_values( array_filter( $terms ) );
 		}
 
 		if ( is_string( $value ) && '' !== $value ) {
+			if ( false !== strpos( $value, ',' ) ) {
+				$parts = array_map( 'trim', explode( ',', $value ) );
+				return array_values( array_filter( array_map( 'sanitize_text_field', $parts ) ) );
+			}
+
 			return array( sanitize_text_field( $value ) );
 		}
 
