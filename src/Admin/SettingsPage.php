@@ -88,8 +88,8 @@ class SettingsPage extends AbstractModule {
 
 		add_submenu_page(
 			'woocommerce',
-			__( 'Advanced Search', 'beplus-fast-product-filter-live-search' ),
-			__( 'Advanced Search', 'beplus-fast-product-filter-live-search' ),
+			__( 'Advanced Search', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+			__( 'Advanced Search', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 			'manage_woocommerce',
 			self::MENU_SLUG,
 			array( $this, 'render_page' ),
@@ -142,21 +142,21 @@ class SettingsPage extends AbstractModule {
 				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 				'nonce'   => wp_create_nonce( 'bpss_clear_cache' ),
 				'i18n'    => array(
-					'clearing'       => __( 'Clearing cache…', 'beplus-fast-product-filter-live-search' ),
-					'cleared'        => __( 'Cache cleared successfully.', 'beplus-fast-product-filter-live-search' ),
-					'clearError'     => __( 'Could not clear cache. Please try again.', 'beplus-fast-product-filter-live-search' ),
-					'lastCleared'    => __( 'Last cleared:', 'beplus-fast-product-filter-live-search' ),
-					'neverCleared'   => __( 'Cache has not been cleared manually yet.', 'beplus-fast-product-filter-live-search' ),
-					'on'             => __( 'On', 'beplus-fast-product-filter-live-search' ),
-					'off'            => __( 'Off', 'beplus-fast-product-filter-live-search' ),
-					'measuring'      => __( 'Measuring…', 'beplus-fast-product-filter-live-search' ),
-					'measureError'   => __( 'Could not measure performance. Please try again.', 'beplus-fast-product-filter-live-search' ),
-					'measureNow'     => __( 'Measure now', 'beplus-fast-product-filter-live-search' ),
-					'noBenchmark'    => __( 'No measurement yet. Run a quick test to compare facet load time with and without cache.', 'beplus-fast-product-filter-live-search' ),
-					'coldLabel'      => __( 'Without cache', 'beplus-fast-product-filter-live-search' ),
-					'warmLabel'      => __( 'With cache', 'beplus-fast-product-filter-live-search' ),
-					'savedLabel'     => __( 'Estimated saving', 'beplus-fast-product-filter-live-search' ),
-					'measuredAt'     => __( 'Measured:', 'beplus-fast-product-filter-live-search' ),
+					'clearing'       => __( 'Clearing cacheâ€¦', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'cleared'        => __( 'Cache cleared successfully.', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'clearError'     => __( 'Could not clear cache. Please try again.', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'lastCleared'    => __( 'Last cleared:', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'neverCleared'   => __( 'Cache has not been cleared manually yet.', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'on'             => __( 'On', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'off'            => __( 'Off', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'measuring'      => __( 'Measuringâ€¦', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'measureError'   => __( 'Could not measure performance. Please try again.', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'measureNow'     => __( 'Measure now', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'noBenchmark'    => __( 'No measurement yet. Run a quick test to compare facet load time with and without cache.', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'coldLabel'      => __( 'Without cache', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'warmLabel'      => __( 'With cache', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'savedLabel'     => __( 'Estimated saving', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'measuredAt'     => __( 'Measured:', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 				),
 				'lastCleared' => $last_cleared,
 				'benchmark'   => $benchmark,
@@ -174,7 +174,7 @@ class SettingsPage extends AbstractModule {
 
 		if ( ! current_user_can( 'manage_woocommerce' ) ) {
 			wp_send_json_error(
-				array( 'message' => __( 'Permission denied.', 'beplus-fast-product-filter-live-search' ) ),
+				array( 'message' => __( 'Permission denied.', 'beplus-fast-product-filter-live-search-for-woocommerce' ) ),
 				403,
 			);
 		}
@@ -204,7 +204,7 @@ class SettingsPage extends AbstractModule {
 
 		if ( ! current_user_can( 'manage_woocommerce' ) ) {
 			wp_send_json_error(
-				array( 'message' => __( 'Permission denied.', 'beplus-fast-product-filter-live-search' ) ),
+				array( 'message' => __( 'Permission denied.', 'beplus-fast-product-filter-live-search-for-woocommerce' ) ),
 				403,
 			);
 		}
@@ -214,7 +214,7 @@ class SettingsPage extends AbstractModule {
 		wp_send_json_success(
 			array(
 				'clearedAt' => CacheService::get_last_cleared_timestamp(),
-				'message'   => __( 'Cache cleared successfully.', 'beplus-fast-product-filter-live-search' ),
+				'message'   => __( 'Cache cleared successfully.', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 			),
 		);
 	}

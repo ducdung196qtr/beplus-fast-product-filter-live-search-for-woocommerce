@@ -155,7 +155,7 @@ function beplus_fast_product_filter_live_search_render_sidebar_taxonomy_item(
 						aria-expanded="<?php echo $is_expanded ? 'true' : 'false'; ?>"
 						<?php
 						/* translators: %s: product category name */
-						$toggle_label = sprintf( __( 'Toggle %s subcategories', 'beplus-fast-product-filter-live-search' ), $term->name );
+						$toggle_label = sprintf( __( 'Toggle %s subcategories', 'beplus-fast-product-filter-live-search-for-woocommerce' ), $term->name );
 						?>
 						aria-label="<?php echo esc_attr( $toggle_label ); ?>"
 					>
@@ -302,7 +302,7 @@ function beplus_fast_product_filter_live_search_render_sidebar_taxonomy_list(
 							data-bpss-term-url="<?php echo esc_url( function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/' ) ); ?>"
 							<?php echo $attr_data; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>
 						/>
-						<span class="beplus-fast-product-filter-live-search__list-text"><?php esc_html_e( 'All', 'beplus-fast-product-filter-live-search' ); ?></span>
+						<span class="beplus-fast-product-filter-live-search__list-text"><?php esc_html_e( 'All', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
 					</label>
 				</div>
 			</li>
@@ -385,7 +385,7 @@ function beplus_fast_product_filter_live_search_render_sidebar_price_section( st
 				max="<?php echo esc_attr( (string) $max ); ?>"
 				step="<?php echo esc_attr( (string) $step ); ?>"
 				value="<?php echo esc_attr( (string) $min ); ?>"
-				aria-label="<?php esc_attr_e( 'Minimum price', 'beplus-fast-product-filter-live-search' ); ?>"
+				aria-label="<?php esc_attr_e( 'Minimum price', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>"
 				data-bpss-range="min"
 			/>
 			<input
@@ -395,14 +395,14 @@ function beplus_fast_product_filter_live_search_render_sidebar_price_section( st
 				max="<?php echo esc_attr( (string) $max ); ?>"
 				step="<?php echo esc_attr( (string) $step ); ?>"
 				value="<?php echo esc_attr( (string) $max ); ?>"
-				aria-label="<?php esc_attr_e( 'Maximum price', 'beplus-fast-product-filter-live-search' ); ?>"
+				aria-label="<?php esc_attr_e( 'Maximum price', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>"
 				data-bpss-range="max"
 			/>
 		</div>
 		<div class="beplus-fast-product-filter-live-search__price-inputs">
 			<div class="beplus-fast-product-filter-live-search__price-field">
 				<label class="beplus-fast-product-filter-live-search__price-label" for="<?php echo esc_attr( $block_id ); ?>-price-min">
-					<?php esc_html_e( 'Min price', 'beplus-fast-product-filter-live-search' ); ?>
+					<?php esc_html_e( 'Min price', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 				</label>
 				<div class="beplus-fast-product-filter-live-search__price-input-wrap">
 					<input
@@ -421,7 +421,7 @@ function beplus_fast_product_filter_live_search_render_sidebar_price_section( st
 			</div>
 			<div class="beplus-fast-product-filter-live-search__price-field">
 				<label class="beplus-fast-product-filter-live-search__price-label" for="<?php echo esc_attr( $block_id ); ?>-price-max">
-					<?php esc_html_e( 'Max price', 'beplus-fast-product-filter-live-search' ); ?>
+					<?php esc_html_e( 'Max price', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 				</label>
 				<div class="beplus-fast-product-filter-live-search__price-input-wrap">
 					<input
@@ -471,7 +471,7 @@ function beplus_fast_product_filter_live_search_render_sidebar_price_segments( s
 						checked
 						data-bpss-filter="price_segment"
 					/>
-					<span class="beplus-fast-product-filter-live-search__list-text"><?php esc_html_e( 'All prices', 'beplus-fast-product-filter-live-search' ); ?></span>
+					<span class="beplus-fast-product-filter-live-search__list-text"><?php esc_html_e( 'All prices', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
 				</label>
 			</li>
 			<?php
@@ -526,7 +526,7 @@ function beplus_fast_product_filter_live_search_render_sidebar_rating_section( s
 		<li class="beplus-fast-product-filter-live-search__list-item">
 			<label class="beplus-fast-product-filter-live-search__list-label" for="<?php echo esc_attr( $block_id ); ?>-rating-all">
 				<input type="radio" name="<?php echo esc_attr( $block_id ); ?>-rating" id="<?php echo esc_attr( $block_id ); ?>-rating-all" class="beplus-fast-product-filter-live-search__list-input" value="" checked data-bpss-filter="rating" />
-				<span class="beplus-fast-product-filter-live-search__list-text"><?php esc_html_e( 'All ratings', 'beplus-fast-product-filter-live-search' ); ?></span>
+				<span class="beplus-fast-product-filter-live-search__list-text"><?php esc_html_e( 'All ratings', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
 			</label>
 		</li>
 		<?php foreach ( $options as $option ) : ?>
@@ -554,7 +554,7 @@ function beplus_fast_product_filter_live_search_render_sidebar_featured_section(
 		<li class="beplus-fast-product-filter-live-search__list-item">
 			<label class="beplus-fast-product-filter-live-search__list-label" for="<?php echo esc_attr( $block_id ); ?>-featured">
 				<input type="checkbox" name="featured" id="<?php echo esc_attr( $block_id ); ?>-featured" class="beplus-fast-product-filter-live-search__list-input" value="1" data-bpss-filter="featured" />
-				<span class="beplus-fast-product-filter-live-search__list-text"><?php esc_html_e( 'Featured products only', 'beplus-fast-product-filter-live-search' ); ?></span>
+				<span class="beplus-fast-product-filter-live-search__list-text"><?php esc_html_e( 'Featured products only', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
 			</label>
 		</li>
 	</ul>
@@ -590,7 +590,7 @@ function beplus_fast_product_filter_live_search_render_sidebar_filter_section(
 			?>
 			<div class="beplus-fast-product-filter-live-search__search-wrap">
 				<label class="screen-reader-text" for="<?php echo esc_attr( $block_id ); ?>-keyword">
-					<?php esc_html_e( 'Search products', 'beplus-fast-product-filter-live-search' ); ?>
+					<?php esc_html_e( 'Search products', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 				</label>
 				<input
 					type="search"
@@ -608,13 +608,13 @@ function beplus_fast_product_filter_live_search_render_sidebar_filter_section(
 			break;
 
 		case 'category':
-			beplus_fast_product_filter_live_search_render_sidebar_panel_open( __( 'Product Categories', 'beplus-fast-product-filter-live-search' ), 'category', $sidebar, 'category' );
+			beplus_fast_product_filter_live_search_render_sidebar_panel_open( __( 'Product Categories', 'beplus-fast-product-filter-live-search-for-woocommerce' ), 'category', $sidebar, 'category' );
 			beplus_fast_product_filter_live_search_render_sidebar_taxonomy_list( 'category', 'product_cat', 'product_cat', $categories, $block_id, 'cat', $sidebar );
 			beplus_fast_product_filter_live_search_render_sidebar_panel_close();
 			break;
 
 		case 'price':
-			beplus_fast_product_filter_live_search_render_sidebar_panel_open( __( 'Price', 'beplus-fast-product-filter-live-search' ), 'price', $sidebar );
+			beplus_fast_product_filter_live_search_render_sidebar_panel_open( __( 'Price', 'beplus-fast-product-filter-live-search-for-woocommerce' ), 'price', $sidebar );
 			if ( beplus_fast_product_filter_live_search_is_price_segments_mode() ) {
 				beplus_fast_product_filter_live_search_render_sidebar_price_segments( $block_id, $price_settings );
 			} else {
@@ -624,24 +624,24 @@ function beplus_fast_product_filter_live_search_render_sidebar_filter_section(
 			break;
 
 		case 'tag':
-			beplus_fast_product_filter_live_search_render_sidebar_panel_open( __( 'Product Tags', 'beplus-fast-product-filter-live-search' ), 'tag', $sidebar, 'tag' );
+			beplus_fast_product_filter_live_search_render_sidebar_panel_open( __( 'Product Tags', 'beplus-fast-product-filter-live-search-for-woocommerce' ), 'tag', $sidebar, 'tag' );
 			beplus_fast_product_filter_live_search_render_sidebar_taxonomy_list( 'tag', 'product_tag', 'product_tag', $tags, $block_id, 'tag', $sidebar );
 			beplus_fast_product_filter_live_search_render_sidebar_panel_close();
 			break;
 
 		case 'stock':
 			$stock_options = array(
-				'instock'     => __( 'In stock', 'beplus-fast-product-filter-live-search' ),
-				'outofstock'  => __( 'Out of stock', 'beplus-fast-product-filter-live-search' ),
-				'onbackorder' => __( 'On backorder', 'beplus-fast-product-filter-live-search' ),
+				'instock'     => __( 'In stock', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+				'outofstock'  => __( 'Out of stock', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+				'onbackorder' => __( 'On backorder', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 			);
-			beplus_fast_product_filter_live_search_render_sidebar_panel_open( __( 'Stock status', 'beplus-fast-product-filter-live-search' ), 'stock', $sidebar );
+			beplus_fast_product_filter_live_search_render_sidebar_panel_open( __( 'Stock status', 'beplus-fast-product-filter-live-search-for-woocommerce' ), 'stock', $sidebar );
 			?>
 			<ul class="beplus-fast-product-filter-live-search__list beplus-fast-product-filter-live-search__list--radio" role="list">
 				<li class="beplus-fast-product-filter-live-search__list-item">
 					<label class="beplus-fast-product-filter-live-search__list-label" for="<?php echo esc_attr( $block_id ); ?>-stock-all">
 						<input type="radio" name="stock_status" id="<?php echo esc_attr( $block_id ); ?>-stock-all" class="beplus-fast-product-filter-live-search__list-input" value="" checked data-bpss-filter="stock" />
-						<span class="beplus-fast-product-filter-live-search__list-text"><?php esc_html_e( 'All stock', 'beplus-fast-product-filter-live-search' ); ?></span>
+						<span class="beplus-fast-product-filter-live-search__list-text"><?php esc_html_e( 'All stock', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
 					</label>
 				</li>
 				<?php foreach ( $stock_options as $value => $label ) : ?>
@@ -658,13 +658,13 @@ function beplus_fast_product_filter_live_search_render_sidebar_filter_section(
 			break;
 
 		case 'on_sale':
-			beplus_fast_product_filter_live_search_render_sidebar_panel_open( __( 'On sale', 'beplus-fast-product-filter-live-search' ), 'on-sale', $sidebar, 'on_sale' );
+			beplus_fast_product_filter_live_search_render_sidebar_panel_open( __( 'On sale', 'beplus-fast-product-filter-live-search-for-woocommerce' ), 'on-sale', $sidebar, 'on_sale' );
 			?>
 			<ul class="beplus-fast-product-filter-live-search__list beplus-fast-product-filter-live-search__list--checkbox" role="list" data-bpss-facet-group="on_sale">
 				<li class="beplus-fast-product-filter-live-search__list-item">
 					<label class="beplus-fast-product-filter-live-search__list-label" for="<?php echo esc_attr( $block_id ); ?>-on-sale">
 						<input type="checkbox" name="on_sale" id="<?php echo esc_attr( $block_id ); ?>-on-sale" class="beplus-fast-product-filter-live-search__list-input" value="1" data-bpss-filter="on_sale" />
-						<span class="beplus-fast-product-filter-live-search__list-text"><?php esc_html_e( 'On sale only', 'beplus-fast-product-filter-live-search' ); ?></span>
+						<span class="beplus-fast-product-filter-live-search__list-text"><?php esc_html_e( 'On sale only', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
 					</label>
 				</li>
 			</ul>
@@ -673,13 +673,13 @@ function beplus_fast_product_filter_live_search_render_sidebar_filter_section(
 			break;
 
 		case 'rating':
-			beplus_fast_product_filter_live_search_render_sidebar_panel_open( __( 'Rating', 'beplus-fast-product-filter-live-search' ), 'rating', $sidebar, 'rating' );
+			beplus_fast_product_filter_live_search_render_sidebar_panel_open( __( 'Rating', 'beplus-fast-product-filter-live-search-for-woocommerce' ), 'rating', $sidebar, 'rating' );
 			beplus_fast_product_filter_live_search_render_sidebar_rating_section( $block_id );
 			beplus_fast_product_filter_live_search_render_sidebar_panel_close();
 			break;
 
 		case 'featured':
-			beplus_fast_product_filter_live_search_render_sidebar_panel_open( __( 'Featured products', 'beplus-fast-product-filter-live-search' ), 'featured', $sidebar, 'featured' );
+			beplus_fast_product_filter_live_search_render_sidebar_panel_open( __( 'Featured products', 'beplus-fast-product-filter-live-search-for-woocommerce' ), 'featured', $sidebar, 'featured' );
 			beplus_fast_product_filter_live_search_render_sidebar_featured_section( $block_id );
 			beplus_fast_product_filter_live_search_render_sidebar_panel_close();
 			break;
@@ -691,7 +691,7 @@ function beplus_fast_product_filter_live_search_render_sidebar_filter_section(
 				break;
 			}
 			$brand_object = get_taxonomy( $brand_taxonomy );
-			$brand_label  = $brand_object instanceof WP_Taxonomy ? $brand_object->labels->name : __( 'Brand', 'beplus-fast-product-filter-live-search' );
+			$brand_label  = $brand_object instanceof WP_Taxonomy ? $brand_object->labels->name : __( 'Brand', 'beplus-fast-product-filter-live-search-for-woocommerce' );
 			beplus_fast_product_filter_live_search_render_sidebar_panel_open( $brand_label, 'brand', $sidebar, 'brand', $brand_taxonomy );
 			beplus_fast_product_filter_live_search_render_sidebar_taxonomy_list(
 				'brand',
@@ -783,7 +783,7 @@ function beplus_fast_product_filter_live_search_render_inline_filter_section(
 			?>
 			<div class="beplus-fast-product-filter-live-search__field beplus-fast-product-filter-live-search__field--keyword">
 				<label class="screen-reader-text" for="<?php echo esc_attr( $block_id ); ?>-keyword">
-					<?php esc_html_e( 'Search products', 'beplus-fast-product-filter-live-search' ); ?>
+					<?php esc_html_e( 'Search products', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 				</label>
 				<input
 					type="search"
@@ -803,10 +803,10 @@ function beplus_fast_product_filter_live_search_render_inline_filter_section(
 			?>
 			<div class="beplus-fast-product-filter-live-search__field beplus-fast-product-filter-live-search__field--category" data-bpss-facet-panel="category">
 				<label class="screen-reader-text" for="<?php echo esc_attr( $block_id ); ?>-cat">
-					<?php esc_html_e( 'Category', 'beplus-fast-product-filter-live-search' ); ?>
+					<?php esc_html_e( 'Category', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 				</label>
 				<select name="product_cat" id="<?php echo esc_attr( $block_id ); ?>-cat" class="beplus-fast-product-filter-live-search__select" data-bpss-filter="category" data-bpss-facet-group="category">
-					<option value=""><?php esc_html_e( 'All categories', 'beplus-fast-product-filter-live-search' ); ?></option>
+					<option value=""><?php esc_html_e( 'All categories', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></option>
 					<?php foreach ( $categories as $term ) : ?>
 						<option value="<?php echo esc_attr( $term->slug ); ?>" data-bpss-term-slug="<?php echo esc_attr( $term->slug ); ?>"><?php echo esc_html( $term->name ); ?></option>
 					<?php endforeach; ?>
@@ -819,10 +819,10 @@ function beplus_fast_product_filter_live_search_render_inline_filter_section(
 			?>
 			<div class="beplus-fast-product-filter-live-search__field beplus-fast-product-filter-live-search__field--tag" data-bpss-facet-panel="tag">
 				<label class="screen-reader-text" for="<?php echo esc_attr( $block_id ); ?>-tag">
-					<?php esc_html_e( 'Tag', 'beplus-fast-product-filter-live-search' ); ?>
+					<?php esc_html_e( 'Tag', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 				</label>
 				<select name="product_tag" id="<?php echo esc_attr( $block_id ); ?>-tag" class="beplus-fast-product-filter-live-search__select" data-bpss-filter="tag" data-bpss-facet-group="tag">
-					<option value=""><?php esc_html_e( 'All tags', 'beplus-fast-product-filter-live-search' ); ?></option>
+					<option value=""><?php esc_html_e( 'All tags', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></option>
 					<?php foreach ( $tags as $term ) : ?>
 						<option value="<?php echo esc_attr( $term->slug ); ?>" data-bpss-term-slug="<?php echo esc_attr( $term->slug ); ?>"><?php echo esc_html( $term->name ); ?></option>
 					<?php endforeach; ?>
@@ -835,13 +835,13 @@ function beplus_fast_product_filter_live_search_render_inline_filter_section(
 			?>
 			<div class="beplus-fast-product-filter-live-search__field beplus-fast-product-filter-live-search__field--stock">
 				<label class="screen-reader-text" for="<?php echo esc_attr( $block_id ); ?>-stock">
-					<?php esc_html_e( 'Stock status', 'beplus-fast-product-filter-live-search' ); ?>
+					<?php esc_html_e( 'Stock status', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 				</label>
 				<select name="stock_status" id="<?php echo esc_attr( $block_id ); ?>-stock" class="beplus-fast-product-filter-live-search__select" data-bpss-filter="stock">
-					<option value=""><?php esc_html_e( 'All stock', 'beplus-fast-product-filter-live-search' ); ?></option>
-					<option value="instock"><?php esc_html_e( 'In stock', 'beplus-fast-product-filter-live-search' ); ?></option>
-					<option value="outofstock"><?php esc_html_e( 'Out of stock', 'beplus-fast-product-filter-live-search' ); ?></option>
-					<option value="onbackorder"><?php esc_html_e( 'On backorder', 'beplus-fast-product-filter-live-search' ); ?></option>
+					<option value=""><?php esc_html_e( 'All stock', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></option>
+					<option value="instock"><?php esc_html_e( 'In stock', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></option>
+					<option value="outofstock"><?php esc_html_e( 'Out of stock', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></option>
+					<option value="onbackorder"><?php esc_html_e( 'On backorder', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></option>
 				</select>
 			</div>
 			<?php
@@ -852,7 +852,7 @@ function beplus_fast_product_filter_live_search_render_inline_filter_section(
 			<div class="beplus-fast-product-filter-live-search__field beplus-fast-product-filter-live-search__field--on-sale">
 				<label for="<?php echo esc_attr( $block_id ); ?>-on-sale">
 					<input type="checkbox" name="on_sale" id="<?php echo esc_attr( $block_id ); ?>-on-sale" value="1" data-bpss-filter="on_sale" />
-					<?php esc_html_e( 'On sale only', 'beplus-fast-product-filter-live-search' ); ?>
+					<?php esc_html_e( 'On sale only', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 				</label>
 			</div>
 			<?php
@@ -862,10 +862,10 @@ function beplus_fast_product_filter_live_search_render_inline_filter_section(
 			?>
 			<div class="beplus-fast-product-filter-live-search__field beplus-fast-product-filter-live-search__field--rating">
 				<label class="screen-reader-text" for="<?php echo esc_attr( $block_id ); ?>-rating">
-					<?php esc_html_e( 'Minimum rating', 'beplus-fast-product-filter-live-search' ); ?>
+					<?php esc_html_e( 'Minimum rating', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 				</label>
 				<select name="min_rating" id="<?php echo esc_attr( $block_id ); ?>-rating" class="beplus-fast-product-filter-live-search__select" data-bpss-filter="rating" data-bpss-facet-group="rating">
-					<option value=""><?php esc_html_e( 'All ratings', 'beplus-fast-product-filter-live-search' ); ?></option>
+					<option value=""><?php esc_html_e( 'All ratings', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></option>
 					<?php foreach ( beplus_fast_product_filter_live_search_get_rating_filter_options() as $option ) : ?>
 						<option value="<?php echo esc_attr( (string) $option['value'] ); ?>" data-bpss-term-slug="<?php echo esc_attr( (string) $option['value'] ); ?>"><?php echo esc_html( $option['label'] ); ?></option>
 					<?php endforeach; ?>
@@ -879,7 +879,7 @@ function beplus_fast_product_filter_live_search_render_inline_filter_section(
 			<div class="beplus-fast-product-filter-live-search__field beplus-fast-product-filter-live-search__field--featured">
 				<label for="<?php echo esc_attr( $block_id ); ?>-featured">
 					<input type="checkbox" name="featured" id="<?php echo esc_attr( $block_id ); ?>-featured" value="1" data-bpss-filter="featured" />
-					<?php esc_html_e( 'Featured only', 'beplus-fast-product-filter-live-search' ); ?>
+					<?php esc_html_e( 'Featured only', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 				</label>
 			</div>
 			<?php
@@ -892,7 +892,7 @@ function beplus_fast_product_filter_live_search_render_inline_filter_section(
 				break;
 			}
 			$brand_object = get_taxonomy( $brand_taxonomy );
-			$brand_label  = $brand_object instanceof WP_Taxonomy ? $brand_object->labels->name : __( 'Brand', 'beplus-fast-product-filter-live-search' );
+			$brand_label  = $brand_object instanceof WP_Taxonomy ? $brand_object->labels->name : __( 'Brand', 'beplus-fast-product-filter-live-search-for-woocommerce' );
 			?>
 			<div class="beplus-fast-product-filter-live-search__field beplus-fast-product-filter-live-search__field--brand" data-bpss-facet-panel="brand" data-bpss-taxonomy="<?php echo esc_attr( $brand_taxonomy ); ?>">
 				<label class="screen-reader-text" for="<?php echo esc_attr( $block_id ); ?>-brand">
@@ -901,7 +901,7 @@ function beplus_fast_product_filter_live_search_render_inline_filter_section(
 				<select name="<?php echo esc_attr( $brand_taxonomy ); ?>" id="<?php echo esc_attr( $block_id ); ?>-brand" class="beplus-fast-product-filter-live-search__select" data-bpss-filter="brand" data-taxonomy-slug="<?php echo esc_attr( $brand_taxonomy ); ?>" data-bpss-facet-group="brand">
 					<?php
 					/* translators: %s: brand taxonomy label */
-					$all_brands_label = sprintf( __( 'All %s', 'beplus-fast-product-filter-live-search' ), $brand_label );
+					$all_brands_label = sprintf( __( 'All %s', 'beplus-fast-product-filter-live-search-for-woocommerce' ), $brand_label );
 					?>
 					<option value=""><?php echo esc_html( $all_brands_label ); ?></option>
 					<?php foreach ( $brand_terms as $term ) : ?>
@@ -935,7 +935,7 @@ function beplus_fast_product_filter_live_search_render_inline_filter_section(
 					>
 						<?php
 						/* translators: %s: product attribute label */
-						$all_attribute_label = sprintf( __( 'All %s', 'beplus-fast-product-filter-live-search' ), $attribute['label'] );
+						$all_attribute_label = sprintf( __( 'All %s', 'beplus-fast-product-filter-live-search-for-woocommerce' ), $attribute['label'] );
 						?>
 						<option value=""><?php echo esc_html( $all_attribute_label ); ?></option>
 						<?php foreach ( $attribute['terms'] as $term ) : ?>
@@ -962,7 +962,7 @@ function beplus_fast_product_filter_live_search_render_inline_filter_section(
 					<select name="<?php echo esc_attr( $taxonomy ); ?>" id="<?php echo esc_attr( $block_id . '-tax-' . $taxonomy ); ?>" class="beplus-fast-product-filter-live-search__select" data-bpss-filter="custom_tax" data-taxonomy-slug="<?php echo esc_attr( $taxonomy ); ?>" data-bpss-facet-group="custom_tax">
 						<?php
 						/* translators: %s: custom taxonomy label */
-						$all_taxonomy_label = sprintf( __( 'All %s', 'beplus-fast-product-filter-live-search' ), $label );
+						$all_taxonomy_label = sprintf( __( 'All %s', 'beplus-fast-product-filter-live-search-for-woocommerce' ), $label );
 						?>
 						<option value=""><?php echo esc_html( $all_taxonomy_label ); ?></option>
 						<?php foreach ( $terms as $term ) : ?>

@@ -7,12 +7,12 @@ interface SearchFieldsProps {
 }
 
 const FIELD_OPTIONS = [
-	{ key: 'title', label: __( 'Title', 'beplus-fast-product-filter-live-search' ) },
-	{ key: 'sku', label: __( 'SKU', 'beplus-fast-product-filter-live-search' ) },
-	{ key: 'content', label: __( 'Content', 'beplus-fast-product-filter-live-search' ) },
-	{ key: 'categories', label: __( 'Categories', 'beplus-fast-product-filter-live-search' ) },
-	{ key: 'tags', label: __( 'Tags', 'beplus-fast-product-filter-live-search' ) },
-	{ key: 'attributes', label: __( 'Attributes', 'beplus-fast-product-filter-live-search' ) },
+	{ key: 'title', label: __( 'Title', 'beplus-fast-product-filter-live-search-for-woocommerce' ) },
+	{ key: 'sku', label: __( 'SKU', 'beplus-fast-product-filter-live-search-for-woocommerce' ) },
+	{ key: 'content', label: __( 'Content', 'beplus-fast-product-filter-live-search-for-woocommerce' ) },
+	{ key: 'categories', label: __( 'Categories', 'beplus-fast-product-filter-live-search-for-woocommerce' ) },
+	{ key: 'tags', label: __( 'Tags', 'beplus-fast-product-filter-live-search-for-woocommerce' ) },
+	{ key: 'attributes', label: __( 'Attributes', 'beplus-fast-product-filter-live-search-for-woocommerce' ) },
 ] as const;
 
 function toggleField( key: string, searchFields: string[] ): string[] {
@@ -32,7 +32,7 @@ export default function SearchFields( {
 			<p className="components-base-control__help">
 				{ __(
 					'Choose which product data to search. Matching fields (except Content) appear under each result.',
-					'beplus-fast-product-filter-live-search'
+					'beplus-fast-product-filter-live-search-for-woocommerce'
 				) }
 			</p>
 			{ FIELD_OPTIONS.map( ( field ) => (

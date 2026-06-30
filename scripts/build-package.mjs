@@ -40,6 +40,9 @@ const INCLUDE_GLOBS = [
 	'blocks/**/index.js',
 	'blocks/**/index.asset.php',
 	'blocks/**/view.bundle.js',
+	'blocks/**/*.ts',
+	'blocks/**/*.tsx',
+	'admin/js/*.ts',
 	'languages/**',
 ];
 

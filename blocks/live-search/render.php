@@ -18,7 +18,7 @@ require_once BEPLUS_FAST_PRODUCT_FILTER_LIVE_SEARCH_PLUGIN_DIR . 'includes/facet
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Block render template variables.
 
 $defaults = array(
-	'placeholder'        => __( 'Search products…', 'beplus-fast-product-filter-live-search' ),
+	'placeholder'        => __( 'Search productsâ€¦', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 	'showCategory'       => true,
 	'searchScope'        => 'all',
 	'limitCategorySlugs' => array(),
@@ -47,7 +47,7 @@ $attrs['minChars'] = isset( $plugin_settings['min_chars'] )
 	: (int) $attrs['minChars'];
 
 if ( ! class_exists( 'WooCommerce' ) ) {
-	echo '<p class="beplus-fast-product-filter-live-search__notice">' . esc_html__( 'WooCommerce is required for Live Search.', 'beplus-fast-product-filter-live-search' ) . '</p>';
+	echo '<p class="beplus-fast-product-filter-live-search__notice">' . esc_html__( 'WooCommerce is required for Live Search.', 'beplus-fast-product-filter-live-search-for-woocommerce' ) . '</p>';
 	return;
 }
 
@@ -143,7 +143,7 @@ $wrapper_attrs = get_block_wrapper_attributes(
 			<?php if ( $show_category_filter ) : ?>
 				<div class="beplus-fast-product-filter-live-search__live-category">
 					<label class="screen-reader-text" for="<?php echo esc_attr( $block_id ); ?>-cat">
-						<?php esc_html_e( 'Category', 'beplus-fast-product-filter-live-search' ); ?>
+						<?php esc_html_e( 'Category', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 					</label>
 					<select
 						id="<?php echo esc_attr( $block_id ); ?>-cat"
@@ -152,7 +152,7 @@ $wrapper_attrs = get_block_wrapper_attributes(
 						data-bpss-live-category
 					>
 						<option value="">
-							<?php esc_html_e( 'All categories', 'beplus-fast-product-filter-live-search' ); ?>
+							<?php esc_html_e( 'All categories', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 						</option>
 						<?php foreach ( $filter_terms as $term ) : ?>
 							<option value="<?php echo esc_attr( $term->slug ); ?>">
@@ -165,7 +165,7 @@ $wrapper_attrs = get_block_wrapper_attributes(
 
 			<div class="beplus-fast-product-filter-live-search__live-input-wrap">
 				<label class="screen-reader-text" for="<?php echo esc_attr( $input_id ); ?>">
-					<?php esc_html_e( 'Search products', 'beplus-fast-product-filter-live-search' ); ?>
+					<?php esc_html_e( 'Search products', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 				</label>
 				<div class="beplus-fast-product-filter-live-search__live-input-stack" data-bpss-live-input-stack>
 					<div
@@ -192,7 +192,7 @@ $wrapper_attrs = get_block_wrapper_attributes(
 						data-bpss-live-input
 					/>
 				</div>
-				<button type="submit" class="beplus-fast-product-filter-live-search__live-submit" aria-label="<?php esc_attr_e( 'Search', 'beplus-fast-product-filter-live-search' ); ?>">
+				<button type="submit" class="beplus-fast-product-filter-live-search__live-submit" aria-label="<?php esc_attr_e( 'Search', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>">
 					<span class="beplus-fast-product-filter-live-search__live-submit-icon" aria-hidden="true"></span>
 				</button>
 			</div>
@@ -209,13 +209,13 @@ $wrapper_attrs = get_block_wrapper_attributes(
 				class="beplus-fast-product-filter-live-search__live-suggestions"
 				data-bpss-live-suggestions
 				role="listbox"
-				aria-label="<?php esc_attr_e( 'Search suggestions', 'beplus-fast-product-filter-live-search' ); ?>"
+				aria-label="<?php esc_attr_e( 'Search suggestions', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>"
 				hidden
 			></div>
 			<div class="beplus-fast-product-filter-live-search__live-products" data-bpss-live-products></div>
 			<div class="beplus-fast-product-filter-live-search__live-footer" data-bpss-live-footer hidden>
 				<a href="<?php echo esc_url( $catalog_base_url ); ?>" class="beplus-fast-product-filter-live-search__live-view-all" data-bpss-live-view-all>
-					<?php esc_html_e( 'View All Results', 'beplus-fast-product-filter-live-search' ); ?>
+					<?php esc_html_e( 'View All Results', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 				</a>
 			</div>
 		</div>

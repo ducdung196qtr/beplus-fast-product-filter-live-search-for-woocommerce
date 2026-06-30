@@ -3,11 +3,11 @@
 /**
  * Plugin Name: Beplus Fast Product Filter & Live Search for WooCommerce
  * Plugin URI:  https://beplusthemes.com/
- * Description: Fast, smart AJAX product filter & live search for WooCommerce. Instant results, no page reload — more conversions on your shop.
+ * Description: Fast, smart AJAX product filter & live search for WooCommerce. Instant results, no page reload â€” more conversions on your shop.
  * Version:     1.0.0
  * Author:      Beplus
  * Author URI:  https://beplusthemes.com/
- * Text Domain: beplus-fast-product-filter-live-search
+ * Text Domain: beplus-fast-product-filter-live-search-for-woocommerce
  * Domain Path: /languages
  * Requires at least: 6.5
  * Requires PHP: 7.4
@@ -94,7 +94,7 @@ function beplus_fast_product_filter_live_search_woocommerce_missing_notice(): vo
 		'<div class="notice notice-error"><p>%s</p></div>',
 		esc_html__(
 			'Beplus Fast Product Filter & Live Search for WooCommerce requires WooCommerce to be installed and active.',
-			'beplus-fast-product-filter-live-search',
+			'beplus-fast-product-filter-live-search-for-woocommerce',
 		),
 	);
 }
@@ -111,7 +111,7 @@ function beplus_fast_product_filter_live_search_activate() {
 	if ( version_compare( PHP_VERSION, '7.4', '<' ) ) {
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 		wp_die(
-			esc_html__( 'Beplus Fast Product Filter & Live Search for WooCommerce requires PHP 7.4 or higher.', 'beplus-fast-product-filter-live-search' ),
+			esc_html__( 'Beplus Fast Product Filter & Live Search for WooCommerce requires PHP 7.4 or higher.', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 			'Plugin Activation Error',
 			array( 'back_link' => true ),
 		);
@@ -122,9 +122,9 @@ function beplus_fast_product_filter_live_search_activate() {
 		wp_die(
 			esc_html__(
 				'Beplus Fast Product Filter & Live Search for WooCommerce requires WooCommerce to be installed and active. Please activate WooCommerce first, then try again.',
-				'beplus-fast-product-filter-live-search',
+				'beplus-fast-product-filter-live-search-for-woocommerce',
 			),
-			esc_html__( 'Plugin Activation Error', 'beplus-fast-product-filter-live-search' ),
+			esc_html__( 'Plugin Activation Error', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 			array( 'back_link' => true ),
 		);
 	}

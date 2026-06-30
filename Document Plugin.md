@@ -260,7 +260,7 @@ function beplus_fast_product_filter_live_search_activate() {
 	if ( version_compare( PHP_VERSION, '7.4', '<' ) ) {
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 		wp_die(
-			esc_html__( 'Beplus Fast Product Filter & Live Search for WooCommerce requires PHP 7.4 or higher.', 'beplus-fast-product-filter-live-search' ),
+			esc_html__( 'Beplus Fast Product Filter & Live Search for WooCommerce requires PHP 7.4 or higher.', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 			'Plugin Activation Error',
 			array( 'back_link' => true )
 		);
@@ -801,7 +801,7 @@ Every file must follow:
 | Capability | `current_user_can( 'manage_options' )` for admin |
 | REST | explicit `permission_callback`; do not use `__return_true` for write endpoints |
 | SQL | `$wpdb->prepare()` |
-| i18n | `__( 'Text', 'beplus-fast-product-filter-live-search' )`, `_e()`, `esc_html__()` |
+| i18n | `__( 'Text', 'beplus-fast-product-filter-live-search-for-woocommerce' )`, `_e()`, `esc_html__()` |
 
 ---
 
@@ -813,7 +813,7 @@ Every file must follow:
 
 ```php
 load_plugin_textdomain(
-	'beplus-fast-product-filter-live-search',
+	'beplus-fast-product-filter-live-search-for-woocommerce',
 	false,
 	dirname( BEPLUS_FAST_PRODUCT_FILTER_LIVE_SEARCH_PLUGIN_BASENAME ) . '/languages'
 );

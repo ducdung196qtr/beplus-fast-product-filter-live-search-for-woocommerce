@@ -42,7 +42,7 @@ final class ProductMatchMeta {
 			if ( '' !== $sku && self::matches( $sku, $keyword, $query ) ) {
 				$matches[] = array(
 					'type'  => 'sku',
-					'label' => __( 'SKU', 'beplus-fast-product-filter-live-search' ),
+					'label' => __( 'SKU', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 					'value' => $sku,
 				);
 			}
@@ -79,8 +79,8 @@ final class ProductMatchMeta {
 
 		$type  = 'product_cat' === $taxonomy ? 'category' : 'tag';
 		$label = 'product_cat' === $taxonomy
-			? __( 'Category', 'beplus-fast-product-filter-live-search' )
-			: __( 'Tag', 'beplus-fast-product-filter-live-search' );
+			? __( 'Category', 'beplus-fast-product-filter-live-search-for-woocommerce' )
+			: __( 'Tag', 'beplus-fast-product-filter-live-search-for-woocommerce' );
 
 		$matches = array();
 		foreach ( $terms as $term ) {
@@ -136,7 +136,7 @@ final class ProductMatchMeta {
 				$attr_label = wc_attribute_label( $taxonomy );
 				$matches[]  = array(
 					'type'  => 'attribute',
-					'label' => $attr_label ? $attr_label : __( 'Attribute', 'beplus-fast-product-filter-live-search' ),
+					'label' => $attr_label ? $attr_label : __( 'Attribute', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 					'value' => $term->name,
 				);
 			}

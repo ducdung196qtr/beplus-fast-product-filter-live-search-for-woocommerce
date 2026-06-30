@@ -82,7 +82,7 @@ final class SuggestionService {
 			if ( false !== mb_strpos( $title_lower, $needle ) ) {
 				$suggestions[] = sprintf(
 					/* translators: %s: partial keyword */
-					__( 'with %s', 'beplus-fast-product-filter-live-search' ),
+					__( 'with %s', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 					$keyword,
 				);
 			}

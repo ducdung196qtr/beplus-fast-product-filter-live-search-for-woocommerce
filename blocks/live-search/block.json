@@ -15,7 +15,7 @@
 			"showCategory": true
 		}
 	},
-	"textdomain": "beplus-fast-product-filter-live-search",
+	"textdomain": "beplus-fast-product-filter-live-search-for-woocommerce",
 	"supports": {
 		"html": false,
 		"align": [ "wide", "full" ],

@@ -378,10 +378,10 @@ function beplus_fast_product_filter_live_search_get_rating_filter_options(): arr
 	$options = array();
 
 	for ( $stars = 5; $stars >= 1; $stars-- ) {
-		$filled = str_repeat( '★', $stars );
-		$empty  = str_repeat( '☆', 5 - $stars );
+		$filled = str_repeat( 'â˜…', $stars );
+		$empty  = str_repeat( 'â˜†', 5 - $stars );
 		/* translators: %d: minimum star rating */
-		$label = sprintf( __( '%1$s%2$s & up', 'beplus-fast-product-filter-live-search' ), $filled, $empty );
+		$label = sprintf( __( '%1$s%2$s & up', 'beplus-fast-product-filter-live-search-for-woocommerce' ), $filled, $empty );
 
 		$options[] = array(
 			'value' => $stars,
@@ -443,13 +443,13 @@ function beplus_fast_product_filter_live_search_format_price_segment_label( floa
 
 	if ( $max <= 0 ) {
 		/* translators: 1: currency symbol, 2: minimum price */
-		return sprintf( __( '%1$s%2$s and above', 'beplus-fast-product-filter-live-search' ), $currency, $min_fmt );
+		return sprintf( __( '%1$s%2$s and above', 'beplus-fast-product-filter-live-search-for-woocommerce' ), $currency, $min_fmt );
 	}
 
 	$max_fmt = number_format_i18n( $max );
 
 	/* translators: 1: currency symbol, 2: minimum price, 3: currency symbol, 4: maximum price */
-	return sprintf( __( '%1$s%2$s — %3$s%4$s', 'beplus-fast-product-filter-live-search' ), $currency, $min_fmt, $currency, $max_fmt );
+	return sprintf( __( '%1$s%2$s â€” %3$s%4$s', 'beplus-fast-product-filter-live-search-for-woocommerce' ), $currency, $min_fmt, $currency, $max_fmt );
 }
 
 /**
@@ -513,8 +513,8 @@ function beplus_fast_product_filter_live_search_uses_plain_permalinks(): bool {
  * Base URL for catalog search form submissions.
  *
  * Pretty permalinks: WooCommerce shop page URL (/shop/).
- * Plain permalinks: site home — not ?page_id=shop, because WooCommerce canonical
- * redirect (?page_id=7 → ?post_type=product) drops custom query args such as bpss_s.
+ * Plain permalinks: site home â€” not ?page_id=shop, because WooCommerce canonical
+ * redirect (?page_id=7 â†’ ?post_type=product) drops custom query args such as bpss_s.
  *
  * @return string
  */
@@ -775,9 +775,9 @@ function beplus_fast_product_filter_live_search_parse_catalog_orderby( string $r
  */
 function beplus_fast_product_filter_live_search_get_filter_section_catalog( array $attrs = array() ): array {
 	$sections = array(
-		'keyword'  => __( 'Keyword search', 'beplus-fast-product-filter-live-search' ),
-		'category' => __( 'Product Categories', 'beplus-fast-product-filter-live-search' ),
-		'price'    => __( 'Price', 'beplus-fast-product-filter-live-search' ),
+		'keyword'  => __( 'Keyword search', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+		'category' => __( 'Product Categories', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+		'price'    => __( 'Price', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 	);
 
 	$brand_tax = beplus_fast_product_filter_live_search_get_brand_taxonomy();
@@ -785,7 +785,7 @@ function beplus_fast_product_filter_live_search_get_filter_section_catalog( arra
 		$brand_object = get_taxonomy( $brand_tax );
 		$sections['brand'] = $brand_object instanceof WP_Taxonomy
 			? $brand_object->labels->name
-			: __( 'Brand', 'beplus-fast-product-filter-live-search' );
+			: __( 'Brand', 'beplus-fast-product-filter-live-search-for-woocommerce' );
 	}
 
 	foreach ( beplus_fast_product_filter_live_search_get_all_attribute_definitions() as $attribute ) {
@@ -795,11 +795,11 @@ function beplus_fast_product_filter_live_search_get_filter_section_catalog( arra
 		$sections[ 'attribute:' . $attribute['slug'] ] = $attribute['label'];
 	}
 
-	$sections['tag']      = __( 'Product Tags', 'beplus-fast-product-filter-live-search' );
-	$sections['stock']    = __( 'Stock status', 'beplus-fast-product-filter-live-search' );
-	$sections['on_sale']  = __( 'On sale', 'beplus-fast-product-filter-live-search' );
-	$sections['featured'] = __( 'Featured products', 'beplus-fast-product-filter-live-search' );
-	$sections['rating']   = __( 'Rating', 'beplus-fast-product-filter-live-search' );
+	$sections['tag']      = __( 'Product Tags', 'beplus-fast-product-filter-live-search-for-woocommerce' );
+	$sections['stock']    = __( 'Stock status', 'beplus-fast-product-filter-live-search-for-woocommerce' );
+	$sections['on_sale']  = __( 'On sale', 'beplus-fast-product-filter-live-search-for-woocommerce' );
+	$sections['featured'] = __( 'Featured products', 'beplus-fast-product-filter-live-search-for-woocommerce' );
+	$sections['rating']   = __( 'Rating', 'beplus-fast-product-filter-live-search-for-woocommerce' );
 
 	foreach ( beplus_fast_product_filter_live_search_get_custom_taxonomy_facets() as $facet ) {
 		$sections[ 'custom:' . $facet['taxonomy'] ] = $facet['label'];

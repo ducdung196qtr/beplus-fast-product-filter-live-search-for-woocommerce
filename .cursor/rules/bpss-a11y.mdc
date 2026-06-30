@@ -25,5 +25,5 @@ Target **WCAG 2.1 AA** for plugin-owned UI (search bar, autocomplete, results, a
 
 ```text
 ❌ aria-label="Search" hard-coded in render.php
-✅ aria-label="<?php echo esc_attr__( 'Search', 'beplus-fast-product-filter-live-search' ); ?>"
+✅ aria-label="<?php echo esc_attr__( 'Search', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>"
 ```

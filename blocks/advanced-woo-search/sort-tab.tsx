@@ -130,7 +130,7 @@ export default function SortTab( { attributes, setAttributes }: SortTabProps ) {
 	if ( visibleOrder.length === 0 ) {
 		return (
 			<p className="beplus-fast-product-filter-live-search-sort-tab__empty">
-				{ __( 'Enable filters in the Filters tab to sort them.', 'beplus-fast-product-filter-live-search' ) }
+				{ __( 'Enable filters in the Filters tab to sort them.', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
 			</p>
 		);
 	}
@@ -140,7 +140,7 @@ export default function SortTab( { attributes, setAttributes }: SortTabProps ) {
 			<p className="beplus-fast-product-filter-live-search-sort-tab__help">
 				{ __(
 					'Drag order of filter sections. Each attribute appears as its own panel.',
-					'beplus-fast-product-filter-live-search'
+					'beplus-fast-product-filter-live-search-for-woocommerce'
 				) }
 			</p>
 			<ul className="beplus-fast-product-filter-live-search-sort-tab__list">
@@ -155,7 +155,7 @@ export default function SortTab( { attributes, setAttributes }: SortTabProps ) {
 						<span className="beplus-fast-product-filter-live-search-sort-tab__actions">
 							<Button
 								icon="arrow-up-alt2"
-								label={ __( 'Move up', 'beplus-fast-product-filter-live-search' ) }
+								label={ __( 'Move up', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
 								onClick={ () =>
 									persistOrder( moveItem( visibleOrder, index, -1 ) )
 								}
@@ -164,7 +164,7 @@ export default function SortTab( { attributes, setAttributes }: SortTabProps ) {
 							/>
 							<Button
 								icon="arrow-down-alt2"
-								label={ __( 'Move down', 'beplus-fast-product-filter-live-search' ) }
+								label={ __( 'Move down', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
 								onClick={ () =>
 									persistOrder( moveItem( visibleOrder, index, 1 ) )
 								}

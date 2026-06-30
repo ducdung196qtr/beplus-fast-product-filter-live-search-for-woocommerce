@@ -94,12 +94,12 @@ final class CacheService {
 	public static function get_cached_item_catalog(): array {
 		return array(
 			array(
-				'title'       => __( 'Filter lists (facets)', 'beplus-fast-product-filter-live-search' ),
-				'description' => __( 'Categories, tags, attributes, brands, and price bounds shown in the sidebar when shoppers have not applied any filter yet.', 'beplus-fast-product-filter-live-search' ),
+				'title'       => __( 'Filter lists (facets)', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+				'description' => __( 'Categories, tags, attributes, brands, and price bounds shown in the sidebar when shoppers have not applied any filter yet.', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 			),
 			array(
-				'title'       => __( 'Term counts in facet lists', 'beplus-fast-product-filter-live-search' ),
-				'description' => __( 'How many products belong to each category, tag, or attribute option in the default (unfiltered) view.', 'beplus-fast-product-filter-live-search' ),
+				'title'       => __( 'Term counts in facet lists', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+				'description' => __( 'How many products belong to each category, tag, or attribute option in the default (unfiltered) view.', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 			),
 		);
 	}
@@ -124,7 +124,7 @@ final class CacheService {
 		if ( $minutes < 60 ) {
 			return sprintf(
 				/* translators: %d: number of minutes */
-				_n( '%d minute', '%d minutes', $minutes, 'beplus-fast-product-filter-live-search' ),
+				_n( '%d minute', '%d minutes', $minutes, 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 				$minutes,
 			);
 		}
@@ -134,7 +134,7 @@ final class CacheService {
 
 			return sprintf(
 				/* translators: %d: number of hours */
-				_n( '%d hour', '%d hours', $hours, 'beplus-fast-product-filter-live-search' ),
+				_n( '%d hour', '%d hours', $hours, 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 				$hours,
 			);
 		}
@@ -143,7 +143,7 @@ final class CacheService {
 
 		return sprintf(
 			/* translators: %d: number of days */
-			_n( '%d day', '%d days', $days, 'beplus-fast-product-filter-live-search' ),
+			_n( '%d day', '%d days', $days, 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 			$days,
 		);
 	}
@@ -319,14 +319,14 @@ final class CacheService {
 		if ( $ms < 1000 ) {
 			return sprintf(
 				/* translators: %s: milliseconds with one decimal */
-				__( '%s ms', 'beplus-fast-product-filter-live-search' ),
+				__( '%s ms', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 				number_format_i18n( $ms, 1 ),
 			);
 		}
 
 		return sprintf(
 			/* translators: %s: seconds with two decimals */
-			__( '%s s', 'beplus-fast-product-filter-live-search' ),
+			__( '%s s', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 			number_format_i18n( $ms / 1000, 2 ),
 		);
 	}

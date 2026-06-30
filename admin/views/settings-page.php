@@ -50,8 +50,8 @@ if ( in_array( $tab, array( 'taxonomies', 'price', 'sidebar' ), true ) ) {
 }
 
 $tabs = array(
-	'general' => __( 'General', 'beplus-fast-product-filter-live-search' ),
-	'filters' => __( 'Filters', 'beplus-fast-product-filter-live-search' ),
+	'general' => __( 'General', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+	'filters' => __( 'Filters', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 );
 
 if ( ! isset( $tabs[ $tab ] ) ) {
@@ -75,27 +75,27 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 	?>
 	<div class="bpss-filter-row__controls">
 		<label class="bpss-filter-row__field">
-			<span class="bpss-filter-row__label"><?php esc_html_e( 'Selection', 'beplus-fast-product-filter-live-search' ); ?></span>
+			<span class="bpss-filter-row__label"><?php esc_html_e( 'Selection', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
 			<select name="<?php echo esc_attr( $option_key . $mode_name ); ?>">
-				<option value="radio" <?php selected( $current_mode, 'radio' ); ?>><?php esc_html_e( 'Single (radio)', 'beplus-fast-product-filter-live-search' ); ?></option>
-				<option value="checkbox" <?php selected( $current_mode, 'checkbox' ); ?>><?php esc_html_e( 'Multiple (checkbox)', 'beplus-fast-product-filter-live-search' ); ?></option>
+				<option value="radio" <?php selected( $current_mode, 'radio' ); ?>><?php esc_html_e( 'Single (radio)', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></option>
+				<option value="checkbox" <?php selected( $current_mode, 'checkbox' ); ?>><?php esc_html_e( 'Multiple (checkbox)', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></option>
 			</select>
 		</label>
 		<label class="bpss-filter-row__checkbox">
 			<input type="checkbox" name="<?php echo esc_attr( $option_key . $sub_name ); ?>" value="1" <?php checked( $show_sub ); ?> />
-			<?php esc_html_e( 'Show sub-items with expand/collapse', 'beplus-fast-product-filter-live-search' ); ?>
+			<?php esc_html_e( 'Show sub-items with expand/collapse', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 		</label>
 	</div>
 	<?php
 }
 ?>
 <div class="wrap bpss-settings">
-	<h1><?php esc_html_e( 'Advanced Search Settings', 'beplus-fast-product-filter-live-search' ); ?></h1>
+	<h1><?php esc_html_e( 'Advanced Search Settings', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></h1>
 	<p class="description bpss-settings__intro">
-		<?php esc_html_e( 'Configure search behavior and how each product filter works on the storefront.', 'beplus-fast-product-filter-live-search' ); ?>
+		<?php esc_html_e( 'Configure search behavior and how each product filter works on the storefront.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 	</p>
 
-	<nav class="bpss-settings__tabs" aria-label="<?php esc_attr_e( 'Settings sections', 'beplus-fast-product-filter-live-search' ); ?>">
+	<nav class="bpss-settings__tabs" aria-label="<?php esc_attr_e( 'Settings sections', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>">
 		<?php foreach ( $tabs as $slug => $label ) : ?>
 			<a
 				href="<?php echo esc_url( add_query_arg( 'tab', $slug, $base_url ) ); ?>"
@@ -113,18 +113,18 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 
 		<div class="bpss-settings__panel<?php echo 'general' === $tab ? ' is-active' : ''; ?>" data-tab-panel="general">
 			<div class="bpss-settings__card">
-				<h2 class="bpss-settings__card-title"><?php esc_html_e( 'Search behavior', 'beplus-fast-product-filter-live-search' ); ?></h2>
+				<h2 class="bpss-settings__card-title"><?php esc_html_e( 'Search behavior', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></h2>
 				<table class="form-table" role="presentation">
 					<tr>
-						<th scope="row"><label for="bpss-debounce"><?php esc_html_e( 'Debounce (ms)', 'beplus-fast-product-filter-live-search' ); ?></label></th>
+						<th scope="row"><label for="bpss-debounce"><?php esc_html_e( 'Debounce (ms)', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></label></th>
 						<td><input type="number" id="bpss-debounce" name="<?php echo esc_attr( $option_key ); ?>[debounce_ms]" value="<?php echo esc_attr( (string) ( $settings['debounce_ms'] ?? 280 ) ); ?>" min="0" max="2000" class="small-text" /></td>
 					</tr>
 					<tr>
-						<th scope="row"><label for="bpss-min-chars"><?php esc_html_e( 'Min characters', 'beplus-fast-product-filter-live-search' ); ?></label></th>
+						<th scope="row"><label for="bpss-min-chars"><?php esc_html_e( 'Min characters', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></label></th>
 						<td><input type="number" id="bpss-min-chars" name="<?php echo esc_attr( $option_key ); ?>[min_chars]" value="<?php echo esc_attr( (string) ( $settings['min_chars'] ?? 2 ) ); ?>" min="0" max="10" class="small-text" /></td>
 					</tr>
 					<tr>
-						<th scope="row"><label for="bpss-per-page"><?php esc_html_e( 'Results per page', 'beplus-fast-product-filter-live-search' ); ?></label></th>
+						<th scope="row"><label for="bpss-per-page"><?php esc_html_e( 'Results per page', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></label></th>
 						<td><input type="number" id="bpss-per-page" name="<?php echo esc_attr( $option_key ); ?>[per_page]" value="<?php echo esc_attr( (string) ( $settings['per_page'] ?? 10 ) ); ?>" min="1" max="50" class="small-text" /></td>
 					</tr>
 				</table>
@@ -132,7 +132,7 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 
 			<div class="bpss-settings__card bpss-settings__card--cache">
 				<div class="bpss-settings__card-header">
-					<h2 class="bpss-settings__card-title"><?php esc_html_e( 'Performance cache', 'beplus-fast-product-filter-live-search' ); ?></h2>
+					<h2 class="bpss-settings__card-title"><?php esc_html_e( 'Performance cache', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></h2>
 					<label class="bpss-toggle" for="bpss-enable-cache">
 						<input
 							type="checkbox"
@@ -147,21 +147,21 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 							<span class="bpss-toggle__thumb"></span>
 						</span>
 						<span class="bpss-toggle__state" data-bpss-cache-state-label>
-							<?php echo $cache_enabled ? esc_html__( 'On', 'beplus-fast-product-filter-live-search' ) : esc_html__( 'Off', 'beplus-fast-product-filter-live-search' ); ?>
+							<?php echo $cache_enabled ? esc_html__( 'On', 'beplus-fast-product-filter-live-search-for-woocommerce' ) : esc_html__( 'Off', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 						</span>
 					</label>
 				</div>
 
 				<p class="description bpss-cache__off-note" data-bpss-cache-off-note <?php echo $cache_enabled ? 'hidden' : ''; ?>>
-					<?php esc_html_e( 'Cache is off. Filter lists are rebuilt on every shop visit, which can be slower on large catalogs. Turn cache on to configure refresh time and performance options.', 'beplus-fast-product-filter-live-search' ); ?>
+					<?php esc_html_e( 'Cache is off. Filter lists are rebuilt on every shop visit, which can be slower on large catalogs. Turn cache on to configure refresh time and performance options.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 				</p>
 
 				<div class="bpss-cache__panel" data-bpss-cache-panel <?php echo $cache_enabled ? '' : 'hidden'; ?>>
 				<p class="description bpss-cache__intro">
-					<?php esc_html_e( 'Large catalogs can slow down filter loading. Cache stores pre-built filter data so the shop page responds faster. Filtered searches always load fresh results.', 'beplus-fast-product-filter-live-search' ); ?>
+					<?php esc_html_e( 'Large catalogs can slow down filter loading. Cache stores pre-built filter data so the shop page responds faster. Filtered searches always load fresh results.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 				</p>
 
-				<h3 class="bpss-settings__subtitle"><?php esc_html_e( 'What is cached', 'beplus-fast-product-filter-live-search' ); ?></h3>
+				<h3 class="bpss-settings__subtitle"><?php esc_html_e( 'What is cached', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></h3>
 				<ul class="bpss-cache__list">
 					<?php foreach ( $cache_item_catalog as $cache_item ) : ?>
 						<li>
@@ -174,7 +174,7 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 				<div class="bpss-cache__options" data-bpss-cache-options>
 					<div class="bpss-cache__field">
 						<label for="bpss-cache-ttl">
-							<strong><?php esc_html_e( 'Auto-refresh cache every', 'beplus-fast-product-filter-live-search' ); ?></strong>
+							<strong><?php esc_html_e( 'Auto-refresh cache every', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></strong>
 						</label>
 						<select id="bpss-cache-ttl" name="<?php echo esc_attr( $option_key ); ?>[cache_ttl]">
 							<?php foreach ( $cache_ttl_presets as $preset_minutes ) : ?>
@@ -184,7 +184,7 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 							<?php endforeach; ?>
 						</select>
 						<p class="description">
-							<?php esc_html_e( 'After this time, cached filter lists are rebuilt on the next shop visit.', 'beplus-fast-product-filter-live-search' ); ?>
+							<?php esc_html_e( 'After this time, cached filter lists are rebuilt on the next shop visit.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 						</p>
 					</div>
 
@@ -195,20 +195,20 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 							value="1"
 							<?php checked( $cache_auto_clear ); ?>
 						/>
-						<?php esc_html_e( 'Clear cache automatically when products, stock, or categories change', 'beplus-fast-product-filter-live-search' ); ?>
+						<?php esc_html_e( 'Clear cache automatically when products, stock, or categories change', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 					</label>
 				</div>
 
 				<div class="bpss-cache__actions">
 					<button type="button" class="button button-secondary" id="bpss-clear-cache" data-bpss-clear-cache>
-						<?php esc_html_e( 'Clear cache now', 'beplus-fast-product-filter-live-search' ); ?>
+						<?php esc_html_e( 'Clear cache now', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 					</button>
 					<p class="description bpss-cache__status" id="bpss-cache-status" data-bpss-cache-status>
 						<?php if ( $cache_last_cleared > 0 ) : ?>
 							<?php
 							printf(
 								/* translators: %s: formatted date/time */
-								esc_html__( 'Last cleared: %s', 'beplus-fast-product-filter-live-search' ),
+								esc_html__( 'Last cleared: %s', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 								esc_html(
 									wp_date(
 										get_option( 'date_format' ) . ' ' . get_option( 'time_format' ),
@@ -218,7 +218,7 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 							);
 							?>
 						<?php else : ?>
-							<?php esc_html_e( 'Cache has not been cleared manually yet.', 'beplus-fast-product-filter-live-search' ); ?>
+							<?php esc_html_e( 'Cache has not been cleared manually yet.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 						<?php endif; ?>
 					</p>
 					<p class="bpss-cache__notice" id="bpss-cache-notice" role="status" aria-live="polite" hidden></p>
@@ -226,37 +226,37 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 
 				<div class="bpss-cache__benchmark" data-bpss-cache-benchmark>
 					<div class="bpss-cache__benchmark-head">
-						<h3 class="bpss-settings__subtitle"><?php esc_html_e( 'Estimated performance benefit', 'beplus-fast-product-filter-live-search' ); ?></h3>
+						<h3 class="bpss-settings__subtitle"><?php esc_html_e( 'Estimated performance benefit', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></h3>
 						<button type="button" class="button button-secondary" data-bpss-benchmark-cache>
-							<?php esc_html_e( 'Measure now', 'beplus-fast-product-filter-live-search' ); ?>
+							<?php esc_html_e( 'Measure now', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 						</button>
 					</div>
 					<p class="description">
-						<?php esc_html_e( 'Compares how long it takes to build unfiltered filter lists versus reading them from cache on this store.', 'beplus-fast-product-filter-live-search' ); ?>
+						<?php esc_html_e( 'Compares how long it takes to build unfiltered filter lists versus reading them from cache on this store.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 					</p>
 
 					<div class="bpss-cache__benchmark-body" data-bpss-benchmark-body>
 						<?php if ( $cache_benchmark ) : ?>
 							<div class="bpss-cache__benchmark-grid">
 								<div class="bpss-cache__benchmark-stat">
-									<span class="bpss-cache__benchmark-label"><?php esc_html_e( 'Without cache', 'beplus-fast-product-filter-live-search' ); ?></span>
+									<span class="bpss-cache__benchmark-label"><?php esc_html_e( 'Without cache', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
 									<strong class="bpss-cache__benchmark-value" data-bpss-benchmark-cold>
 										<?php echo esc_html( BePlusFastProductFilterLiveSearch\Search\CacheService::format_duration_ms( (float) $cache_benchmark['cold_ms'] ) ); ?>
 									</strong>
 								</div>
 								<div class="bpss-cache__benchmark-stat is-highlight">
-									<span class="bpss-cache__benchmark-label"><?php esc_html_e( 'With cache', 'beplus-fast-product-filter-live-search' ); ?></span>
+									<span class="bpss-cache__benchmark-label"><?php esc_html_e( 'With cache', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
 									<strong class="bpss-cache__benchmark-value" data-bpss-benchmark-warm>
 										<?php echo esc_html( BePlusFastProductFilterLiveSearch\Search\CacheService::format_duration_ms( (float) $cache_benchmark['warm_ms'] ) ); ?>
 									</strong>
 								</div>
 								<div class="bpss-cache__benchmark-stat">
-									<span class="bpss-cache__benchmark-label"><?php esc_html_e( 'Estimated saving', 'beplus-fast-product-filter-live-search' ); ?></span>
+									<span class="bpss-cache__benchmark-label"><?php esc_html_e( 'Estimated saving', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
 									<strong class="bpss-cache__benchmark-value" data-bpss-benchmark-saved>
 										<?php
 										printf(
 											/* translators: 1: time saved, 2: percent saved */
-											esc_html__( '%1$s (%2$d%% faster)', 'beplus-fast-product-filter-live-search' ),
+											esc_html__( '%1$s (%2$d%% faster)', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 											esc_html( BePlusFastProductFilterLiveSearch\Search\CacheService::format_duration_ms( (float) $cache_benchmark['saved_ms'] ) ),
 											(int) $cache_benchmark['saved_percent'],
 										);
@@ -268,7 +268,7 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 								<?php
 								printf(
 									/* translators: %s: formatted date/time */
-									esc_html__( 'Measured: %s', 'beplus-fast-product-filter-live-search' ),
+									esc_html__( 'Measured: %s', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 									esc_html(
 										wp_date(
 											get_option( 'date_format' ) . ' ' . get_option( 'time_format' ),
@@ -280,7 +280,7 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 							</p>
 						<?php else : ?>
 							<p class="bpss-settings__empty" data-bpss-benchmark-empty>
-								<?php esc_html_e( 'No measurement yet. Run a quick test to compare facet load time with and without cache.', 'beplus-fast-product-filter-live-search' ); ?>
+								<?php esc_html_e( 'No measurement yet. Run a quick test to compare facet load time with and without cache.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 							</p>
 						<?php endif; ?>
 					</div>
@@ -290,21 +290,21 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 			</div>
 
 			<div class="bpss-settings__card">
-				<h2 class="bpss-settings__card-title"><?php esc_html_e( 'Filter options display', 'beplus-fast-product-filter-live-search' ); ?></h2>
-				<p class="description"><?php esc_html_e( 'Control how filter choices appear when customers combine multiple filters.', 'beplus-fast-product-filter-live-search' ); ?></p>
+				<h2 class="bpss-settings__card-title"><?php esc_html_e( 'Filter options display', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></h2>
+				<p class="description"><?php esc_html_e( 'Control how filter choices appear when customers combine multiple filters.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></p>
 				<fieldset class="bpss-settings__choice-list">
 					<label class="bpss-settings__choice">
 						<input type="radio" name="<?php echo esc_attr( $option_key ); ?>[sidebar][facet_display_mode]" value="all" <?php checked( $facet_display_mode, 'all' ); ?> />
 						<span class="bpss-settings__choice-text">
-							<strong><?php esc_html_e( 'Show all options', 'beplus-fast-product-filter-live-search' ); ?></strong>
-							<span><?php esc_html_e( 'Always display every category, tag, and attribute term.', 'beplus-fast-product-filter-live-search' ); ?></span>
+							<strong><?php esc_html_e( 'Show all options', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></strong>
+							<span><?php esc_html_e( 'Always display every category, tag, and attribute term.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
 						</span>
 					</label>
 					<label class="bpss-settings__choice">
 						<input type="radio" name="<?php echo esc_attr( $option_key ); ?>[sidebar][facet_display_mode]" value="contextual" <?php checked( $facet_display_mode, 'contextual' ); ?> />
 						<span class="bpss-settings__choice-text">
-							<strong><?php esc_html_e( 'Contextual', 'beplus-fast-product-filter-live-search' ); ?></strong>
-							<span><?php esc_html_e( 'Hide options that would return zero products with the current selection.', 'beplus-fast-product-filter-live-search' ); ?></span>
+							<strong><?php esc_html_e( 'Contextual', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></strong>
+							<span><?php esc_html_e( 'Hide options that would return zero products with the current selection.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
 						</span>
 					</label>
 				</fieldset>
@@ -313,25 +313,25 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 
 		<div class="bpss-settings__panel<?php echo 'filters' === $tab ? ' is-active' : ''; ?>" data-tab-panel="filters">
 			<p class="bpss-settings__hint">
-				<?php esc_html_e( 'Configure how each filter behaves here. Turn individual filters on or off per block in the editor (Advanced Woo Search → Filters panel).', 'beplus-fast-product-filter-live-search' ); ?>
+				<?php esc_html_e( 'Configure how each filter behaves here. Turn individual filters on or off per block in the editor (Advanced Woo Search â†’ Filters panel).', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 			</p>
 
 			<div class="bpss-settings__card">
-				<h2 class="bpss-settings__card-title"><?php esc_html_e( 'Sidebar layout', 'beplus-fast-product-filter-live-search' ); ?></h2>
+				<h2 class="bpss-settings__card-title"><?php esc_html_e( 'Sidebar layout', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></h2>
 				<table class="form-table" role="presentation">
 					<tr>
-						<th scope="row"><?php esc_html_e( 'Display options', 'beplus-fast-product-filter-live-search' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Display options', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></th>
 						<td>
-							<label class="bpss-filter-row__checkbox"><input type="checkbox" name="<?php echo esc_attr( $option_key ); ?>[sidebar][show_term_counts]" value="1" <?php checked( ! empty( $sidebar['show_term_counts'] ) ); ?> /> <?php esc_html_e( 'Show term counts', 'beplus-fast-product-filter-live-search' ); ?></label>
-							<label class="bpss-filter-row__checkbox"><input type="checkbox" name="<?php echo esc_attr( $option_key ); ?>[sidebar][collapsible_sections]" value="1" <?php checked( ! empty( $sidebar['collapsible_sections'] ) ); ?> /> <?php esc_html_e( 'Collapsible sections', 'beplus-fast-product-filter-live-search' ); ?></label>
-							<label class="bpss-filter-row__checkbox"><input type="checkbox" name="<?php echo esc_attr( $option_key ); ?>[sidebar][sections_open_default]" value="1" <?php checked( ! empty( $sidebar['sections_open_default'] ) ); ?> /> <?php esc_html_e( 'Sections open by default', 'beplus-fast-product-filter-live-search' ); ?></label>
+							<label class="bpss-filter-row__checkbox"><input type="checkbox" name="<?php echo esc_attr( $option_key ); ?>[sidebar][show_term_counts]" value="1" <?php checked( ! empty( $sidebar['show_term_counts'] ) ); ?> /> <?php esc_html_e( 'Show term counts', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></label>
+							<label class="bpss-filter-row__checkbox"><input type="checkbox" name="<?php echo esc_attr( $option_key ); ?>[sidebar][collapsible_sections]" value="1" <?php checked( ! empty( $sidebar['collapsible_sections'] ) ); ?> /> <?php esc_html_e( 'Collapsible sections', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></label>
+							<label class="bpss-filter-row__checkbox"><input type="checkbox" name="<?php echo esc_attr( $option_key ); ?>[sidebar][sections_open_default]" value="1" <?php checked( ! empty( $sidebar['sections_open_default'] ) ); ?> /> <?php esc_html_e( 'Sections open by default', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></label>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><label for="bpss-accent"><?php esc_html_e( 'Accent color', 'beplus-fast-product-filter-live-search' ); ?></label></th>
+						<th scope="row"><label for="bpss-accent"><?php esc_html_e( 'Accent color', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></label></th>
 						<td>
 							<input type="text" id="bpss-accent" class="bpss-color-picker" name="<?php echo esc_attr( $option_key ); ?>[sidebar][accent_color]" value="<?php echo esc_attr( $accent_color ); ?>" data-default-color="#000000" />
-							<p class="description"><?php esc_html_e( 'Used for price slider and highlights in the sidebar.', 'beplus-fast-product-filter-live-search' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Used for price slider and highlights in the sidebar.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></p>
 						</td>
 					</tr>
 				</table>
@@ -339,16 +339,16 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 
 			<div class="bpss-settings__card">
 				<div class="bpss-settings__card-header">
-					<h2 class="bpss-settings__card-title"><?php esc_html_e( 'Default filters', 'beplus-fast-product-filter-live-search' ); ?></h2>
-					<span class="bpss-settings__badge"><?php esc_html_e( 'Categories · Tags · Attributes · Brand', 'beplus-fast-product-filter-live-search' ); ?></span>
+					<h2 class="bpss-settings__card-title"><?php esc_html_e( 'Default filters', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></h2>
+					<span class="bpss-settings__badge"><?php esc_html_e( 'Categories Â· Tags Â· Attributes Â· Brand', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
 				</div>
-				<p class="description"><?php esc_html_e( 'Core WooCommerce filters shown on most shops. Configure selection mode and sub-item display for each.', 'beplus-fast-product-filter-live-search' ); ?></p>
+				<p class="description"><?php esc_html_e( 'Core WooCommerce filters shown on most shops. Configure selection mode and sub-item display for each.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></p>
 
 				<div class="bpss-filter-grid">
 					<div class="bpss-filter-row">
 						<div class="bpss-filter-row__head">
-							<h3><?php esc_html_e( 'Categories', 'beplus-fast-product-filter-live-search' ); ?></h3>
-							<span class="bpss-filter-row__tag"><?php esc_html_e( 'product_cat', 'beplus-fast-product-filter-live-search' ); ?></span>
+							<h3><?php esc_html_e( 'Categories', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></h3>
+							<span class="bpss-filter-row__tag"><?php esc_html_e( 'product_cat', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
 						</div>
 						<?php
 						bpss_render_filter_mode_controls(
@@ -363,8 +363,8 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 
 					<div class="bpss-filter-row">
 						<div class="bpss-filter-row__head">
-							<h3><?php esc_html_e( 'Tags', 'beplus-fast-product-filter-live-search' ); ?></h3>
-							<span class="bpss-filter-row__tag"><?php esc_html_e( 'product_tag', 'beplus-fast-product-filter-live-search' ); ?></span>
+							<h3><?php esc_html_e( 'Tags', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></h3>
+							<span class="bpss-filter-row__tag"><?php esc_html_e( 'product_tag', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
 						</div>
 						<?php
 						bpss_render_filter_mode_controls(
@@ -379,15 +379,15 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 
 					<div class="bpss-filter-row bpss-filter-row--brand">
 						<div class="bpss-filter-row__head">
-							<h3><?php esc_html_e( 'Brand', 'beplus-fast-product-filter-live-search' ); ?></h3>
+							<h3><?php esc_html_e( 'Brand', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></h3>
 							<span class="bpss-filter-row__tag"><?php echo esc_html( $brand_taxonomy ); ?></span>
 						</div>
 						<p class="bpss-filter-row__note">
 							<?php
 							if ( taxonomy_exists( $brand_taxonomy ) ) {
-								esc_html_e( 'Uses the WooCommerce product brand taxonomy automatically.', 'beplus-fast-product-filter-live-search' );
+								esc_html_e( 'Uses the WooCommerce product brand taxonomy automatically.', 'beplus-fast-product-filter-live-search-for-woocommerce' );
 							} else {
-								esc_html_e( 'Brand taxonomy not found yet — install/enable WooCommerce Brands or create product_brand.', 'beplus-fast-product-filter-live-search' );
+								esc_html_e( 'Brand taxonomy not found yet â€” install/enable WooCommerce Brands or create product_brand.', 'beplus-fast-product-filter-live-search-for-woocommerce' );
 							}
 							?>
 						</p>
@@ -405,20 +405,20 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 			</div>
 
 			<div class="bpss-settings__card">
-				<h2 class="bpss-settings__card-title"><?php esc_html_e( 'Product attributes', 'beplus-fast-product-filter-live-search' ); ?></h2>
-				<p class="description"><?php esc_html_e( 'Choose how customers select attribute values (single or multiple). Enable each attribute per block in the block editor.', 'beplus-fast-product-filter-live-search' ); ?></p>
+				<h2 class="bpss-settings__card-title"><?php esc_html_e( 'Product attributes', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></h2>
+				<p class="description"><?php esc_html_e( 'Choose how customers select attribute values (single or multiple). Enable each attribute per block in the block editor.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></p>
 
 				<?php if ( empty( $attribute_definitions ) ) : ?>
-					<p class="bpss-settings__empty"><?php esc_html_e( 'No product attributes found. Create attributes under Products → Attributes.', 'beplus-fast-product-filter-live-search' ); ?></p>
+					<p class="bpss-settings__empty"><?php esc_html_e( 'No product attributes found. Create attributes under Products â†’ Attributes.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></p>
 				<?php else : ?>
 					<div class="bpss-settings__table-wrap">
 						<table class="widefat bpss-settings__data-table bpss-settings__attr-table">
 							<thead>
 								<tr>
-									<th class="col-name"><?php esc_html_e( 'Attribute', 'beplus-fast-product-filter-live-search' ); ?></th>
-									<th class="col-slug"><?php esc_html_e( 'Slug', 'beplus-fast-product-filter-live-search' ); ?></th>
-									<th class="col-mode"><?php esc_html_e( 'Selection', 'beplus-fast-product-filter-live-search' ); ?></th>
-									<th class="col-sub"><?php esc_html_e( 'Sub-items', 'beplus-fast-product-filter-live-search' ); ?></th>
+									<th class="col-name"><?php esc_html_e( 'Attribute', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></th>
+									<th class="col-slug"><?php esc_html_e( 'Slug', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></th>
+									<th class="col-mode"><?php esc_html_e( 'Selection', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></th>
+									<th class="col-sub"><?php esc_html_e( 'Sub-items', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -435,8 +435,8 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 										<td class="col-slug"><code><?php echo esc_html( $attr_slug ); ?></code></td>
 										<td class="col-mode">
 											<select name="<?php echo esc_attr( $option_key ); ?>[sidebar][taxonomy_modes][<?php echo esc_attr( $mode_key ); ?>]">
-												<option value="radio" <?php selected( $current_mode, 'radio' ); ?>><?php esc_html_e( 'Single', 'beplus-fast-product-filter-live-search' ); ?></option>
-												<option value="checkbox" <?php selected( $current_mode, 'checkbox' ); ?>><?php esc_html_e( 'Multiple', 'beplus-fast-product-filter-live-search' ); ?></option>
+												<option value="radio" <?php selected( $current_mode, 'radio' ); ?>><?php esc_html_e( 'Single', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></option>
+												<option value="checkbox" <?php selected( $current_mode, 'checkbox' ); ?>><?php esc_html_e( 'Multiple', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></option>
 											</select>
 										</td>
 										<td class="col-sub">
@@ -447,7 +447,7 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 													value="1"
 													<?php checked( $show_sub_attr ); ?>
 												/>
-												<span class="screen-reader-text"><?php esc_html_e( 'Show sub-items', 'beplus-fast-product-filter-live-search' ); ?></span>
+												<span class="screen-reader-text"><?php esc_html_e( 'Show sub-items', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
 											</label>
 										</td>
 									</tr>
@@ -459,22 +459,22 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 			</div>
 
 			<div class="bpss-settings__card">
-				<h2 class="bpss-settings__card-title"><?php esc_html_e( 'Price filter', 'beplus-fast-product-filter-live-search' ); ?></h2>
-				<p class="description"><?php esc_html_e( 'Choose how the price filter appears in the sidebar. Enable or disable per block in the editor.', 'beplus-fast-product-filter-live-search' ); ?></p>
+				<h2 class="bpss-settings__card-title"><?php esc_html_e( 'Price filter', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></h2>
+				<p class="description"><?php esc_html_e( 'Choose how the price filter appears in the sidebar. Enable or disable per block in the editor.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></p>
 
 				<fieldset class="bpss-settings__choice-list bpss-settings__price-display">
 					<label class="bpss-settings__choice">
 						<input type="radio" name="<?php echo esc_attr( $option_key ); ?>[sidebar][price][display]" value="range" <?php checked( $price_display, 'range' ); ?> data-bpss-price-display="range" />
 						<span class="bpss-settings__choice-text">
-							<strong><?php esc_html_e( 'Price range', 'beplus-fast-product-filter-live-search' ); ?></strong>
-							<span><?php esc_html_e( 'Dual slider with min/max inputs.', 'beplus-fast-product-filter-live-search' ); ?></span>
+							<strong><?php esc_html_e( 'Price range', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></strong>
+							<span><?php esc_html_e( 'Dual slider with min/max inputs.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
 						</span>
 					</label>
 					<label class="bpss-settings__choice">
 						<input type="radio" name="<?php echo esc_attr( $option_key ); ?>[sidebar][price][display]" value="segments" <?php checked( $price_display, 'segments' ); ?> data-bpss-price-display="segments" />
 						<span class="bpss-settings__choice-text">
-							<strong><?php esc_html_e( 'Price segments', 'beplus-fast-product-filter-live-search' ); ?></strong>
-							<span><?php esc_html_e( 'Predefined ranges (e.g. $0–$50, $50–$100).', 'beplus-fast-product-filter-live-search' ); ?></span>
+							<strong><?php esc_html_e( 'Price segments', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></strong>
+							<span><?php esc_html_e( 'Predefined ranges (e.g. $0â€“$50, $50â€“$100).', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
 						</span>
 					</label>
 				</fieldset>
@@ -482,29 +482,29 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 				<div class="bpss-settings__price-range" data-bpss-price-settings="range" <?php echo 'range' === $price_display ? '' : 'hidden'; ?>>
 					<div class="bpss-filter-row__controls bpss-filter-row__controls--inline">
 						<label class="bpss-filter-row__field">
-							<span class="bpss-filter-row__label"><?php esc_html_e( 'Min price', 'beplus-fast-product-filter-live-search' ); ?></span>
+							<span class="bpss-filter-row__label"><?php esc_html_e( 'Min price', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
 							<input type="number" id="bpss-price-min" name="<?php echo esc_attr( $option_key ); ?>[sidebar][price][min]" value="<?php echo esc_attr( (string) ( $price['min'] ?? 0 ) ); ?>" min="0" step="0.01" class="small-text" />
 						</label>
 						<label class="bpss-filter-row__field">
-							<span class="bpss-filter-row__label"><?php esc_html_e( 'Max price', 'beplus-fast-product-filter-live-search' ); ?></span>
+							<span class="bpss-filter-row__label"><?php esc_html_e( 'Max price', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
 							<input type="number" id="bpss-price-max" name="<?php echo esc_attr( $option_key ); ?>[sidebar][price][max]" value="<?php echo esc_attr( (string) ( $price['max'] ?? 1000 ) ); ?>" min="1" step="0.01" class="small-text" />
 						</label>
 						<label class="bpss-filter-row__field">
-							<span class="bpss-filter-row__label"><?php esc_html_e( 'Step', 'beplus-fast-product-filter-live-search' ); ?></span>
+							<span class="bpss-filter-row__label"><?php esc_html_e( 'Step', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
 							<input type="number" id="bpss-price-step" name="<?php echo esc_attr( $option_key ); ?>[sidebar][price][step]" value="<?php echo esc_attr( (string) ( $price['step'] ?? 1 ) ); ?>" min="0.01" step="0.01" class="small-text" />
 						</label>
 					</div>
 				</div>
 
 				<div class="bpss-settings__price-segments" data-bpss-price-settings="segments" <?php echo 'segments' === $price_display ? '' : 'hidden'; ?>>
-					<h3 class="bpss-settings__subtitle"><?php esc_html_e( 'Price segments', 'beplus-fast-product-filter-live-search' ); ?></h3>
-					<p class="description"><?php esc_html_e( 'Add one row per range. Leave Max empty or 0 for open-ended (e.g. $200+).', 'beplus-fast-product-filter-live-search' ); ?></p>
+					<h3 class="bpss-settings__subtitle"><?php esc_html_e( 'Price segments', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></h3>
+					<p class="description"><?php esc_html_e( 'Add one row per range. Leave Max empty or 0 for open-ended (e.g. $200+).', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></p>
 					<table class="widefat bpss-settings__data-table" id="bpss-price-segments">
 						<thead>
 							<tr>
-								<th><?php esc_html_e( 'Label (optional)', 'beplus-fast-product-filter-live-search' ); ?></th>
-								<th><?php esc_html_e( 'Min', 'beplus-fast-product-filter-live-search' ); ?></th>
-								<th><?php esc_html_e( 'Max', 'beplus-fast-product-filter-live-search' ); ?></th>
+								<th><?php esc_html_e( 'Label (optional)', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></th>
+								<th><?php esc_html_e( 'Min', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></th>
+								<th><?php esc_html_e( 'Max', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></th>
 								<th></th>
 							</tr>
 						</thead>
@@ -519,37 +519,37 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 								$seg_label = $segment['label'] ?? '';
 								?>
 								<tr class="bpss-settings__segment-row">
-									<td><input type="text" class="regular-text" name="<?php echo esc_attr( $option_key ); ?>[sidebar][price][segments][<?php echo esc_attr( (string) $index ); ?>][label]" value="<?php echo esc_attr( (string) $seg_label ); ?>" placeholder="<?php esc_attr_e( 'Auto label', 'beplus-fast-product-filter-live-search' ); ?>" /></td>
+									<td><input type="text" class="regular-text" name="<?php echo esc_attr( $option_key ); ?>[sidebar][price][segments][<?php echo esc_attr( (string) $index ); ?>][label]" value="<?php echo esc_attr( (string) $seg_label ); ?>" placeholder="<?php esc_attr_e( 'Auto label', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>" /></td>
 									<td><input type="number" class="small-text" name="<?php echo esc_attr( $option_key ); ?>[sidebar][price][segments][<?php echo esc_attr( (string) $index ); ?>][min]" value="<?php echo esc_attr( (string) $seg_min ); ?>" min="0" step="0.01" /></td>
-									<td><input type="number" class="small-text" name="<?php echo esc_attr( $option_key ); ?>[sidebar][price][segments][<?php echo esc_attr( (string) $index ); ?>][max]" value="<?php echo esc_attr( $seg_max > 0 ? (string) $seg_max : '' ); ?>" min="0" step="0.01" placeholder="∞" /></td>
-									<td><button type="button" class="button-link-delete bpss-remove-segment"><?php esc_html_e( 'Remove', 'beplus-fast-product-filter-live-search' ); ?></button></td>
+									<td><input type="number" class="small-text" name="<?php echo esc_attr( $option_key ); ?>[sidebar][price][segments][<?php echo esc_attr( (string) $index ); ?>][max]" value="<?php echo esc_attr( $seg_max > 0 ? (string) $seg_max : '' ); ?>" min="0" step="0.01" placeholder="âˆž" /></td>
+									<td><button type="button" class="button-link-delete bpss-remove-segment"><?php esc_html_e( 'Remove', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></button></td>
 								</tr>
 							<?php endforeach; ?>
 						</tbody>
 					</table>
-					<p><button type="button" class="button bpss-add-segment"><?php esc_html_e( 'Add segment', 'beplus-fast-product-filter-live-search' ); ?></button></p>
+					<p><button type="button" class="button bpss-add-segment"><?php esc_html_e( 'Add segment', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></button></p>
 					<template id="bpss-segment-row-template">
 						<tr class="bpss-settings__segment-row">
-							<td><input type="text" class="regular-text" data-name="label" placeholder="<?php esc_attr_e( 'Auto label', 'beplus-fast-product-filter-live-search' ); ?>" /></td>
+							<td><input type="text" class="regular-text" data-name="label" placeholder="<?php esc_attr_e( 'Auto label', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>" /></td>
 							<td><input type="number" class="small-text" data-name="min" min="0" step="0.01" value="0" /></td>
-							<td><input type="number" class="small-text" data-name="max" min="0" step="0.01" placeholder="∞" /></td>
-							<td><button type="button" class="button-link-delete bpss-remove-segment"><?php esc_html_e( 'Remove', 'beplus-fast-product-filter-live-search' ); ?></button></td>
+							<td><input type="number" class="small-text" data-name="max" min="0" step="0.01" placeholder="âˆž" /></td>
+							<td><button type="button" class="button-link-delete bpss-remove-segment"><?php esc_html_e( 'Remove', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></button></td>
 						</tr>
 					</template>
 				</div>
 			</div>
 
 			<div class="bpss-settings__card">
-				<h2 class="bpss-settings__card-title"><?php esc_html_e( 'Custom taxonomies', 'beplus-fast-product-filter-live-search' ); ?></h2>
-				<p class="description"><?php esc_html_e( 'Add extra product taxonomies beyond the defaults above.', 'beplus-fast-product-filter-live-search' ); ?></p>
+				<h2 class="bpss-settings__card-title"><?php esc_html_e( 'Custom taxonomies', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></h2>
+				<p class="description"><?php esc_html_e( 'Add extra product taxonomies beyond the defaults above.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></p>
 				<div class="bpss-settings__table-wrap">
 					<table class="widefat bpss-settings__data-table bpss-settings__custom-tax-table" id="bpss-custom-taxonomies">
 					<thead>
 						<tr>
-							<th class="col-taxonomy"><?php esc_html_e( 'Taxonomy', 'beplus-fast-product-filter-live-search' ); ?></th>
-							<th class="col-label"><?php esc_html_e( 'Label', 'beplus-fast-product-filter-live-search' ); ?></th>
-							<th class="col-mode"><?php esc_html_e( 'Selection', 'beplus-fast-product-filter-live-search' ); ?></th>
-							<th class="col-sub"><?php esc_html_e( 'Sub-items', 'beplus-fast-product-filter-live-search' ); ?></th>
+							<th class="col-taxonomy"><?php esc_html_e( 'Taxonomy', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></th>
+							<th class="col-label"><?php esc_html_e( 'Label', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></th>
+							<th class="col-mode"><?php esc_html_e( 'Selection', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></th>
+							<th class="col-sub"><?php esc_html_e( 'Sub-items', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></th>
 							<th class="col-actions"></th>
 						</tr>
 					</thead>
@@ -567,74 +567,74 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 							<tr class="bpss-settings__custom-tax-row">
 								<td>
 									<select name="<?php echo esc_attr( $option_key ); ?>[sidebar][facets][custom_taxonomies][<?php echo esc_attr( (string) $index ); ?>][taxonomy]">
-										<option value=""><?php esc_html_e( 'Select taxonomy', 'beplus-fast-product-filter-live-search' ); ?></option>
+										<option value=""><?php esc_html_e( 'Select taxonomy', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></option>
 										<?php foreach ( $selectable_taxonomies as $taxonomy => $label ) : ?>
 											<option value="<?php echo esc_attr( $taxonomy ); ?>" <?php selected( $row_taxonomy, $taxonomy ); ?>><?php echo esc_html( $label . ' (' . $taxonomy . ')' ); ?></option>
 										<?php endforeach; ?>
 									</select>
 								</td>
-								<td><input type="text" class="regular-text" name="<?php echo esc_attr( $option_key ); ?>[sidebar][facets][custom_taxonomies][<?php echo esc_attr( (string) $index ); ?>][label]" value="<?php echo esc_attr( (string) $row_label ); ?>" placeholder="<?php esc_attr_e( 'Auto label', 'beplus-fast-product-filter-live-search' ); ?>" /></td>
+								<td><input type="text" class="regular-text" name="<?php echo esc_attr( $option_key ); ?>[sidebar][facets][custom_taxonomies][<?php echo esc_attr( (string) $index ); ?>][label]" value="<?php echo esc_attr( (string) $row_label ); ?>" placeholder="<?php esc_attr_e( 'Auto label', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>" /></td>
 								<td>
 									<select name="<?php echo esc_attr( $option_key ); ?>[sidebar][facets][custom_taxonomies][<?php echo esc_attr( (string) $index ); ?>][mode]">
-										<option value="radio" <?php selected( $row_mode, 'radio' ); ?>><?php esc_html_e( 'Single', 'beplus-fast-product-filter-live-search' ); ?></option>
-										<option value="checkbox" <?php selected( $row_mode, 'checkbox' ); ?>><?php esc_html_e( 'Multiple', 'beplus-fast-product-filter-live-search' ); ?></option>
+										<option value="radio" <?php selected( $row_mode, 'radio' ); ?>><?php esc_html_e( 'Single', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></option>
+										<option value="checkbox" <?php selected( $row_mode, 'checkbox' ); ?>><?php esc_html_e( 'Multiple', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></option>
 									</select>
 								</td>
 								<td>
 									<label class="bpss-filter-row__checkbox">
 										<input type="checkbox" name="<?php echo esc_attr( $option_key ); ?>[sidebar][facets][custom_taxonomies][<?php echo esc_attr( (string) $index ); ?>][show_sub]" value="1" <?php checked( $row_sub ); ?> />
-										<?php esc_html_e( 'Show sub', 'beplus-fast-product-filter-live-search' ); ?>
+										<?php esc_html_e( 'Show sub', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
 									</label>
 								</td>
-								<td><button type="button" class="button-link-delete bpss-remove-custom-tax"><?php esc_html_e( 'Remove', 'beplus-fast-product-filter-live-search' ); ?></button></td>
+								<td><button type="button" class="button-link-delete bpss-remove-custom-tax"><?php esc_html_e( 'Remove', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></button></td>
 							</tr>
 						<?php endforeach; ?>
 					</tbody>
 				</table>
 				</div>
-				<p><button type="button" class="button bpss-add-custom-tax"><?php esc_html_e( 'Add custom taxonomy', 'beplus-fast-product-filter-live-search' ); ?></button></p>
+				<p><button type="button" class="button bpss-add-custom-tax"><?php esc_html_e( 'Add custom taxonomy', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></button></p>
 				<template id="bpss-custom-tax-row-template">
 					<tr class="bpss-settings__custom-tax-row">
 						<td>
 							<select data-name="taxonomy">
-								<option value=""><?php esc_html_e( 'Select taxonomy', 'beplus-fast-product-filter-live-search' ); ?></option>
+								<option value=""><?php esc_html_e( 'Select taxonomy', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></option>
 								<?php foreach ( $selectable_taxonomies as $taxonomy => $label ) : ?>
 									<option value="<?php echo esc_attr( $taxonomy ); ?>"><?php echo esc_html( $label . ' (' . $taxonomy . ')' ); ?></option>
 								<?php endforeach; ?>
 							</select>
 						</td>
-						<td><input type="text" class="regular-text" data-name="label" placeholder="<?php esc_attr_e( 'Auto label', 'beplus-fast-product-filter-live-search' ); ?>" /></td>
+						<td><input type="text" class="regular-text" data-name="label" placeholder="<?php esc_attr_e( 'Auto label', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>" /></td>
 						<td>
 							<select data-name="mode">
-								<option value="radio"><?php esc_html_e( 'Single', 'beplus-fast-product-filter-live-search' ); ?></option>
-								<option value="checkbox" selected><?php esc_html_e( 'Multiple', 'beplus-fast-product-filter-live-search' ); ?></option>
+								<option value="radio"><?php esc_html_e( 'Single', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></option>
+								<option value="checkbox" selected><?php esc_html_e( 'Multiple', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></option>
 							</select>
 						</td>
-						<td><label class="bpss-filter-row__checkbox"><input type="checkbox" data-name="show_sub" value="1" /> <?php esc_html_e( 'Show sub', 'beplus-fast-product-filter-live-search' ); ?></label></td>
-						<td><button type="button" class="button-link-delete bpss-remove-custom-tax"><?php esc_html_e( 'Remove', 'beplus-fast-product-filter-live-search' ); ?></button></td>
+						<td><label class="bpss-filter-row__checkbox"><input type="checkbox" data-name="show_sub" value="1" /> <?php esc_html_e( 'Show sub', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></label></td>
+						<td><button type="button" class="button-link-delete bpss-remove-custom-tax"><?php esc_html_e( 'Remove', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></button></td>
 					</tr>
 				</template>
 			</div>
 
 			<div class="bpss-settings__card">
-				<h2 class="bpss-settings__card-title"><?php esc_html_e( 'Additional filters', 'beplus-fast-product-filter-live-search' ); ?></h2>
-				<p class="description"><?php esc_html_e( 'Optional filters — enable each one in the block editor when needed.', 'beplus-fast-product-filter-live-search' ); ?></p>
+				<h2 class="bpss-settings__card-title"><?php esc_html_e( 'Additional filters', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></h2>
+				<p class="description"><?php esc_html_e( 'Optional filters â€” enable each one in the block editor when needed.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></p>
 				<div class="bpss-filter-grid bpss-filter-grid--compact">
 					<div class="bpss-filter-row bpss-filter-row--info">
-						<h3><?php esc_html_e( 'Rating', 'beplus-fast-product-filter-live-search' ); ?></h3>
-						<p><?php esc_html_e( 'Minimum average rating (5★ to 1★ & up).', 'beplus-fast-product-filter-live-search' ); ?></p>
+						<h3><?php esc_html_e( 'Rating', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></h3>
+						<p><?php esc_html_e( 'Minimum average rating (5â˜… to 1â˜… & up).', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></p>
 					</div>
 					<div class="bpss-filter-row bpss-filter-row--info">
-						<h3><?php esc_html_e( 'On sale', 'beplus-fast-product-filter-live-search' ); ?></h3>
-						<p><?php esc_html_e( 'Checkbox to show sale products only.', 'beplus-fast-product-filter-live-search' ); ?></p>
+						<h3><?php esc_html_e( 'On sale', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></h3>
+						<p><?php esc_html_e( 'Checkbox to show sale products only.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></p>
 					</div>
 					<div class="bpss-filter-row bpss-filter-row--info">
-						<h3><?php esc_html_e( 'Featured products', 'beplus-fast-product-filter-live-search' ); ?></h3>
-						<p><?php esc_html_e( 'Checkbox to show featured products only.', 'beplus-fast-product-filter-live-search' ); ?></p>
+						<h3><?php esc_html_e( 'Featured products', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></h3>
+						<p><?php esc_html_e( 'Checkbox to show featured products only.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></p>
 					</div>
 					<div class="bpss-filter-row bpss-filter-row--info">
-						<h3><?php esc_html_e( 'Stock status', 'beplus-fast-product-filter-live-search' ); ?></h3>
-						<p><?php esc_html_e( 'In stock / out of stock / backorder.', 'beplus-fast-product-filter-live-search' ); ?></p>
+						<h3><?php esc_html_e( 'Stock status', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></h3>
+						<p><?php esc_html_e( 'In stock / out of stock / backorder.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></p>
 					</div>
 				</div>
 			</div>

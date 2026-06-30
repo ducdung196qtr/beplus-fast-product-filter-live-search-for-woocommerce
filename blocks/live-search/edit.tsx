@@ -28,22 +28,22 @@ export default function Edit( {
 	return (
 		<div { ...blockProps }>
 			<InspectorControls>
-				<PanelBody title={ __( 'Search', 'beplus-fast-product-filter-live-search' ) } initialOpen={ true }>
+				<PanelBody title={ __( 'Search', 'beplus-fast-product-filter-live-search-for-woocommerce' ) } initialOpen={ true }>
 					<TextControl
-						label={ __( 'Placeholder', 'beplus-fast-product-filter-live-search' ) }
+						label={ __( 'Placeholder', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
 						value={ attributes.placeholder }
 						onChange={ ( value ) => setAttributes( { placeholder: value } ) }
 					/>
 					<RadioControl
-						label={ __( 'Search scope', 'beplus-fast-product-filter-live-search' ) }
+						label={ __( 'Search scope', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
 						selected={ attributes.searchScope }
 						options={ [
 							{
-								label: __( 'All categories', 'beplus-fast-product-filter-live-search' ),
+								label: __( 'All categories', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 								value: 'all',
 							},
 							{
-								label: __( 'Selected categories only', 'beplus-fast-product-filter-live-search' ),
+								label: __( 'Selected categories only', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 								value: 'limited',
 							},
 						] }
@@ -60,23 +60,23 @@ export default function Edit( {
 						/>
 					) }
 					<ToggleControl
-						label={ __( 'Show category filter on frontend', 'beplus-fast-product-filter-live-search' ) }
+						label={ __( 'Show category filter on frontend', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
 						checked={ attributes.showCategory }
 						onChange={ ( value ) => setAttributes( { showCategory: value } ) }
 						help={
 							isLimited
 								? __(
 										'When limited, the dropdown only lists the selected categories.',
-										'beplus-fast-product-filter-live-search'
+										'beplus-fast-product-filter-live-search-for-woocommerce'
 								  )
 								: __(
 										'Let visitors narrow search by category.',
-										'beplus-fast-product-filter-live-search'
+										'beplus-fast-product-filter-live-search-for-woocommerce'
 								  )
 						}
 					/>
 					<RangeControl
-						label={ __( 'Max results', 'beplus-fast-product-filter-live-search' ) }
+						label={ __( 'Max results', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
 						value={ attributes.maxResults }
 						onChange={ ( value ) =>
 							setAttributes( { maxResults: value ?? attributes.maxResults } )
@@ -85,7 +85,7 @@ export default function Edit( {
 						max={ 12 }
 					/>
 					<RangeControl
-						label={ __( 'Min characters', 'beplus-fast-product-filter-live-search' ) }
+						label={ __( 'Min characters', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
 						value={ attributes.minChars }
 						onChange={ ( value ) =>
 							setAttributes( { minChars: value ?? attributes.minChars } )
@@ -95,35 +95,35 @@ export default function Edit( {
 					/>
 				</PanelBody>
 
-				<PanelBody title={ __( 'Search in', 'beplus-fast-product-filter-live-search' ) } initialOpen={ true }>
+				<PanelBody title={ __( 'Search in', 'beplus-fast-product-filter-live-search-for-woocommerce' ) } initialOpen={ true }>
 					<SearchFields
 						searchFields={ attributes.searchFields ?? [ 'title' ] }
 						setAttributes={ setAttributes }
 					/>
 				</PanelBody>
 
-				<PanelBody title={ __( 'Suggestions & matching', 'beplus-fast-product-filter-live-search' ) } initialOpen={ true }>
+				<PanelBody title={ __( 'Suggestions & matching', 'beplus-fast-product-filter-live-search-for-woocommerce' ) } initialOpen={ true }>
 					<ToggleControl
-						label={ __( 'Enable suggestions', 'beplus-fast-product-filter-live-search' ) }
+						label={ __( 'Enable suggestions', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
 						checked={ attributes.enableSuggestions }
 						onChange={ ( value ) => setAttributes( { enableSuggestions: value } ) }
 					/>
 					{ attributes.enableSuggestions && (
 						<RadioControl
-							label={ __( 'Suggestions layout', 'beplus-fast-product-filter-live-search' ) }
+							label={ __( 'Suggestions layout', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
 							selected={ attributes.suggestionLayout ?? 'inline' }
 							options={ [
 								{
 									label: __(
 										'Inline (autocomplete in search box)',
-										'beplus-fast-product-filter-live-search',
+										'beplus-fast-product-filter-live-search-for-woocommerce',
 									),
 									value: 'inline',
 								},
 								{
 									label: __(
 										'Tags (below search, above results)',
-										'beplus-fast-product-filter-live-search',
+										'beplus-fast-product-filter-live-search-for-woocommerce',
 									),
 									value: 'tags',
 								},
@@ -136,31 +136,31 @@ export default function Edit( {
 						/>
 					) }
 					<ToggleControl
-						label={ __( 'Misspelling fix', 'beplus-fast-product-filter-live-search' ) }
+						label={ __( 'Misspelling fix', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
 						checked={ attributes.misspellingFix }
 						onChange={ ( value ) => setAttributes( { misspellingFix: value } ) }
 						help={ __(
 							'When no results match, suggest the closest product title word.',
-							'beplus-fast-product-filter-live-search'
+							'beplus-fast-product-filter-live-search-for-woocommerce'
 						) }
 					/>
 					<RadioControl
-						label={ __( 'Exact match', 'beplus-fast-product-filter-live-search' ) }
+						label={ __( 'Exact match', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
 						selected={ attributes.exactMatch ? 'yes' : 'no' }
 						options={ [
-							{ label: __( 'Yes', 'beplus-fast-product-filter-live-search' ), value: 'yes' },
-							{ label: __( 'No', 'beplus-fast-product-filter-live-search' ), value: 'no' },
+							{ label: __( 'Yes', 'beplus-fast-product-filter-live-search-for-woocommerce' ), value: 'yes' },
+							{ label: __( 'No', 'beplus-fast-product-filter-live-search-for-woocommerce' ), value: 'no' },
 						] }
 						onChange={ ( value ) =>
 							setAttributes( { exactMatch: value === 'yes' } )
 						}
 					/>
 					<RadioControl
-						label={ __( 'Search logic', 'beplus-fast-product-filter-live-search' ) }
+						label={ __( 'Search logic', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
 						selected={ attributes.searchLogic }
 						options={ [
-							{ label: __( 'OR', 'beplus-fast-product-filter-live-search' ), value: 'or' },
-							{ label: __( 'AND', 'beplus-fast-product-filter-live-search' ), value: 'and' },
+							{ label: __( 'OR', 'beplus-fast-product-filter-live-search-for-woocommerce' ), value: 'or' },
+							{ label: __( 'AND', 'beplus-fast-product-filter-live-search-for-woocommerce' ), value: 'and' },
 						] }
 						onChange={ ( value ) =>
 							setAttributes( {
@@ -169,25 +169,25 @@ export default function Edit( {
 						}
 						help={ __(
 							'OR matches any keyword; AND requires all keywords across the selected search fields.',
-							'beplus-fast-product-filter-live-search'
+							'beplus-fast-product-filter-live-search-for-woocommerce'
 						) }
 					/>
 				</PanelBody>
 
-				<PanelBody title={ __( 'Display', 'beplus-fast-product-filter-live-search' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'Display', 'beplus-fast-product-filter-live-search-for-woocommerce' ) } initialOpen={ false }>
 					<ToggleControl
-						label={ __( 'Add to cart button', 'beplus-fast-product-filter-live-search' ) }
+						label={ __( 'Add to cart button', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
 						checked={ attributes.showAddToCart }
 						onChange={ ( value ) => setAttributes( { showAddToCart: value } ) }
 					/>
 					<ToggleControl
-						label={ __( 'View all results link', 'beplus-fast-product-filter-live-search' ) }
+						label={ __( 'View all results link', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
 						checked={ attributes.showViewAll }
 						onChange={ ( value ) => setAttributes( { showViewAll: value } ) }
 					/>
 					<BaseControl
 						id="highlight-color"
-						label={ __( 'Highlight color', 'beplus-fast-product-filter-live-search' ) }
+						label={ __( 'Highlight color', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
 					>
 						<ColorPalette
 							value={ attributes.highlightColor }
