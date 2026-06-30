@@ -3,11 +3,11 @@
 /**
  * Search suggestion service.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  * @subpackage Search
  */
 
-namespace BePlusSmartSearch\Search;
+namespace BePlusFastProductFilterLiveSearch\Search;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -82,7 +82,7 @@ final class SuggestionService {
 			if ( false !== mb_strpos( $title_lower, $needle ) ) {
 				$suggestions[] = sprintf(
 					/* translators: %s: partial keyword */
-					__( 'with %s', 'beplus-smart-search' ),
+					__( 'with %s', 'beplus-fast-product-filter-live-search' ),
 					$keyword,
 				);
 			}

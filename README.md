@@ -1,4 +1,4 @@
-# BePlus Smart Search
+# Beplus Fast Product Filter & Live Search for WooCommerce
 
 WordPress plugin: **Advanced Woo Search** Gutenberg block for WooCommerce — live filters without page reload.
 
@@ -22,7 +22,7 @@ Built with **PHP 7.4+**, **TypeScript**, **esbuild**, **PHPStan**, and **PHP CS 
 
 ## Quick start
 
-From `wp-content/plugins/beplus-smart-search/`:
+From `wp-content/plugins/beplus-fast-product-filter-live-search/`:
 
 ```bash
 npm install
@@ -32,7 +32,7 @@ npm run build
 
 > **Windows:** `composer install` fails without global Composer. Use `npm run composer:install` or `.\composer.ps1 install` from this folder instead.
 
-Activate **BePlus Smart Search** under **Plugins**.
+Activate **Beplus Fast Product Filter & Live Search for WooCommerce** under **Plugins**.
 
 During development:
 
@@ -119,9 +119,9 @@ npm run build:blocks
 ## Project layout
 
 ```
-beplus-smart-search/
-├── beplus-smart-search.php   # Bootstrap
-├── src/                      # PSR-4 PHP (BePlusSmartSearch\)
+beplus-fast-product-filter-live-search/
+├── beplus-fast-product-filter-live-search.php   # Bootstrap
+├── src/                      # PSR-4 PHP (BePlusFastProductFilterLiveSearch\)
 ├── blocks/                   # Gutenberg blocks (block.json + TS source)
 ├── admin/                    # Settings page (PHP views + TS/JS)
 ├── includes/                 # Procedural helpers
@@ -172,7 +172,7 @@ npm run build
 npm run build:package
 ```
 
-Creates `beplus-smart-search-v{version}.zip` in the plugin root (runtime files only: PHP, built JS/CSS, `readme.txt` — no dev config or TS sources).
+Creates `beplus-fast-product-filter-live-search-v{version}.zip` in the plugin root (runtime files only: PHP, built JS/CSS, `readme.txt` — no dev config or TS sources).
 
 ---
 

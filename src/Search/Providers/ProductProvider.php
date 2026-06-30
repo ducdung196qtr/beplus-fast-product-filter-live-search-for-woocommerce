@@ -3,16 +3,16 @@
 /**
  * WooCommerce product search provider.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  * @subpackage Search
  */
 
-namespace BePlusSmartSearch\Search\Providers;
+namespace BePlusFastProductFilterLiveSearch\Search\Providers;
 
-use BePlusSmartSearch\Search\ProductMatchMeta;
-use BePlusSmartSearch\Search\ProductQueryBuilder;
-use BePlusSmartSearch\Search\ProductTemplateRenderer;
-use BePlusSmartSearch\Search\SearchQuery;
+use BePlusFastProductFilterLiveSearch\Search\ProductMatchMeta;
+use BePlusFastProductFilterLiveSearch\Search\ProductQueryBuilder;
+use BePlusFastProductFilterLiveSearch\Search\ProductTemplateRenderer;
+use BePlusFastProductFilterLiveSearch\Search\SearchQuery;
 use WC_Product;
 
 if ( ! defined( 'ABSPATH' ) ) {

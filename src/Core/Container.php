@@ -3,11 +3,11 @@
 /**
  * PSR-11 compatible service container.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  * @subpackage Core
  */
 
-namespace BePlusSmartSearch\Core;
+namespace BePlusFastProductFilterLiveSearch\Core;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

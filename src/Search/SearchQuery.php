@@ -3,11 +3,11 @@
 /**
  * Search query value object.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  * @subpackage Search
  */
 
-namespace BePlusSmartSearch\Search;
+namespace BePlusFastProductFilterLiveSearch\Search;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -132,8 +132,8 @@ final class SearchQuery {
 			$this->max_price = max( 1.0, $this->max_price );
 		}
 		$this->page         = max( 1, isset( $args['page'] ) ? (int) $args['page'] : 1 );
-		$default_per_page   = function_exists( 'beplus_smart_search_get_per_page' )
-			? beplus_smart_search_get_per_page()
+		$default_per_page   = function_exists( 'beplus_fast_product_filter_live_search_get_per_page' )
+			? beplus_fast_product_filter_live_search_get_per_page()
 			: 10;
 		$requested_per_page = isset( $args['per_page'] ) ? (int) $args['per_page'] : 0;
 		$this->per_page     = min(
@@ -141,7 +141,7 @@ final class SearchQuery {
 			max( 1, $requested_per_page > 0 ? $requested_per_page : $default_per_page ),
 		);
 
-		$parsed_orderby     = beplus_smart_search_parse_catalog_orderby(
+		$parsed_orderby     = beplus_fast_product_filter_live_search_parse_catalog_orderby(
 			isset( $args['orderby'] ) ? (string) $args['orderby'] : '',
 			isset( $args['order'] ) ? (string) $args['order'] : '',
 		);
@@ -176,7 +176,7 @@ final class SearchQuery {
 
 		$per_page = (int) $request->get_param( 'per_page' );
 		if ( $per_page <= 0 ) {
-			$per_page = beplus_smart_search_get_per_page();
+			$per_page = beplus_fast_product_filter_live_search_get_per_page();
 		}
 
 		return new self(
@@ -230,11 +230,11 @@ final class SearchQuery {
 	private static function taxonomies_from_request( \WP_REST_Request $request ): array {
 		$taxonomies = array();
 
-		if ( ! function_exists( 'beplus_smart_search_get_configured_filter_taxonomies' ) ) {
+		if ( ! function_exists( 'beplus_fast_product_filter_live_search_get_configured_filter_taxonomies' ) ) {
 			return $taxonomies;
 		}
 
-		foreach ( beplus_smart_search_get_configured_filter_taxonomies() as $taxonomy ) {
+		foreach ( beplus_fast_product_filter_live_search_get_configured_filter_taxonomies() as $taxonomy ) {
 			$value = $request->get_param( $taxonomy );
 			$terms = self::normalize_terms( $value );
 			if ( ! empty( $terms ) ) {

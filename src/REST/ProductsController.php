@@ -3,16 +3,16 @@
 /**
  * Products REST controller.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  * @subpackage REST
  */
 
-namespace BePlusSmartSearch\REST;
+namespace BePlusFastProductFilterLiveSearch\REST;
 
-use BePlusSmartSearch\Core\AbstractModule;
-use BePlusSmartSearch\Search\SearchEngine;
-use BePlusSmartSearch\Search\SearchFieldsFilter;
-use BePlusSmartSearch\Search\SearchQuery;
+use BePlusFastProductFilterLiveSearch\Core\AbstractModule;
+use BePlusFastProductFilterLiveSearch\Search\SearchEngine;
+use BePlusFastProductFilterLiveSearch\Search\SearchFieldsFilter;
+use BePlusFastProductFilterLiveSearch\Search\SearchQuery;
 use WP_REST_Request;
 use WP_REST_Response;
 use WP_REST_Server;
@@ -31,7 +31,7 @@ class ProductsController extends AbstractModule {
 	 *
 	 * @var string
 	 */
-	private string $namespace = 'beplus-smart-search/v1';
+	private string $namespace = 'beplus-fast-product-filter-live-search/v1';
 
 	/**
 	 * Register REST routes.
@@ -170,8 +170,8 @@ class ProductsController extends AbstractModule {
 			),
 		);
 
-		if ( function_exists( 'beplus_smart_search_get_configured_filter_taxonomies' ) ) {
-			foreach ( beplus_smart_search_get_configured_filter_taxonomies() as $taxonomy ) {
+		if ( function_exists( 'beplus_fast_product_filter_live_search_get_configured_filter_taxonomies' ) ) {
+			foreach ( beplus_fast_product_filter_live_search_get_configured_filter_taxonomies() as $taxonomy ) {
 				$params[ $taxonomy ] = array(
 					'type'              => array( 'string', 'array' ),
 					'sanitize_callback' => array( $this, 'sanitize_terms_param' ),

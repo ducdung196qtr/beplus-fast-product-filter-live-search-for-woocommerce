@@ -50,9 +50,23 @@ const result = spawnSync(
 	] ),
 	{
 		cwd: ROOT,
-		stdio: 'inherit',
+		stdio: 'pipe',
 		shell: false,
 	},
 );
 
-process.exit( result.status ?? 1 );
+// Always print stdout (fixer output).
+if ( result.stdout?.length ) {
+	process.stdout.write( result.stdout );
+}
+
+// Only print stderr on actual failure (non-zero exit), suppressing
+// Windows PHP startup warnings like missing php_imagick.dll.
+if ( result.status !== 0 ) {
+	if ( result.stderr?.length ) {
+		process.stderr.write( result.stderr );
+	}
+	process.exit( result.status );
+}
+
+process.exit( 0 );

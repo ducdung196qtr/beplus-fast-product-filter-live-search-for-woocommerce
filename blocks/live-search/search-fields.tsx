@@ -7,12 +7,12 @@ interface SearchFieldsProps {
 }
 
 const FIELD_OPTIONS = [
-	{ key: 'title', label: __( 'Title', 'beplus-smart-search' ) },
-	{ key: 'sku', label: __( 'SKU', 'beplus-smart-search' ) },
-	{ key: 'content', label: __( 'Content', 'beplus-smart-search' ) },
-	{ key: 'categories', label: __( 'Categories', 'beplus-smart-search' ) },
-	{ key: 'tags', label: __( 'Tags', 'beplus-smart-search' ) },
-	{ key: 'attributes', label: __( 'Attributes', 'beplus-smart-search' ) },
+	{ key: 'title', label: __( 'Title', 'beplus-fast-product-filter-live-search' ) },
+	{ key: 'sku', label: __( 'SKU', 'beplus-fast-product-filter-live-search' ) },
+	{ key: 'content', label: __( 'Content', 'beplus-fast-product-filter-live-search' ) },
+	{ key: 'categories', label: __( 'Categories', 'beplus-fast-product-filter-live-search' ) },
+	{ key: 'tags', label: __( 'Tags', 'beplus-fast-product-filter-live-search' ) },
+	{ key: 'attributes', label: __( 'Attributes', 'beplus-fast-product-filter-live-search' ) },
 ] as const;
 
 function toggleField( key: string, searchFields: string[] ): string[] {
@@ -32,7 +32,7 @@ export default function SearchFields( {
 			<p className="components-base-control__help">
 				{ __(
 					'Choose which product data to search. Matching fields (except Content) appear under each result.',
-					'beplus-smart-search'
+					'beplus-fast-product-filter-live-search'
 				) }
 			</p>
 			{ FIELD_OPTIONS.map( ( field ) => (

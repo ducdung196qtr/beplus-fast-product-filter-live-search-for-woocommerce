@@ -3,7 +3,7 @@
 /**
  * PHP CS Fixer — BePlus Smart Search (WordPress-friendly defaults).
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  */
 
 $finder = PhpCsFixer\Finder::create()
@@ -13,9 +13,9 @@ $finder = PhpCsFixer\Finder::create()
 			__DIR__ . '/blocks',
 			__DIR__ . '/includes',
 			__DIR__ . '/admin',
-		)
+		),
 	)
-	->append( array( __DIR__ . '/beplus-smart-search.php' ) )
+	->append( array( __DIR__ . '/beplus-fast-product-filter-live-search.php' ) )
 	->name( '*.php' )
 	->notPath( 'index.asset.php' )
 	->notPath( 'settings.asset.php' )
@@ -62,6 +62,6 @@ return ( new PhpCsFixer\Config() )
 			),
 			'whitespace_after_comma_in_array' => true,
 			'yoda_style'                  => false,
-		)
+		),
 	)
 	->setFinder( $finder );

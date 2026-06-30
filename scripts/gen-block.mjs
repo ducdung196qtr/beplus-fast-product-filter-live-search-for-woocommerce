@@ -17,7 +17,7 @@ const get = ( flag ) => {
 };
 
 const name = get( '--name' );
-const ns = 'beplus-smart-search';
+const ns = 'beplus-fast-product-filter-live-search';
 
 if ( ! name ) {
 	console.error( '❌  Missing --name argument.' );
@@ -31,7 +31,7 @@ if ( ! /^[a-z][a-z0-9-]*$/.test( name ) ) {
 }
 
 const title = get( '--title' ) ?? name.replace( /-/g, ' ' ).replace( /\b\w/g, ( c ) => c.toUpperCase() );
-const category = get( '--category' ) ?? 'beplus-smart-search';
+const category = get( '--category' ) ?? 'beplus-fast-product-filter-live-search';
 const pascal = name.replace( /(^|-)([a-z])/g, ( _, __, c ) => c.toUpperCase() );
 const blockDir = path.resolve( `./blocks/${name}` );
 
@@ -114,7 +114,7 @@ export default function ${pascal}Edit( { attributes, setAttributes }: EditProps 
 /**
  * ${title} — dynamic block render template.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  *
  * @var array    $attributes Block attributes.
  * @var string   $content    Inner blocks HTML.
@@ -135,7 +135,7 @@ $wrapper_attributes = get_block_wrapper_attributes();
 ?>
 
 <div <?php echo $wrapper_attributes; ?>>
-	<h2 class="beplus-smart-search__${name.replace( /-/g, '-' ) }-heading"><?php echo $heading; ?></h2>
+	<h2 class="beplus-fast-product-filter-live-search__${name.replace( /-/g, '-' ) }-heading"><?php echo $heading; ?></h2>
 </div>
 `,
 	'style.css': `.wp-block-${ns.replace( '/', '-' )}-${name} {

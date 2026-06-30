@@ -3,11 +3,11 @@
 /**
  * Product query builder shared by search and facets.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  * @subpackage Search
  */
 
-namespace BePlusSmartSearch\Search;
+namespace BePlusFastProductFilterLiveSearch\Search;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -109,7 +109,16 @@ final class ProductQueryBuilder {
 		}
 
 		if ( $query->is_on_sale() ) {
-			$args['on_sale'] = true;
+			if ( function_exists( 'wc_get_product_ids_on_sale' ) ) {
+				$on_sale_ids = wc_get_product_ids_on_sale();
+				if ( empty( $on_sale_ids ) ) {
+					$args['include'] = array( -1 );
+				} else {
+				$args['include'] = isset( $args['include'] ) // @phpstan-ignore isset.offset
+					? array_intersect( (array) $args['include'], $on_sale_ids )
+					: $on_sale_ids;
+				}
+			}
 		}
 
 		if ( $query->is_featured() ) {

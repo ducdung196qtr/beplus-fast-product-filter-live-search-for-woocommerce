@@ -3,14 +3,14 @@
 /**
  * Suggestions REST controller.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  * @subpackage REST
  */
 
-namespace BePlusSmartSearch\REST;
+namespace BePlusFastProductFilterLiveSearch\REST;
 
-use BePlusSmartSearch\Core\AbstractModule;
-use BePlusSmartSearch\Search\SuggestionService;
+use BePlusFastProductFilterLiveSearch\Core\AbstractModule;
+use BePlusFastProductFilterLiveSearch\Search\SuggestionService;
 use WP_REST_Request;
 use WP_REST_Response;
 use WP_REST_Server;
@@ -29,7 +29,7 @@ class SuggestionsController extends AbstractModule {
 	 *
 	 * @var string
 	 */
-	private string $namespace = 'beplus-smart-search/v1';
+	private string $namespace = 'beplus-fast-product-filter-live-search/v1';
 
 	/**
 	 * Register REST routes.

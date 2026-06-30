@@ -1,10 +1,10 @@
 ---
-description: BePlus Smart Search plugin blocks — block.json, render.php, REST-backed search UI
+description: Beplus Fast Product Filter & Live Search for WooCommerce plugin blocks — block.json, render.php, REST-backed search UI
 globs: blocks/**
 alwaysApply: false
 ---
 
-# BePlus Smart Search — plugin blocks
+# Beplus Fast Product Filter & Live Search for WooCommerce — plugin blocks
 
 Standards: [`Document Plugin.md`](../../Document Plugin.md) § Gutenberg Blocks. Skills: `bpss-add-plugin-block`.
 
@@ -13,13 +13,13 @@ Standards: [`Document Plugin.md`](../../Document Plugin.md) § Gutenberg Blocks.
 - One folder per block under `blocks/` with `block.json`.
 - `BlockRegistry` auto-discovers via `register_block_type_from_metadata()`.
 - Built assets via wp-scripts → `build/blocks/` (or block-local `index.js` + `index.asset.php` if using custom pipeline).
-- Extension filter: `beplus_smart_search.blocks`.
+- Extension filter: `beplus_fast_product_filter_live_search.blocks`.
 
 ## block.json conventions
 
-- `textdomain`: `beplus-smart-search`
-- `category`: `beplus-smart-search`
-- `name`: `beplus-smart-search/{slug}` (e.g. `beplus-smart-search/search-bar`)
+- `textdomain`: `beplus-fast-product-filter-live-search`
+- `category`: `beplus-fast-product-filter-live-search`
+- `name`: `beplus-fast-product-filter-live-search/{slug}` (e.g. `beplus-fast-product-filter-live-search/search-bar`)
 - Prefer `render: file:./render.php` for dynamic search UI.
 - Attributes: camelCase (`placeholder`, `showIcon`, `maxResults`, `enableLiveSearch`).
 
@@ -42,8 +42,8 @@ Full build spec: [`docs/advanced-woo-search-block.md`](../../docs/advanced-woo-s
 
 ## Styling
 
-- Scoped classes: `beplus-smart-search__*` — inherit theme typography where possible.
-- Loading state: `beplus-smart-search--loading` → `beplus-smart-search--ready` after init (avoid layout shift).
+- Scoped classes: `beplus-fast-product-filter-live-search__*` — inherit theme typography where possible.
+- Loading state: `beplus-fast-product-filter-live-search--loading` → `beplus-fast-product-filter-live-search--ready` after init (avoid layout shift).
 - Idempotent JS init: `data-bpss-search-init-pending` / `data-bpss-search-inited`.
 
 ## Reference
@@ -53,7 +53,7 @@ Full build spec: [`docs/advanced-woo-search-block.md`](../../docs/advanced-woo-s
 
 ```text
 ❌ New block named woocommerce/search-bar or category widgets
-✅ beplus-smart-search/search-bar, category beplus-smart-search
+✅ beplus-fast-product-filter-live-search/search-bar, category beplus-fast-product-filter-live-search
 
 ❌ Inline <script> in render.php for autocomplete
 ✅ block.js + REST + wp_enqueue_script via block.json editorScript/viewScript

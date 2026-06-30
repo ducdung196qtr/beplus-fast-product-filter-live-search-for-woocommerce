@@ -3,11 +3,11 @@
 /**
  * Centralized asset registration.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  * @subpackage Core
  */
 
-namespace BePlusSmartSearch\Core;
+namespace BePlusFastProductFilterLiveSearch\Core;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -108,39 +108,40 @@ class AssetLoader extends AbstractModule {
 	 */
 	private function get_localized_data(): array {
 		$data = array(
-			'restUrl' => esc_url_raw( rest_url( 'beplus-smart-search/v1/' ) ),
+			'restUrl' => esc_url_raw( rest_url( 'beplus-fast-product-filter-live-search/v1/' ) ),
 			'nonce'   => wp_create_nonce( 'wp_rest' ),
-			'shopUrl' => esc_url_raw( beplus_smart_search_get_catalog_search_base_url() ),
-			'facetDisplayMode' => beplus_smart_search_get_facet_display_mode(),
-			'filterSections'   => beplus_smart_search_get_filter_section_catalog(),
-			'attributeDefinitions' => beplus_smart_search_get_all_attribute_definitions(),
-			'productCategories'    => beplus_smart_search_get_product_category_definitions(),
+			'shopUrl' => esc_url_raw( beplus_fast_product_filter_live_search_get_catalog_search_base_url() ),
+			'facetDisplayMode' => beplus_fast_product_filter_live_search_get_facet_display_mode(),
+			'filterSections'   => beplus_fast_product_filter_live_search_get_filter_section_catalog(),
+			'attributeDefinitions' => beplus_fast_product_filter_live_search_get_all_attribute_definitions(),
+			'productCategories'    => beplus_fast_product_filter_live_search_get_product_category_definitions(),
 			'i18n'    => array(
-				'searching'    => __( 'Searching…', 'beplus-smart-search' ),
-				'noResults'    => __( 'No products found.', 'beplus-smart-search' ),
+				'searching'    => __( 'Searching…', 'beplus-fast-product-filter-live-search' ),
+				'noResults'    => __( 'No products found.', 'beplus-fast-product-filter-live-search' ),
 				/* translators: %d: number of products found */
-				'resultsFound' => __( '%d products found', 'beplus-smart-search' ),
-				'error'        => __( 'Search failed. Please try again.', 'beplus-smart-search' ),
-				'cleared'      => __( 'Filters cleared.', 'beplus-smart-search' ),
-				'showingResults' => __( 'Showing %d results', 'beplus-smart-search' ),
-				'showingResult'  => __( 'Showing 1 result', 'beplus-smart-search' ),
-				'clearAllFilters' => __( 'Clear all filters', 'beplus-smart-search' ),
-				'removeFilter'   => __( 'Remove filter', 'beplus-smart-search' ),
-				'activeFilters' => __( 'Active filters', 'beplus-smart-search' ),
-				'search'       => __( 'Search', 'beplus-smart-search' ),
-				'category'     => __( 'Category', 'beplus-smart-search' ),
-				'tag'          => __( 'Tag', 'beplus-smart-search' ),
-				'price'        => __( 'Price', 'beplus-smart-search' ),
-				'stock'        => __( 'Stock', 'beplus-smart-search' ),
-				'onSale'       => __( 'On sale', 'beplus-smart-search' ),
-				'featured'     => __( 'Featured', 'beplus-smart-search' ),
-				'rating'       => __( 'Rating', 'beplus-smart-search' ),
-				'brand'        => __( 'Brand', 'beplus-smart-search' ),
-				'addToCart'    => __( 'Add to cart', 'beplus-smart-search' ),
-				'viewProduct'  => __( 'View product', 'beplus-smart-search' ),
-				'added'        => __( 'Added', 'beplus-smart-search' ),
-				'addedToCart'  => __( 'Added to cart', 'beplus-smart-search' ),
-				'viewAll'      => __( 'View All Results', 'beplus-smart-search' ),
+				'resultsFound' => __( '%d products found', 'beplus-fast-product-filter-live-search' ),
+				'error'        => __( 'Search failed. Please try again.', 'beplus-fast-product-filter-live-search' ),
+				'cleared'      => __( 'Filters cleared.', 'beplus-fast-product-filter-live-search' ),
+				/* translators: %d: number of results */
+				'showingResults' => __( 'Showing %d results', 'beplus-fast-product-filter-live-search' ),
+				'showingResult'  => __( 'Showing 1 result', 'beplus-fast-product-filter-live-search' ),
+				'clearAllFilters' => __( 'Clear all filters', 'beplus-fast-product-filter-live-search' ),
+				'removeFilter'   => __( 'Remove filter', 'beplus-fast-product-filter-live-search' ),
+				'activeFilters' => __( 'Active filters', 'beplus-fast-product-filter-live-search' ),
+				'search'       => __( 'Search', 'beplus-fast-product-filter-live-search' ),
+				'category'     => __( 'Category', 'beplus-fast-product-filter-live-search' ),
+				'tag'          => __( 'Tag', 'beplus-fast-product-filter-live-search' ),
+				'price'        => __( 'Price', 'beplus-fast-product-filter-live-search' ),
+				'stock'        => __( 'Stock', 'beplus-fast-product-filter-live-search' ),
+				'onSale'       => __( 'On sale', 'beplus-fast-product-filter-live-search' ),
+				'featured'     => __( 'Featured', 'beplus-fast-product-filter-live-search' ),
+				'rating'       => __( 'Rating', 'beplus-fast-product-filter-live-search' ),
+				'brand'        => __( 'Brand', 'beplus-fast-product-filter-live-search' ),
+				'addToCart'    => __( 'Add to cart', 'beplus-fast-product-filter-live-search' ),
+				'viewProduct'  => __( 'View product', 'beplus-fast-product-filter-live-search' ),
+				'added'        => __( 'Added', 'beplus-fast-product-filter-live-search' ),
+				'addedToCart'  => __( 'Added to cart', 'beplus-fast-product-filter-live-search' ),
+				'viewAll'      => __( 'View All Results', 'beplus-fast-product-filter-live-search' ),
 			),
 		);
 

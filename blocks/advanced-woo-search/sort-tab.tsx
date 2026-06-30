@@ -129,33 +129,33 @@ export default function SortTab( { attributes, setAttributes }: SortTabProps ) {
 
 	if ( visibleOrder.length === 0 ) {
 		return (
-			<p className="beplus-smart-search-sort-tab__empty">
-				{ __( 'Enable filters in the Filters tab to sort them.', 'beplus-smart-search' ) }
+			<p className="beplus-fast-product-filter-live-search-sort-tab__empty">
+				{ __( 'Enable filters in the Filters tab to sort them.', 'beplus-fast-product-filter-live-search' ) }
 			</p>
 		);
 	}
 
 	return (
-		<div className="beplus-smart-search-sort-tab">
-			<p className="beplus-smart-search-sort-tab__help">
+		<div className="beplus-fast-product-filter-live-search-sort-tab">
+			<p className="beplus-fast-product-filter-live-search-sort-tab__help">
 				{ __(
 					'Drag order of filter sections. Each attribute appears as its own panel.',
-					'beplus-smart-search'
+					'beplus-fast-product-filter-live-search'
 				) }
 			</p>
-			<ul className="beplus-smart-search-sort-tab__list">
+			<ul className="beplus-fast-product-filter-live-search-sort-tab__list">
 				{ visibleOrder.map( ( sectionId, index ) => (
 					<li
 						key={ sectionId }
-						className="beplus-smart-search-sort-tab__item"
+						className="beplus-fast-product-filter-live-search-sort-tab__item"
 					>
-						<span className="beplus-smart-search-sort-tab__label">
+						<span className="beplus-fast-product-filter-live-search-sort-tab__label">
 							{ catalog[ sectionId ] ?? sectionId }
 						</span>
-						<span className="beplus-smart-search-sort-tab__actions">
+						<span className="beplus-fast-product-filter-live-search-sort-tab__actions">
 							<Button
 								icon="arrow-up-alt2"
-								label={ __( 'Move up', 'beplus-smart-search' ) }
+								label={ __( 'Move up', 'beplus-fast-product-filter-live-search' ) }
 								onClick={ () =>
 									persistOrder( moveItem( visibleOrder, index, -1 ) )
 								}
@@ -164,7 +164,7 @@ export default function SortTab( { attributes, setAttributes }: SortTabProps ) {
 							/>
 							<Button
 								icon="arrow-down-alt2"
-								label={ __( 'Move down', 'beplus-smart-search' ) }
+								label={ __( 'Move down', 'beplus-fast-product-filter-live-search' ) }
 								onClick={ () =>
 									persistOrder( moveItem( visibleOrder, index, 1 ) )
 								}

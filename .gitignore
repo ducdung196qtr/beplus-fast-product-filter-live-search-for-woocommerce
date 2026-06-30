@@ -5,7 +5,7 @@ vendor/
 .php-cs-fixer-tmp/
 *.log
 .DS_Store
-beplus-smart-search-v*.zip
+beplus-fast-product-filter-live-search-v*.zip
 blocks/**/view.js
 tools/composer.phar
 .env

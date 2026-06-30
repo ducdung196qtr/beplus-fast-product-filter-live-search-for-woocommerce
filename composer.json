@@ -1,6 +1,6 @@
 {
-	"name": "beplus/beplus-smart-search",
-	"description": "BePlus Smart Search for WordPress",
+	"name": "beplus/beplus-fast-product-filter-live-search",
+	"description": "Beplus Fast Product Filter & Live Search for WooCommerce",
 	"type": "wordpress-plugin",
 	"license": "GPL-2.0-or-later",
 	"require": {
@@ -14,7 +14,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"BePlusSmartSearch\\": "src/"
+			"BePlusFastProductFilterLiveSearch\\": "src/"
 		}
 	},
 	"scripts": {

@@ -46,7 +46,7 @@ export default function CategoryScope( {
 	if ( categories.length === 0 ) {
 		return (
 			<p className="components-base-control__help">
-				{ __( 'No product categories found.', 'beplus-smart-search' ) }
+				{ __( 'No product categories found.', 'beplus-fast-product-filter-live-search' ) }
 			</p>
 		);
 	}
@@ -60,7 +60,7 @@ export default function CategoryScope( {
 	return (
 		<>
 			<FormTokenField
-				label={ __( 'Categories', 'beplus-smart-search' ) }
+				label={ __( 'Categories', 'beplus-fast-product-filter-live-search' ) }
 				value={ selectedTokens }
 				suggestions={ allTokens }
 				onChange={ ( tokens ) => {
@@ -79,7 +79,7 @@ export default function CategoryScope( {
 			<p className="components-base-control__help">
 				{ __(
 					'Type to search categories. Select one or more to limit search scope.',
-					'beplus-smart-search'
+					'beplus-fast-product-filter-live-search'
 				) }
 			</p>
 		</>

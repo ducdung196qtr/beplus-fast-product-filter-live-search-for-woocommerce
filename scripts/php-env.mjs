@@ -1,7 +1,7 @@
 /**
  * Shared PHP discovery for Local WP / Laragon / XAMPP on Windows.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  */
 
 import { spawnSync } from 'node:child_process';

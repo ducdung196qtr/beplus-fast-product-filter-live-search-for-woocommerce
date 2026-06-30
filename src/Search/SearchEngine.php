@@ -3,15 +3,15 @@
 /**
  * Search engine orchestrator.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  * @subpackage Search
  */
 
-namespace BePlusSmartSearch\Search;
+namespace BePlusFastProductFilterLiveSearch\Search;
 
-use BePlusSmartSearch\Core\Container;
-use BePlusSmartSearch\Search\Providers\AbstractProvider;
-use BePlusSmartSearch\Search\Providers\ProductProvider;
+use BePlusFastProductFilterLiveSearch\Core\Container;
+use BePlusFastProductFilterLiveSearch\Search\Providers\AbstractProvider;
+use BePlusFastProductFilterLiveSearch\Search\Providers\ProductProvider;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -46,7 +46,7 @@ class SearchEngine {
 	 * @return array{items: array<int, array<string, mixed>>, total: int, totalPages: int, page: int, perPage: int}
 	 */
 	public function search( SearchQuery $query ): array {
-		$query = apply_filters( 'beplus_smart_search_search_query', $query );
+		$query = apply_filters( 'beplus_fast_product_filter_live_search_search_query', $query );
 
 		$provider = $this->get_provider( 'product' );
 
@@ -62,9 +62,9 @@ class SearchEngine {
 
 		$result = $provider->search( $query );
 
-		$result['items'] = apply_filters( 'beplus_smart_search_search_results', $result['items'], $query );
+		$result['items'] = apply_filters( 'beplus_fast_product_filter_live_search_search_results', $result['items'], $query );
 
-		do_action( 'beplus_smart_search_search_completed', $query, $result['items'] );
+		do_action( 'beplus_fast_product_filter_live_search_search_completed', $query, $result['items'] );
 
 		return $result;
 	}

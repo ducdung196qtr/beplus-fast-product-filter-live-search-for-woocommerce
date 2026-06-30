@@ -3,23 +3,23 @@
 /**
  * Main plugin bootstrap.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  * @subpackage Core
  */
 
-namespace BePlusSmartSearch\Core;
+namespace BePlusFastProductFilterLiveSearch\Core;
 
-use BePlusSmartSearch\Admin\SettingsPage;
-use BePlusSmartSearch\Blocks\BlockRegistry;
-use BePlusSmartSearch\Frontend\ShopQueryIntegration;
-use BePlusSmartSearch\REST\FacetsController;
-use BePlusSmartSearch\REST\ProductsController;
-use BePlusSmartSearch\REST\SuggestionsController;
-use BePlusSmartSearch\Search\CacheService;
-use BePlusSmartSearch\Search\ProductTemplateRenderer;
-use BePlusSmartSearch\Search\SearchEngine;
-use BePlusSmartSearch\Search\SearchRegistry;
-use BePlusSmartSearch\Settings\SettingsRegistry;
+use BePlusFastProductFilterLiveSearch\Admin\SettingsPage;
+use BePlusFastProductFilterLiveSearch\Blocks\BlockRegistry;
+use BePlusFastProductFilterLiveSearch\Frontend\ShopQueryIntegration;
+use BePlusFastProductFilterLiveSearch\REST\FacetsController;
+use BePlusFastProductFilterLiveSearch\REST\ProductsController;
+use BePlusFastProductFilterLiveSearch\REST\SuggestionsController;
+use BePlusFastProductFilterLiveSearch\Search\CacheService;
+use BePlusFastProductFilterLiveSearch\Search\ProductTemplateRenderer;
+use BePlusFastProductFilterLiveSearch\Search\SearchEngine;
+use BePlusFastProductFilterLiveSearch\Search\SearchRegistry;
+use BePlusFastProductFilterLiveSearch\Settings\SettingsRegistry;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -102,8 +102,8 @@ class Plugin {
 	 */
 	public function register_block_category( array $categories ): array {
 		$categories[] = array(
-			'slug'  => 'beplus-smart-search',
-			'title' => __( 'Beplus Smart Search', 'beplus-smart-search' ),
+			'slug'  => 'beplus-fast-product-filter-live-search',
+			'title' => __( 'Beplus Fast Product Filter & Live Search for WooCommerce', 'beplus-fast-product-filter-live-search' ),
 			'icon'  => 'search',
 		);
 
@@ -142,7 +142,7 @@ class Plugin {
 	 * @return void
 	 */
 	private function register_services_from_filter(): void {
-		$extra = apply_filters( 'beplus_smart_search.services', array() );
+		$extra = apply_filters( 'beplus_fast_product_filter_live_search.services', array() );
 
 		if ( ! is_array( $extra ) ) {
 			return;
@@ -154,7 +154,7 @@ class Plugin {
 			}
 		}
 
-		$extra_modules = apply_filters( 'beplus_smart_search.modules', array() );
+		$extra_modules = apply_filters( 'beplus_fast_product_filter_live_search.modules', array() );
 
 		if ( is_array( $extra_modules ) ) {
 			foreach ( $extra_modules as $module_class ) {

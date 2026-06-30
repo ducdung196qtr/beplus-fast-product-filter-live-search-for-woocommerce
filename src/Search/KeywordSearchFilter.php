@@ -3,11 +3,11 @@
 /**
  * Custom keyword search clauses (exact match, AND/OR logic).
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  * @subpackage Search
  */
 
-namespace BePlusSmartSearch\Search;
+namespace BePlusFastProductFilterLiveSearch\Search;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

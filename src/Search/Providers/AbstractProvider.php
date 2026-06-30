@@ -3,13 +3,13 @@
 /**
  * Abstract search provider.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  * @subpackage Search
  */
 
-namespace BePlusSmartSearch\Search\Providers;
+namespace BePlusFastProductFilterLiveSearch\Search\Providers;
 
-use BePlusSmartSearch\Search\SearchQuery;
+use BePlusFastProductFilterLiveSearch\Search\SearchQuery;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

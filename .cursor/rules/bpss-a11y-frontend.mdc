@@ -1,10 +1,10 @@
 ---
-description: BePlus Smart Search front-end a11y — autocomplete, focus-visible, reduced motion
+description: Beplus Fast Product Filter & Live Search for WooCommerce front-end a11y — autocomplete, focus-visible, reduced motion
 globs: admin/js/**,assets/**
 alwaysApply: false
 ---
 
-# BePlus Smart Search — front-end accessibility
+# Beplus Fast Product Filter & Live Search for WooCommerce — front-end accessibility
 
 ## JavaScript (`admin/js/`, `assets/js/`)
 
@@ -22,6 +22,6 @@ alwaysApply: false
 Compile with **`npm run build`** — do not edit `build/**` directly.
 
 ```text
-❌ .beplus-smart-search__input:focus { outline: none; }
-✅ .beplus-smart-search__input:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+❌ .beplus-fast-product-filter-live-search__input:focus { outline: none; }
+✅ .beplus-fast-product-filter-live-search__input:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 ```

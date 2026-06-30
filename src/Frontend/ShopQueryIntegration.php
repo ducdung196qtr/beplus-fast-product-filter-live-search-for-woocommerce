@@ -3,13 +3,13 @@
 /**
  * Align WooCommerce catalog per-page with plugin settings when search block is present.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  * @subpackage Frontend
  */
 
-namespace BePlusSmartSearch\Frontend;
+namespace BePlusFastProductFilterLiveSearch\Frontend;
 
-use BePlusSmartSearch\Core\AbstractModule;
+use BePlusFastProductFilterLiveSearch\Core\AbstractModule;
 use WP_Block;
 use WP_Query;
 
@@ -93,7 +93,7 @@ final class ShopQueryIntegration extends AbstractModule {
 			return (int) $per_page;
 		}
 
-		return beplus_smart_search_get_per_page();
+		return beplus_fast_product_filter_live_search_get_per_page();
 	}
 
 	/**
@@ -122,7 +122,7 @@ final class ShopQueryIntegration extends AbstractModule {
 			return $query;
 		}
 
-		$query['posts_per_page'] = beplus_smart_search_get_per_page();
+		$query['posts_per_page'] = beplus_fast_product_filter_live_search_get_per_page();
 
 		return $query;
 	}
@@ -147,7 +147,7 @@ final class ShopQueryIntegration extends AbstractModule {
 			return;
 		}
 
-		$query->set( 'posts_per_page', beplus_smart_search_get_per_page() );
+		$query->set( 'posts_per_page', beplus_fast_product_filter_live_search_get_per_page() );
 	}
 
 	/**
@@ -174,7 +174,7 @@ final class ShopQueryIntegration extends AbstractModule {
 			$parsed_block['attrs']['query'] = array();
 		}
 
-		$parsed_block['attrs']['query']['perPage'] = beplus_smart_search_get_per_page();
+		$parsed_block['attrs']['query']['perPage'] = beplus_fast_product_filter_live_search_get_per_page();
 
 		return $parsed_block;
 	}
@@ -185,6 +185,6 @@ final class ShopQueryIntegration extends AbstractModule {
 	 * @return bool
 	 */
 	private function should_override_per_page(): bool {
-		return beplus_smart_search_page_has_search_block();
+		return beplus_fast_product_filter_live_search_page_has_search_block();
 	}
 }

@@ -3,14 +3,14 @@
 /**
  * Plugin settings registry.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  * @subpackage Settings
  */
 
-namespace BePlusSmartSearch\Settings;
+namespace BePlusFastProductFilterLiveSearch\Settings;
 
-use BePlusSmartSearch\Core\AbstractModule;
-use BePlusSmartSearch\Search\CacheService;
+use BePlusFastProductFilterLiveSearch\Core\AbstractModule;
+use BePlusFastProductFilterLiveSearch\Search\CacheService;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -26,7 +26,7 @@ class SettingsRegistry extends AbstractModule {
 	 *
 	 * @var string
 	 */
-	public const OPTION_KEY = 'beplus_smart_search_settings';
+	public const OPTION_KEY = 'beplus_fast_product_filter_live_search_settings';
 
 	/**
 	 * Register hooks.
@@ -44,7 +44,7 @@ class SettingsRegistry extends AbstractModule {
 	 */
 	public function register_settings(): void {
 		register_setting(
-			'beplus_smart_search',
+			'beplus_fast_product_filter_live_search',
 			self::OPTION_KEY,
 			array(
 				'type'              => 'array',
@@ -203,8 +203,8 @@ class SettingsRegistry extends AbstractModule {
 			'attribute'   => ! empty( $sub_modes_input['attribute'] ),
 		);
 
-		if ( function_exists( 'beplus_smart_search_get_all_attribute_definitions' ) ) {
-			foreach ( beplus_smart_search_get_all_attribute_definitions() as $attribute ) {
+		if ( function_exists( 'beplus_fast_product_filter_live_search_get_all_attribute_definitions' ) ) {
+			foreach ( beplus_fast_product_filter_live_search_get_all_attribute_definitions() as $attribute ) {
 				$slug = sanitize_key( (string) ( $attribute['slug'] ?? '' ) );
 				if ( ! $slug ) {
 					continue;
@@ -349,8 +349,8 @@ class SettingsRegistry extends AbstractModule {
 			return 'product_brand';
 		}
 
-		if ( function_exists( 'beplus_smart_search_detect_brand_taxonomy' ) ) {
-			return beplus_smart_search_detect_brand_taxonomy();
+		if ( function_exists( 'beplus_fast_product_filter_live_search_detect_brand_taxonomy' ) ) {
+			return beplus_fast_product_filter_live_search_detect_brand_taxonomy();
 		}
 
 		return 'product_brand';
@@ -370,11 +370,11 @@ class SettingsRegistry extends AbstractModule {
 
 		$enabled = array();
 
-		if ( ! function_exists( 'beplus_smart_search_get_all_attribute_definitions' ) ) {
+		if ( ! function_exists( 'beplus_fast_product_filter_live_search_get_all_attribute_definitions' ) ) {
 			return $enabled;
 		}
 
-		foreach ( beplus_smart_search_get_all_attribute_definitions() as $attribute ) {
+		foreach ( beplus_fast_product_filter_live_search_get_all_attribute_definitions() as $attribute ) {
 			$slug              = sanitize_key( (string) ( $attribute['slug'] ?? '' ) );
 			$enabled[ $slug ] = ! empty( $raw[ $slug ] );
 		}

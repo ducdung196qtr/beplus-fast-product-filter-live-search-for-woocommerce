@@ -1,10 +1,10 @@
 ---
 name: bpss-add-search-provider
-description: Adds a new search provider to BePlus Smart Search by extending AbstractProvider and registering via SearchRegistry and beplus_smart_search.providers filter. Use when adding post type search, WooCommerce products, taxonomies, or custom data sources.
+description: Adds a new search provider to Beplus Fast Product Filter & Live Search for WooCommerce by extending AbstractProvider and registering via SearchRegistry and beplus_fast_product_filter_live_search.providers filter. Use when adding post type search, WooCommerce products, taxonomies, or custom data sources.
 disable-model-invocation: true
 ---
 
-# BePlus Smart Search — add a search provider
+# Beplus Fast Product Filter & Live Search for WooCommerce — add a search provider
 
 ## Before you edit
 
@@ -16,7 +16,7 @@ disable-model-invocation: true
 Create `src/Search/Providers/{Name}Provider.php`:
 
 ```php
-namespace BePlusSmartSearch\Search\Providers;
+namespace BePlusFastProductFilterLiveSearch\Search\Providers;
 
 abstract class AbstractProvider {
 	abstract public function get_id(): string;
@@ -59,7 +59,7 @@ $this->providers['post'] = PostProvider::class;
 **Third-party extension** via filter:
 
 ```php
-add_filter( 'beplus_smart_search.providers', function ( $providers ) {
+add_filter( 'beplus_fast_product_filter_live_search.providers', function ( $providers ) {
 	$providers['my_custom'] = \MyPlugin\CustomProvider::class;
 	return $providers;
 } );
@@ -68,7 +68,7 @@ add_filter( 'beplus_smart_search.providers', function ( $providers ) {
 Also register in container if the provider needs DI:
 
 ```php
-add_filter( 'beplus_smart_search.services', function ( $services ) {
+add_filter( 'beplus_fast_product_filter_live_search.services', function ( $services ) {
 	$services[ CustomProvider::class ] = fn( $c ) => new CustomProvider( $c );
 	return $services;
 } );
@@ -81,8 +81,8 @@ add_filter( 'beplus_smart_search.services', function ( $services ) {
 1. Load enabled providers from `SearchRegistry`.
 2. Run searches (parallel or sequential).
 3. Merge and sort by score/relevance.
-4. Apply filters: `beplus-smart-search/search.query`, `beplus-smart-search/search.results`.
-5. Fire action: `beplus-smart-search/search.completed`.
+4. Apply filters: `beplus-fast-product-filter-live-search/search.query`, `beplus-fast-product-filter-live-search/search.results`.
+5. Fire action: `beplus-fast-product-filter-live-search/search.completed`.
 
 ## Settings integration
 
@@ -109,6 +109,6 @@ Admin UI reads/writes via `SettingsController` REST.
 - [ ] Provider extends `AbstractProvider`; unique `get_id()`.
 - [ ] Input sanitized; SQL uses `$wpdb->prepare()`.
 - [ ] Results normalized to shared shape.
-- [ ] Registered in `SearchRegistry` or `beplus_smart_search.providers` filter.
+- [ ] Registered in `SearchRegistry` or `beplus_fast_product_filter_live_search.providers` filter.
 - [ ] Settings toggle added if user-configurable.
 - [ ] REST `/search` returns merged provider results.

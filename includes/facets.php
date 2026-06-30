@@ -3,7 +3,7 @@
 /**
  * Facet helpers for block render.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -17,8 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @return int
  */
-function beplus_smart_search_count_products_for_term( WP_Term $term ): int {
-	return BePlusSmartSearch\Search\ProductQueryBuilder::count_for_term( $term );
+function beplus_fast_product_filter_live_search_count_products_for_term( WP_Term $term ): int {
+	return BePlusFastProductFilterLiveSearch\Search\ProductQueryBuilder::count_for_term( $term );
 }
 
 /**
@@ -26,7 +26,7 @@ function beplus_smart_search_count_products_for_term( WP_Term $term ): int {
  *
  * @return array<int, WP_Term>
  */
-function beplus_smart_search_get_product_categories(): array {
+function beplus_fast_product_filter_live_search_get_product_categories(): array {
 	if ( ! taxonomy_exists( 'product_cat' ) ) {
 		return array();
 	}
@@ -46,8 +46,8 @@ function beplus_smart_search_get_product_categories(): array {
  *
  * @return array<int, array{slug: string, name: string}>
  */
-function beplus_smart_search_get_product_category_definitions(): array {
-	$terms  = beplus_smart_search_get_product_categories();
+function beplus_fast_product_filter_live_search_get_product_category_definitions(): array {
+	$terms  = beplus_fast_product_filter_live_search_get_product_categories();
 	$result = array();
 
 	foreach ( $terms as $term ) {
@@ -68,7 +68,7 @@ function beplus_smart_search_get_product_category_definitions(): array {
  *
  * @return array<int, WP_Term>
  */
-function beplus_smart_search_get_product_tags(): array {
+function beplus_fast_product_filter_live_search_get_product_tags(): array {
 	if ( ! taxonomy_exists( 'product_tag' ) ) {
 		return array();
 	}
@@ -88,7 +88,7 @@ function beplus_smart_search_get_product_tags(): array {
  *
  * @return array<int, array{slug: string, label: string, taxonomy: string}>
  */
-function beplus_smart_search_get_all_attribute_definitions(): array {
+function beplus_fast_product_filter_live_search_get_all_attribute_definitions(): array {
 	if ( ! function_exists( 'wc_get_attribute_taxonomies' ) ) {
 		return array();
 	}
@@ -115,8 +115,8 @@ function beplus_smart_search_get_all_attribute_definitions(): array {
  *
  * @return bool
  */
-function beplus_smart_search_is_attribute_enabled( string $slug ): bool {
-	$sidebar = beplus_smart_search_get_sidebar_settings();
+function beplus_fast_product_filter_live_search_is_attribute_enabled( string $slug ): bool {
+	$sidebar = beplus_fast_product_filter_live_search_get_sidebar_settings();
 	$enabled = isset( $sidebar['attribute_enabled'] ) && is_array( $sidebar['attribute_enabled'] )
 		? $sidebar['attribute_enabled']
 		: array();
@@ -133,11 +133,11 @@ function beplus_smart_search_is_attribute_enabled( string $slug ): bool {
  *
  * @return array<int, string>
  */
-function beplus_smart_search_get_enabled_attribute_slugs(): array {
+function beplus_fast_product_filter_live_search_get_enabled_attribute_slugs(): array {
 	$slugs = array();
 
-	foreach ( beplus_smart_search_get_all_attribute_definitions() as $attribute ) {
-		if ( beplus_smart_search_is_attribute_enabled( $attribute['slug'] ) ) {
+	foreach ( beplus_fast_product_filter_live_search_get_all_attribute_definitions() as $attribute ) {
+		if ( beplus_fast_product_filter_live_search_is_attribute_enabled( $attribute['slug'] ) ) {
 			$slugs[] = $attribute['slug'];
 		}
 	}
@@ -152,7 +152,7 @@ function beplus_smart_search_get_enabled_attribute_slugs(): array {
  *
  * @return array<int, array{slug: string, label: string, taxonomy: string, terms: array<int, WP_Term>}>
  */
-function beplus_smart_search_get_product_attributes( array $allowed_slugs = array() ): array {
+function beplus_fast_product_filter_live_search_get_product_attributes( array $allowed_slugs = array() ): array {
 	if ( ! function_exists( 'wc_get_attribute_taxonomies' ) ) {
 		return array();
 	}
@@ -202,7 +202,7 @@ function beplus_smart_search_get_product_attributes( array $allowed_slugs = arra
  *
  * @return array<int, array{term: WP_Term, children: array<int, array{term: WP_Term, children: array<int, mixed>}>}>
  */
-function beplus_smart_search_build_term_tree( array $terms ): array {
+function beplus_fast_product_filter_live_search_build_term_tree( array $terms ): array {
 	$indexed = array();
 	$tree    = array();
 
@@ -239,7 +239,7 @@ function beplus_smart_search_build_term_tree( array $terms ): array {
  *
  * @return array<int, WP_Term>
  */
-function beplus_smart_search_get_taxonomy_terms( string $taxonomy ): array {
+function beplus_fast_product_filter_live_search_get_taxonomy_terms( string $taxonomy ): array {
 	if ( ! taxonomy_exists( $taxonomy ) ) {
 		return array();
 	}
@@ -259,13 +259,13 @@ function beplus_smart_search_get_taxonomy_terms( string $taxonomy ): array {
  *
  * @return array<int, WP_Term>
  */
-function beplus_smart_search_get_brand_terms(): array {
-	$taxonomy = beplus_smart_search_get_brand_taxonomy();
+function beplus_fast_product_filter_live_search_get_brand_terms(): array {
+	$taxonomy = beplus_fast_product_filter_live_search_get_brand_taxonomy();
 	if ( ! $taxonomy ) {
 		return array();
 	}
 
-	return beplus_smart_search_get_taxonomy_terms( $taxonomy );
+	return beplus_fast_product_filter_live_search_get_taxonomy_terms( $taxonomy );
 }
 
 /**
@@ -275,7 +275,7 @@ function beplus_smart_search_get_brand_terms(): array {
  *
  * @return array<int, int>
  */
-function beplus_smart_search_get_expanded_term_ids( string $taxonomy ): array {
+function beplus_fast_product_filter_live_search_get_expanded_term_ids( string $taxonomy ): array {
 	if ( ! is_tax( $taxonomy ) ) {
 		return array();
 	}

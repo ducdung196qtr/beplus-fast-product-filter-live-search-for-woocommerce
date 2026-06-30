@@ -3,11 +3,11 @@
 /**
  * Render product cards using the theme's WooCommerce product-template block.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  * @subpackage Search
  */
 
-namespace BePlusSmartSearch\Search;
+namespace BePlusFastProductFilterLiveSearch\Search;
 
 use WP_Block;
 
@@ -158,7 +158,7 @@ final class ProductTemplateRenderer {
 		 * @param string $html       Product list item HTML.
 		 * @param int    $product_id Product ID.
 		 */
-		return (string) apply_filters( 'beplus_smart_search_product_card_html', $html, $product_id );
+		return (string) apply_filters( 'beplus_fast_product_filter_live_search_product_card_html', $html, $product_id );
 	}
 
 	/**

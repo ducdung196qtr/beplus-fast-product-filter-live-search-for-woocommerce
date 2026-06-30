@@ -2,7 +2,7 @@
 /**
  * Live Search block render callback.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  *
  * @var array<string, mixed> $attributes Block attributes.
  * @var string               $content    Block content.
@@ -13,12 +13,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-require_once BEPLUS_SMART_SEARCH_PLUGIN_DIR . 'includes/facets.php';
+require_once BEPLUS_FAST_PRODUCT_FILTER_LIVE_SEARCH_PLUGIN_DIR . 'includes/facets.php';
 
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Block render template variables.
 
 $defaults = array(
-	'placeholder'        => __( 'Search products…', 'beplus-smart-search' ),
+	'placeholder'        => __( 'Search products…', 'beplus-fast-product-filter-live-search' ),
 	'showCategory'       => true,
 	'searchScope'        => 'all',
 	'limitCategorySlugs' => array(),
@@ -38,7 +38,7 @@ $defaults = array(
 
 $attrs = wp_parse_args( $attributes, $defaults );
 
-$plugin_settings = beplus_smart_search_get_settings();
+$plugin_settings = beplus_fast_product_filter_live_search_get_settings();
 $attrs['debounceMs'] = isset( $plugin_settings['debounce_ms'] )
 	? (int) $plugin_settings['debounce_ms']
 	: (int) $attrs['debounceMs'];
@@ -47,16 +47,16 @@ $attrs['minChars'] = isset( $plugin_settings['min_chars'] )
 	: (int) $attrs['minChars'];
 
 if ( ! class_exists( 'WooCommerce' ) ) {
-	echo '<p class="beplus-smart-search__notice">' . esc_html__( 'WooCommerce is required for Live Search.', 'beplus-smart-search' ) . '</p>';
+	echo '<p class="beplus-fast-product-filter-live-search__notice">' . esc_html__( 'WooCommerce is required for Live Search.', 'beplus-fast-product-filter-live-search' ) . '</p>';
 	return;
 }
 
 $block_id   = 'bpss-ls-' . wp_unique_id();
 $input_id   = $block_id . '-input';
 $list_id    = $block_id . '-listbox';
-$catalog_base_url   = beplus_smart_search_get_catalog_search_base_url();
-$needs_post_type    = beplus_smart_search_catalog_search_needs_post_type_arg();
-$all_categories = beplus_smart_search_get_product_categories();
+$catalog_base_url   = beplus_fast_product_filter_live_search_get_catalog_search_base_url();
+$needs_post_type    = beplus_fast_product_filter_live_search_catalog_search_needs_post_type_arg();
+$all_categories = beplus_fast_product_filter_live_search_get_product_categories();
 
 $limit_slugs = array_values(
 	array_filter(
@@ -83,7 +83,7 @@ if ( $attrs['showCategory'] ) {
 
 $show_category_filter = $attrs['showCategory'] && count( $filter_terms ) > 1;
 
-$sidebar_settings = beplus_smart_search_get_sidebar_settings();
+$sidebar_settings = beplus_fast_product_filter_live_search_get_sidebar_settings();
 $accent_color     = $sidebar_settings['accent_color'] ?? '#000000';
 
 $search_fields = array_values(
@@ -104,7 +104,7 @@ $suggestion_layout = in_array( $attrs['suggestionLayout'] ?? 'inline', array( 'i
 
 $wrapper_attrs = get_block_wrapper_attributes(
 	array(
-		'class'                      => 'beplus-smart-search beplus-smart-search--live-search beplus-smart-search--suggestion-' . $suggestion_layout,
+		'class' => 'beplus-fast-product-filter-live-search beplus-fast-product-filter-live-search--live-search beplus-fast-product-filter-live-search--suggestion-' . $suggestion_layout,
 		'style'                      => '--bpss-accent:' . esc_attr( $accent_color ) . ';--bpss-highlight:' . esc_attr( $attrs['highlightColor'] ) . ';',
 		'data-bpss-live-search'      => '',
 		'data-debounce-ms'           => (string) (int) $attrs['debounceMs'],
@@ -129,7 +129,7 @@ $wrapper_attrs = get_block_wrapper_attributes(
 ?>
 <div <?php echo $wrapper_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>>
 	<form
-		class="beplus-smart-search__live-form"
+		class="beplus-fast-product-filter-live-search__live-form"
 		role="search"
 		method="get"
 		action="<?php echo esc_url( $catalog_base_url ); ?>"
@@ -139,20 +139,20 @@ $wrapper_attrs = get_block_wrapper_attributes(
 		<?php if ( $needs_post_type ) : ?>
 			<input type="hidden" name="post_type" value="product" />
 		<?php endif; ?>
-		<div class="beplus-smart-search__live-bar">
+		<div class="beplus-fast-product-filter-live-search__live-bar">
 			<?php if ( $show_category_filter ) : ?>
-				<div class="beplus-smart-search__live-category">
+				<div class="beplus-fast-product-filter-live-search__live-category">
 					<label class="screen-reader-text" for="<?php echo esc_attr( $block_id ); ?>-cat">
-						<?php esc_html_e( 'Category', 'beplus-smart-search' ); ?>
+						<?php esc_html_e( 'Category', 'beplus-fast-product-filter-live-search' ); ?>
 					</label>
 					<select
 						id="<?php echo esc_attr( $block_id ); ?>-cat"
 						name="product_cat"
-						class="beplus-smart-search__live-category-select"
+						class="beplus-fast-product-filter-live-search__live-category-select"
 						data-bpss-live-category
 					>
 						<option value="">
-							<?php esc_html_e( 'All categories', 'beplus-smart-search' ); ?>
+							<?php esc_html_e( 'All categories', 'beplus-fast-product-filter-live-search' ); ?>
 						</option>
 						<?php foreach ( $filter_terms as $term ) : ?>
 							<option value="<?php echo esc_attr( $term->slug ); ?>">
@@ -163,18 +163,18 @@ $wrapper_attrs = get_block_wrapper_attributes(
 				</div>
 			<?php endif; ?>
 
-			<div class="beplus-smart-search__live-input-wrap">
+			<div class="beplus-fast-product-filter-live-search__live-input-wrap">
 				<label class="screen-reader-text" for="<?php echo esc_attr( $input_id ); ?>">
-					<?php esc_html_e( 'Search products', 'beplus-smart-search' ); ?>
+					<?php esc_html_e( 'Search products', 'beplus-fast-product-filter-live-search' ); ?>
 				</label>
-				<div class="beplus-smart-search__live-input-stack" data-bpss-live-input-stack>
+				<div class="beplus-fast-product-filter-live-search__live-input-stack" data-bpss-live-input-stack>
 					<div
-						class="beplus-smart-search__live-ghost"
+						class="beplus-fast-product-filter-live-search__live-ghost"
 						data-bpss-live-ghost
 						aria-hidden="true"
 						hidden
 					>
-						<span class="beplus-smart-search__live-ghost-prefix" data-bpss-live-ghost-prefix></span><span class="beplus-smart-search__live-ghost-suffix" data-bpss-live-ghost-suffix></span>
+						<span class="beplus-fast-product-filter-live-search__live-ghost-prefix" data-bpss-live-ghost-prefix></span><span class="beplus-fast-product-filter-live-search__live-ghost-suffix" data-bpss-live-ghost-suffix></span>
 					</div>
 					<input
 						type="text"
@@ -182,7 +182,7 @@ $wrapper_attrs = get_block_wrapper_attributes(
 						enterkeyhint="search"
 						id="<?php echo esc_attr( $input_id ); ?>"
 						name="bpss_s"
-						class="beplus-smart-search__live-input"
+						class="beplus-fast-product-filter-live-search__live-input"
 						placeholder="<?php echo esc_attr( $attrs['placeholder'] ); ?>"
 						autocomplete="off"
 						role="combobox"
@@ -192,34 +192,34 @@ $wrapper_attrs = get_block_wrapper_attributes(
 						data-bpss-live-input
 					/>
 				</div>
-				<button type="submit" class="beplus-smart-search__live-submit" aria-label="<?php esc_attr_e( 'Search', 'beplus-smart-search' ); ?>">
-					<span class="beplus-smart-search__live-submit-icon" aria-hidden="true"></span>
+				<button type="submit" class="beplus-fast-product-filter-live-search__live-submit" aria-label="<?php esc_attr_e( 'Search', 'beplus-fast-product-filter-live-search' ); ?>">
+					<span class="beplus-fast-product-filter-live-search__live-submit-icon" aria-hidden="true"></span>
 				</button>
 			</div>
 		</div>
 
 		<div
-			class="beplus-smart-search__live-dropdown"
+			class="beplus-fast-product-filter-live-search__live-dropdown"
 			id="<?php echo esc_attr( $list_id ); ?>"
 			role="listbox"
 			data-bpss-live-dropdown
 			hidden
 		>
 			<div
-				class="beplus-smart-search__live-suggestions"
+				class="beplus-fast-product-filter-live-search__live-suggestions"
 				data-bpss-live-suggestions
 				role="listbox"
-				aria-label="<?php esc_attr_e( 'Search suggestions', 'beplus-smart-search' ); ?>"
+				aria-label="<?php esc_attr_e( 'Search suggestions', 'beplus-fast-product-filter-live-search' ); ?>"
 				hidden
 			></div>
-			<div class="beplus-smart-search__live-products" data-bpss-live-products></div>
-			<div class="beplus-smart-search__live-footer" data-bpss-live-footer hidden>
-				<a href="<?php echo esc_url( $catalog_base_url ); ?>" class="beplus-smart-search__live-view-all" data-bpss-live-view-all>
-					<?php esc_html_e( 'View All Results', 'beplus-smart-search' ); ?>
+			<div class="beplus-fast-product-filter-live-search__live-products" data-bpss-live-products></div>
+			<div class="beplus-fast-product-filter-live-search__live-footer" data-bpss-live-footer hidden>
+				<a href="<?php echo esc_url( $catalog_base_url ); ?>" class="beplus-fast-product-filter-live-search__live-view-all" data-bpss-live-view-all>
+					<?php esc_html_e( 'View All Results', 'beplus-fast-product-filter-live-search' ); ?>
 				</a>
 			</div>
 		</div>
 
-		<span class="beplus-smart-search__live-status screen-reader-text" role="status" aria-live="polite" data-bpss-live-status></span>
+		<span class="beplus-fast-product-filter-live-search__live-status screen-reader-text" role="status" aria-live="polite" data-bpss-live-status></span>
 	</form>
 </div>

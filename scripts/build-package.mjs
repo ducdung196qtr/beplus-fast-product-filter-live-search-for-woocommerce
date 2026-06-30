@@ -26,7 +26,7 @@ const PLUGIN_SLUG = path.basename( ROOT );
  * Run `npm run build` before packaging so block/admin JS is up to date.
  */
 const INCLUDE_GLOBS = [
-	'beplus-smart-search.php',
+	'beplus-fast-product-filter-live-search.php',
 	'readme.txt',
 	'src/**/*.php',
 	'includes/**/*.php',
@@ -45,15 +45,15 @@ const INCLUDE_GLOBS = [
 
 function readVersion() {
 	const bootstrap = fs.readFileSync(
-		path.join( ROOT, 'beplus-smart-search.php' ),
+		path.join( ROOT, 'beplus-fast-product-filter-live-search.php' ),
 		'utf8',
 	);
 	const m = bootstrap.match(
-		/define\(\s*'BEPLUS_SMART_SEARCH_VERSION'\s*,\s*'([^']+)'\s*\)/,
+		/define\(\s*'BEPLUS_FAST_PRODUCT_FILTER_LIVE_SEARCH_VERSION'\s*,\s*'([^']+)'\s*\)/,
 	);
 	if ( ! m ) {
 		console.error(
-			'Could not parse BEPLUS_SMART_SEARCH_VERSION from beplus-smart-search.php',
+			'Could not parse BEPLUS_FAST_PRODUCT_FILTER_LIVE_SEARCH_VERSION from beplus-fast-product-filter-live-search.php',
 		);
 		process.exit( 1 );
 	}

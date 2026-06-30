@@ -3,11 +3,11 @@
 /**
  * Abstract module base class.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  * @subpackage Core
  */
 
-namespace BePlusSmartSearch\Core;
+namespace BePlusFastProductFilterLiveSearch\Core;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -53,9 +53,9 @@ abstract class AbstractModule {
 	 */
 	public function __construct( Container $container ) {
 		$this->container  = $container;
-		$this->version    = BEPLUS_SMART_SEARCH_VERSION;
-		$this->plugin_dir = BEPLUS_SMART_SEARCH_PLUGIN_DIR;
-		$this->plugin_url = BEPLUS_SMART_SEARCH_PLUGIN_URL;
+		$this->version    = BEPLUS_FAST_PRODUCT_FILTER_LIVE_SEARCH_VERSION;
+		$this->plugin_dir = BEPLUS_FAST_PRODUCT_FILTER_LIVE_SEARCH_PLUGIN_DIR;
+		$this->plugin_url = BEPLUS_FAST_PRODUCT_FILTER_LIVE_SEARCH_PLUGIN_URL;
 	}
 
 	/**

@@ -3,15 +3,15 @@
 /**
  * Admin settings page.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  * @subpackage Admin
  */
 
-namespace BePlusSmartSearch\Admin;
+namespace BePlusFastProductFilterLiveSearch\Admin;
 
-use BePlusSmartSearch\Core\AbstractModule;
-use BePlusSmartSearch\Search\CacheService;
-use BePlusSmartSearch\Settings\SettingsRegistry;
+use BePlusFastProductFilterLiveSearch\Core\AbstractModule;
+use BePlusFastProductFilterLiveSearch\Search\CacheService;
+use BePlusFastProductFilterLiveSearch\Settings\SettingsRegistry;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -27,7 +27,7 @@ class SettingsPage extends AbstractModule {
 	 *
 	 * @var string
 	 */
-	public const MENU_SLUG = 'beplus-smart-search';
+	public const MENU_SLUG = 'beplus-fast-product-filter-live-search';
 
 	/**
 	 * Register hooks.
@@ -82,14 +82,14 @@ class SettingsPage extends AbstractModule {
 	 * @return void
 	 */
 	public function register_menu(): void {
-		if ( ! beplus_smart_search_is_woocommerce_active() ) {
+		if ( ! beplus_fast_product_filter_live_search_is_woocommerce_active() ) {
 			return;
 		}
 
 		add_submenu_page(
 			'woocommerce',
-			__( 'Advanced Search', 'beplus-smart-search' ),
-			__( 'Advanced Search', 'beplus-smart-search' ),
+			__( 'Advanced Search', 'beplus-fast-product-filter-live-search' ),
+			__( 'Advanced Search', 'beplus-fast-product-filter-live-search' ),
 			'manage_woocommerce',
 			self::MENU_SLUG,
 			array( $this, 'render_page' ),
@@ -142,21 +142,21 @@ class SettingsPage extends AbstractModule {
 				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 				'nonce'   => wp_create_nonce( 'bpss_clear_cache' ),
 				'i18n'    => array(
-					'clearing'       => __( 'Clearing cache…', 'beplus-smart-search' ),
-					'cleared'        => __( 'Cache cleared successfully.', 'beplus-smart-search' ),
-					'clearError'     => __( 'Could not clear cache. Please try again.', 'beplus-smart-search' ),
-					'lastCleared'    => __( 'Last cleared:', 'beplus-smart-search' ),
-					'neverCleared'   => __( 'Cache has not been cleared manually yet.', 'beplus-smart-search' ),
-					'on'             => __( 'On', 'beplus-smart-search' ),
-					'off'            => __( 'Off', 'beplus-smart-search' ),
-					'measuring'      => __( 'Measuring…', 'beplus-smart-search' ),
-					'measureError'   => __( 'Could not measure performance. Please try again.', 'beplus-smart-search' ),
-					'measureNow'     => __( 'Measure now', 'beplus-smart-search' ),
-					'noBenchmark'    => __( 'No measurement yet. Run a quick test to compare facet load time with and without cache.', 'beplus-smart-search' ),
-					'coldLabel'      => __( 'Without cache', 'beplus-smart-search' ),
-					'warmLabel'      => __( 'With cache', 'beplus-smart-search' ),
-					'savedLabel'     => __( 'Estimated saving', 'beplus-smart-search' ),
-					'measuredAt'     => __( 'Measured:', 'beplus-smart-search' ),
+					'clearing'       => __( 'Clearing cache…', 'beplus-fast-product-filter-live-search' ),
+					'cleared'        => __( 'Cache cleared successfully.', 'beplus-fast-product-filter-live-search' ),
+					'clearError'     => __( 'Could not clear cache. Please try again.', 'beplus-fast-product-filter-live-search' ),
+					'lastCleared'    => __( 'Last cleared:', 'beplus-fast-product-filter-live-search' ),
+					'neverCleared'   => __( 'Cache has not been cleared manually yet.', 'beplus-fast-product-filter-live-search' ),
+					'on'             => __( 'On', 'beplus-fast-product-filter-live-search' ),
+					'off'            => __( 'Off', 'beplus-fast-product-filter-live-search' ),
+					'measuring'      => __( 'Measuring…', 'beplus-fast-product-filter-live-search' ),
+					'measureError'   => __( 'Could not measure performance. Please try again.', 'beplus-fast-product-filter-live-search' ),
+					'measureNow'     => __( 'Measure now', 'beplus-fast-product-filter-live-search' ),
+					'noBenchmark'    => __( 'No measurement yet. Run a quick test to compare facet load time with and without cache.', 'beplus-fast-product-filter-live-search' ),
+					'coldLabel'      => __( 'Without cache', 'beplus-fast-product-filter-live-search' ),
+					'warmLabel'      => __( 'With cache', 'beplus-fast-product-filter-live-search' ),
+					'savedLabel'     => __( 'Estimated saving', 'beplus-fast-product-filter-live-search' ),
+					'measuredAt'     => __( 'Measured:', 'beplus-fast-product-filter-live-search' ),
 				),
 				'lastCleared' => $last_cleared,
 				'benchmark'   => $benchmark,
@@ -174,7 +174,7 @@ class SettingsPage extends AbstractModule {
 
 		if ( ! current_user_can( 'manage_woocommerce' ) ) {
 			wp_send_json_error(
-				array( 'message' => __( 'Permission denied.', 'beplus-smart-search' ) ),
+				array( 'message' => __( 'Permission denied.', 'beplus-fast-product-filter-live-search' ) ),
 				403,
 			);
 		}
@@ -204,7 +204,7 @@ class SettingsPage extends AbstractModule {
 
 		if ( ! current_user_can( 'manage_woocommerce' ) ) {
 			wp_send_json_error(
-				array( 'message' => __( 'Permission denied.', 'beplus-smart-search' ) ),
+				array( 'message' => __( 'Permission denied.', 'beplus-fast-product-filter-live-search' ) ),
 				403,
 			);
 		}
@@ -214,7 +214,7 @@ class SettingsPage extends AbstractModule {
 		wp_send_json_success(
 			array(
 				'clearedAt' => CacheService::get_last_cleared_timestamp(),
-				'message'   => __( 'Cache cleared successfully.', 'beplus-smart-search' ),
+				'message'   => __( 'Cache cleared successfully.', 'beplus-fast-product-filter-live-search' ),
 			),
 		);
 	}

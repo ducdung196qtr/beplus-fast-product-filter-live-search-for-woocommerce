@@ -3,13 +3,13 @@
 /**
  * Object and transient cache for expensive search data.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  * @subpackage Search
  */
 
-namespace BePlusSmartSearch\Search;
+namespace BePlusFastProductFilterLiveSearch\Search;
 
-use BePlusSmartSearch\Settings\SettingsRegistry;
+use BePlusFastProductFilterLiveSearch\Settings\SettingsRegistry;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -23,7 +23,7 @@ final class CacheService {
 	/**
 	 * wp_cache group.
 	 */
-	public const CACHE_GROUP = 'beplus_smart_search';
+	public const CACHE_GROUP = 'beplus_fast_product_filter_live_search';
 
 	/**
 	 * Transient / object-cache key for unfiltered facet lists.
@@ -94,12 +94,12 @@ final class CacheService {
 	public static function get_cached_item_catalog(): array {
 		return array(
 			array(
-				'title'       => __( 'Filter lists (facets)', 'beplus-smart-search' ),
-				'description' => __( 'Categories, tags, attributes, brands, and price bounds shown in the sidebar when shoppers have not applied any filter yet.', 'beplus-smart-search' ),
+				'title'       => __( 'Filter lists (facets)', 'beplus-fast-product-filter-live-search' ),
+				'description' => __( 'Categories, tags, attributes, brands, and price bounds shown in the sidebar when shoppers have not applied any filter yet.', 'beplus-fast-product-filter-live-search' ),
 			),
 			array(
-				'title'       => __( 'Term counts in facet lists', 'beplus-smart-search' ),
-				'description' => __( 'How many products belong to each category, tag, or attribute option in the default (unfiltered) view.', 'beplus-smart-search' ),
+				'title'       => __( 'Term counts in facet lists', 'beplus-fast-product-filter-live-search' ),
+				'description' => __( 'How many products belong to each category, tag, or attribute option in the default (unfiltered) view.', 'beplus-fast-product-filter-live-search' ),
 			),
 		);
 	}
@@ -124,7 +124,7 @@ final class CacheService {
 		if ( $minutes < 60 ) {
 			return sprintf(
 				/* translators: %d: number of minutes */
-				_n( '%d minute', '%d minutes', $minutes, 'beplus-smart-search' ),
+				_n( '%d minute', '%d minutes', $minutes, 'beplus-fast-product-filter-live-search' ),
 				$minutes,
 			);
 		}
@@ -134,7 +134,7 @@ final class CacheService {
 
 			return sprintf(
 				/* translators: %d: number of hours */
-				_n( '%d hour', '%d hours', $hours, 'beplus-smart-search' ),
+				_n( '%d hour', '%d hours', $hours, 'beplus-fast-product-filter-live-search' ),
 				$hours,
 			);
 		}
@@ -143,7 +143,7 @@ final class CacheService {
 
 		return sprintf(
 			/* translators: %d: number of days */
-			_n( '%d day', '%d days', $days, 'beplus-smart-search' ),
+			_n( '%d day', '%d days', $days, 'beplus-fast-product-filter-live-search' ),
 			$days,
 		);
 	}
@@ -319,14 +319,14 @@ final class CacheService {
 		if ( $ms < 1000 ) {
 			return sprintf(
 				/* translators: %s: milliseconds with one decimal */
-				__( '%s ms', 'beplus-smart-search' ),
+				__( '%s ms', 'beplus-fast-product-filter-live-search' ),
 				number_format_i18n( $ms, 1 ),
 			);
 		}
 
 		return sprintf(
 			/* translators: %s: seconds with two decimals */
-			__( '%s s', 'beplus-smart-search' ),
+			__( '%s s', 'beplus-fast-product-filter-live-search' ),
 			number_format_i18n( $ms / 1000, 2 ),
 		);
 	}
@@ -335,7 +335,7 @@ final class CacheService {
 	 * @return array{enable_cache: bool, cache_ttl: int, cache_clear_on_product_save: bool}
 	 */
 	private static function get_cache_settings(): array {
-		$registry = new SettingsRegistry( new \BePlusSmartSearch\Core\Container() );
+		$registry = new SettingsRegistry( new \BePlusFastProductFilterLiveSearch\Core\Container() );
 		$settings = $registry->get_settings();
 
 		return array(

@@ -3,14 +3,14 @@
 /**
  * Block registry.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  * @subpackage Blocks
  */
 
-namespace BePlusSmartSearch\Blocks;
+namespace BePlusFastProductFilterLiveSearch\Blocks;
 
-use BePlusSmartSearch\Core\AbstractModule;
-use BePlusSmartSearch\Core\Container;
+use BePlusFastProductFilterLiveSearch\Core\AbstractModule;
+use BePlusFastProductFilterLiveSearch\Core\Container;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -69,7 +69,7 @@ class BlockRegistry extends AbstractModule {
 			register_block_type_from_metadata( $block_dir );
 		}
 
-		$third_party = apply_filters( 'beplus_smart_search.blocks', array() );
+		$third_party = apply_filters( 'beplus_fast_product_filter_live_search.blocks', array() );
 
 		if ( is_array( $third_party ) ) {
 			foreach ( $third_party as $block_dir ) {
@@ -79,6 +79,6 @@ class BlockRegistry extends AbstractModule {
 			}
 		}
 
-		do_action( 'beplus_smart_search.blocks_registered' );
+		do_action( 'beplus_fast_product_filter_live_search.blocks_registered' );
 	}
 }

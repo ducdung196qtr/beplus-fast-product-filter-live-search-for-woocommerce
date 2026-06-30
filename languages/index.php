@@ -3,7 +3,7 @@
 /**
  * Silence is golden.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

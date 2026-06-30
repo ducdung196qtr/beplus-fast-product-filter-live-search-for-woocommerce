@@ -3,7 +3,7 @@
 /**
  * Global helper functions.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @return bool
  */
-function beplus_smart_search_is_woocommerce_active(): bool {
+function beplus_fast_product_filter_live_search_is_woocommerce_active(): bool {
 	if ( class_exists( 'WooCommerce' ) ) {
 		return true;
 	}
@@ -40,12 +40,12 @@ function beplus_smart_search_is_woocommerce_active(): bool {
  *
  * @return array<string, mixed>
  */
-function beplus_smart_search_get_settings(): array {
+function beplus_fast_product_filter_live_search_get_settings(): array {
 	static $settings = null;
 
 	if ( null === $settings ) {
-		$registry = new BePlusSmartSearch\Settings\SettingsRegistry(
-			new BePlusSmartSearch\Core\Container(),
+		$registry = new BePlusFastProductFilterLiveSearch\Settings\SettingsRegistry(
+			new BePlusFastProductFilterLiveSearch\Core\Container(),
 		);
 		$settings = $registry->get_settings();
 	}
@@ -58,8 +58,8 @@ function beplus_smart_search_get_settings(): array {
  *
  * @return array<string, mixed>
  */
-function beplus_smart_search_get_sidebar_settings(): array {
-	$settings = beplus_smart_search_get_settings();
+function beplus_fast_product_filter_live_search_get_sidebar_settings(): array {
+	$settings = beplus_fast_product_filter_live_search_get_settings();
 	$sidebar  = isset( $settings['sidebar'] ) && is_array( $settings['sidebar'] )
 		? $settings['sidebar']
 		: array();
@@ -133,8 +133,8 @@ function beplus_smart_search_get_sidebar_settings(): array {
  *
  * @return string radio|checkbox
  */
-function beplus_smart_search_get_taxonomy_mode( string $taxonomy_key ): string {
-	$sidebar = beplus_smart_search_get_sidebar_settings();
+function beplus_fast_product_filter_live_search_get_taxonomy_mode( string $taxonomy_key ): string {
+	$sidebar = beplus_fast_product_filter_live_search_get_sidebar_settings();
 	$modes   = isset( $sidebar['taxonomy_modes'] ) && is_array( $sidebar['taxonomy_modes'] )
 		? $sidebar['taxonomy_modes']
 		: array();
@@ -149,7 +149,7 @@ function beplus_smart_search_get_taxonomy_mode( string $taxonomy_key ): string {
 
 	if ( 0 === strpos( $taxonomy_key, 'custom:' ) ) {
 		$slug = substr( $taxonomy_key, strlen( 'custom:' ) );
-		foreach ( beplus_smart_search_get_custom_taxonomy_facets() as $facet ) {
+		foreach ( beplus_fast_product_filter_live_search_get_custom_taxonomy_facets() as $facet ) {
 			if ( $facet['taxonomy'] === $slug ) {
 				return 'checkbox' === ( $facet['mode'] ?? 'checkbox' ) ? 'checkbox' : 'radio';
 			}
@@ -157,7 +157,7 @@ function beplus_smart_search_get_taxonomy_mode( string $taxonomy_key ): string {
 	}
 
 	if ( 'brand' === $taxonomy_key ) {
-		$brand = beplus_smart_search_get_brand_facet_settings();
+		$brand = beplus_fast_product_filter_live_search_get_brand_facet_settings();
 		return 'checkbox' === ( $brand['mode'] ?? 'checkbox' ) ? 'checkbox' : 'radio';
 	}
 
@@ -173,8 +173,8 @@ function beplus_smart_search_get_taxonomy_mode( string $taxonomy_key ): string {
  *
  * @return bool
  */
-function beplus_smart_search_show_sub_taxonomy( string $taxonomy_key ): bool {
-	$sidebar = beplus_smart_search_get_sidebar_settings();
+function beplus_fast_product_filter_live_search_show_sub_taxonomy( string $taxonomy_key ): bool {
+	$sidebar = beplus_fast_product_filter_live_search_get_sidebar_settings();
 	$modes   = isset( $sidebar['taxonomy_sub_modes'] ) && is_array( $sidebar['taxonomy_sub_modes'] )
 		? $sidebar['taxonomy_sub_modes']
 		: array();
@@ -189,7 +189,7 @@ function beplus_smart_search_show_sub_taxonomy( string $taxonomy_key ): bool {
 
 	if ( 0 === strpos( $taxonomy_key, 'custom:' ) ) {
 		$slug = substr( $taxonomy_key, strlen( 'custom:' ) );
-		foreach ( beplus_smart_search_get_custom_taxonomy_facets() as $facet ) {
+		foreach ( beplus_fast_product_filter_live_search_get_custom_taxonomy_facets() as $facet ) {
 			if ( $facet['taxonomy'] === $slug ) {
 				return ! empty( $facet['show_sub'] );
 			}
@@ -198,7 +198,7 @@ function beplus_smart_search_show_sub_taxonomy( string $taxonomy_key ): bool {
 	}
 
 	if ( 'brand' === $taxonomy_key ) {
-		$brand = beplus_smart_search_get_brand_facet_settings();
+		$brand = beplus_fast_product_filter_live_search_get_brand_facet_settings();
 		return ! empty( $brand['show_sub'] );
 	}
 
@@ -210,8 +210,8 @@ function beplus_smart_search_show_sub_taxonomy( string $taxonomy_key ): bool {
  *
  * @return array<string, mixed>
  */
-function beplus_smart_search_get_facet_settings(): array {
-	$sidebar = beplus_smart_search_get_sidebar_settings();
+function beplus_fast_product_filter_live_search_get_facet_settings(): array {
+	$sidebar = beplus_fast_product_filter_live_search_get_sidebar_settings();
 	$facets  = isset( $sidebar['facets'] ) && is_array( $sidebar['facets'] ) ? $sidebar['facets'] : array();
 
 	return wp_parse_args(
@@ -235,8 +235,8 @@ function beplus_smart_search_get_facet_settings(): array {
  *
  * @return array{taxonomy: string, mode: string, show_sub: bool}
  */
-function beplus_smart_search_get_brand_facet_settings(): array {
-	$facets = beplus_smart_search_get_facet_settings();
+function beplus_fast_product_filter_live_search_get_brand_facet_settings(): array {
+	$facets = beplus_fast_product_filter_live_search_get_facet_settings();
 	$brand  = isset( $facets['brand'] ) && is_array( $facets['brand'] ) ? $facets['brand'] : array();
 
 	return array(
@@ -251,7 +251,7 @@ function beplus_smart_search_get_brand_facet_settings(): array {
  *
  * @return string
  */
-function beplus_smart_search_detect_brand_taxonomy(): string {
+function beplus_fast_product_filter_live_search_detect_brand_taxonomy(): string {
 	$candidates = array( 'product_brand', 'pwb-brand', 'yith_product_brand', 'brand' );
 
 	foreach ( $candidates as $taxonomy ) {
@@ -268,12 +268,12 @@ function beplus_smart_search_detect_brand_taxonomy(): string {
  *
  * @return string
  */
-function beplus_smart_search_get_brand_taxonomy(): string {
+function beplus_fast_product_filter_live_search_get_brand_taxonomy(): string {
 	if ( taxonomy_exists( 'product_brand' ) && is_object_in_taxonomy( 'product', 'product_brand' ) ) {
 		return 'product_brand';
 	}
 
-	return beplus_smart_search_detect_brand_taxonomy();
+	return beplus_fast_product_filter_live_search_detect_brand_taxonomy();
 }
 
 /**
@@ -281,8 +281,8 @@ function beplus_smart_search_get_brand_taxonomy(): string {
  *
  * @return array<int, array{taxonomy: string, label: string, mode: string, show_sub: bool}>
  */
-function beplus_smart_search_get_custom_taxonomy_facets(): array {
-	$facets = beplus_smart_search_get_facet_settings();
+function beplus_fast_product_filter_live_search_get_custom_taxonomy_facets(): array {
+	$facets = beplus_fast_product_filter_live_search_get_facet_settings();
 	$rows   = isset( $facets['custom_taxonomies'] ) && is_array( $facets['custom_taxonomies'] )
 		? $facets['custom_taxonomies']
 		: array();
@@ -320,15 +320,15 @@ function beplus_smart_search_get_custom_taxonomy_facets(): array {
  *
  * @return array<int, string>
  */
-function beplus_smart_search_get_configured_filter_taxonomies(): array {
+function beplus_fast_product_filter_live_search_get_configured_filter_taxonomies(): array {
 	$taxonomies = array();
 
-	$brand = beplus_smart_search_get_brand_taxonomy();
+	$brand = beplus_fast_product_filter_live_search_get_brand_taxonomy();
 	if ( $brand ) {
 		$taxonomies[] = $brand;
 	}
 
-	foreach ( beplus_smart_search_get_custom_taxonomy_facets() as $facet ) {
+	foreach ( beplus_fast_product_filter_live_search_get_custom_taxonomy_facets() as $facet ) {
 		$taxonomies[] = $facet['taxonomy'];
 	}
 
@@ -340,7 +340,7 @@ function beplus_smart_search_get_configured_filter_taxonomies(): array {
  *
  * @return array<string, string> slug => label
  */
-function beplus_smart_search_get_selectable_product_taxonomies(): array {
+function beplus_fast_product_filter_live_search_get_selectable_product_taxonomies(): array {
 	$taxonomies = get_object_taxonomies( 'product', 'objects' );
 	$items      = array();
 
@@ -374,14 +374,14 @@ function beplus_smart_search_get_selectable_product_taxonomies(): array {
  *
  * @return array<int, array{value: int, label: string}>
  */
-function beplus_smart_search_get_rating_filter_options(): array {
+function beplus_fast_product_filter_live_search_get_rating_filter_options(): array {
 	$options = array();
 
 	for ( $stars = 5; $stars >= 1; $stars-- ) {
 		$filled = str_repeat( '★', $stars );
 		$empty  = str_repeat( '☆', 5 - $stars );
 		/* translators: %d: minimum star rating */
-		$label = sprintf( __( '%1$s%2$s & up', 'beplus-smart-search' ), $filled, $empty );
+		$label = sprintf( __( '%1$s%2$s & up', 'beplus-fast-product-filter-live-search' ), $filled, $empty );
 
 		$options[] = array(
 			'value' => $stars,
@@ -397,8 +397,8 @@ function beplus_smart_search_get_rating_filter_options(): array {
  *
  * @return array<string, mixed>
  */
-function beplus_smart_search_get_price_settings(): array {
-	$sidebar = beplus_smart_search_get_sidebar_settings();
+function beplus_fast_product_filter_live_search_get_price_settings(): array {
+	$sidebar = beplus_fast_product_filter_live_search_get_sidebar_settings();
 	$price   = isset( $sidebar['price'] ) && is_array( $sidebar['price'] ) ? $sidebar['price'] : array();
 
 	return wp_parse_args(
@@ -418,8 +418,8 @@ function beplus_smart_search_get_price_settings(): array {
  *
  * @return bool
  */
-function beplus_smart_search_is_price_segments_mode(): bool {
-	$price = beplus_smart_search_get_price_settings();
+function beplus_fast_product_filter_live_search_is_price_segments_mode(): bool {
+	$price = beplus_fast_product_filter_live_search_get_price_settings();
 
 	return 'segments' === ( $price['display'] ?? 'range' );
 }
@@ -433,23 +433,23 @@ function beplus_smart_search_is_price_segments_mode(): bool {
  *
  * @return string
  */
-function beplus_smart_search_format_price_segment_label( float $min, float $max, string $label = '' ): string {
+function beplus_fast_product_filter_live_search_format_price_segment_label( float $min, float $max, string $label = '' ): string {
 	if ( '' !== $label ) {
 		return $label;
 	}
 
-	$currency = beplus_smart_search_get_currency_symbol();
+	$currency = beplus_fast_product_filter_live_search_get_currency_symbol();
 	$min_fmt  = number_format_i18n( $min );
 
 	if ( $max <= 0 ) {
 		/* translators: 1: currency symbol, 2: minimum price */
-		return sprintf( __( '%1$s%2$s and above', 'beplus-smart-search' ), $currency, $min_fmt );
+		return sprintf( __( '%1$s%2$s and above', 'beplus-fast-product-filter-live-search' ), $currency, $min_fmt );
 	}
 
 	$max_fmt = number_format_i18n( $max );
 
 	/* translators: 1: currency symbol, 2: minimum price, 3: currency symbol, 4: maximum price */
-	return sprintf( __( '%1$s%2$s — %3$s%4$s', 'beplus-smart-search' ), $currency, $min_fmt, $currency, $max_fmt );
+	return sprintf( __( '%1$s%2$s — %3$s%4$s', 'beplus-fast-product-filter-live-search' ), $currency, $min_fmt, $currency, $max_fmt );
 }
 
 /**
@@ -459,7 +459,7 @@ function beplus_smart_search_format_price_segment_label( float $min, float $max,
  *
  * @return bool
  */
-function beplus_smart_search_is_price_filter_enabled(): bool {
+function beplus_fast_product_filter_live_search_is_price_filter_enabled(): bool {
 	return true;
 }
 
@@ -468,8 +468,8 @@ function beplus_smart_search_is_price_filter_enabled(): bool {
  *
  * @return string
  */
-function beplus_smart_search_get_facet_display_mode(): string {
-	$sidebar = beplus_smart_search_get_sidebar_settings();
+function beplus_fast_product_filter_live_search_get_facet_display_mode(): string {
+	$sidebar = beplus_fast_product_filter_live_search_get_sidebar_settings();
 	$mode    = $sidebar['facet_display_mode'] ?? 'all';
 
 	return 'contextual' === $mode ? 'contextual' : 'all';
@@ -480,7 +480,7 @@ function beplus_smart_search_get_facet_display_mode(): string {
  *
  * @return string
  */
-function beplus_smart_search_get_currency_symbol(): string {
+function beplus_fast_product_filter_live_search_get_currency_symbol(): string {
 	if ( function_exists( 'get_woocommerce_currency_symbol' ) ) {
 		return get_woocommerce_currency_symbol();
 	}
@@ -493,8 +493,8 @@ function beplus_smart_search_get_currency_symbol(): string {
  *
  * @return int
  */
-function beplus_smart_search_get_per_page(): int {
-	$settings = beplus_smart_search_get_settings();
+function beplus_fast_product_filter_live_search_get_per_page(): int {
+	$settings = beplus_fast_product_filter_live_search_get_settings();
 	$per_page = isset( $settings['per_page'] ) ? (int) $settings['per_page'] : 10;
 
 	return max( 1, min( 50, $per_page ) );
@@ -505,7 +505,7 @@ function beplus_smart_search_get_per_page(): int {
  *
  * @return bool
  */
-function beplus_smart_search_uses_plain_permalinks(): bool {
+function beplus_fast_product_filter_live_search_uses_plain_permalinks(): bool {
 	return '' === (string) get_option( 'permalink_structure', '' );
 }
 
@@ -518,8 +518,8 @@ function beplus_smart_search_uses_plain_permalinks(): bool {
  *
  * @return string
  */
-function beplus_smart_search_get_catalog_search_base_url(): string {
-	if ( beplus_smart_search_uses_plain_permalinks() ) {
+function beplus_fast_product_filter_live_search_get_catalog_search_base_url(): string {
+	if ( beplus_fast_product_filter_live_search_uses_plain_permalinks() ) {
 		return home_url( '/' );
 	}
 
@@ -540,8 +540,8 @@ function beplus_smart_search_get_catalog_search_base_url(): string {
  *
  * @return bool
  */
-function beplus_smart_search_catalog_search_needs_post_type_arg(): bool {
-	return beplus_smart_search_uses_plain_permalinks();
+function beplus_fast_product_filter_live_search_catalog_search_needs_post_type_arg(): bool {
+	return beplus_fast_product_filter_live_search_uses_plain_permalinks();
 }
 
 /**
@@ -551,11 +551,11 @@ function beplus_smart_search_catalog_search_needs_post_type_arg(): bool {
  *
  * @return string
  */
-function beplus_smart_search_build_catalog_search_url( array $params = array() ): string {
-	$base = beplus_smart_search_get_catalog_search_base_url();
+function beplus_fast_product_filter_live_search_build_catalog_search_url( array $params = array() ): string {
+	$base = beplus_fast_product_filter_live_search_get_catalog_search_base_url();
 	$args = array();
 
-	if ( beplus_smart_search_catalog_search_needs_post_type_arg() ) {
+	if ( beplus_fast_product_filter_live_search_catalog_search_needs_post_type_arg() ) {
 		$args['post_type'] = 'product';
 	}
 
@@ -588,7 +588,7 @@ function beplus_smart_search_build_catalog_search_url( array $params = array() )
  *
  * @return bool
  */
-function beplus_smart_search_page_has_search_block(): bool {
+function beplus_fast_product_filter_live_search_page_has_search_block(): bool {
 	static $has_block = null;
 
 	if ( null !== $has_block ) {
@@ -596,7 +596,7 @@ function beplus_smart_search_page_has_search_block(): bool {
 	}
 
 	$has_block = false;
-	$block     = 'beplus-smart-search/advanced-woo-search';
+	$block     = 'beplus-fast-product-filter-live-search/advanced-woo-search';
 
 	if ( is_singular() ) {
 		global $post;
@@ -604,7 +604,7 @@ function beplus_smart_search_page_has_search_block(): bool {
 		return $has_block;
 	}
 
-	foreach ( beplus_smart_search_get_block_content_sources() as $content ) {
+	foreach ( beplus_fast_product_filter_live_search_get_block_content_sources() as $content ) {
 		if ( $content && has_block( $block, $content ) ) {
 			$has_block = true;
 			return $has_block;
@@ -619,7 +619,7 @@ function beplus_smart_search_page_has_search_block(): bool {
  *
  * @return array<int, string>
  */
-function beplus_smart_search_get_block_content_sources(): array {
+function beplus_fast_product_filter_live_search_get_block_content_sources(): array {
 	$sources = array();
 
 	if ( function_exists( 'wc_get_page_id' ) ) {
@@ -633,7 +633,7 @@ function beplus_smart_search_get_block_content_sources(): array {
 	}
 
 	if ( function_exists( 'get_block_templates' ) ) {
-		$template_slugs = beplus_smart_search_get_relevant_template_slugs();
+		$template_slugs = beplus_fast_product_filter_live_search_get_relevant_template_slugs();
 
 		if ( ! empty( $template_slugs ) ) {
 			$templates = get_block_templates(
@@ -656,7 +656,7 @@ function beplus_smart_search_get_block_content_sources(): array {
 	 *
 	 * @param array<int, string> $sources Raw block content strings.
 	 */
-	return apply_filters( 'beplus_smart_search_block_content_sources', $sources );
+	return apply_filters( 'beplus_fast_product_filter_live_search_block_content_sources', $sources );
 }
 
 /**
@@ -664,7 +664,7 @@ function beplus_smart_search_get_block_content_sources(): array {
  *
  * @return array<int, string>
  */
-function beplus_smart_search_get_relevant_template_slugs(): array {
+function beplus_fast_product_filter_live_search_get_relevant_template_slugs(): array {
 	$slugs = array();
 
 	if ( function_exists( 'is_shop' ) && is_shop() ) {
@@ -696,7 +696,7 @@ function beplus_smart_search_get_relevant_template_slugs(): array {
  *
  * @return string
  */
-function beplus_smart_search_get_default_catalog_orderby(): string {
+function beplus_fast_product_filter_live_search_get_default_catalog_orderby(): string {
 	$default = apply_filters(
 		'woocommerce_default_catalog_orderby', // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 		get_option( 'woocommerce_default_catalog_orderby', 'menu_order' ),
@@ -713,11 +713,11 @@ function beplus_smart_search_get_default_catalog_orderby(): string {
  *
  * @return array{orderby: string, order: string, wc_value: string}
  */
-function beplus_smart_search_parse_catalog_orderby( string $raw = '', string $order = '' ): array {
+function beplus_fast_product_filter_live_search_parse_catalog_orderby( string $raw = '', string $order = '' ): array {
 	$raw = sanitize_text_field( $raw );
 
 	if ( '' === $raw ) {
-		$raw = beplus_smart_search_get_default_catalog_orderby();
+		$raw = beplus_fast_product_filter_live_search_get_default_catalog_orderby();
 	}
 
 	$parts        = explode( '-', $raw, 2 );
@@ -741,7 +741,7 @@ function beplus_smart_search_parse_catalog_orderby( string $raw = '', string $or
 	);
 
 	if ( ! in_array( $orderby, $allowed, true ) ) {
-		$raw          = beplus_smart_search_get_default_catalog_orderby();
+		$raw          = beplus_fast_product_filter_live_search_get_default_catalog_orderby();
 		$parts        = explode( '-', $raw, 2 );
 		$orderby      = $parts[0];
 		$parsed_order = isset( $parts[1] ) ? $parts[1] : 'asc';
@@ -773,35 +773,35 @@ function beplus_smart_search_parse_catalog_orderby( string $raw = '', string $or
  *
  * @return array<string, string>
  */
-function beplus_smart_search_get_filter_section_catalog( array $attrs = array() ): array {
+function beplus_fast_product_filter_live_search_get_filter_section_catalog( array $attrs = array() ): array {
 	$sections = array(
-		'keyword'  => __( 'Keyword search', 'beplus-smart-search' ),
-		'category' => __( 'Product Categories', 'beplus-smart-search' ),
-		'price'    => __( 'Price', 'beplus-smart-search' ),
+		'keyword'  => __( 'Keyword search', 'beplus-fast-product-filter-live-search' ),
+		'category' => __( 'Product Categories', 'beplus-fast-product-filter-live-search' ),
+		'price'    => __( 'Price', 'beplus-fast-product-filter-live-search' ),
 	);
 
-	$brand_tax = beplus_smart_search_get_brand_taxonomy();
+	$brand_tax = beplus_fast_product_filter_live_search_get_brand_taxonomy();
 	if ( $brand_tax ) {
 		$brand_object = get_taxonomy( $brand_tax );
 		$sections['brand'] = $brand_object instanceof WP_Taxonomy
 			? $brand_object->labels->name
-			: __( 'Brand', 'beplus-smart-search' );
+			: __( 'Brand', 'beplus-fast-product-filter-live-search' );
 	}
 
-	foreach ( beplus_smart_search_get_all_attribute_definitions() as $attribute ) {
-		if ( ! empty( $attrs ) && ! beplus_smart_search_is_block_attribute_enabled( $attribute['slug'], $attrs ) ) {
+	foreach ( beplus_fast_product_filter_live_search_get_all_attribute_definitions() as $attribute ) {
+		if ( ! empty( $attrs ) && ! beplus_fast_product_filter_live_search_is_block_attribute_enabled( $attribute['slug'], $attrs ) ) {
 			continue;
 		}
 		$sections[ 'attribute:' . $attribute['slug'] ] = $attribute['label'];
 	}
 
-	$sections['tag']      = __( 'Product Tags', 'beplus-smart-search' );
-	$sections['stock']    = __( 'Stock status', 'beplus-smart-search' );
-	$sections['on_sale']  = __( 'On sale', 'beplus-smart-search' );
-	$sections['featured'] = __( 'Featured products', 'beplus-smart-search' );
-	$sections['rating']   = __( 'Rating', 'beplus-smart-search' );
+	$sections['tag']      = __( 'Product Tags', 'beplus-fast-product-filter-live-search' );
+	$sections['stock']    = __( 'Stock status', 'beplus-fast-product-filter-live-search' );
+	$sections['on_sale']  = __( 'On sale', 'beplus-fast-product-filter-live-search' );
+	$sections['featured'] = __( 'Featured products', 'beplus-fast-product-filter-live-search' );
+	$sections['rating']   = __( 'Rating', 'beplus-fast-product-filter-live-search' );
 
-	foreach ( beplus_smart_search_get_custom_taxonomy_facets() as $facet ) {
+	foreach ( beplus_fast_product_filter_live_search_get_custom_taxonomy_facets() as $facet ) {
 		$sections[ 'custom:' . $facet['taxonomy'] ] = $facet['label'];
 	}
 
@@ -816,7 +816,7 @@ function beplus_smart_search_get_filter_section_catalog( array $attrs = array() 
  *
  * @return bool
  */
-function beplus_smart_search_is_block_attribute_enabled( string $slug, array $attrs ): bool {
+function beplus_fast_product_filter_live_search_is_block_attribute_enabled( string $slug, array $attrs ): bool {
 	$selected = isset( $attrs['attributeSlugs'] ) && is_array( $attrs['attributeSlugs'] )
 		? array_values( array_map( 'strval', $attrs['attributeSlugs'] ) )
 		: array();
@@ -840,7 +840,7 @@ function beplus_smart_search_is_block_attribute_enabled( string $slug, array $at
  *
  * @return array<int, string>
  */
-function beplus_smart_search_get_block_attribute_slugs( array $attrs ): array {
+function beplus_fast_product_filter_live_search_get_block_attribute_slugs( array $attrs ): array {
 	$selected = isset( $attrs['attributeSlugs'] ) && is_array( $attrs['attributeSlugs'] )
 		? array_values( array_map( 'strval', $attrs['attributeSlugs'] ) )
 		: array();
@@ -851,7 +851,7 @@ function beplus_smart_search_get_block_attribute_slugs( array $attrs ): array {
 	}
 
 	$all = array();
-	foreach ( beplus_smart_search_get_all_attribute_definitions() as $attribute ) {
+	foreach ( beplus_fast_product_filter_live_search_get_all_attribute_definitions() as $attribute ) {
 		$all[] = $attribute['slug'];
 	}
 
@@ -867,7 +867,7 @@ function beplus_smart_search_get_block_attribute_slugs( array $attrs ): array {
  *
  * @return array<int, string>
  */
-function beplus_smart_search_get_default_filter_order(): array {
+function beplus_fast_product_filter_live_search_get_default_filter_order(): array {
 	$order = array(
 		'keyword',
 		'category',
@@ -875,7 +875,7 @@ function beplus_smart_search_get_default_filter_order(): array {
 		'brand',
 	);
 
-	foreach ( beplus_smart_search_get_all_attribute_definitions() as $attribute ) {
+	foreach ( beplus_fast_product_filter_live_search_get_all_attribute_definitions() as $attribute ) {
 		$order[] = 'attribute:' . $attribute['slug'];
 	}
 
@@ -885,7 +885,7 @@ function beplus_smart_search_get_default_filter_order(): array {
 	$order[] = 'featured';
 	$order[] = 'rating';
 
-	foreach ( beplus_smart_search_get_custom_taxonomy_facets() as $facet ) {
+	foreach ( beplus_fast_product_filter_live_search_get_custom_taxonomy_facets() as $facet ) {
 		$order[] = 'custom:' . $facet['taxonomy'];
 	}
 
@@ -899,12 +899,12 @@ function beplus_smart_search_get_default_filter_order(): array {
  *
  * @return array<int, string>
  */
-function beplus_smart_search_resolve_filter_order( array $attrs ): array {
-	$catalog = beplus_smart_search_get_filter_section_catalog( $attrs );
+function beplus_fast_product_filter_live_search_resolve_filter_order( array $attrs ): array {
+	$catalog = beplus_fast_product_filter_live_search_get_filter_section_catalog( $attrs );
 	$saved   = isset( $attrs['filterOrder'] ) && is_array( $attrs['filterOrder'] )
 		? array_values( array_map( 'strval', $attrs['filterOrder'] ) )
 		: array();
-	$base    = ! empty( $saved ) ? $saved : beplus_smart_search_get_default_filter_order();
+	$base    = ! empty( $saved ) ? $saved : beplus_fast_product_filter_live_search_get_default_filter_order();
 	$merged  = array();
 
 	foreach ( $base as $section_id ) {
@@ -933,7 +933,7 @@ function beplus_smart_search_resolve_filter_order( array $attrs ): array {
  *
  * @return bool
  */
-function beplus_smart_search_should_render_filter_section(
+function beplus_fast_product_filter_live_search_should_render_filter_section(
 	string $section_id,
 	array $attrs,
 	array $categories,
@@ -959,7 +959,7 @@ function beplus_smart_search_should_render_filter_section(
 	if ( 0 === strpos( $section_id, 'attribute:' ) ) {
 		$slug = substr( $section_id, strlen( 'attribute:' ) );
 
-		if ( ! beplus_smart_search_is_block_attribute_enabled( $slug, $attrs ) ) {
+		if ( ! beplus_fast_product_filter_live_search_is_block_attribute_enabled( $slug, $attrs ) ) {
 			return false;
 		}
 
@@ -986,9 +986,9 @@ function beplus_smart_search_should_render_filter_section(
 		if ( empty( $attrs['showBrand'] ) ) {
 			return false;
 		}
-		$brand_tax = beplus_smart_search_get_brand_taxonomy();
+		$brand_tax = beplus_fast_product_filter_live_search_get_brand_taxonomy();
 
-		return $brand_tax && ! empty( beplus_smart_search_get_brand_terms() );
+		return $brand_tax && ! empty( beplus_fast_product_filter_live_search_get_brand_terms() );
 	}
 
 	if ( 0 === strpos( $section_id, 'custom:' ) ) {
@@ -997,7 +997,7 @@ function beplus_smart_search_should_render_filter_section(
 		}
 		$taxonomy = substr( $section_id, strlen( 'custom:' ) );
 
-		return ! empty( beplus_smart_search_get_taxonomy_terms( $taxonomy ) );
+		return ! empty( beplus_fast_product_filter_live_search_get_taxonomy_terms( $taxonomy ) );
 	}
 
 	return false;

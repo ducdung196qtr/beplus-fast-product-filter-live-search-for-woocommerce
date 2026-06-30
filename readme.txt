@@ -1,4 +1,4 @@
-=== Beplus Smart Search ===
+=== Beplus Fast Product Filter & Live Search for WooCommerce ===
 Contributors: beplus
 Tags: search, woocommerce, filter, gutenberg
 Requires at least: 6.5
@@ -8,11 +8,11 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Give shoppers a faster way to browse your store. Search and filter products by keyword, category, price, and more—results update instantly.
+Fast, smart AJAX product filter & live search for WooCommerce. Instant results, no page reload — more conversions on your shop.
 
 == Description ==
 
-**Beplus Smart Search** makes it easier for customers to find what they want on your WooCommerce shop.
+**Beplus Fast Product Filter & Live Search for WooCommerce** makes it easier for customers to find what they want on your WooCommerce shop.
 
 Add the **Advanced Woo Search** block to your shop template. Shoppers can search and narrow products without waiting for the page to reload—smoother browsing, fewer dead ends.
 
@@ -33,7 +33,7 @@ Add the **Advanced Woo Search** block to your shop template. Shoppers can search
 
 == Installation ==
 
-1. Upload the plugin to `/wp-content/plugins/beplus-smart-search/`
+1. Upload the plugin to `/wp-content/plugins/beplus-fast-product-filter-live-search/`
 2. Activate through the 'Plugins' menu in WordPress
 3. Requires WooCommerce to be active
 4. In Site Editor, edit the shop template and insert **Advanced Woo Search** above the product collection block

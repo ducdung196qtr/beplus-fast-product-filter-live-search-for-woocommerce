@@ -3,15 +3,15 @@
 /**
  * Search provider registry.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  * @subpackage Search
  */
 
-namespace BePlusSmartSearch\Search;
+namespace BePlusFastProductFilterLiveSearch\Search;
 
-use BePlusSmartSearch\Core\AbstractModule;
-use BePlusSmartSearch\Search\Providers\AbstractProvider;
-use BePlusSmartSearch\Search\Providers\ProductProvider;
+use BePlusFastProductFilterLiveSearch\Core\AbstractModule;
+use BePlusFastProductFilterLiveSearch\Search\Providers\AbstractProvider;
+use BePlusFastProductFilterLiveSearch\Search\Providers\ProductProvider;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -46,7 +46,7 @@ class SearchRegistry extends AbstractModule {
 	private function register_default_providers(): void {
 		$this->add_provider( new ProductProvider() );
 
-		$extra = apply_filters( 'beplus_smart_search.providers', array() );
+		$extra = apply_filters( 'beplus_fast_product_filter_live_search.providers', array() );
 
 		if ( is_array( $extra ) ) {
 			foreach ( $extra as $provider ) {

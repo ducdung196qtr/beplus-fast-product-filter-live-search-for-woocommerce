@@ -1,21 +1,21 @@
 ---
-description: BePlus Smart Search REST API — routes, permissions, sanitization
+description: Beplus Fast Product Filter & Live Search for WooCommerce REST API — routes, permissions, sanitization
 globs: src/REST/**
 alwaysApply: false
 ---
 
-# BePlus Smart Search — REST API
+# Beplus Fast Product Filter & Live Search for WooCommerce — REST API
 
 ## Namespace
 
-- Base: `beplus-smart-search/v1`
+- Base: `beplus-fast-product-filter-live-search/v1`
 - Controllers extend `WP_REST_Controller` under `src/REST/`.
 
 ## Route conventions
 
 | Route | Methods | Permission | Notes |
 |-------|---------|------------|-------|
-| `/search` | GET | public read | Sanitize `s` param; apply `beplus-smart-search/search.query` filter |
+| `/search` | GET | public read | Sanitize `s` param; apply `beplus-fast-product-filter-live-search/search.query` filter |
 | `/settings` | GET, POST | `manage_options` | Delegate to `SettingsRegistry` |
 | `/settings/defaults` | GET | `manage_options` | Return schema defaults |
 
@@ -27,7 +27,7 @@ Register routes on `rest_api_init` inside `Plugin::register_core_services()`.
 class SearchController extends \WP_REST_Controller {
 
 	public function __construct() {
-		$this->namespace = 'beplus-smart-search/v1';
+		$this->namespace = 'beplus-fast-product-filter-live-search/v1';
 		$this->rest_base = 'search';
 	}
 
@@ -57,7 +57,7 @@ array(
 )
 ```
 
-Apply `beplus-smart-search/search.results` filter before returning.
+Apply `beplus-fast-product-filter-live-search/search.results` filter before returning.
 
 Reference: `src/REST/ProductsController.php`, `src/REST/FacetsController.php`.
 

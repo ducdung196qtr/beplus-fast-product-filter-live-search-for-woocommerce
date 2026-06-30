@@ -1,28 +1,28 @@
 ---
-description: BePlus Smart Search PHP — PSR-4, prefixes, AbstractModule, security
+description: Beplus Fast Product Filter & Live Search for WooCommerce PHP — PSR-4, prefixes, AbstractModule, security
 globs: "**/*.php"
 alwaysApply: false
 ---
 
-# BePlus Smart Search — PHP
+# Beplus Fast Product Filter & Live Search for WooCommerce — PHP
 
 ## Quality gate
 
 Before finishing PHP work:
 
 1. Every file starts with `if ( ! defined( 'ABSPATH' ) ) { exit; }`.
-2. New classes under `src/` use namespace `BePlusSmartSearch\...` matching the directory path.
-3. Global functions use prefix `beplus_smart_search_` with full PHPDoc (`@param`, `@return`).
+2. New classes under `src/` use namespace `BePlusFastProductFilterLiveSearch\...` matching the directory path.
+3. Global functions use prefix `beplus_fast_product_filter_live_search_` with full PHPDoc (`@param`, `@return`).
 4. When PHPCS/WPCS is configured, run it on changed files and fix violations.
 
 ## Conventions
 
-- **Bootstrap:** Constants and boot functions live in `beplus-smart-search.php`; domain logic in `src/`.
+- **Bootstrap:** Constants and boot functions live in `beplus-fast-product-filter-live-search.php`; domain logic in `src/`.
 - **Modules:** Extend `AbstractModule`; constructor receives `Container`; implement `register(): void`.
 - **Services:** Resolve via `Container::get()` — do not `new` singletons in random files.
 - **Settings:** Use `SettingsRegistry` with `OPTION_KEY` constant and merged defaults — do not scatter `get_option()` calls.
 - **Block `render.php`:** `@var array<string, mixed> $attributes` in file docblock; escape all output.
-- **Script data:** Prefer `wp_localize_script` in `AssetLoader` with handle `beplus-smart-search-frontend` and object `bpssData`.
+- **Script data:** Prefer `wp_localize_script` in `AssetLoader` with handle `beplus-fast-product-filter-live-search-frontend` and object `bpssData`.
 
 ## Naming
 
@@ -39,8 +39,8 @@ Follow existing classes in `src/Core/Plugin.php`, `Container.php`, `SettingsRegi
 
 ```text
 ❌ function get_settings() without prefix in includes/common.php
-✅ function beplus_smart_search_get_settings()
+✅ function beplus_fast_product_filter_live_search_get_settings()
 
-❌ new SearchEngine() in beplus-smart-search.php top level
+❌ new SearchEngine() in beplus-fast-product-filter-live-search.php top level
 ✅ $container->get( SearchEngine::class ) inside Plugin boot
 ```

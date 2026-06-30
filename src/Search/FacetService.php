@@ -3,11 +3,11 @@
 /**
  * Contextual facet resolver.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  * @subpackage Search
  */
 
-namespace BePlusSmartSearch\Search;
+namespace BePlusFastProductFilterLiveSearch\Search;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -159,7 +159,7 @@ final class FacetService {
 	 * @return array<int, array<string, mixed>>
 	 */
 	private function get_contextual_ratings( SearchQuery $context ): array {
-		if ( ! function_exists( 'beplus_smart_search_get_rating_filter_options' ) ) {
+		if ( ! function_exists( 'beplus_fast_product_filter_live_search_get_rating_filter_options' ) ) {
 			return array();
 		}
 
@@ -167,7 +167,7 @@ final class FacetService {
 		$items = array();
 
 		// Rating uses exclusive radios — always return every option so users can switch.
-		foreach ( beplus_smart_search_get_rating_filter_options() as $option ) {
+		foreach ( beplus_fast_product_filter_live_search_get_rating_filter_options() as $option ) {
 			$items[] = array(
 				'slug'  => (string) $option['value'],
 				'name'  => (string) $option['label'],
@@ -184,13 +184,13 @@ final class FacetService {
 	 * @return array<string, array<int, array<string, mixed>>>
 	 */
 	private function get_contextual_taxonomies( SearchQuery $context ): array {
-		if ( ! function_exists( 'beplus_smart_search_get_configured_filter_taxonomies' ) ) {
+		if ( ! function_exists( 'beplus_fast_product_filter_live_search_get_configured_filter_taxonomies' ) ) {
 			return array();
 		}
 
 		$items = array();
 
-		foreach ( beplus_smart_search_get_configured_filter_taxonomies() as $taxonomy ) {
+		foreach ( beplus_fast_product_filter_live_search_get_configured_filter_taxonomies() as $taxonomy ) {
 			$terms = $this->get_contextual_taxonomy_terms( $context, $taxonomy );
 			if ( ! empty( $terms ) ) {
 				$items[ $taxonomy ] = $terms;
@@ -513,13 +513,13 @@ final class FacetService {
 	 * @return array<int, array<string, mixed>>
 	 */
 	private function get_all_ratings(): array {
-		if ( ! function_exists( 'beplus_smart_search_get_rating_filter_options' ) ) {
+		if ( ! function_exists( 'beplus_fast_product_filter_live_search_get_rating_filter_options' ) ) {
 			return array();
 		}
 
 		$items = array();
 
-		foreach ( beplus_smart_search_get_rating_filter_options() as $option ) {
+		foreach ( beplus_fast_product_filter_live_search_get_rating_filter_options() as $option ) {
 			$items[] = array(
 				'slug'  => (string) $option['value'],
 				'name'  => (string) $option['label'],
@@ -534,13 +534,13 @@ final class FacetService {
 	 * @return array<string, array<int, array<string, mixed>>>
 	 */
 	private function get_all_taxonomy_facets(): array {
-		if ( ! function_exists( 'beplus_smart_search_get_configured_filter_taxonomies' ) ) {
+		if ( ! function_exists( 'beplus_fast_product_filter_live_search_get_configured_filter_taxonomies' ) ) {
 			return array();
 		}
 
 		$items = array();
 
-		foreach ( beplus_smart_search_get_configured_filter_taxonomies() as $taxonomy ) {
+		foreach ( beplus_fast_product_filter_live_search_get_configured_filter_taxonomies() as $taxonomy ) {
 			$terms = $this->format_terms( $this->get_terms( $taxonomy ) );
 			if ( ! empty( $terms ) ) {
 				$items[ $taxonomy ] = $terms;

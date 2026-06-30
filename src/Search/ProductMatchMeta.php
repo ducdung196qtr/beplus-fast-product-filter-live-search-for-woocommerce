@@ -3,11 +3,11 @@
 /**
  * Match metadata for product search results display.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  * @subpackage Search
  */
 
-namespace BePlusSmartSearch\Search;
+namespace BePlusFastProductFilterLiveSearch\Search;
 
 use WC_Product;
 
@@ -42,7 +42,7 @@ final class ProductMatchMeta {
 			if ( '' !== $sku && self::matches( $sku, $keyword, $query ) ) {
 				$matches[] = array(
 					'type'  => 'sku',
-					'label' => __( 'SKU', 'beplus-smart-search' ),
+					'label' => __( 'SKU', 'beplus-fast-product-filter-live-search' ),
 					'value' => $sku,
 				);
 			}
@@ -79,8 +79,8 @@ final class ProductMatchMeta {
 
 		$type  = 'product_cat' === $taxonomy ? 'category' : 'tag';
 		$label = 'product_cat' === $taxonomy
-			? __( 'Category', 'beplus-smart-search' )
-			: __( 'Tag', 'beplus-smart-search' );
+			? __( 'Category', 'beplus-fast-product-filter-live-search' )
+			: __( 'Tag', 'beplus-fast-product-filter-live-search' );
 
 		$matches = array();
 		foreach ( $terms as $term ) {
@@ -136,7 +136,7 @@ final class ProductMatchMeta {
 				$attr_label = wc_attribute_label( $taxonomy );
 				$matches[]  = array(
 					'type'  => 'attribute',
-					'label' => $attr_label ? $attr_label : __( 'Attribute', 'beplus-smart-search' ),
+					'label' => $attr_label ? $attr_label : __( 'Attribute', 'beplus-fast-product-filter-live-search' ),
 					'value' => $term->name,
 				);
 			}

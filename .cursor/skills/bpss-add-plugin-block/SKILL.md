@@ -1,10 +1,10 @@
 ---
 name: bpss-add-plugin-block
-description: Adds or extends a BePlus Smart Search Gutenberg block under blocks/ using block.json, TypeScript, esbuild, render.php. Use when creating blocks, editing BlockRegistry, block.json, render.php, index.tsx, or npm build for beplus-smart-search.
+description: Adds or extends a Beplus Fast Product Filter & Live Search for WooCommerce Gutenberg block under blocks/ using block.json, TypeScript, esbuild, render.php. Use when creating blocks, editing BlockRegistry, block.json, render.php, index.tsx, or npm build for beplus-fast-product-filter-live-search.
 disable-model-invocation: true
 ---
 
-# BePlus Smart Search — add or change a plugin block
+# Beplus Fast Product Filter & Live Search for WooCommerce — add or change a plugin block
 
 ## Before you edit
 
@@ -17,9 +17,9 @@ disable-model-invocation: true
 
 1. Create `blocks/{slug}/` with `block.json`, `index.tsx`, `edit.tsx`, `render.php`, `style.css`.
 2. Set `block.json`:
-   - `name`: `beplus-smart-search/{slug}`
-   - `textdomain`: `beplus-smart-search`
-   - `category`: `beplus-smart-search`
+   - `name`: `beplus-fast-product-filter-live-search/{slug}`
+   - `textdomain`: `beplus-fast-product-filter-live-search`
+   - `category`: `beplus-fast-product-filter-live-search`
    - `render`: `file:./render.php`
 3. Register block category in `Plugin::register_block_category()` if not already present.
 
@@ -39,14 +39,14 @@ disable-model-invocation: true
 
 ## Styling
 
-- Class prefix: `beplus-smart-search__*`
-- Loading: `beplus-smart-search--loading` → `beplus-smart-search--ready`
+- Class prefix: `beplus-fast-product-filter-live-search__*`
+- Loading: `beplus-fast-product-filter-live-search--loading` → `beplus-fast-product-filter-live-search--ready`
 - Scope styles to block wrapper — avoid global resets
 
 ## Build and verify
 
 1. `npm run build` from plugin root.
-2. Block inserter: block appears under **BePlus Smart Search** category.
+2. Block inserter: block appears under **Beplus Fast Product Filter & Live Search for WooCommerce** category.
 3. Front-end: autocomplete works, keyboard nav, empty/error states, no layout jump on init.
 
 ## Reference
@@ -59,7 +59,7 @@ disable-model-invocation: true
 
 ## Checklist
 
-- [ ] `block.json` uses `beplus-smart-search/` name prefix and textdomain.
+- [ ] `block.json` uses `beplus-fast-product-filter-live-search/` name prefix and textdomain.
 - [ ] `render.php` escaped; no raw user input in output.
 - [ ] REST used for live search — not ad-hoc SQL in render.
 - [ ] `npm run build` run; no hand-edits to `build/**`.

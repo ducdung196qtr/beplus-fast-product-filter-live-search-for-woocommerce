@@ -1,7 +1,7 @@
 /**
  * Smart Search admin settings tabs.
  *
- * @package BePlusSmartSearch
+ * @package BePlusFastProductFilterLiveSearch
  */
 // @ts-nocheck
 ( function ( $ ) {

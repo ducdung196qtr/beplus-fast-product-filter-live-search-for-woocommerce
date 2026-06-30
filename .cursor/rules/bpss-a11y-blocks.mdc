@@ -1,10 +1,10 @@
 ---
-description: BePlus Smart Search block accessibility — combobox, live regions, semantic markup
+description: Beplus Fast Product Filter & Live Search for WooCommerce block accessibility — combobox, live regions, semantic markup
 globs: blocks/**
 alwaysApply: false
 ---
 
-# BePlus Smart Search — block accessibility
+# Beplus Fast Product Filter & Live Search for WooCommerce — block accessibility
 
 ## Search bar (`render.php` + block JS)
 
@@ -38,7 +38,7 @@ After `render.php` edits: verify escaping. After block JS/CSS: **`npm run build`
 
 ```text
 ❌ <div onclick="search()"> with no keyboard support
-✅ <button type="submit" class="beplus-smart-search__submit">
+✅ <button type="submit" class="beplus-fast-product-filter-live-search__submit">
 
 ❌ Dynamic results injected without aria-live update
 ✅ Update [data-bpss-search-status] when results load or fail
