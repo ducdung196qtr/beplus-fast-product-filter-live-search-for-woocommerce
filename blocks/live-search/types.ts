@@ -16,6 +16,12 @@ export interface BlockAttributes {
 	showAddToCart: boolean;
 	showViewAll: boolean;
 	highlightColor: string;
+	submitButtonStyle: 'text' | 'icon';
+	submitButtonText: string;
+	quickSuggestions: string;
+	quickSuggestionsCount: number;
+	quickSuggestionsAutoSync: boolean;
+	enableQuickSuggestions: boolean;
 }
 
 export interface CategoryDefinition {

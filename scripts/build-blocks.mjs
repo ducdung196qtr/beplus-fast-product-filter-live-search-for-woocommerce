@@ -41,6 +41,7 @@ const WP_PACKAGES = [
 	'@wordpress/blob',
 	'@wordpress/notices',
 	'@wordpress/plugins',
+	'@wordpress/api-fetch',
 ];
 
 const WP_HANDLES = WP_PACKAGES.map( toWpHandle );

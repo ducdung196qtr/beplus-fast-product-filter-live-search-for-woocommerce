@@ -1,0 +1,762 @@
+- generic [active] [ref=f4e1]:
+  - generic [ref=f4e2]:
+    - text:              
+    - generic:
+      - text: 
+      - main:
+        - generic [ref=f4e5]:
+          - region "Navigation" [ref=f4e6]
+          - generic [ref=f4e19]:
+            - generic [ref=f4e20]:
+              - region "Editor top bar" [ref=f4e21]:
+                - generic [ref=f4e22]:
+                  - generic [ref=f4e25]:
+                    - button "Open Navigation" [ref=f4e26] [cursor=pointer]:
+                      - img [ref=f4e29]
+                    - generic:
+                      - img
+                  - toolbar "Document tools" [ref=f4e32]:
+                    - generic [ref=f4e33]:
+                      - button "Block Inserter" [ref=f4e34] [cursor=pointer]:
+                        - img [ref=f4e35]
+                      - button "Undo" [disabled] [ref=f4e37]:
+                        - img [ref=f4e38]
+                      - button "Redo" [disabled] [ref=f4e40]:
+                        - img [ref=f4e41]
+                      - button "Document Overview" [ref=f4e43] [cursor=pointer]:
+                        - img [ref=f4e44]
+                  - button "Product Catalog · Template Ctrl+K" [ref=f4e48] [cursor=pointer]:
+                    - heading "Product Catalog · Template" [level=1] [ref=f4e50]:
+                      - generic [ref=f4e51]: Product Catalog
+                      - generic [ref=f4e52]: · Template
+                    - generic [ref=f4e53]: Ctrl+K
+                  - generic [ref=f4e54]:
+                    - button "View" [ref=f4e56] [cursor=pointer]:
+                      - img [ref=f4e57]
+                    - button "Zoom Out" [ref=f4e59] [cursor=pointer]:
+                      - img [ref=f4e60]
+                    - generic [ref=f4e62]:
+                      - button "Settings" [expanded] [pressed] [ref=f4e63] [cursor=pointer]:
+                        - img [ref=f4e64]
+                      - button "Styles" [ref=f4e66] [cursor=pointer]:
+                        - img [ref=f4e67]
+                    - button "Save" [disabled] [ref=f4e69]
+                    - button "Options" [ref=f4e71] [cursor=pointer]:
+                      - img [ref=f4e72]
+              - generic [ref=f4e74]:
+                - region "Editor content" [ref=f4e75]:
+                  - iframe [ref=f4e81]:
+                    - generic [ref=f5e2]:
+                      - 'document "Block: Header" [ref=f5e3]':
+                        - 'document "Block: Group"':
+                          - 'document "Block: Group"':
+                            - 'document "Block: Row"':
+                              - 'document "Block: Site Title"':
+                                - textbox "Site title text"
+                              - 'document "Block: Row"':
+                                - 'document "Block: Navigation"':
+                                  - generic:
+                                    - generic: "Navigation Menu: \"Navigation\""
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic:
+                                            - 'document "Block: Page List"':
+                                              - listitem:
+                                                - generic: Cart
+                                              - listitem:
+                                                - generic: Checkout
+                                              - listitem:
+                                                - generic: My account
+                                              - listitem:
+                                                - generic: Sample Page
+                                              - listitem:
+                                                - generic: Search
+                                              - listitem:
+                                                - generic: Shop
+                                - 'document "Block: Customer account"':
+                                  - generic:
+                                    - link "My Account":
+                                      - /url: http://plugin.local/my-account/
+                                      - img
+                                - 'document "Block: Mini-Cart"':
+                                  - generic:
+                                    - button "2" [disabled]:
+                                      - generic:
+                                        - img
+                                        - generic: "2"
+                      - 'document "Block: Columns" [ref=f5e4]':
+                        - 'document "Block: Column (1 of 2)" [ref=f5e5]':
+                          - 'document "Block: Advanced Woo Search" [ref=f5e6]':
+                            - search [ref=f5e9]:
+                              - generic [ref=f5e10]:
+                                - generic [ref=f5e11]: Search products
+                                - searchbox "Search products" [ref=f5e12]
+                              - generic [ref=f5e13]:
+                                - button "Product Categories" [expanded] [ref=f5e14] [cursor=pointer]:
+                                  - generic [ref=f5e15]: Product Categories
+                                - list [ref=f5e18]:
+                                  - listitem [ref=f5e19]:
+                                    - generic [ref=f5e21] [cursor=pointer]:
+                                      - radio "All" [checked] [ref=f5e22]
+                                      - generic [ref=f5e23]: All
+                                  - listitem [ref=f5e24]:
+                                    - generic [ref=f5e26] [cursor=pointer]:
+                                      - radio "Uncategorized (5)" [ref=f5e27]
+                                      - generic [ref=f5e28]: Uncategorized
+                                      - generic [ref=f5e29]: (5)
+                                  - listitem [ref=f5e30]:
+                                    - generic [ref=f5e32] [cursor=pointer]:
+                                      - radio "Accessories (9)" [ref=f5e33]
+                                      - generic [ref=f5e34]: Accessories
+                                      - generic [ref=f5e35]: (9)
+                                  - listitem [ref=f5e36]:
+                                    - generic [ref=f5e38] [cursor=pointer]:
+                                      - radio "Clothing (29)" [ref=f5e39]
+                                      - generic [ref=f5e40]: Clothing
+                                      - generic [ref=f5e41]: (29)
+                                  - listitem [ref=f5e42]:
+                                    - generic [ref=f5e44] [cursor=pointer]:
+                                      - radio "Decor (7)" [ref=f5e45]
+                                      - generic [ref=f5e46]: Decor
+                                      - generic [ref=f5e47]: (7)
+                                  - listitem [ref=f5e48]:
+                                    - generic [ref=f5e50] [cursor=pointer]:
+                                      - radio "Hoodies (9)" [ref=f5e51]
+                                      - generic [ref=f5e52]: Hoodies
+                                      - generic [ref=f5e53]: (9)
+                                  - listitem [ref=f5e54]:
+                                    - generic [ref=f5e56] [cursor=pointer]:
+                                      - radio "Music (6)" [ref=f5e57]
+                                      - generic [ref=f5e58]: Music
+                                      - generic [ref=f5e59]: (6)
+                                  - listitem [ref=f5e60]:
+                                    - generic [ref=f5e62] [cursor=pointer]:
+                                      - radio "Tshirts (11)" [ref=f5e63]
+                                      - generic [ref=f5e64]: Tshirts
+                                      - generic [ref=f5e65]: (11)
+                              - generic [ref=f5e66]:
+                                - button "Price" [expanded] [ref=f5e67] [cursor=pointer]:
+                                  - generic [ref=f5e68]: Price
+                                - generic [ref=f5e71]:
+                                  - generic [ref=f5e72]:
+                                    - slider "Minimum price": "0"
+                                    - slider "Maximum price": "1000"
+                                  - generic [ref=f5e73]:
+                                    - generic [ref=f5e74]:
+                                      - generic [ref=f5e75]: Min price
+                                      - generic [ref=f5e76]:
+                                        - spinbutton "Min price" [ref=f5e77]: "0"
+                                        - generic: ₫
+                                    - generic [ref=f5e78]:
+                                      - generic [ref=f5e79]: Max price
+                                      - generic [ref=f5e80]:
+                                        - spinbutton "Max price" [ref=f5e81]: "1000"
+                                        - generic: ₫
+                              - generic [ref=f5e82]:
+                                - button "Color" [expanded] [ref=f5e83] [cursor=pointer]:
+                                  - generic [ref=f5e84]: Color
+                                - list [ref=f5e87]:
+                                  - listitem [ref=f5e88]:
+                                    - generic [ref=f5e90] [cursor=pointer]:
+                                      - checkbox "Blue (4)" [ref=f5e91]
+                                      - generic [ref=f5e92]: Blue
+                                      - generic [ref=f5e93]: (4)
+                                  - listitem [ref=f5e94]:
+                                    - generic [ref=f5e96] [cursor=pointer]:
+                                      - checkbox "Gray (3)" [ref=f5e97]
+                                      - generic [ref=f5e98]: Gray
+                                      - generic [ref=f5e99]: (3)
+                                  - listitem [ref=f5e100]:
+                                    - generic [ref=f5e102] [cursor=pointer]:
+                                      - checkbox "Green (3)" [ref=f5e103]
+                                      - generic [ref=f5e104]: Green
+                                      - generic [ref=f5e105]: (3)
+                                  - listitem [ref=f5e106]:
+                                    - generic [ref=f5e108] [cursor=pointer]:
+                                      - checkbox "Red (4)" [ref=f5e109]
+                                      - generic [ref=f5e110]: Red
+                                      - generic [ref=f5e111]: (4)
+                                  - listitem [ref=f5e112]:
+                                    - generic [ref=f5e114] [cursor=pointer]:
+                                      - checkbox "Yellow (1)" [ref=f5e115]
+                                      - generic [ref=f5e116]: Yellow
+                                      - generic [ref=f5e117]: (1)
+                              - generic [ref=f5e118]:
+                                - button "Size" [expanded] [ref=f5e119] [cursor=pointer]:
+                                  - generic [ref=f5e120]: Size
+                                - list [ref=f5e123]:
+                                  - listitem [ref=f5e124]:
+                                    - generic [ref=f5e126] [cursor=pointer]:
+                                      - checkbox "Large (1)" [ref=f5e127]
+                                      - generic [ref=f5e128]: Large
+                                      - generic [ref=f5e129]: (1)
+                                  - listitem [ref=f5e130]:
+                                    - generic [ref=f5e132] [cursor=pointer]:
+                                      - checkbox "Medium (1)" [ref=f5e133]
+                                      - generic [ref=f5e134]: Medium
+                                      - generic [ref=f5e135]: (1)
+                                  - listitem [ref=f5e136]:
+                                    - generic [ref=f5e138] [cursor=pointer]:
+                                      - checkbox "Small (1)" [ref=f5e139]
+                                      - generic [ref=f5e140]: Small
+                                      - generic [ref=f5e141]: (1)
+                              - generic [ref=f5e142]:
+                                - button "Weight" [expanded] [ref=f5e143] [cursor=pointer]:
+                                  - generic [ref=f5e144]: Weight
+                                - list [ref=f5e147]:
+                                  - listitem [ref=f5e148]:
+                                    - generic [ref=f5e150] [cursor=pointer]:
+                                      - checkbox "nho (1)" [ref=f5e151]
+                                      - generic [ref=f5e152]: nho
+                                      - generic [ref=f5e153]: (1)
+                                  - listitem [ref=f5e154]:
+                                    - generic [ref=f5e156] [cursor=pointer]:
+                                      - checkbox "to (1)" [ref=f5e157]
+                                      - generic [ref=f5e158]: to
+                                      - generic [ref=f5e159]: (1)
+                              - generic [ref=f5e160]:
+                                - button "Stock status" [expanded] [ref=f5e161] [cursor=pointer]:
+                                  - generic [ref=f5e162]: Stock status
+                                - list [ref=f5e165]:
+                                  - listitem [ref=f5e166]:
+                                    - generic [ref=f5e167] [cursor=pointer]:
+                                      - radio "All stock" [checked] [ref=f5e168]
+                                      - generic [ref=f5e169]: All stock
+                                  - listitem [ref=f5e170]:
+                                    - generic [ref=f5e171] [cursor=pointer]:
+                                      - radio "In stock" [ref=f5e172]
+                                      - generic [ref=f5e173]: In stock
+                                  - listitem [ref=f5e174]:
+                                    - generic [ref=f5e175] [cursor=pointer]:
+                                      - radio "Out of stock" [ref=f5e176]
+                                      - generic [ref=f5e177]: Out of stock
+                                  - listitem [ref=f5e178]:
+                                    - generic [ref=f5e179] [cursor=pointer]:
+                                      - radio "On backorder" [ref=f5e180]
+                                      - generic [ref=f5e181]: On backorder
+                              - generic [ref=f5e182]:
+                                - button "On sale" [expanded] [ref=f5e183] [cursor=pointer]:
+                                  - generic [ref=f5e184]: On sale
+                                - list [ref=f5e187]:
+                                  - listitem [ref=f5e188]:
+                                    - generic [ref=f5e189] [cursor=pointer]:
+                                      - checkbox "On sale only" [ref=f5e190]
+                                      - generic [ref=f5e191]: On sale only
+                              - generic [ref=f5e192]:
+                                - button "Featured products" [expanded] [ref=f5e193] [cursor=pointer]:
+                                  - generic [ref=f5e194]: Featured products
+                                - list [ref=f5e197]:
+                                  - listitem [ref=f5e198]:
+                                    - generic [ref=f5e199] [cursor=pointer]:
+                                      - checkbox "Featured products only" [ref=f5e200]
+                                      - generic [ref=f5e201]: Featured products only
+                              - generic [ref=f5e202]:
+                                - button "Rating" [expanded] [ref=f5e203] [cursor=pointer]:
+                                  - generic [ref=f5e204]: Rating
+                                - list [ref=f5e207]:
+                                  - listitem [ref=f5e208]:
+                                    - generic [ref=f5e209] [cursor=pointer]:
+                                      - radio "All ratings" [checked] [ref=f5e210]
+                                      - generic [ref=f5e211]: All ratings
+                                  - listitem [ref=f5e212]:
+                                    - generic [ref=f5e213] [cursor=pointer]:
+                                      - radio "★★★★★ & up" [ref=f5e214]
+                                      - generic [ref=f5e215]: ★★★★★ & up
+                                  - listitem [ref=f5e216]:
+                                    - generic [ref=f5e217] [cursor=pointer]:
+                                      - radio "★★★★☆ & up" [ref=f5e218]
+                                      - generic [ref=f5e219]: ★★★★☆ & up
+                                  - listitem [ref=f5e220]:
+                                    - generic [ref=f5e221] [cursor=pointer]:
+                                      - radio "★★★☆☆ & up" [ref=f5e222]
+                                      - generic [ref=f5e223]: ★★★☆☆ & up
+                                  - listitem [ref=f5e224]:
+                                    - generic [ref=f5e225] [cursor=pointer]:
+                                      - radio "★★☆☆☆ & up" [ref=f5e226]
+                                      - generic [ref=f5e227]: ★★☆☆☆ & up
+                                  - listitem [ref=f5e228]:
+                                    - generic [ref=f5e229] [cursor=pointer]:
+                                      - radio "★☆☆☆☆ & up" [ref=f5e230]
+                                      - generic [ref=f5e231]: ★☆☆☆☆ & up
+                              - button "Search" [ref=f5e233] [cursor=pointer]
+                        - 'document "Block: Column (2 of 2)" [ref=f5e234]':
+                          - 'document "Block: Group" [ref=f5e235]':
+                            - 'document "Block: Store Breadcrumbs" [ref=f5e236]':
+                              - generic:
+                                - link "Breadcrumbs":
+                                  - /url: /
+                                - text: / Navigation / Path
+                            - 'document "Block: Archive Title" [ref=f5e237]': Archive title
+                            - 'document "Block: Term Description" [ref=f5e238]':
+                              - generic [ref=f5e239]: Term Description
+                            - 'document "Block: Store Notices" [ref=f5e240]':
+                              - generic [ref=f5e241]:
+                                - img
+                                - generic [ref=f5e242]: Notices added by WooCommerce or extensions will show up here.
+                            - 'document "Block: Row" [ref=f5e243]':
+                              - 'document "Block: Product Results Count" [ref=f5e244]':
+                                - paragraph [ref=f5e245]: Showing 1-X of X results
+                              - 'document "Block: Catalog Sorting" [ref=f5e246]':
+                                - generic:
+                                  - combobox:
+                                    - option "Default sorting" [selected]
+                            - 'document "Block: Product Collection" [ref=f5e247]':
+                              - generic [ref=f5e248]:
+                                - 'document "Block: Product Template" [ref=f5e249]':
+                                  - listitem [ref=f5e250]:
+                                    - 'document "Block: Product Image" [ref=f5e251]':
+                                      - generic [ref=f5e253]:
+                                        - img "Album"
+                                      - generic [ref=f5e254]:
+                                        - 'document "Block: On-Sale Badge"'
+                                    - 'document "Block: Product Title" [ref=f5e255]':
+                                      - link "Album":
+                                        - /url: http://plugin.local/product/album/
+                                    - 'document "Block: Product Price" [ref=f5e256]':
+                                      - generic [ref=f5e257]: 15 ₫
+                                    - 'document "Block: Add to Cart Button" [ref=f5e258]':
+                                      - generic:
+                                        - generic:
+                                          - link "Add to cart":
+                                            - /url: http://plugin.local/product/album/
+                                  - 'button "Block: Product Image Block: Title Block: Product Price Block: Add to Cart Button" [ref=f5e259]':
+                                    - 'document "Block: Product Image" [ref=f5e260]':
+                                      - generic:
+                                        - generic:
+                                          - img "Aperiam."
+                                      - 'document "Block: On-Sale Badge" [ref=f5e261]':
+                                        - generic:
+                                          - text: Sale
+                                          - generic: Product on sale
+                                    - 'document "Block: Title" [ref=f5e262]':
+                                      - link "Aperiam.":
+                                        - /url: http://plugin.local/product/aperiam/
+                                    - 'document "Block: Product Price" [ref=f5e263]':
+                                      - generic: 66 ₫
+                                    - 'document "Block: Add to Cart Button" [ref=f5e264]':
+                                      - generic:
+                                        - generic:
+                                          - link "Add to cart":
+                                            - /url: http://plugin.local/product/aperiam/
+                                  - 'button "Block: Product Image Block: Title Block: Product Price Block: Add to Cart Button" [ref=f5e265]':
+                                    - 'document "Block: Product Image" [ref=f5e266]':
+                                      - generic:
+                                        - generic:
+                                          - img "Aut."
+                                      - 'document "Block: On-Sale Badge" [ref=f5e267]':
+                                        - generic:
+                                          - text: Sale
+                                          - generic: Product on sale
+                                    - 'document "Block: Title" [ref=f5e268]':
+                                      - link "Aut.":
+                                        - /url: http://plugin.local/product/aut/
+                                    - 'document "Block: Product Price" [ref=f5e269]':
+                                      - generic: 43 ₫
+                                    - 'document "Block: Add to Cart Button" [ref=f5e270]':
+                                      - generic:
+                                        - generic:
+                                          - link "Add to cart":
+                                            - /url: http://plugin.local/product/aut/
+                                  - 'button "Block: Product Image Block: Title Block: Product Price Block: Add to Cart Button" [ref=f5e271]':
+                                    - 'document "Block: Product Image" [ref=f5e272]':
+                                      - generic:
+                                        - generic:
+                                          - img "Beanie"
+                                      - 'document "Block: On-Sale Badge" [ref=f5e273]':
+                                        - generic:
+                                          - text: Sale
+                                          - generic: Product on sale
+                                    - 'document "Block: Title" [ref=f5e274]':
+                                      - link "Beanie":
+                                        - /url: http://plugin.local/product/beanie/
+                                    - 'document "Block: Product Price" [ref=f5e275]':
+                                      - generic:
+                                        - generic: "Previous price:"
+                                        - deletion: 20 ₫
+                                        - generic: "Discounted price:"
+                                        - insertion: 18 ₫
+                                    - 'document "Block: Add to Cart Button" [ref=f5e276]':
+                                      - generic:
+                                        - generic:
+                                          - link "Add to cart":
+                                            - /url: http://plugin.local/product/beanie/
+                                  - 'button "Block: Product Image Block: Title Block: Product Price Block: Add to Cart Button" [ref=f5e277]':
+                                    - 'document "Block: Product Image" [ref=f5e278]':
+                                      - generic:
+                                        - generic:
+                                          - img "Beanie with Logo"
+                                      - 'document "Block: On-Sale Badge" [ref=f5e279]':
+                                        - generic:
+                                          - text: Sale
+                                          - generic: Product on sale
+                                    - 'document "Block: Title" [ref=f5e280]':
+                                      - link "Beanie with Logo":
+                                        - /url: http://plugin.local/product/beanie-with-logo/
+                                    - 'document "Block: Product Price" [ref=f5e281]':
+                                      - generic:
+                                        - generic: "Previous price:"
+                                        - deletion: 20 ₫
+                                        - generic: "Discounted price:"
+                                        - insertion: 18 ₫
+                                    - 'document "Block: Add to Cart Button" [ref=f5e282]':
+                                      - generic:
+                                        - generic:
+                                          - link "Add to cart":
+                                            - /url: http://plugin.local/product/beanie-with-logo/
+                                  - 'button "Block: Product Image Block: Title Block: Product Price Block: Add to Cart Button" [ref=f5e283]':
+                                    - 'document "Block: Product Image" [ref=f5e284]':
+                                      - generic:
+                                        - generic:
+                                          - img "Belt"
+                                      - 'document "Block: On-Sale Badge" [ref=f5e285]':
+                                        - generic:
+                                          - text: Sale
+                                          - generic: Product on sale
+                                    - 'document "Block: Title" [ref=f5e286]':
+                                      - link "Belt":
+                                        - /url: http://plugin.local/product/belt/
+                                    - 'document "Block: Product Price" [ref=f5e287]':
+                                      - generic:
+                                        - generic: "Previous price:"
+                                        - deletion: 65 ₫
+                                        - generic: "Discounted price:"
+                                        - insertion: 55 ₫
+                                    - 'document "Block: Add to Cart Button" [ref=f5e288]':
+                                      - generic:
+                                        - generic:
+                                          - link "Add to cart":
+                                            - /url: http://plugin.local/product/belt/
+                                  - 'button "Block: Product Image Block: Title Block: Product Price Block: Add to Cart Button" [ref=f5e289]':
+                                    - 'document "Block: Product Image" [ref=f5e290]':
+                                      - generic:
+                                        - generic:
+                                          - img "Cap"
+                                      - 'document "Block: On-Sale Badge" [ref=f5e291]':
+                                        - generic:
+                                          - text: Sale
+                                          - generic: Product on sale
+                                    - 'document "Block: Title" [ref=f5e292]':
+                                      - link "Cap":
+                                        - /url: http://plugin.local/product/cap/
+                                    - 'document "Block: Product Price" [ref=f5e293]':
+                                      - generic:
+                                        - generic: "Previous price:"
+                                        - deletion: 18 ₫
+                                        - generic: "Discounted price:"
+                                        - insertion: 16 ₫
+                                    - 'document "Block: Add to Cart Button" [ref=f5e294]':
+                                      - generic:
+                                        - generic:
+                                          - link "Add to cart":
+                                            - /url: http://plugin.local/product/cap/
+                                  - 'button "Block: Product Image Block: Title Block: Product Price Block: Add to Cart Button" [ref=f5e295]':
+                                    - 'document "Block: Product Image" [ref=f5e296]':
+                                      - generic:
+                                        - generic:
+                                          - img "Deleniti."
+                                      - 'document "Block: On-Sale Badge" [ref=f5e297]':
+                                        - generic:
+                                          - text: Sale
+                                          - generic: Product on sale
+                                    - 'document "Block: Title" [ref=f5e298]':
+                                      - link "Deleniti.":
+                                        - /url: http://plugin.local/product/deleniti/
+                                    - 'document "Block: Product Price" [ref=f5e299]':
+                                      - generic: 84 ₫
+                                    - 'document "Block: Add to Cart Button" [ref=f5e300]':
+                                      - generic:
+                                        - generic:
+                                          - link "Add to cart":
+                                            - /url: http://plugin.local/product/deleniti/
+                                  - 'button "Block: Product Image Block: Title Block: Product Price Block: Add to Cart Button" [ref=f5e301]':
+                                    - 'document "Block: Product Image" [ref=f5e302]':
+                                      - generic:
+                                        - generic:
+                                          - img "Enim ipsa."
+                                      - 'document "Block: On-Sale Badge" [ref=f5e303]':
+                                        - generic:
+                                          - text: Sale
+                                          - generic: Product on sale
+                                    - 'document "Block: Title" [ref=f5e304]':
+                                      - link "Enim ipsa.":
+                                        - /url: http://plugin.local/product/enim-ipsa/
+                                    - 'document "Block: Product Price" [ref=f5e305]':
+                                      - generic: 96 ₫
+                                    - 'document "Block: Add to Cart Button" [ref=f5e306]':
+                                      - generic:
+                                        - generic:
+                                          - link "Add to cart":
+                                            - /url: http://plugin.local/product/enim-ipsa/
+                                  - 'button "Block: Product Image Block: Title Block: Product Price Block: Add to Cart Button" [ref=f5e307]':
+                                    - 'document "Block: Product Image" [ref=f5e308]':
+                                      - generic:
+                                        - generic:
+                                          - img "Et."
+                                      - 'document "Block: On-Sale Badge" [ref=f5e309]':
+                                        - generic:
+                                          - text: Sale
+                                          - generic: Product on sale
+                                    - 'document "Block: Title" [ref=f5e310]':
+                                      - link "Et.":
+                                        - /url: http://plugin.local/product/et-2/
+                                    - 'document "Block: Product Price" [ref=f5e311]':
+                                      - generic: 8 ₫
+                                    - 'document "Block: Add to Cart Button" [ref=f5e312]':
+                                      - generic:
+                                        - generic:
+                                          - link "Add to cart":
+                                            - /url: http://plugin.local/product/et-2/
+                                  - 'button "Block: Product Image Block: Title Block: Product Price Block: Add to Cart Button" [ref=f5e313]':
+                                    - 'document "Block: Product Image" [ref=f5e314]':
+                                      - generic:
+                                        - generic:
+                                          - img "Et."
+                                      - 'document "Block: On-Sale Badge" [ref=f5e315]':
+                                        - generic:
+                                          - text: Sale
+                                          - generic: Product on sale
+                                    - 'document "Block: Title" [ref=f5e316]':
+                                      - link "Et.":
+                                        - /url: http://plugin.local/product/et/
+                                    - 'document "Block: Product Price" [ref=f5e317]':
+                                      - generic: 26 ₫
+                                    - 'document "Block: Add to Cart Button" [ref=f5e318]':
+                                      - generic:
+                                        - generic:
+                                          - link "Add to cart":
+                                            - /url: http://plugin.local/product/et/
+                                  - 'button "Block: Product Image Block: Title Block: Product Price Block: Add to Cart Button" [ref=f5e319]':
+                                    - 'document "Block: Product Image" [ref=f5e320]':
+                                      - generic:
+                                        - generic:
+                                          - img "Excepturi."
+                                      - 'document "Block: On-Sale Badge" [ref=f5e321]':
+                                        - generic:
+                                          - text: Sale
+                                          - generic: Product on sale
+                                    - 'document "Block: Title" [ref=f5e322]':
+                                      - link "Excepturi.":
+                                        - /url: http://plugin.local/product/excepturi/
+                                    - 'document "Block: Product Price" [ref=f5e323]':
+                                      - generic: 39 ₫
+                                    - 'document "Block: Add to Cart Button" [ref=f5e324]':
+                                      - generic:
+                                        - generic:
+                                          - link "Add to cart":
+                                            - /url: http://plugin.local/product/excepturi/
+                                  - 'button "Block: Product Image Block: Title Block: Product Price Block: Add to Cart Button" [ref=f5e325]':
+                                    - 'document "Block: Product Image" [ref=f5e326]':
+                                      - generic:
+                                        - generic:
+                                          - img "Hic omnis."
+                                      - 'document "Block: On-Sale Badge" [ref=f5e327]':
+                                        - generic:
+                                          - text: Sale
+                                          - generic: Product on sale
+                                    - 'document "Block: Title" [ref=f5e328]':
+                                      - link "Hic omnis.":
+                                        - /url: http://plugin.local/product/hic-omnis/
+                                    - 'document "Block: Product Price" [ref=f5e329]':
+                                      - generic: 57 ₫
+                                    - 'document "Block: Add to Cart Button" [ref=f5e330]':
+                                      - generic:
+                                        - generic:
+                                          - link "Add to cart":
+                                            - /url: http://plugin.local/product/hic-omnis/
+                                  - 'button "Block: Product Image Block: Title Block: Product Price Block: Add to Cart Button" [ref=f5e331]':
+                                    - 'document "Block: Product Image" [ref=f5e332]':
+                                      - generic:
+                                        - generic:
+                                          - img "Hoodie"
+                                      - 'document "Block: On-Sale Badge" [ref=f5e333]':
+                                        - generic:
+                                          - text: Sale
+                                          - generic: Product on sale
+                                    - 'document "Block: Title" [ref=f5e334]':
+                                      - link "Hoodie":
+                                        - /url: http://plugin.local/product/hoodie/
+                                    - 'document "Block: Product Price" [ref=f5e335]':
+                                      - generic:
+                                        - generic: "Previous price:"
+                                        - deletion: 45 ₫
+                                        - generic: "Discounted price:"
+                                        - insertion: 42 ₫
+                                    - 'document "Block: Add to Cart Button" [ref=f5e336]':
+                                      - generic:
+                                        - generic:
+                                          - link "Add to cart":
+                                            - /url: http://plugin.local/product/hoodie/
+                                  - 'button "Block: Product Image Block: Title Block: Product Price Block: Add to Cart Button" [ref=f5e337]':
+                                    - 'document "Block: Product Image" [ref=f5e338]':
+                                      - generic:
+                                        - generic:
+                                          - img "Hoodie with Logo"
+                                      - generic:
+                                        - 'document "Block: On-Sale Badge"'
+                                    - 'document "Block: Title" [ref=f5e339]':
+                                      - link "Hoodie with Logo":
+                                        - /url: http://plugin.local/product/hoodie-with-logo/
+                                    - 'document "Block: Product Price" [ref=f5e340]':
+                                      - generic: 45 ₫
+                                    - 'document "Block: Add to Cart Button" [ref=f5e341]':
+                                      - generic:
+                                        - generic:
+                                          - link "Add to cart":
+                                            - /url: http://plugin.local/product/hoodie-with-logo/
+                                  - 'button "Block: Product Image Block: Title Block: Product Price Block: Add to Cart Button" [ref=f5e342]':
+                                    - 'document "Block: Product Image" [ref=f5e343]':
+                                      - generic:
+                                        - generic:
+                                          - img "Hoodie with Pocket"
+                                      - 'document "Block: On-Sale Badge" [ref=f5e344]':
+                                        - generic:
+                                          - text: Sale
+                                          - generic: Product on sale
+                                    - 'document "Block: Title" [ref=f5e345]':
+                                      - link "Hoodie with Pocket":
+                                        - /url: http://plugin.local/product/hoodie-with-pocket/
+                                    - 'document "Block: Product Price" [ref=f5e346]':
+                                      - generic:
+                                        - generic: "Previous price:"
+                                        - deletion: 45 ₫
+                                        - generic: "Discounted price:"
+                                        - insertion: 35 ₫
+                                    - 'document "Block: Add to Cart Button" [ref=f5e347]':
+                                      - generic:
+                                        - generic:
+                                          - link "Add to cart":
+                                            - /url: http://plugin.local/product/hoodie-with-pocket/
+                                - 'document "Block: No results" [ref=f5e348]':
+                                  - 'document "Block: Stack" [ref=f5e351]':
+                                    - 'document "Block: Paragraph" [ref=f5e352]':
+                                      - strong [ref=f5e353]: No results found
+                                    - 'document "Block: Paragraph" [ref=f5e354]':
+                                      - text: You can try
+                                      - link "clearing any filters" [ref=f5e355]:
+                                        - /url: "#"
+                                      - text: or head to our
+                                      - link "store's home" [ref=f5e356]:
+                                        - /url: "#"
+                                - 'document "Block: Pagination" [ref=f5e357]':
+                                  - 'document "Block: Previous Page" [ref=f5e358]':
+                                    - textbox "Previous page link" [ref=f5e359]:
+                                      - generic: Previous Page
+                                  - 'document "Block: Page Numbers" [ref=f5e360]': 12345...7
+                                  - 'document "Block: Next Page" [ref=f5e361]':
+                                    - textbox "Next page link" [ref=f5e362]:
+                                      - generic: Next Page
+                      - 'document "Block: Footer" [ref=f5e363]':
+                        - 'document "Block: Group"':
+                          - 'document "Block: Group"':
+                            - 'document "Block: Site Logo"':
+                              - generic:
+                                - img
+                                - generic:
+                                  - button "Choose logo":
+                                    - img
+                            - 'document "Block: Row"':
+                              - 'document "Block: Columns"':
+                                - 'document "Block: Column (1 of 2)"':
+                                  - 'document "Block: Site Title"':
+                                    - textbox "Site title text"
+                                  - 'document "Block: Site Tagline"':
+                                    - generic: Write site tagline…
+                                - 'document "Block: Column (2 of 2)"':
+                                  - 'document "Block: Spacer"'
+                              - 'document "Block: Row"':
+                                - 'document "Block: Navigation"':
+                                  - generic:
+                                    - generic: Unsaved Navigation Menu.
+                                  - generic:
+                                    - 'document "Block: Custom Link"':
+                                      - generic:
+                                        - textbox "Navigation link text"
+                                      - 'document "Block: Custom Link"'
+                                    - 'document "Block: Custom Link"':
+                                      - generic:
+                                        - textbox "Navigation link text"
+                                      - 'document "Block: Custom Link"'
+                                    - 'document "Block: Custom Link"':
+                                      - generic:
+                                        - textbox "Navigation link text"
+                                      - 'document "Block: Custom Link"'
+                                    - 'document "Block: Custom Link"':
+                                      - generic:
+                                        - textbox "Navigation link text"
+                                      - 'document "Block: Custom Link"'
+                                - 'document "Block: Navigation"':
+                                  - generic:
+                                    - generic: Unsaved Navigation Menu.
+                                  - generic:
+                                    - 'document "Block: Custom Link"':
+                                      - generic:
+                                        - textbox "Navigation link text"
+                                      - 'document "Block: Custom Link"'
+                                    - 'document "Block: Custom Link"':
+                                      - generic:
+                                        - textbox "Navigation link text"
+                                      - 'document "Block: Custom Link"'
+                                    - 'document "Block: Custom Link"':
+                                      - generic:
+                                        - textbox "Navigation link text"
+                                      - 'document "Block: Custom Link"'
+                                    - 'document "Block: Custom Link"':
+                                      - generic:
+                                        - textbox "Navigation link text"
+                                      - 'document "Block: Custom Link"'
+                            - 'document "Block: Spacer"'
+                            - 'document "Block: Row"':
+                              - 'document "Block: Paragraph"': Twenty Twenty-Five
+                              - 'document "Block: Paragraph"':
+                                - text: Designed with
+                                - link "WordPress":
+                                  - /url: https://wordpress.org
+                - region "Editor settings" [ref=f4e82]:
+                  - generic [ref=f4e84]:
+                    - generic [ref=f4e85]:
+                      - tablist [ref=f4e86]:
+                        - tab "Template" [selected] [ref=f4e87] [cursor=pointer]:
+                          - generic [ref=f4e88]: Template
+                        - tab "Block" [ref=f4e89] [cursor=pointer]:
+                          - generic [ref=f4e90]: Block
+                      - button "Close Settings" [ref=f4e91] [cursor=pointer]:
+                        - img [ref=f4e92]
+                    - tabpanel "Template" [ref=f4e95]:
+                      - generic [ref=f4e97]:
+                        - generic [ref=f4e99]:
+                          - img [ref=f4e100]
+                          - heading "Product Catalog" [level=2] [ref=f4e102]:
+                            - generic [ref=f4e103]: Product Catalog
+                          - button "Actions" [ref=f4e104] [cursor=pointer]:
+                            - img [ref=f4e105]
+                        - generic [ref=f4e107]:
+                          - generic [ref=f4e108]: Displays your products.
+                          - button "Edit description" [ref=f4e110] [cursor=pointer]
+                        - generic [ref=f4e112]: Last edited 3 days ago.
+                        - generic [ref=f4e115]:
+                          - generic [ref=f4e116]: Revisions
+                          - 'button "Open revisions screen: 23 revisions" [ref=f4e118] [cursor=pointer]': "23"
+                      - generic [ref=f4e119]:
+                        - heading "Content" [level=2] [ref=f4e120]:
+                          - button "Content" [expanded] [ref=f4e121] [cursor=pointer]:
+                            - img [ref=f4e122]
+                            - text: Content
+                        - generic [ref=f4e124]:
+                          - button "Template Part" [ref=f4e125] [cursor=pointer]:
+                            - generic [ref=f4e126]:
+                              - img [ref=f4e129]
+                              - generic [ref=f4e132]: Template Part
+                          - button "Template Part" [ref=f4e133] [cursor=pointer]:
+                            - generic [ref=f4e134]:
+                              - img [ref=f4e137]
+                              - generic [ref=f4e140]: Template Part
+                - region "Editor publish":
+                  - button "Open save panel" [disabled] [ref=f4e142]
+            - region "Editor footer" [ref=f4e143]:
+              - list "Block breadcrumb" [ref=f4e144]:
+                - listitem [ref=f4e145]:
+                  - generic [ref=f4e146]: Template
+  - paragraph [ref=f4e16]: Notifications
+  - generic [ref=f4e18]: Notices added by WooCommerce or extensions will show up here.

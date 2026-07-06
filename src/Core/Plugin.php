@@ -14,6 +14,7 @@ use BePlusFastProductFilterLiveSearch\Blocks\BlockRegistry;
 use BePlusFastProductFilterLiveSearch\Frontend\ShopQueryIntegration;
 use BePlusFastProductFilterLiveSearch\REST\FacetsController;
 use BePlusFastProductFilterLiveSearch\REST\ProductsController;
+use BePlusFastProductFilterLiveSearch\REST\SearchStatsController;
 use BePlusFastProductFilterLiveSearch\REST\SuggestionsController;
 use BePlusFastProductFilterLiveSearch\Search\CacheService;
 use BePlusFastProductFilterLiveSearch\Search\ProductTemplateRenderer;
@@ -29,6 +30,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Core plugin class.
  */
 class Plugin {
+
+	/**
+	 * Search stats table name (without prefix).
+	 *
+	 * @var string
+	 */
+	public const SEARCH_STATS_TABLE = 'bpfpfls_search_stats';
 
 	/**
 	 * Service container.
@@ -82,6 +90,7 @@ class Plugin {
 	 */
 	public function activate(): void {
 		flush_rewrite_rules();
+		$this->create_search_stats_table();
 	}
 
 	/**
@@ -91,6 +100,36 @@ class Plugin {
 	 */
 	public function deactivate(): void {
 		flush_rewrite_rules();
+	}
+
+	/**
+	 * Create search stats table.
+	 *
+	 * @return void
+	 */
+	private function create_search_stats_table(): void {
+		global $wpdb;
+
+		$table_name = $wpdb->prefix . self::SEARCH_STATS_TABLE;
+		$charset_collate = $wpdb->get_charset_collate();
+
+		$sql = "CREATE TABLE {$table_name} (
+			id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+			keyword VARCHAR(255) NOT NULL,
+			raw_query VARCHAR(255) NOT NULL DEFAULT '',
+			resolved_from VARCHAR(20) NOT NULL DEFAULT 'fallback',
+			product_id BIGINT UNSIGNED NULL DEFAULT NULL,
+			count INT UNSIGNED NOT NULL DEFAULT 1,
+			created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+			updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+			PRIMARY KEY (id),
+			UNIQUE KEY uk_keyword (keyword),
+			KEY idx_count (count),
+			KEY idx_updated_at (updated_at)
+		) {$charset_collate};";
+
+		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+		dbDelta( $sql );
 	}
 
 	/**
@@ -133,6 +172,7 @@ class Plugin {
 			ProductsController::class,
 			FacetsController::class,
 			SuggestionsController::class,
+			SearchStatsController::class,
 		);
 	}
 

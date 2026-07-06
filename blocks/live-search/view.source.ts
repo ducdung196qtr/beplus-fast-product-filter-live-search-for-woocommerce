@@ -285,6 +285,41 @@
 		return '';
 	}
 
+	function trackKeyword(
+		keyword: string,
+		rawQuery: string,
+		resolvedFrom: 'click' | 'fallback',
+		productId?: number,
+	): void {
+		const data = getBpssData();
+		const url = data.restUrl + 'search-stats';
+		const nonce = data.nonce;
+
+		const body = new URLSearchParams();
+		body.set( 'keyword', keyword );
+		body.set( 'raw_query', rawQuery );
+		body.set( 'resolved_from', resolvedFrom );
+		if ( productId ) {
+			body.set( 'product_id', String( productId ) );
+		}
+
+		if ( navigator.sendBeacon ) {
+			navigator.sendBeacon( url, body );
+		} else {
+			fetch( url, {
+				method: 'POST',
+				headers: {
+					'X-WP-Nonce': nonce,
+					'Content-Type': 'application/x-www-form-urlencoded',
+				},
+				body: body.toString(),
+				keepalive: true,
+			} ).catch( function () {
+				// Silently fail.
+			} );
+		}
+	}
+
 	function initBlock( root: HTMLElement ): void {
 		if ( root.dataset.bpssLiveInited === '1' ) {
 			return;
@@ -982,6 +1017,24 @@
 			}
 		} );
 
+		productsBox.addEventListener( 'click', ( event ) => {
+			const link = ( event.target as HTMLElement ).closest< HTMLAnchorElement >(
+				'.beplus-fast-product-filter-live-search-for-woocommerce__live-product-link',
+			);
+			if ( ! link ) {
+				return;
+			}
+
+			const titleEl = link.querySelector< HTMLElement >(
+				'.beplus-fast-product-filter-live-search-for-woocommerce__live-product-title',
+			);
+			if ( titleEl && titleEl.textContent ) {
+				const productTitle = titleEl.textContent.trim();
+				const rawQuery = inputEl.value.trim();
+				trackKeyword( productTitle, rawQuery, 'click' );
+			}
+		} );
+
 		if ( categorySelect ) {
 			categorySelect.addEventListener( 'change', () => {
 				const keyword = inputEl.value.trim();
@@ -1011,8 +1064,32 @@
 				categorySelect.removeAttribute( 'name' );
 			}
 
+			const resolvedKeyword = suggestions.length > 0 ? suggestions[ 0 ] : keyword;
+			trackKeyword( resolvedKeyword, keyword, 'fallback' );
+
 			window.location.href = buildCatalogSearchUrl( keyword );
 		} );
+
+		const quickTagsContainer = root.querySelector< HTMLElement >( '[data-bpss-live-quick]' );
+		if ( quickTagsContainer ) {
+			quickTagsContainer.addEventListener( 'click', ( event ) => {
+				const tag = ( event.target as HTMLElement ).closest< HTMLElement >( '[data-bpss-quick-tag]' );
+				if ( ! tag ) {
+					return;
+				}
+
+				event.preventDefault();
+				const value = tag.dataset.bpssQuickValue || '';
+				if ( value ) {
+					inputEl.value = value;
+					inputEl.focus();
+					resetSearchUi();
+					cancelPendingRequests();
+					void fetchSuggestions( value );
+					void runSearch( value );
+				}
+			} );
+		}
 	}
 
 	function init(): void {

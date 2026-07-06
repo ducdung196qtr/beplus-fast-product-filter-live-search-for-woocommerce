@@ -1,0 +1,33 @@
+- generic [ref=f7e1]:
+  - heading "Log In" [level=1] [ref=f7e2]
+  - generic [ref=f7e3]:
+    - link "Powered by WordPress" [ref=f7e4] [cursor=pointer]:
+      - /url: https://wordpress.org/
+    - paragraph [ref=f7e6]:
+      - strong [ref=f7e7]: "Error:"
+      - text: The password you entered for the username
+      - strong [ref=f7e8]: admin
+      - text: is incorrect.
+      - link "Lost your password?" [ref=f7e9] [cursor=pointer]:
+        - /url: http://plugin.local/wp-login.php?action=lostpassword
+    - generic [ref=f7e10]:
+      - paragraph [ref=f7e11]:
+        - generic [ref=f7e12]: Username or Email Address
+        - textbox "Username or Email Address" [ref=f7e13]: admin
+      - generic [ref=f7e14]:
+        - generic [ref=f7e15]: Password
+        - generic [ref=f7e16]:
+          - textbox "Password" [active] [ref=f7e17]
+          - button "Show password" [ref=f7e18] [cursor=pointer]:
+            - generic [ref=f7e19]: 
+      - paragraph [ref=f7e20]:
+        - checkbox "Remember Me" [ref=f7e21] [cursor=pointer]
+        - generic [ref=f7e22]: Remember Me
+      - paragraph:
+        - button "Log In" [ref=f7e23] [cursor=pointer]
+    - paragraph [ref=f7e24]:
+      - link "Lost your password?" [ref=f7e25] [cursor=pointer]:
+        - /url: http://plugin.local/wp-login.php?action=lostpassword
+    - paragraph [ref=f7e26]:
+      - link "← Go to plugin" [ref=f7e27] [cursor=pointer]:
+        - /url: http://plugin.local/

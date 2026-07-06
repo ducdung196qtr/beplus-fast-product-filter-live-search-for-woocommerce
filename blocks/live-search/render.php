@@ -34,6 +34,9 @@ $defaults = array(
 	'showViewAll'        => true,
 	'highlightColor'     => '#ffff00',
 	'searchFields'       => array( 'title' ),
+	'submitButtonStyle'  => 'text',
+	'submitButtonText'   => __( 'Search', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+	'quickSuggestions'   => '',
 );
 
 $attrs = wp_parse_args( $attributes, $defaults );
@@ -102,9 +105,54 @@ $suggestion_layout = in_array( $attrs['suggestionLayout'] ?? 'inline', array( 'i
 	? $attrs['suggestionLayout']
 	: 'inline';
 
+$submit_button_style = in_array( $attrs['submitButtonStyle'] ?? 'text', array( 'text', 'icon' ), true )
+	? $attrs['submitButtonStyle']
+	: 'text';
+
+$quick_suggestions_raw = trim( $attrs['quickSuggestions'] ?? '' );
+$quick_suggestions     = array();
+$auto_sync             = ! empty( $attrs['quickSuggestionsAutoSync'] );
+$sync_count            = max( 1, min( 20, (int) ( $attrs['quickSuggestionsCount'] ?? 10 ) ) );
+
+if ( $auto_sync ) {
+	$cache_key = 'bpss_quick_suggestions_' . $sync_count;
+	$cached    = get_transient( $cache_key );
+
+	if ( is_array( $cached ) ) {
+		$quick_suggestions = $cached;
+	} else {
+		global $wpdb;
+		$table_name = $wpdb->prefix . BePlusFastProductFilterLiveSearch\Core\Plugin::SEARCH_STATS_TABLE;
+
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		$rows = $wpdb->get_results(
+			$wpdb->prepare(
+				"SELECT keyword FROM {$table_name} ORDER BY count DESC, updated_at DESC LIMIT %d",
+				$sync_count,
+			),
+		);
+		// phpcs:enable
+
+		if ( is_array( $rows ) ) {
+			foreach ( $rows as $row ) {
+				$quick_suggestions[] = $row->keyword;
+			}
+			set_transient( $cache_key, $quick_suggestions, 30 * MINUTE_IN_SECONDS );
+		}
+	}
+} elseif ( '' !== $quick_suggestions_raw ) {
+	$parts = explode( ',', $quick_suggestions_raw );
+	foreach ( $parts as $part ) {
+		$cleaned = trim( $part );
+		if ( '' !== $cleaned ) {
+			$quick_suggestions[] = $cleaned;
+		}
+	}
+}
+
 $wrapper_attrs = get_block_wrapper_attributes(
 	array(
-		'class' => 'beplus-fast-product-filter-live-search-for-woocommerce beplus-fast-product-filter-live-search-for-woocommerce--live-search beplus-fast-product-filter-live-search-for-woocommerce--suggestion-' . $suggestion_layout,
+		'class' => 'beplus-fast-product-filter-live-search-for-woocommerce beplus-fast-product-filter-live-search-for-woocommerce--live-search beplus-fast-product-filter-live-search-for-woocommerce--suggestion-' . $suggestion_layout . ' beplus-fast-product-filter-live-search-for-woocommerce--submit-' . $submit_button_style,
 		'style'                      => '--bpss-accent:' . esc_attr( $accent_color ) . ';--bpss-highlight:' . esc_attr( $attrs['highlightColor'] ) . ';',
 		'data-bpss-live-search'      => '',
 		'data-debounce-ms'           => (string) (int) $attrs['debounceMs'],
@@ -193,7 +241,11 @@ $wrapper_attrs = get_block_wrapper_attributes(
 					/>
 				</div>
 				<button type="submit" class="beplus-fast-product-filter-live-search-for-woocommerce__live-submit" aria-label="<?php esc_attr_e( 'Search', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>">
-					<span class="beplus-fast-product-filter-live-search-for-woocommerce__live-submit-icon" aria-hidden="true"></span>
+					<?php if ( 'text' === $submit_button_style ) : ?>
+						<span class="beplus-fast-product-filter-live-search-for-woocommerce__live-submit-text"><?php echo esc_html( $attrs['submitButtonText'] ); ?></span>
+					<?php else : ?>
+						<span class="beplus-fast-product-filter-live-search-for-woocommerce__live-submit-icon" aria-hidden="true"></span>
+					<?php endif; ?>
 				</button>
 			</div>
 		</div>
@@ -222,4 +274,19 @@ $wrapper_attrs = get_block_wrapper_attributes(
 
 		<span class="beplus-fast-product-filter-live-search-for-woocommerce__live-status screen-reader-text" role="status" aria-live="polite" data-bpss-live-status></span>
 	</form>
+
+	<?php $enable_quick = ! isset( $attrs['enableQuickSuggestions'] ) || ! empty( $attrs['enableQuickSuggestions'] ); ?>
+	<?php if ( $enable_quick && ! empty( $quick_suggestions ) ) : ?>
+		<div class="beplus-fast-product-filter-live-search-for-woocommerce__live-quick" data-bpss-live-quick>
+			<span class="beplus-fast-product-filter-live-search-for-woocommerce__live-quick-label"><?php esc_html_e( 'Search for:', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
+			<?php foreach ( $quick_suggestions as $qs ) : ?>
+				<button
+					type="button"
+					class="beplus-fast-product-filter-live-search-for-woocommerce__live-quick-tag"
+					data-bpss-quick-tag
+					data-bpss-quick-value="<?php echo esc_attr( $qs ); ?>"
+				><?php echo esc_html( $qs ); ?></button>
+			<?php endforeach; ?>
+		</div>
+	<?php endif; ?>
 </div>

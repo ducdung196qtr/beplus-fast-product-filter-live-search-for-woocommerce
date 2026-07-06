@@ -1,0 +1,457 @@
+- generic [ref=f10e2]:
+  - navigation "Main menu":
+    - link "Skip to main content" [ref=f10e3] [cursor=pointer]:
+      - /url: "#wpbody-content"
+    - link "Skip to toolbar" [ref=f10e4] [cursor=pointer]:
+      - /url: "#wp-toolbar"
+    - list [ref=f10e7]:
+      - listitem [ref=f10e8]:
+        - link "Dashboard" [ref=f10e9] [cursor=pointer]:
+          - /url: index.php
+          - generic [ref=f10e10]: 
+          - generic [ref=f10e11]: Dashboard
+        - list [ref=f10e12]:
+          - listitem [ref=f10e13]:
+            - link "Home" [ref=f10e14] [cursor=pointer]:
+              - /url: index.php
+          - listitem [ref=f10e15]:
+            - link "Updates 1" [ref=f10e16] [cursor=pointer]:
+              - /url: update-core.php
+              - text: Updates
+              - generic [ref=f10e17]: "1"
+      - listitem [ref=f10e18]
+      - listitem [ref=f10e20]:
+        - link "Posts" [ref=f10e21] [cursor=pointer]:
+          - /url: edit.php
+          - generic [ref=f10e22]: 
+          - generic [ref=f10e23]: Posts
+        - list [ref=f10e24]:
+          - listitem [ref=f10e25]:
+            - link "All Posts" [ref=f10e26] [cursor=pointer]:
+              - /url: edit.php
+          - listitem [ref=f10e27]:
+            - link "Add Post" [ref=f10e28] [cursor=pointer]:
+              - /url: post-new.php
+          - listitem [ref=f10e29]:
+            - link "Categories" [ref=f10e30] [cursor=pointer]:
+              - /url: edit-tags.php?taxonomy=category
+          - listitem [ref=f10e31]:
+            - link "Tags" [ref=f10e32] [cursor=pointer]:
+              - /url: edit-tags.php?taxonomy=post_tag
+      - listitem [ref=f10e33]:
+        - link "Media" [ref=f10e34] [cursor=pointer]:
+          - /url: upload.php
+          - generic [ref=f10e35]: 
+          - generic [ref=f10e36]: Media
+        - list [ref=f10e37]:
+          - listitem [ref=f10e38]:
+            - link "Library" [ref=f10e39] [cursor=pointer]:
+              - /url: upload.php
+          - listitem [ref=f10e40]:
+            - link "Add Media File" [ref=f10e41] [cursor=pointer]:
+              - /url: media-new.php
+      - listitem [ref=f10e42]:
+        - link "Pages" [ref=f10e43] [cursor=pointer]:
+          - /url: edit.php?post_type=page
+          - generic [ref=f10e44]: 
+          - generic [ref=f10e45]: Pages
+        - list [ref=f10e46]:
+          - listitem [ref=f10e47]:
+            - link "All Pages" [ref=f10e48] [cursor=pointer]:
+              - /url: edit.php?post_type=page
+          - listitem [ref=f10e49]:
+            - link "Add Page" [ref=f10e50] [cursor=pointer]:
+              - /url: post-new.php?post_type=page
+      - listitem [ref=f10e51]:
+        - link "Comments" [ref=f10e52] [cursor=pointer]:
+          - /url: edit-comments.php
+          - generic [ref=f10e53]: 
+          - generic [ref=f10e54]: Comments
+      - listitem [ref=f10e55]
+      - listitem [ref=f10e57]:
+        - link "WooCommerce" [ref=f10e58] [cursor=pointer]:
+          - /url: admin.php?page=wc-admin
+          - generic [ref=f10e60]: WooCommerce
+        - list [ref=f10e61]:
+          - listitem [ref=f10e62]:
+            - link "Home 2" [ref=f10e63] [cursor=pointer]:
+              - /url: admin.php?page=wc-admin
+              - text: Home
+              - generic [ref=f10e64]: "2"
+          - listitem [ref=f10e65]:
+            - link "Orders" [ref=f10e66] [cursor=pointer]:
+              - /url: admin.php?page=wc-orders
+          - listitem [ref=f10e67]:
+            - link "Advanced Search" [ref=f10e68] [cursor=pointer]:
+              - /url: admin.php?page=beplus-fast-product-filter-live-search-for-woocommerce
+          - listitem [ref=f10e69]:
+            - link "Customers" [ref=f10e70] [cursor=pointer]:
+              - /url: admin.php?page=wc-admin&path=/customers
+          - listitem [ref=f10e71]:
+            - link "Coupons" [ref=f10e72] [cursor=pointer]:
+              - /url: admin.php?page=coupons-moved
+          - listitem [ref=f10e73]:
+            - link "Reports" [ref=f10e74] [cursor=pointer]:
+              - /url: admin.php?page=wc-reports
+          - listitem [ref=f10e75]:
+            - link "Settings" [ref=f10e76] [cursor=pointer]:
+              - /url: admin.php?page=wc-settings
+          - listitem [ref=f10e77]:
+            - link "Status" [ref=f10e78] [cursor=pointer]:
+              - /url: admin.php?page=wc-status
+          - listitem [ref=f10e79]:
+            - link "Extensions" [ref=f10e80] [cursor=pointer]:
+              - /url: admin.php?page=wc-admin&path=/extensions
+      - listitem [ref=f10e81]:
+        - link "Products" [ref=f10e82] [cursor=pointer]:
+          - /url: edit.php?post_type=product
+          - generic [ref=f10e83]: 
+          - generic [ref=f10e84]: Products
+        - list [ref=f10e85]:
+          - listitem [ref=f10e86]:
+            - link "All Products" [ref=f10e87] [cursor=pointer]:
+              - /url: edit.php?post_type=product
+          - listitem [ref=f10e88]:
+            - link "Add new product" [ref=f10e89] [cursor=pointer]:
+              - /url: post-new.php?post_type=product
+          - listitem [ref=f10e90]:
+            - link "Brands" [ref=f10e91] [cursor=pointer]:
+              - /url: edit-tags.php?taxonomy=product_brand&post_type=product
+          - listitem [ref=f10e92]:
+            - link "Categories" [ref=f10e93] [cursor=pointer]:
+              - /url: edit-tags.php?taxonomy=product_cat&post_type=product
+          - listitem [ref=f10e94]:
+            - link "Tags" [ref=f10e95] [cursor=pointer]:
+              - /url: edit-tags.php?taxonomy=product_tag&post_type=product
+          - listitem [ref=f10e96]:
+            - link "Attributes" [ref=f10e97] [cursor=pointer]:
+              - /url: edit.php?post_type=product&page=product_attributes
+          - listitem [ref=f10e98]:
+            - link "Reviews" [ref=f10e99] [cursor=pointer]:
+              - /url: edit.php?post_type=product&page=product-reviews
+      - listitem [ref=f10e100]:
+        - link "Payments" [ref=f10e101] [cursor=pointer]:
+          - /url: admin.php?page=wc-settings&tab=checkout&from=PAYMENTS_MENU_ITEM
+          - generic [ref=f10e103]: Payments
+      - listitem [ref=f10e104]:
+        - link "Analytics" [ref=f10e105] [cursor=pointer]:
+          - /url: admin.php?page=wc-admin&path=/analytics/overview
+          - generic [ref=f10e106]: 
+          - generic [ref=f10e107]: Analytics
+        - list [ref=f10e108]:
+          - listitem [ref=f10e109]:
+            - link "Overview" [ref=f10e110] [cursor=pointer]:
+              - /url: admin.php?page=wc-admin&path=/analytics/overview
+          - listitem [ref=f10e111]:
+            - link "Products" [ref=f10e112] [cursor=pointer]:
+              - /url: admin.php?page=wc-admin&path=/analytics/products
+          - listitem [ref=f10e113]:
+            - link "Revenue" [ref=f10e114] [cursor=pointer]:
+              - /url: admin.php?page=wc-admin&path=/analytics/revenue
+          - listitem [ref=f10e115]:
+            - link "Orders" [ref=f10e116] [cursor=pointer]:
+              - /url: admin.php?page=wc-admin&path=/analytics/orders
+          - listitem [ref=f10e117]:
+            - link "Variations" [ref=f10e118] [cursor=pointer]:
+              - /url: admin.php?page=wc-admin&path=/analytics/variations
+          - listitem [ref=f10e119]:
+            - link "Categories" [ref=f10e120] [cursor=pointer]:
+              - /url: admin.php?page=wc-admin&path=/analytics/categories
+          - listitem [ref=f10e121]:
+            - link "Coupons" [ref=f10e122] [cursor=pointer]:
+              - /url: admin.php?page=wc-admin&path=/analytics/coupons
+          - listitem [ref=f10e123]:
+            - link "Taxes" [ref=f10e124] [cursor=pointer]:
+              - /url: admin.php?page=wc-admin&path=/analytics/taxes
+          - listitem [ref=f10e125]:
+            - link "Downloads" [ref=f10e126] [cursor=pointer]:
+              - /url: admin.php?page=wc-admin&path=/analytics/downloads
+          - listitem [ref=f10e127]:
+            - link "Stock" [ref=f10e128] [cursor=pointer]:
+              - /url: admin.php?page=wc-admin&path=/analytics/stock
+          - listitem [ref=f10e129]:
+            - link "Settings" [ref=f10e130] [cursor=pointer]:
+              - /url: admin.php?page=wc-admin&path=/analytics/settings
+      - listitem [ref=f10e131]:
+        - link "Marketing" [ref=f10e132] [cursor=pointer]:
+          - /url: admin.php?page=wc-admin&path=/marketing
+          - generic [ref=f10e133]: 
+          - generic [ref=f10e134]: Marketing
+        - list [ref=f10e135]:
+          - listitem [ref=f10e136]:
+            - link "Overview" [ref=f10e137] [cursor=pointer]:
+              - /url: admin.php?page=wc-admin&path=/marketing
+          - listitem [ref=f10e138]:
+            - link "Coupons" [ref=f10e139] [cursor=pointer]:
+              - /url: edit.php?post_type=shop_coupon
+      - listitem [ref=f10e140]:
+        - link "Dummy Content Generator" [ref=f10e141] [cursor=pointer]:
+          - /url: admin.php?page=wp_dummy_content_generator-dashboard
+          - generic [ref=f10e142]: 
+          - generic [ref=f10e143]: Dummy Content Generator
+        - list [ref=f10e144]:
+          - listitem [ref=f10e145]:
+            - link "Dummy Content Generator" [ref=f10e146] [cursor=pointer]:
+              - /url: admin.php?page=wp_dummy_content_generator-dashboard
+          - listitem [ref=f10e147]:
+            - link "Generate Users" [ref=f10e148] [cursor=pointer]:
+              - /url: admin.php?page=wp_dummy_content_generator-users
+          - listitem [ref=f10e149]:
+            - link "Generate Posts" [ref=f10e150] [cursor=pointer]:
+              - /url: admin.php?page=wp_dummy_content_generator-posts
+          - listitem [ref=f10e151]:
+            - link "Generate Products" [ref=f10e152] [cursor=pointer]:
+              - /url: admin.php?page=wp_dummy_content_generator-products
+          - listitem [ref=f10e153]:
+            - link "Manage Thumbnails" [ref=f10e154] [cursor=pointer]:
+              - /url: admin.php?page=wp_dummy_content_generator-thumbnails
+      - listitem [ref=f10e155]
+      - listitem [ref=f10e157]:
+        - link "Appearance" [ref=f10e158] [cursor=pointer]:
+          - /url: themes.php
+          - generic [ref=f10e159]: 
+          - generic [ref=f10e160]: Appearance
+        - list [ref=f10e161]:
+          - listitem [ref=f10e162]:
+            - link "Themes" [ref=f10e163] [cursor=pointer]:
+              - /url: themes.php
+          - listitem [ref=f10e164]:
+            - link "Editor" [ref=f10e165] [cursor=pointer]:
+              - /url: site-editor.php
+          - listitem [ref=f10e166]:
+            - link "Fonts" [ref=f10e167] [cursor=pointer]:
+              - /url: font-library.php
+      - listitem [ref=f10e168]:
+        - link "Plugins 1" [ref=f10e169] [cursor=pointer]:
+          - /url: plugins.php
+          - generic [ref=f10e170]: 
+          - generic [ref=f10e171]:
+            - text: Plugins
+            - generic [ref=f10e172]: "1"
+        - list [ref=f10e173]:
+          - listitem [ref=f10e174]:
+            - link "Installed Plugins" [ref=f10e175] [cursor=pointer]:
+              - /url: plugins.php
+          - listitem [ref=f10e176]:
+            - link "Add Plugin" [ref=f10e177] [cursor=pointer]:
+              - /url: plugin-install.php
+      - listitem [ref=f10e178]:
+        - link "Users" [ref=f10e179] [cursor=pointer]:
+          - /url: users.php
+          - generic [ref=f10e180]: 
+          - generic [ref=f10e181]: Users
+        - list [ref=f10e182]:
+          - listitem [ref=f10e183]:
+            - link "All Users" [ref=f10e184] [cursor=pointer]:
+              - /url: users.php
+          - listitem [ref=f10e185]:
+            - link "Add User" [ref=f10e186] [cursor=pointer]:
+              - /url: user-new.php
+          - listitem [ref=f10e187]:
+            - link "Profile" [ref=f10e188] [cursor=pointer]:
+              - /url: profile.php
+      - listitem [ref=f10e189]:
+        - link "Tools" [ref=f10e190] [cursor=pointer]:
+          - /url: tools.php
+          - generic [ref=f10e191]: 
+          - generic [ref=f10e192]: Tools
+        - list [ref=f10e193]:
+          - listitem [ref=f10e194]:
+            - link "Available Tools" [ref=f10e195] [cursor=pointer]:
+              - /url: tools.php
+          - listitem [ref=f10e196]:
+            - link "Import" [ref=f10e197] [cursor=pointer]:
+              - /url: import.php
+          - listitem [ref=f10e198]:
+            - link "Export" [ref=f10e199] [cursor=pointer]:
+              - /url: export.php
+          - listitem [ref=f10e200]:
+            - link "Site Health" [ref=f10e201] [cursor=pointer]:
+              - /url: site-health.php
+          - listitem [ref=f10e202]:
+            - link "Export Personal Data" [ref=f10e203] [cursor=pointer]:
+              - /url: export-personal-data.php
+          - listitem [ref=f10e204]:
+            - link "Erase Personal Data" [ref=f10e205] [cursor=pointer]:
+              - /url: erase-personal-data.php
+          - listitem [ref=f10e206]:
+            - link "Plugin Check" [ref=f10e207] [cursor=pointer]:
+              - /url: tools.php?page=plugin-check
+          - listitem [ref=f10e208]:
+            - link "Plugin Check Namer" [ref=f10e209] [cursor=pointer]:
+              - /url: tools.php?page=plugin-check-namer
+          - listitem [ref=f10e210]:
+            - link "Scheduled Actions" [ref=f10e211] [cursor=pointer]:
+              - /url: tools.php?page=action-scheduler
+          - listitem [ref=f10e212]:
+            - link "Theme File Editor" [ref=f10e213] [cursor=pointer]:
+              - /url: theme-editor.php
+          - listitem [ref=f10e214]:
+            - link "Plugin File Editor" [ref=f10e215] [cursor=pointer]:
+              - /url: plugin-editor.php
+      - listitem [ref=f10e216]:
+        - link "Settings" [ref=f10e217] [cursor=pointer]:
+          - /url: options-general.php
+          - generic [ref=f10e218]: 
+          - generic [ref=f10e219]: Settings
+        - list [ref=f10e220]:
+          - listitem [ref=f10e221]:
+            - link "General" [ref=f10e222] [cursor=pointer]:
+              - /url: options-general.php
+          - listitem [ref=f10e223]:
+            - link "Connectors" [ref=f10e224] [cursor=pointer]:
+              - /url: options-connectors.php
+          - listitem [ref=f10e225]:
+            - link "Writing" [ref=f10e226] [cursor=pointer]:
+              - /url: options-writing.php
+          - listitem [ref=f10e227]:
+            - link "Reading" [ref=f10e228] [cursor=pointer]:
+              - /url: options-reading.php
+          - listitem [ref=f10e229]:
+            - link "Discussion" [ref=f10e230] [cursor=pointer]:
+              - /url: options-discussion.php
+          - listitem [ref=f10e231]:
+            - link "Media" [ref=f10e232] [cursor=pointer]:
+              - /url: options-media.php
+          - listitem [ref=f10e233]:
+            - link "Permalinks" [ref=f10e234] [cursor=pointer]:
+              - /url: options-permalink.php
+          - listitem [ref=f10e235]:
+            - link "Privacy" [ref=f10e236] [cursor=pointer]:
+              - /url: options-privacy.php
+          - listitem [ref=f10e237]:
+            - link "Plugin Check" [ref=f10e238] [cursor=pointer]:
+              - /url: options-general.php?page=plugin-check-settings
+      - listitem [ref=f10e239]:
+        - button "Collapse Main menu" [expanded] [ref=f10e240] [cursor=pointer]:
+          - generic [ref=f10e242]: Collapse Menu
+  - generic [ref=f10e243]:
+    - generic [ref=f10e244]:
+      - navigation "Toolbar":
+        - menu:
+          - group [ref=f10e245]:
+            - menuitem "About WordPress" [ref=f10e246] [cursor=pointer]:
+              - generic [ref=f10e248]: About WordPress
+          - group [ref=f10e249]:
+            - menuitem "plugin" [ref=f10e250] [cursor=pointer]
+          - group [ref=f10e251]:
+            - menuitem "Live" [ref=f10e252] [cursor=pointer]
+          - group [ref=f10e253]:
+            - menuitem "1 update available" [ref=f10e254] [cursor=pointer]:
+              - generic [ref=f10e256]: "1"
+              - generic [ref=f10e257]: 1 update available
+          - group [ref=f10e258]:
+            - menuitem "Ctrl+K Open command palette" [ref=f10e259] [cursor=pointer]:
+              - generic [ref=f10e261]:
+                - text: Ctrl+K
+                - generic [ref=f10e262]: Open command palette
+          - group [ref=f10e263]:
+            - menuitem "0 Comments in moderation" [ref=f10e264] [cursor=pointer]:
+              - generic [ref=f10e266]: "0"
+              - generic [ref=f10e267]: 0 Comments in moderation
+          - group [ref=f10e268]:
+            - menuitem "New" [ref=f10e269] [cursor=pointer]:
+              - generic [ref=f10e271]: New
+          - group [ref=f10e272]:
+            - menuitem " Manage dummy data" [ref=f10e273] [cursor=pointer]:
+              - generic [ref=f10e274]: 
+              - text: Manage dummy data
+        - menu [ref=f10e275]:
+          - group [ref=f10e276]:
+            - menuitem "Howdy, admin" [ref=f10e277] [cursor=pointer]
+    - main [ref=f10e278]:
+      - generic [ref=f10e280]:
+        - heading "Advanced Search Settings" [level=1] [ref=f10e281]
+        - paragraph [ref=f10e283]: "MCP Adapter: The Composer autoloader was not found. If you installed the plugin from the GitHub source code, make sure to run `composer install`."
+        - paragraph [ref=f10e284]: Configure search behavior and how each product filter works on the storefront.
+        - navigation "Settings sections" [ref=f10e285]:
+          - link "General" [ref=f10e286] [cursor=pointer]:
+            - /url: http://plugin.local/wp-admin/admin.php?page=beplus-fast-product-filter-live-search-for-woocommerce&tab=general
+          - link "Filters" [ref=f10e287] [cursor=pointer]:
+            - /url: http://plugin.local/wp-admin/admin.php?page=beplus-fast-product-filter-live-search-for-woocommerce&tab=filters
+        - generic [ref=f10e288]:
+          - generic [ref=f10e289]:
+            - generic [ref=f10e290]:
+              - heading "Search behavior" [level=2] [ref=f10e291]
+              - text: Debounce (ms)
+              - spinbutton "Debounce (ms)" [ref=f10e292]: "280"
+              - text: Min characters
+              - spinbutton "Min characters" [ref=f10e293]: "2"
+              - text: Results per page
+              - spinbutton "Results per page" [ref=f10e294]: "10"
+            - generic [ref=f10e295]:
+              - generic [ref=f10e296]:
+                - heading "Performance cache" [level=2] [ref=f10e297]
+                - generic [ref=f10e298] [cursor=pointer]:
+                  - checkbox "On" [checked] [ref=f10e299]
+                  - generic [ref=f10e302]: "On"
+              - generic [ref=f10e303]:
+                - paragraph [ref=f10e304]: Large catalogs can slow down filter loading. Cache stores pre-built filter data so the shop page responds faster. Filtered searches always load fresh results.
+                - heading "What is cached" [level=3] [ref=f10e305]
+                - list [ref=f10e306]:
+                  - listitem [ref=f10e307]:
+                    - strong [ref=f10e308]: Filter lists (facets)
+                    - generic [ref=f10e309]: Categories, tags, attributes, brands, and price bounds shown in the sidebar when shoppers have not applied any filter yet.
+                  - listitem [ref=f10e310]:
+                    - strong [ref=f10e311]: Term counts in facet lists
+                    - generic [ref=f10e312]: How many products belong to each category, tag, or attribute option in the default (unfiltered) view.
+                - generic [ref=f10e313]:
+                  - generic [ref=f10e314]:
+                    - strong [ref=f10e316]: Auto-refresh cache every
+                    - combobox "Auto-refresh cache every" [ref=f10e317] [cursor=pointer]:
+                      - option "15 minutes"
+                      - option "30 minutes"
+                      - option "1 hour" [selected]
+                      - option "2 hours"
+                      - option "6 hours"
+                      - option "12 hours"
+                      - option "1 day"
+                      - option "7 days"
+                    - paragraph [ref=f10e318]: After this time, cached filter lists are rebuilt on the next shop visit.
+                  - generic [ref=f10e319]:
+                    - checkbox "Clear cache automatically when products, stock, or categories change" [checked] [ref=f10e320] [cursor=pointer]
+                    - text: Clear cache automatically when products, stock, or categories change
+                - generic [ref=f10e321]:
+                  - button "Clear cache now" [ref=f10e322] [cursor=pointer]
+                  - paragraph [ref=f10e323]: "Last cleared: July 3, 2026 3:41 pm"
+                - generic [ref=f10e324]:
+                  - generic [ref=f10e325]:
+                    - heading "Estimated performance benefit" [level=3] [ref=f10e326]
+                    - button "Measure now" [ref=f10e327] [cursor=pointer]
+                  - paragraph [ref=f10e328]: Compares how long it takes to build unfiltered filter lists versus reading them from cache on this store.
+                  - generic [ref=f10e329]:
+                    - generic [ref=f10e330]:
+                      - generic [ref=f10e331]:
+                        - generic [ref=f10e332]: Without cache
+                        - strong [ref=f10e333]: 17.1 ms
+                      - generic [ref=f10e334]:
+                        - generic [ref=f10e335]: With cache
+                        - strong [ref=f10e336]: 0.0 ms
+                      - generic [ref=f10e337]:
+                        - generic [ref=f10e338]: Estimated saving
+                        - strong [ref=f10e339]: 17.1 ms (100% faster)
+                    - paragraph [ref=f10e340]: "Measured: June 29, 2026 2:37 pm"
+            - generic [ref=f10e341]:
+              - heading "Filter options display" [level=2] [ref=f10e342]
+              - paragraph [ref=f10e343]: Control how filter choices appear when customers combine multiple filters.
+              - group [ref=f10e344]:
+                - generic [ref=f10e345] [cursor=pointer]:
+                  - radio "Show all options Always display every category, tag, and attribute term." [checked] [ref=f10e346]
+                  - generic [ref=f10e347]:
+                    - strong [ref=f10e348]: Show all options
+                    - generic [ref=f10e349]: Always display every category, tag, and attribute term.
+                - generic [ref=f10e350] [cursor=pointer]:
+                  - radio "Contextual Hide options that would return zero products with the current selection." [ref=f10e351]
+                  - generic [ref=f10e352]:
+                    - strong [ref=f10e353]: Contextual
+                    - generic [ref=f10e354]: Hide options that would return zero products with the current selection.
+          - paragraph [ref=f10e355]:
+            - button "Save Changes" [ref=f10e356] [cursor=pointer]
+  - contentinfo [ref=f10e357]:
+    - paragraph [ref=f10e358]:
+      - generic [ref=f10e360]:
+        - text: Thank you for creating with
+        - link "WordPress" [ref=f10e361] [cursor=pointer]:
+          - /url: https://wordpress.org/
+        - text: .
+    - paragraph [ref=f10e362]: Version 7.0

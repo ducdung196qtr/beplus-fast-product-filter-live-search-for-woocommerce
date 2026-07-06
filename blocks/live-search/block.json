@@ -2,7 +2,7 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "beplus-fast-product-filter-live-search-for-woocommerce/live-search",
-	"version": "1.0.0",
+	"version": "1.2.0",
 	"title": "Live Search",
 	"category": "beplus-fast-product-filter-live-search-for-woocommerce",
 	"icon": "search",
@@ -91,6 +91,31 @@
 		"highlightColor": {
 			"type": "string",
 			"default": "#ffff00"
+		},
+		"submitButtonStyle": {
+			"type": "string",
+			"enum": [ "text", "icon" ],
+			"default": "text"
+		},
+		"submitButtonText": {
+			"type": "string",
+			"default": "Search"
+		},
+		"quickSuggestions": {
+			"type": "string",
+			"default": ""
+		},
+		"quickSuggestionsCount": {
+			"type": "number",
+			"default": 10
+		},
+		"quickSuggestionsAutoSync": {
+			"type": "boolean",
+			"default": false
+		},
+		"enableQuickSuggestions": {
+			"type": "boolean",
+			"default": true
 		}
 	},
 	"render": "file:./render.php",

@@ -1,0 +1,114 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#wp--skip-link--target"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e7]:
+        - paragraph [ref=e8]:
+          - link "plugin" [ref=e9] [cursor=pointer]:
+            - /url: http://plugin.local
+        - generic [ref=e10]:
+          - navigation [ref=e11]:
+            - list [ref=e16]:
+              - list [ref=e17]:
+                - listitem [ref=e18]:
+                  - link "Cart" [ref=e19] [cursor=pointer]:
+                    - /url: http://plugin.local/cart/
+                - listitem [ref=e20]:
+                  - link "Checkout" [ref=e21] [cursor=pointer]:
+                    - /url: http://plugin.local/checkout/
+                - listitem [ref=e22]:
+                  - link "My account" [ref=e23] [cursor=pointer]:
+                    - /url: http://plugin.local/my-account/
+                - listitem [ref=e24]:
+                  - link "Sample Page" [ref=e25] [cursor=pointer]:
+                    - /url: http://plugin.local/sample-page/
+                - listitem [ref=e26]:
+                  - link "Search" [ref=e27] [cursor=pointer]:
+                    - /url: http://plugin.local/search/
+                - listitem [ref=e28]:
+                  - link "Shop" [ref=e29] [cursor=pointer]:
+                    - /url: http://plugin.local/shop/
+          - link "Login" [ref=e31] [cursor=pointer]:
+            - /url: http://plugin.local/my-account/
+            - img [ref=e32]
+          - 'button "Number of items in the cart: 0" [ref=e36]':
+            - img [ref=e38]
+    - main [ref=e43]:
+      - generic [ref=e44]:
+        - heading "Search" [level=1] [ref=e45]
+        - search [ref=e48]:
+          - generic [ref=e49]:
+            - generic [ref=e50]:
+              - generic [ref=e51]: Category
+              - combobox "Category" [ref=e52] [cursor=pointer]:
+                - option "All categories" [selected]
+                - option "Uncategorized"
+                - option "Accessories"
+                - option "Clothing"
+                - option "Decor"
+                - option "Hoodies"
+                - option "Music"
+                - option "Tshirts"
+            - generic [ref=e53]:
+              - generic [ref=e54]: Search products
+              - combobox "Search products" [ref=e56]
+              - button "Search" [ref=e57] [cursor=pointer]
+          - status [ref=e59]
+    - contentinfo [ref=e60]:
+      - generic [ref=e62]:
+        - generic [ref=e63]:
+          - heading "plugin" [level=2] [ref=e66]:
+            - link "plugin" [ref=e67] [cursor=pointer]:
+              - /url: http://plugin.local
+          - generic [ref=e68]:
+            - navigation "2" [ref=e69]:
+              - list [ref=e70]:
+                - listitem [ref=e71]:
+                  - link "Blog" [ref=e72] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e73]:
+                  - link "About" [ref=e74] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e75]:
+                  - link "FAQs" [ref=e76] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e77]:
+                  - link "Authors" [ref=e78] [cursor=pointer]:
+                    - /url: "#"
+            - navigation "3" [ref=e79]:
+              - list [ref=e80]:
+                - listitem [ref=e81]:
+                  - link "Events" [ref=e82] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e83]:
+                  - link "Shop" [ref=e84] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e85]:
+                  - link "Patterns" [ref=e86] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e87]:
+                  - link "Themes" [ref=e88] [cursor=pointer]:
+                    - /url: "#"
+        - generic [ref=e90]:
+          - paragraph [ref=e91]: Twenty Twenty-Five
+          - paragraph [ref=e92]:
+            - text: Designed with
+            - link "WordPress" [ref=e93] [cursor=pointer]:
+              - /url: https://wordpress.org
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - button:
+              - img
+            - generic:
+              - generic:
+                - paragraph:
+                  - strong: Your cart is currently empty!
+                - generic:
+                  - link:
+                    - /url: http://plugin.local/shop/
+                    - generic: Start shopping
+  - status [ref=e95]

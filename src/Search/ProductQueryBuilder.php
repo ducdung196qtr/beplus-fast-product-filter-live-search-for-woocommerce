@@ -118,6 +118,7 @@ final class ProductQueryBuilder {
 					? array_intersect( (array) $args['include'], $on_sale_ids )
 					: $on_sale_ids;
 				}
+				$args['bpss_on_sale'] = true;
 			}
 		}
 
@@ -212,7 +213,7 @@ final class ProductQueryBuilder {
 		}
 
 		try {
-			return wc_get_products( $args );
+			return self::query_via_wp_query( $args );
 		} finally {
 			if ( $price_filter ) {
 				remove_filter( 'posts_clauses', array( $price_filter, 'add_clauses' ), 10 );
@@ -225,6 +226,186 @@ final class ProductQueryBuilder {
 			}
 			self::clear_wc_catalog_ordering_filters();
 		}
+	}
+
+	/**
+	 * Execute product query via WP_Query directly (fallback for wc_get_products).
+	 *
+	 * @param array<string, mixed> $args wc_get_products-style args.
+	 *
+	 * @return object|array<int, mixed>
+	 */
+	private static function query_via_wp_query( $args ) {
+		$wp_args = array(
+			'post_type'      => 'product',
+			'post_status'    => isset( $args['status'] ) ? $args['status'] : 'publish',
+			'posts_per_page' => isset( $args['limit'] ) ? (int) $args['limit'] : 10,
+			'paged'          => isset( $args['page'] ) ? (int) $args['page'] : 1,
+			'orderby'        => isset( $args['orderby'] ) ? $args['orderby'] : 'menu_order title',
+			'order'          => isset( $args['order'] ) ? $args['order'] : 'ASC',
+		);
+
+		if ( ! empty( $args['s'] ) ) {
+			$wp_args['s'] = $args['s'];
+		}
+
+		if ( ! empty( $args['tax_query'] ) ) {
+			$wp_args['tax_query'] = $args['tax_query'];
+		}
+
+		if ( ! empty( $args['meta_key'] ) ) {
+			$wp_args['meta_key'] = $args['meta_key'];
+		}
+
+		if ( ! empty( $args['stock_status'] ) ) {
+			if ( 'instock' === $args['stock_status'] ) {
+				$wp_args['meta_query'][] = array(
+					'relation' => 'OR',
+					array(
+						'key'     => '_stock_status',
+						'value'   => 'instock',
+						'compare' => '=',
+					),
+					array(
+						'key'     => '_stock_status',
+						'compare' => 'NOT EXISTS',
+					),
+				);
+			} else {
+				$wp_args['meta_query'][] = array(
+					'key'     => '_stock_status',
+					'value'   => $args['stock_status'],
+					'compare' => '=',
+				);
+			}
+		}
+
+		if ( ! empty( $args['bpss_on_sale'] ) ) {
+			$wp_args['meta_query'][] = array(
+				'key'     => '_sale_price',
+				'value'   => '',
+				'compare' => '!=',
+			);
+		} elseif ( ! empty( $args['include'] ) ) {
+			$wp_args['post__in'] = $args['include'];
+		}
+
+		if ( ! empty( $args['featured'] ) ) {
+			$visibility_ids = function_exists( 'wc_get_product_visibility_term_ids' )
+				? wc_get_product_visibility_term_ids()
+				: array();
+			if ( ! empty( $visibility_ids['featured'] ) ) {
+				$wp_args['tax_query'][] = array(
+					'taxonomy' => 'product_visibility',
+					'field'    => 'term_taxonomy_id',
+					'terms'    => array( $visibility_ids['featured'] ),
+				);
+			}
+		}
+
+		if ( ! empty( $args['product_cats'] ) ) {
+			$wp_args['tax_query'][] = array(
+				'taxonomy' => 'product_cat',
+				'field'    => 'slug',
+				'terms'    => $args['product_cats'],
+				'operator' => 'IN',
+			);
+		}
+
+		if ( ! empty( $args['product_tags'] ) ) {
+			$wp_args['tax_query'][] = array(
+				'taxonomy' => 'product_tag',
+				'field'    => 'slug',
+				'terms'    => $args['product_tags'],
+				'operator' => 'IN',
+			);
+		}
+
+		if ( ! empty( $args[ PriceQueryFilter::QUERY_FLAG ] ) ) {
+			$min_price = isset( $args['min_price'] ) ? (float) $args['min_price'] : 0;
+			$max_price = isset( $args['max_price'] ) ? (float) $args['max_price'] : 0;
+
+			if ( $min_price > 0 && $max_price > 0 ) {
+				$wp_args['meta_query'][] = array(
+					'relation' => 'AND',
+					self::price_range_clause( $min_price, '>=' ),
+					self::price_range_clause( $max_price, '<=' ),
+				);
+			} elseif ( $min_price > 0 ) {
+				$wp_args['meta_query'][] = self::price_range_clause( $min_price, '>=' );
+			} elseif ( $max_price > 0 ) {
+				$wp_args['meta_query'][] = self::price_range_clause( $max_price, '<=' );
+			}
+		}
+
+		if ( ! empty( $args[ SearchFieldsFilter::QUERY_FLAG ] ) ) {
+			$wp_args[ SearchFieldsFilter::QUERY_FLAG ] = true;
+			$wp_args['suppress_filters']              = false;
+		}
+
+		if ( ! empty( $args[ KeywordSearchFilter::QUERY_FLAG ] ) ) {
+			$wp_args[ KeywordSearchFilter::QUERY_FLAG ] = true;
+			$wp_args['suppress_filters']                = false;
+		}
+
+		if ( ! empty( $args[ PriceQueryFilter::QUERY_FLAG ] ) ) {
+			$wp_args[ PriceQueryFilter::QUERY_FLAG ] = true;
+		}
+
+		$query  = new \WP_Query( $wp_args );
+		$return = isset( $args['return'] ) ? $args['return'] : 'objects';
+		$paginate = isset( $args['paginate'] ) ? $args['paginate'] : true;
+
+		if ( 'ids' === $return ) {
+			$products = wp_list_pluck( $query->posts, 'ID' );
+		} else {
+			$products = array_filter( array_map( 'wc_get_product', $query->posts ) );
+		}
+
+		if ( $paginate ) {
+			return (object) array(
+				'products'      => $products,
+				'total'         => $query->found_posts,
+				'max_num_pages' => $query->max_num_pages,
+			);
+		}
+
+		return $products;
+	}
+
+	/**
+	 * Build a price meta query clause that checks _price, _regular_price, and _sale_price.
+	 *
+	 * @param float  $price   Price threshold.
+	 * @param string $compare >= or <=.
+	 *
+	 * @return array<string|int, mixed>
+	 */
+	private static function price_range_clause( float $price, string $compare ): array {
+		return array(
+			'relation' => 'OR',
+			self::single_price_clause( '_price', $price, $compare ),
+			self::single_price_clause( '_regular_price', $price, $compare ),
+			self::single_price_clause( '_sale_price', $price, $compare ),
+		);
+	}
+
+	/**
+	 * Build a single price meta clause.
+	 *
+	 * @param string $key     Meta key.
+	 * @param float  $price   Price threshold.
+	 * @param string $compare >= or <=.
+	 *
+	 * @return array<string, mixed>
+	 */
+	private static function single_price_clause( string $key, float $price, string $compare ): array {
+		return array(
+			'key'     => $key,
+			'value'   => $price,
+			'compare' => $compare,
+			'type'    => 'DECIMAL',
+		);
 	}
 
 	/**

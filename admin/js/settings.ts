@@ -370,6 +370,134 @@
 				} );
 		} );
 
+		// --- Statistics tab ---
+		const $statsBody = $wrap.find( '[data-bpss-stats-body]' );
+		const $statsNotice = $wrap.find( '[data-bpss-stats-notice]' );
+
+		function formatDate( dateStr: string ): string {
+			if ( ! dateStr ) return '—';
+			try {
+				const d = new Date( dateStr + 'Z' );
+				if ( isNaN( d.getTime() ) ) return dateStr;
+				return d.toLocaleString();
+			} catch {
+				return dateStr;
+			}
+		}
+
+		function loadStats(): void {
+			if ( ! $statsBody.length ) return;
+
+			const restUrl = window.bpssAdmin?.statsRestUrl;
+			const nonce = window.bpssAdmin?.statsNonce;
+
+			if ( ! restUrl || ! nonce ) return;
+
+			$statsBody.html( '<tr><td colspan="5" class="bpss-stats__empty">' + ( window.bpssAdmin.i18n.loading || 'Loading…' ) + '</td></tr>' );
+			$statsNotice.prop( 'hidden', true );
+
+			$.ajax( {
+				url: restUrl + '?per_page=50',
+				method: 'GET',
+				beforeSend: function ( xhr ) {
+					xhr.setRequestHeader( 'X-WP-Nonce', nonce );
+				},
+			} )
+				.done( function ( response ) {
+					if ( ! response?.items || ! response.items.length ) {
+						$statsBody.html( '<tr><td colspan="5" class="bpss-stats__empty">' + ( window.bpssAdmin.i18n.noData || 'No data.' ) + '</td></tr>' );
+						return;
+					}
+
+					let rows = '';
+					response.items.forEach( function ( item, index ) {
+						const fromLabel = item.resolved_from === 'click'
+							? ( window.bpssAdmin.i18n.resolvedClick || 'Product click' )
+							: ( window.bpssAdmin.i18n.resolvedFallback || 'Closest match' );
+
+						rows += '<tr>' +
+							'<td class="col-rank">' + ( index + 1 ) + '</td>' +
+							'<td class="col-keyword"><strong>' + escapeHtmlAdmin( item.keyword ) +
+								( item.raw_query && item.raw_query !== item.keyword
+									? ' <span class="bpss-stats__raw">(' + escapeHtmlAdmin( item.raw_query ) + ')</span>'
+									: '' ) +
+							'</strong></td>' +
+							'<td class="col-count">' + item.count + '</td>' +
+							'<td class="col-from">' + fromLabel + '</td>' +
+							'<td class="col-date">' + formatDate( item.updated_at ) + '</td>' +
+							'</tr>';
+					} );
+
+					$statsBody.html( rows );
+				} )
+				.fail( function () {
+					$statsBody.html( '<tr><td colspan="5" class="bpss-stats__empty">' + ( window.bpssAdmin.i18n.loadError || 'Could not load.' ) + '</td></tr>' );
+					$statsNotice.text( window.bpssAdmin.i18n.loadError || 'Could not load.' ).addClass( 'is-error' ).prop( 'hidden', false );
+				} );
+		}
+
+		function escapeHtmlAdmin( text: string ): string {
+			const div = document.createElement( 'div' );
+			div.textContent = text;
+			return div.innerHTML;
+		}
+
+		$wrap.on( 'click', '[data-bpss-refresh-stats]', function () {
+			const $btn = $( this );
+			$btn.prop( 'disabled', true ).text( window.bpssAdmin.i18n.refreshing || 'Refreshing…' );
+			loadStats();
+			setTimeout( function () {
+				$btn.prop( 'disabled', false ).text( window.bpssAdmin.i18n.refresh || 'Refresh' );
+			}, 1000 );
+		} );
+
+		$wrap.on( 'click', '[data-bpss-cleanup-stats]', function () {
+			const $btn = $( this );
+			const nonce = window.bpssAdmin?.statsNonce;
+			const cleanupUrl = ( window.bpssAdmin?.statsRestUrl || '' ) + '/cleanup';
+
+			if ( ! cleanupUrl || ! nonce ) return;
+
+			$btn.prop( 'disabled', true ).text( window.bpssAdmin.i18n.cleaningUp || 'Cleaning…' );
+			$statsNotice.prop( 'hidden', true ).removeClass( 'is-success is-error' );
+
+			$.ajax( {
+				url: cleanupUrl,
+				method: 'DELETE',
+				beforeSend: function ( xhr ) {
+					xhr.setRequestHeader( 'X-WP-Nonce', nonce );
+				},
+			} )
+				.done( function ( response ) {
+					const removed = response?.removed || 0;
+					$statsNotice
+						.text( ( window.bpssAdmin.i18n.cleanedUp || 'Cleaned up {n} keywords.' ).replace( '{n}', removed ) )
+						.addClass( 'is-success' )
+						.prop( 'hidden', false );
+					loadStats();
+				} )
+				.fail( function () {
+					$statsNotice
+						.text( window.bpssAdmin.i18n.cleanupError || 'Cleanup failed.' )
+						.addClass( 'is-error' )
+						.prop( 'hidden', false );
+				} )
+				.always( function () {
+					$btn.prop( 'disabled', false ).text( window.bpssAdmin.i18n.cleanupOld || 'Cleanup old keywords' );
+				} );
+		} );
+
+		if ( $( '.bpss-settings__tab.is-active' ).data( 'tab' ) === 'statistics' ) {
+			loadStats();
+		}
+
+		$wrap.on( 'click', '.bpss-settings__tab', function () {
+			const tab = $( this ).data( 'tab' );
+			if ( tab === 'statistics' ) {
+				loadStats();
+			}
+		} );
+
 		toggleCachePanel( $wrap );
 
 		if ( $.fn.wpColorPicker ) {

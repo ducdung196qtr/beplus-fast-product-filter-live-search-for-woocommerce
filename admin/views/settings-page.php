@@ -50,8 +50,9 @@ if ( in_array( $tab, array( 'taxonomies', 'price', 'sidebar' ), true ) ) {
 }
 
 $tabs = array(
-	'general' => __( 'General', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
-	'filters' => __( 'Filters', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+	'general'    => __( 'General', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+	'filters'    => __( 'Filters', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+	'statistics' => __( 'Statistics', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 );
 
 if ( ! isset( $tabs[ $tab ] ) ) {
@@ -637,6 +638,52 @@ function bpss_render_filter_mode_controls( string $option_key, string $mode_name
 						<p><?php esc_html_e( 'In stock / out of stock / backorder.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></p>
 					</div>
 				</div>
+			</div>
+		</div>
+
+		<div class="bpss-settings__panel<?php echo 'statistics' === $tab ? ' is-active' : ''; ?>" data-tab-panel="statistics">
+			<div class="bpss-settings__card">
+				<div class="bpss-settings__card-header">
+					<h2 class="bpss-settings__card-title"><?php esc_html_e( 'Top search keywords', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></h2>
+					<div class="bpss-stats__actions">
+						<button type="button" class="button button-secondary" data-bpss-refresh-stats>
+							<?php esc_html_e( 'Refresh', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
+						</button>
+						<button type="button" class="button button-secondary" data-bpss-cleanup-stats>
+							<?php esc_html_e( 'Cleanup old keywords', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?>
+						</button>
+					</div>
+				</div>
+				<p class="description"><?php esc_html_e( 'Keywords are resolved to the product name users clicked on, or the closest matching product title. Counts reflect how often each resolved keyword is tracked.', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></p>
+				<p class="description bpss-stats__cap-note">
+					<?php
+					printf(
+						/* translators: %d: max rows */
+						esc_html__( 'The table is capped at %d rows. New keywords automatically prune stale low-count entries. Use Cleanup to manually remove keywords with 1 search older than 7 days.', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+						2000,
+					);
+					?>
+				</p>
+
+				<div class="bpss-stats__table-wrap">
+					<table class="widefat bpss-settings__data-table bpss-stats__table" id="bpss-stats-table">
+						<thead>
+							<tr>
+								<th class="col-rank">#</th>
+								<th class="col-keyword"><?php esc_html_e( 'Keyword', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></th>
+								<th class="col-count"><?php esc_html_e( 'Searches', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></th>
+								<th class="col-from"><?php esc_html_e( 'From', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></th>
+								<th class="col-date"><?php esc_html_e( 'Last searched', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></th>
+							</tr>
+						</thead>
+						<tbody data-bpss-stats-body>
+							<tr>
+								<td colspan="5" class="bpss-stats__empty"><?php esc_html_e( 'Loading statistics…', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p class="bpss-stats__notice" data-bpss-stats-notice role="status" aria-live="polite" hidden></p>
 			</div>
 		</div>
 

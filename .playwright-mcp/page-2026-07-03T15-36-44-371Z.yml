@@ -1,0 +1,440 @@
+- generic [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#wp--skip-link--target"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e7]:
+        - paragraph [ref=e8]:
+          - link "plugin" [ref=e9] [cursor=pointer]:
+            - /url: http://plugin.local
+        - generic [ref=e10]:
+          - navigation [ref=e11]:
+            - list [ref=e16]:
+              - list [ref=e17]:
+                - listitem [ref=e18]:
+                  - link "Cart" [ref=e19] [cursor=pointer]:
+                    - /url: http://plugin.local/cart/
+                - listitem [ref=e20]:
+                  - link "Checkout" [ref=e21] [cursor=pointer]:
+                    - /url: http://plugin.local/checkout/
+                - listitem [ref=e22]:
+                  - link "My account" [ref=e23] [cursor=pointer]:
+                    - /url: http://plugin.local/my-account/
+                - listitem [ref=e24]:
+                  - link "Sample Page" [ref=e25] [cursor=pointer]:
+                    - /url: http://plugin.local/sample-page/
+                - listitem [ref=e26]:
+                  - link "Search" [ref=e27] [cursor=pointer]:
+                    - /url: http://plugin.local/search/
+                - listitem [ref=e28]:
+                  - link "Shop" [ref=e29] [cursor=pointer]:
+                    - /url: http://plugin.local/shop/
+          - link "Login" [ref=e31] [cursor=pointer]:
+            - /url: http://plugin.local/my-account/
+            - img [ref=e32]
+          - 'button "Number of items in the cart: 0" [ref=e36]':
+            - img [ref=e38]
+    - generic [ref=e43]:
+      - search [ref=e46]:
+        - generic [ref=e47]:
+          - generic [ref=e48]: Search products
+          - searchbox "Search products" [ref=e49]
+        - generic [ref=e50]:
+          - button "Product Categories" [expanded] [ref=e51] [cursor=pointer]:
+            - generic [ref=e52]: Product Categories
+          - list [ref=e55]:
+            - listitem [ref=e56]:
+              - generic [ref=e58] [cursor=pointer]:
+                - radio "All" [checked] [ref=e59]
+                - generic [ref=e60]: All
+            - listitem [ref=e61]:
+              - generic [ref=e63] [cursor=pointer]:
+                - radio "Uncategorized (5)" [ref=e64]
+                - generic [ref=e65]: Uncategorized
+                - generic [ref=e66]: (5)
+            - listitem [ref=e67]:
+              - generic [ref=e69] [cursor=pointer]:
+                - radio "Accessories (9)" [ref=e70]
+                - generic [ref=e71]: Accessories
+                - generic [ref=e72]: (9)
+            - listitem [ref=e73]:
+              - generic [ref=e75] [cursor=pointer]:
+                - radio "Clothing (29)" [ref=e76]
+                - generic [ref=e77]: Clothing
+                - generic [ref=e78]: (29)
+            - listitem [ref=e79]:
+              - generic [ref=e81] [cursor=pointer]:
+                - radio "Decor (7)" [ref=e82]
+                - generic [ref=e83]: Decor
+                - generic [ref=e84]: (7)
+            - listitem [ref=e85]:
+              - generic [ref=e87] [cursor=pointer]:
+                - radio "Hoodies (9)" [ref=e88]
+                - generic [ref=e89]: Hoodies
+                - generic [ref=e90]: (9)
+            - listitem [ref=e91]:
+              - generic [ref=e93] [cursor=pointer]:
+                - radio "Music (6)" [ref=e94]
+                - generic [ref=e95]: Music
+                - generic [ref=e96]: (6)
+            - listitem [ref=e97]:
+              - generic [ref=e99] [cursor=pointer]:
+                - radio "Tshirts (11)" [ref=e100]
+                - generic [ref=e101]: Tshirts
+                - generic [ref=e102]: (11)
+        - generic [ref=e103]:
+          - button "Price" [expanded] [ref=e104] [cursor=pointer]:
+            - generic [ref=e105]: Price
+          - generic [ref=e108]:
+            - generic [ref=e109]:
+              - slider "Minimum price": "0"
+              - slider "Maximum price": "1000"
+            - generic [ref=e110]:
+              - generic [ref=e111]:
+                - generic [ref=e112]: Min price
+                - generic [ref=e113]:
+                  - spinbutton "Min price" [ref=e114]: "0"
+                  - generic: ₫
+              - generic [ref=e115]:
+                - generic [ref=e116]: Max price
+                - generic [ref=e117]:
+                  - spinbutton "Max price" [ref=e118]: "1000"
+                  - generic: ₫
+        - generic [ref=e119]:
+          - button "Color" [expanded] [ref=e120] [cursor=pointer]:
+            - generic [ref=e121]: Color
+          - list [ref=e124]:
+            - listitem [ref=e125]:
+              - generic [ref=e127] [cursor=pointer]:
+                - checkbox "Blue (4)" [ref=e128]
+                - generic [ref=e129]: Blue
+                - generic [ref=e130]: (4)
+            - listitem [ref=e131]:
+              - generic [ref=e133] [cursor=pointer]:
+                - checkbox "Gray (3)" [ref=e134]
+                - generic [ref=e135]: Gray
+                - generic [ref=e136]: (3)
+            - listitem [ref=e137]:
+              - generic [ref=e139] [cursor=pointer]:
+                - checkbox "Green (3)" [ref=e140]
+                - generic [ref=e141]: Green
+                - generic [ref=e142]: (3)
+            - listitem [ref=e143]:
+              - generic [ref=e145] [cursor=pointer]:
+                - checkbox "Red (4)" [ref=e146]
+                - generic [ref=e147]: Red
+                - generic [ref=e148]: (4)
+            - listitem [ref=e149]:
+              - generic [ref=e151] [cursor=pointer]:
+                - checkbox "Yellow (1)" [ref=e152]
+                - generic [ref=e153]: Yellow
+                - generic [ref=e154]: (1)
+        - generic [ref=e155]:
+          - button "Size" [expanded] [ref=e156] [cursor=pointer]:
+            - generic [ref=e157]: Size
+          - list [ref=e160]:
+            - listitem [ref=e161]:
+              - generic [ref=e163] [cursor=pointer]:
+                - checkbox "Large (1)" [ref=e164]
+                - generic [ref=e165]: Large
+                - generic [ref=e166]: (1)
+            - listitem [ref=e167]:
+              - generic [ref=e169] [cursor=pointer]:
+                - checkbox "Medium (1)" [ref=e170]
+                - generic [ref=e171]: Medium
+                - generic [ref=e172]: (1)
+            - listitem [ref=e173]:
+              - generic [ref=e175] [cursor=pointer]:
+                - checkbox "Small (1)" [ref=e176]
+                - generic [ref=e177]: Small
+                - generic [ref=e178]: (1)
+        - generic [ref=e179]:
+          - button "Weight" [expanded] [ref=e180] [cursor=pointer]:
+            - generic [ref=e181]: Weight
+          - list [ref=e184]:
+            - listitem [ref=e185]:
+              - generic [ref=e187] [cursor=pointer]:
+                - checkbox "nho (1)" [ref=e188]
+                - generic [ref=e189]: nho
+                - generic [ref=e190]: (1)
+            - listitem [ref=e191]:
+              - generic [ref=e193] [cursor=pointer]:
+                - checkbox "to (1)" [ref=e194]
+                - generic [ref=e195]: to
+                - generic [ref=e196]: (1)
+        - generic [ref=e197]:
+          - button "Stock status" [expanded] [ref=e198] [cursor=pointer]:
+            - generic [ref=e199]: Stock status
+          - list [ref=e202]:
+            - listitem [ref=e203]:
+              - generic [ref=e204] [cursor=pointer]:
+                - radio "All stock" [checked] [ref=e205]
+                - generic [ref=e206]: All stock
+            - listitem [ref=e207]:
+              - generic [ref=e208] [cursor=pointer]:
+                - radio "In stock" [ref=e209]
+                - generic [ref=e210]: In stock
+            - listitem [ref=e211]:
+              - generic [ref=e212] [cursor=pointer]:
+                - radio "Out of stock" [ref=e213]
+                - generic [ref=e214]: Out of stock
+            - listitem [ref=e215]:
+              - generic [ref=e216] [cursor=pointer]:
+                - radio "On backorder" [ref=e217]
+                - generic [ref=e218]: On backorder
+        - generic [ref=e219]:
+          - button "On sale" [expanded] [ref=e220] [cursor=pointer]:
+            - generic [ref=e221]: On sale
+          - list [ref=e224]:
+            - listitem [ref=e225]:
+              - generic [ref=e226] [cursor=pointer]:
+                - checkbox "On sale only" [checked] [active] [ref=e227]
+                - generic [ref=e228]: On sale only
+        - generic [ref=e229]:
+          - button "Featured products" [expanded] [ref=e230] [cursor=pointer]:
+            - generic [ref=e231]: Featured products
+          - list [ref=e234]:
+            - listitem [ref=e235]:
+              - generic [ref=e236] [cursor=pointer]:
+                - checkbox "Featured products only" [ref=e237]
+                - generic [ref=e238]: Featured products only
+        - generic [ref=e239]:
+          - button "Rating" [expanded] [ref=e240] [cursor=pointer]:
+            - generic [ref=e241]: Rating
+          - list [ref=e244]:
+            - listitem [ref=e245]:
+              - generic [ref=e246] [cursor=pointer]:
+                - radio "All ratings" [checked] [ref=e247]
+                - generic [ref=e248]: All ratings
+            - listitem [ref=e249]:
+              - generic [ref=e250] [cursor=pointer]:
+                - radio "★★★★★ & up" [ref=e251]
+                - generic [ref=e252]: ★★★★★ & up
+            - listitem [ref=e253]:
+              - generic [ref=e254] [cursor=pointer]:
+                - radio "★★★★☆ & up" [ref=e255]
+                - generic [ref=e256]: ★★★★☆ & up
+            - listitem [ref=e257]:
+              - generic [ref=e258] [cursor=pointer]:
+                - radio "★★★☆☆ & up" [ref=e259]
+                - generic [ref=e260]: ★★★☆☆ & up
+            - listitem [ref=e261]:
+              - generic [ref=e262] [cursor=pointer]:
+                - radio "★★☆☆☆ & up" [ref=e263]
+                - generic [ref=e264]: ★★☆☆☆ & up
+            - listitem [ref=e265]:
+              - generic [ref=e266] [cursor=pointer]:
+                - radio "★☆☆☆☆ & up" [ref=e267]
+                - generic [ref=e268]: ★☆☆☆☆ & up
+        - generic [ref=e269]:
+          - button "Search" [ref=e270] [cursor=pointer]
+          - status [ref=e539]: 7 products found
+      - main [ref=e272]:
+        - navigation "Breadcrumb" [ref=e274]:
+          - link "Home" [ref=e275] [cursor=pointer]:
+            - /url: http://plugin.local
+          - text: / Shop
+        - heading "Shop" [level=1] [ref=e276]
+        - generic [ref=e277]:
+          - generic [ref=e278]: Showing 7 results
+          - combobox "Shop order" [ref=e282]:
+            - option "Default sorting" [selected]
+            - option "Sort by popularity"
+            - option "Sort by average rating"
+            - option "Sort by latest"
+            - 'option "Sort by price: low to high"'
+            - 'option "Sort by price: high to low"'
+        - generic [ref=e541]:
+          - 'button "Remove filter: On sale" [ref=e542] [cursor=pointer]':
+            - generic [ref=e543]: On sale
+            - generic [ref=e544]: ×
+          - button "Clear all filters" [ref=e545] [cursor=pointer]
+        - list [ref=e284]:
+          - listitem [ref=e546]:
+            - link "Beanie Product on sale" [ref=e548] [cursor=pointer]:
+              - /url: http://plugin.local/product/beanie/
+              - img "Beanie" [ref=e549]
+              - generic [ref=e551]:
+                - text: Sale
+                - generic [ref=e552]: Product on sale
+            - heading "Beanie" [level=2] [ref=e553]:
+              - link "Beanie" [ref=e554] [cursor=pointer]:
+                - /url: http://plugin.local/product/beanie/
+            - generic [ref=e556]:
+              - deletion [ref=e557]:
+                - generic [ref=e559]: 20 ₫
+              - generic [ref=e560]: "Original price was: 20 ₫."
+              - insertion [ref=e561]:
+                - generic [ref=e563]: 18 ₫
+              - generic [ref=e564]: "Current price is: 18 ₫."
+            - 'button "Add to cart: “Beanie”" [ref=e566] [cursor=pointer]':
+              - generic [ref=e567]: Add to cart
+          - listitem [ref=e568]:
+            - link "Beanie with Logo Product on sale" [ref=e570] [cursor=pointer]:
+              - /url: http://plugin.local/product/beanie-with-logo/
+              - img "Beanie with Logo" [ref=e571]
+              - generic [ref=e573]:
+                - text: Sale
+                - generic [ref=e574]: Product on sale
+            - heading "Beanie with Logo" [level=2] [ref=e575]:
+              - link "Beanie with Logo" [ref=e576] [cursor=pointer]:
+                - /url: http://plugin.local/product/beanie-with-logo/
+            - generic [ref=e578]:
+              - deletion [ref=e579]:
+                - generic [ref=e581]: 20 ₫
+              - generic [ref=e582]: "Original price was: 20 ₫."
+              - insertion [ref=e583]:
+                - generic [ref=e585]: 18 ₫
+              - generic [ref=e586]: "Current price is: 18 ₫."
+            - 'button "Add to cart: “Beanie with Logo”" [ref=e588] [cursor=pointer]':
+              - generic [ref=e589]: Add to cart
+          - listitem [ref=e590]:
+            - link "Belt Product on sale" [ref=e592] [cursor=pointer]:
+              - /url: http://plugin.local/product/belt/
+              - img "Belt" [ref=e593]
+              - generic [ref=e595]:
+                - text: Sale
+                - generic [ref=e596]: Product on sale
+            - heading "Belt" [level=2] [ref=e597]:
+              - link "Belt" [ref=e598] [cursor=pointer]:
+                - /url: http://plugin.local/product/belt/
+            - generic [ref=e600]:
+              - deletion [ref=e601]:
+                - generic [ref=e603]: 65 ₫
+              - generic [ref=e604]: "Original price was: 65 ₫."
+              - insertion [ref=e605]:
+                - generic [ref=e607]: 55 ₫
+              - generic [ref=e608]: "Current price is: 55 ₫."
+            - 'button "Add to cart: “Belt”" [ref=e610] [cursor=pointer]':
+              - generic [ref=e611]: Add to cart
+          - listitem [ref=e612]:
+            - link "Cap Product on sale" [ref=e614] [cursor=pointer]:
+              - /url: http://plugin.local/product/cap/
+              - img "Cap" [ref=e615]
+              - generic [ref=e617]:
+                - text: Sale
+                - generic [ref=e618]: Product on sale
+            - heading "Cap" [level=2] [ref=e619]:
+              - link "Cap" [ref=e620] [cursor=pointer]:
+                - /url: http://plugin.local/product/cap/
+            - generic [ref=e622]:
+              - deletion [ref=e623]:
+                - generic [ref=e625]: 18 ₫
+              - generic [ref=e626]: "Original price was: 18 ₫."
+              - insertion [ref=e627]:
+                - generic [ref=e629]: 16 ₫
+              - generic [ref=e630]: "Current price is: 16 ₫."
+            - 'button "Add to cart: “Cap”" [ref=e632] [cursor=pointer]':
+              - generic [ref=e633]: Add to cart
+          - listitem [ref=e634]:
+            - link "Hoodie Product on sale" [ref=e636] [cursor=pointer]:
+              - /url: http://plugin.local/product/hoodie/
+              - img "Hoodie" [ref=e637]
+              - generic [ref=e639]:
+                - text: Sale
+                - generic [ref=e640]: Product on sale
+            - heading "Hoodie" [level=2] [ref=e641]:
+              - link "Hoodie" [ref=e642] [cursor=pointer]:
+                - /url: http://plugin.local/product/hoodie/
+            - generic [ref=e644]:
+              - generic [ref=e646]: 42 ₫
+              - text: –
+              - generic [ref=e648]: 45 ₫
+              - generic [ref=e649]: "Price range: 42 ₫ through 45 ₫"
+            - link "Select options for “Hoodie”" [ref=e651] [cursor=pointer]:
+              - /url: http://plugin.local/product/hoodie/
+              - generic [ref=e652]: Select options
+          - listitem [ref=e653]:
+            - link "Hoodie with Pocket Product on sale" [ref=e655] [cursor=pointer]:
+              - /url: http://plugin.local/product/hoodie-with-pocket/
+              - img "Hoodie with Pocket" [ref=e656]
+              - generic [ref=e658]:
+                - text: Sale
+                - generic [ref=e659]: Product on sale
+            - heading "Hoodie with Pocket" [level=2] [ref=e660]:
+              - link "Hoodie with Pocket" [ref=e661] [cursor=pointer]:
+                - /url: http://plugin.local/product/hoodie-with-pocket/
+            - generic [ref=e663]:
+              - deletion [ref=e664]:
+                - generic [ref=e666]: 45 ₫
+              - generic [ref=e667]: "Original price was: 45 ₫."
+              - insertion [ref=e668]:
+                - generic [ref=e670]: 35 ₫
+              - generic [ref=e671]: "Current price is: 35 ₫."
+            - 'button "Add to cart: “Hoodie with Pocket”" [ref=e673] [cursor=pointer]':
+              - generic [ref=e674]: Add to cart
+          - listitem [ref=e675]:
+            - link "Single Product on sale" [ref=e677] [cursor=pointer]:
+              - /url: http://plugin.local/product/single/
+              - img "Single" [ref=e678]
+              - generic [ref=e680]:
+                - text: Sale
+                - generic [ref=e681]: Product on sale
+            - heading "Single" [level=2] [ref=e682]:
+              - link "Single" [ref=e683] [cursor=pointer]:
+                - /url: http://plugin.local/product/single/
+            - generic [ref=e685]:
+              - deletion [ref=e686]:
+                - generic [ref=e688]: 3 ₫
+              - generic [ref=e689]: "Original price was: 3 ₫."
+              - insertion [ref=e690]:
+                - generic [ref=e692]: 2 ₫
+              - generic [ref=e693]: "Current price is: 2 ₫."
+            - 'button "Add to cart: “Single”" [ref=e695] [cursor=pointer]':
+              - generic [ref=e696]: Add to cart
+    - contentinfo [ref=e503]:
+      - generic [ref=e505]:
+        - generic [ref=e506]:
+          - heading "plugin" [level=2] [ref=e509]:
+            - link "plugin" [ref=e510] [cursor=pointer]:
+              - /url: http://plugin.local
+          - generic [ref=e511]:
+            - navigation "2" [ref=e512]:
+              - list [ref=e513]:
+                - listitem [ref=e514]:
+                  - link "Blog" [ref=e515] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e516]:
+                  - link "About" [ref=e517] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e518]:
+                  - link "FAQs" [ref=e519] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e520]:
+                  - link "Authors" [ref=e521] [cursor=pointer]:
+                    - /url: "#"
+            - navigation "3" [ref=e522]:
+              - list [ref=e523]:
+                - listitem [ref=e524]:
+                  - link "Events" [ref=e525] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e526]:
+                  - link "Shop" [ref=e527] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e528]:
+                  - link "Patterns" [ref=e529] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e530]:
+                  - link "Themes" [ref=e531] [cursor=pointer]:
+                    - /url: "#"
+        - generic [ref=e533]:
+          - paragraph [ref=e534]: Twenty Twenty-Five
+          - paragraph [ref=e535]:
+            - text: Designed with
+            - link "WordPress" [ref=e536] [cursor=pointer]:
+              - /url: https://wordpress.org
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - button:
+              - img
+            - generic:
+              - generic:
+                - paragraph:
+                  - strong: Your cart is currently empty!
+                - generic:
+                  - link:
+                    - /url: http://plugin.local/shop/
+                    - generic: Start shopping

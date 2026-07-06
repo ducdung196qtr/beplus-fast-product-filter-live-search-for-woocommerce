@@ -1,0 +1,429 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#wp--skip-link--target"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e7]:
+        - paragraph [ref=e8]:
+          - link "plugin" [ref=e9] [cursor=pointer]:
+            - /url: http://plugin.local
+        - generic [ref=e10]:
+          - navigation [ref=e11]:
+            - list [ref=e16]:
+              - list [ref=e17]:
+                - listitem [ref=e18]:
+                  - link "Cart" [ref=e19] [cursor=pointer]:
+                    - /url: http://plugin.local/cart/
+                - listitem [ref=e20]:
+                  - link "Checkout" [ref=e21] [cursor=pointer]:
+                    - /url: http://plugin.local/checkout/
+                - listitem [ref=e22]:
+                  - link "My account" [ref=e23] [cursor=pointer]:
+                    - /url: http://plugin.local/my-account/
+                - listitem [ref=e24]:
+                  - link "Sample Page" [ref=e25] [cursor=pointer]:
+                    - /url: http://plugin.local/sample-page/
+                - listitem [ref=e26]:
+                  - link "Search" [ref=e27] [cursor=pointer]:
+                    - /url: http://plugin.local/search/
+                - listitem [ref=e28]:
+                  - link "Shop" [ref=e29] [cursor=pointer]:
+                    - /url: http://plugin.local/shop/
+          - link "Login" [ref=e31] [cursor=pointer]:
+            - /url: http://plugin.local/my-account/
+            - img [ref=e32]
+          - 'button "Number of items in the cart: 0" [ref=e36]':
+            - img [ref=e38]
+    - generic [ref=e43]:
+      - search [ref=e46]:
+        - generic [ref=e47]:
+          - generic [ref=e48]: Search products
+          - searchbox "Search products" [ref=e49]
+        - generic [ref=e50]:
+          - button "Product Categories" [expanded] [ref=e51] [cursor=pointer]:
+            - generic [ref=e52]: Product Categories
+          - list [ref=e55]:
+            - listitem [ref=e56]:
+              - generic [ref=e58] [cursor=pointer]:
+                - radio "All" [checked] [ref=e59]
+                - generic [ref=e60]: All
+            - listitem [ref=e61]:
+              - generic [ref=e63] [cursor=pointer]:
+                - radio "Uncategorized (1)" [ref=e64]
+                - generic [ref=e65]: Uncategorized
+                - generic [ref=e66]: (1)
+            - listitem [ref=e67]:
+              - generic [ref=e69] [cursor=pointer]:
+                - radio "Accessories (2)" [ref=e70]
+                - generic [ref=e71]: Accessories
+                - generic [ref=e72]: (2)
+            - listitem [ref=e73]:
+              - generic [ref=e75] [cursor=pointer]:
+                - radio "Clothing (1)" [ref=e76]
+                - generic [ref=e77]: Clothing
+                - generic [ref=e78]: (1)
+            - listitem [ref=e79]:
+              - generic [ref=e81] [cursor=pointer]:
+                - radio "Decor (1)" [ref=e82]
+                - generic [ref=e83]: Decor
+                - generic [ref=e84]: (1)
+            - listitem [ref=e85]:
+              - generic [ref=e87] [cursor=pointer]:
+                - radio "Hoodies (2)" [ref=e88]
+                - generic [ref=e89]: Hoodies
+                - generic [ref=e90]: (2)
+            - listitem [ref=e91]:
+              - generic [ref=e93] [cursor=pointer]:
+                - radio "Music (2)" [ref=e94]
+                - generic [ref=e95]: Music
+                - generic [ref=e96]: (2)
+            - listitem [ref=e97]:
+              - generic [ref=e99] [cursor=pointer]:
+                - radio "Tshirts (2)" [ref=e100]
+                - generic [ref=e101]: Tshirts
+                - generic [ref=e102]: (2)
+        - generic [ref=e103]:
+          - button "Price" [expanded] [ref=e104] [cursor=pointer]:
+            - generic [ref=e105]: Price
+          - generic [ref=e108]:
+            - generic [ref=e109]:
+              - slider "Minimum price": "0"
+              - slider "Maximum price": "1000"
+            - generic [ref=e110]:
+              - generic [ref=e111]:
+                - generic [ref=e112]: Min price
+                - generic [ref=e113]:
+                  - spinbutton "Min price" [ref=e114]: "0"
+                  - generic: ₫
+              - generic [ref=e115]:
+                - generic [ref=e116]: Max price
+                - generic [ref=e117]:
+                  - spinbutton "Max price" [ref=e118]: "1000"
+                  - generic: ₫
+        - generic [ref=e119]:
+          - button "Stock status" [expanded] [ref=e120] [cursor=pointer]:
+            - generic [ref=e121]: Stock status
+          - list [ref=e124]:
+            - listitem [ref=e125]:
+              - generic [ref=e126] [cursor=pointer]:
+                - radio "All stock" [checked] [ref=e127]
+                - generic [ref=e128]: All stock
+            - listitem [ref=e129]:
+              - generic [ref=e130] [cursor=pointer]:
+                - radio "In stock" [ref=e131]
+                - generic [ref=e132]: In stock
+            - listitem [ref=e133]:
+              - generic [ref=e134] [cursor=pointer]:
+                - radio "Out of stock" [ref=e135]
+                - generic [ref=e136]: Out of stock
+            - listitem [ref=e137]:
+              - generic [ref=e138] [cursor=pointer]:
+                - radio "On backorder" [ref=e139]
+                - generic [ref=e140]: On backorder
+        - generic [ref=e141]:
+          - button "On sale" [expanded] [ref=e142] [cursor=pointer]:
+            - generic [ref=e143]: On sale
+          - list [ref=e146]:
+            - listitem [ref=e147]:
+              - generic [ref=e148] [cursor=pointer]:
+                - checkbox "On sale only" [ref=e149]
+                - generic [ref=e150]: On sale only
+        - generic [ref=e151]:
+          - button "Featured products" [expanded] [ref=e152] [cursor=pointer]:
+            - generic [ref=e153]: Featured products
+          - list [ref=e156]:
+            - listitem [ref=e157]:
+              - generic [ref=e158] [cursor=pointer]:
+                - checkbox "Featured products only" [ref=e159]
+                - generic [ref=e160]: Featured products only
+        - generic [ref=e161]:
+          - button "Rating" [expanded] [ref=e162] [cursor=pointer]:
+            - generic [ref=e163]: Rating
+          - list [ref=e166]:
+            - listitem [ref=e167]:
+              - generic [ref=e168] [cursor=pointer]:
+                - radio "All ratings" [checked] [ref=e169]
+                - generic [ref=e170]: All ratings
+            - listitem [ref=e171]:
+              - generic [ref=e172] [cursor=pointer]:
+                - radio "★★★★★ & up" [ref=e173]
+                - generic [ref=e174]: ★★★★★ & up
+            - listitem [ref=e175]:
+              - generic [ref=e176] [cursor=pointer]:
+                - radio "★★★★☆ & up" [ref=e177]
+                - generic [ref=e178]: ★★★★☆ & up
+            - listitem [ref=e179]:
+              - generic [ref=e180] [cursor=pointer]:
+                - radio "★★★☆☆ & up" [ref=e181]
+                - generic [ref=e182]: ★★★☆☆ & up
+            - listitem [ref=e183]:
+              - generic [ref=e184] [cursor=pointer]:
+                - radio "★★☆☆☆ & up" [ref=e185]
+                - generic [ref=e186]: ★★☆☆☆ & up
+            - listitem [ref=e187]:
+              - generic [ref=e188] [cursor=pointer]:
+                - radio "★☆☆☆☆ & up" [ref=e189]
+                - generic [ref=e190]: ★☆☆☆☆ & up
+        - button "Search" [ref=e192] [cursor=pointer]
+      - main [ref=e194]:
+        - navigation "Breadcrumb" [ref=e196]:
+          - link "Home" [ref=e197] [cursor=pointer]:
+            - /url: http://plugin.local
+          - text: / Shop
+        - heading "Shop" [level=1] [ref=e198]
+        - generic [ref=e199]:
+          - status [ref=e201]: Showing all 10 results
+          - combobox "Shop order" [ref=e204]:
+            - option "Default sorting" [selected]
+            - option "Sort by popularity"
+            - option "Sort by average rating"
+            - option "Sort by latest"
+            - 'option "Sort by price: low to high"'
+            - 'option "Sort by price: high to low"'
+        - list [ref=e206]:
+          - listitem [ref=e207]:
+            - link "Aperiam. Product on sale" [ref=e209] [cursor=pointer]:
+              - /url: http://plugin.local/product/aperiam/
+              - img "Aperiam." [ref=e210]
+              - generic [ref=e212]:
+                - text: Sale
+                - generic [ref=e213]: Product on sale
+            - heading "Aperiam." [level=2] [ref=e214]:
+              - link "Aperiam." [ref=e215] [cursor=pointer]:
+                - /url: http://plugin.local/product/aperiam/
+            - generic [ref=e217]:
+              - deletion [ref=e218]:
+                - generic [ref=e220]: 66 ₫
+              - generic [ref=e221]: "Original price was: 66 ₫."
+              - insertion [ref=e222]:
+                - generic [ref=e224]: 66 ₫
+              - generic [ref=e225]: "Current price is: 66 ₫."
+            - 'button "Add to cart: “Aperiam.”" [ref=e227] [cursor=pointer]':
+              - generic [ref=e228]: Add to cart
+          - listitem [ref=e229]:
+            - link "Aut. Product on sale" [ref=e231] [cursor=pointer]:
+              - /url: http://plugin.local/product/aut/
+              - img "Aut." [ref=e232]
+              - generic [ref=e234]:
+                - text: Sale
+                - generic [ref=e235]: Product on sale
+            - heading "Aut." [level=2] [ref=e236]:
+              - link "Aut." [ref=e237] [cursor=pointer]:
+                - /url: http://plugin.local/product/aut/
+            - generic [ref=e239]:
+              - deletion [ref=e240]:
+                - generic [ref=e242]: 43 ₫
+              - generic [ref=e243]: "Original price was: 43 ₫."
+              - insertion [ref=e244]:
+                - generic [ref=e246]: 43 ₫
+              - generic [ref=e247]: "Current price is: 43 ₫."
+            - 'button "Add to cart: “Aut.”" [ref=e249] [cursor=pointer]':
+              - generic [ref=e250]: Add to cart
+          - listitem [ref=e251]:
+            - link "Et. Product on sale" [ref=e253] [cursor=pointer]:
+              - /url: http://plugin.local/product/et/
+              - img "Et." [ref=e254]
+              - generic [ref=e256]:
+                - text: Sale
+                - generic [ref=e257]: Product on sale
+            - heading "Et." [level=2] [ref=e258]:
+              - link "Et." [ref=e259] [cursor=pointer]:
+                - /url: http://plugin.local/product/et/
+            - generic [ref=e261]:
+              - deletion [ref=e262]:
+                - generic [ref=e264]: 26 ₫
+              - generic [ref=e265]: "Original price was: 26 ₫."
+              - insertion [ref=e266]:
+                - generic [ref=e268]: 26 ₫
+              - generic [ref=e269]: "Current price is: 26 ₫."
+            - 'button "Add to cart: “Et.”" [ref=e271] [cursor=pointer]':
+              - generic [ref=e272]: Add to cart
+          - listitem [ref=e273]:
+            - link "Hic omnis. Product on sale" [ref=e275] [cursor=pointer]:
+              - /url: http://plugin.local/product/hic-omnis/
+              - img "Hic omnis." [ref=e276]
+              - generic [ref=e278]:
+                - text: Sale
+                - generic [ref=e279]: Product on sale
+            - heading "Hic omnis." [level=2] [ref=e280]:
+              - link "Hic omnis." [ref=e281] [cursor=pointer]:
+                - /url: http://plugin.local/product/hic-omnis/
+            - generic [ref=e283]:
+              - deletion [ref=e284]:
+                - generic [ref=e286]: 57 ₫
+              - generic [ref=e287]: "Original price was: 57 ₫."
+              - insertion [ref=e288]:
+                - generic [ref=e290]: 57 ₫
+              - generic [ref=e291]: "Current price is: 57 ₫."
+            - 'button "Add to cart: “Hic omnis.”" [ref=e293] [cursor=pointer]':
+              - generic [ref=e294]: Add to cart
+          - listitem [ref=e295]:
+            - link "Modi. Product on sale" [ref=e297] [cursor=pointer]:
+              - /url: http://plugin.local/product/modi/
+              - img "Modi." [ref=e298]
+              - generic [ref=e300]:
+                - text: Sale
+                - generic [ref=e301]: Product on sale
+            - heading "Modi." [level=2] [ref=e302]:
+              - link "Modi." [ref=e303] [cursor=pointer]:
+                - /url: http://plugin.local/product/modi/
+            - generic [ref=e305]:
+              - deletion [ref=e306]:
+                - generic [ref=e308]: 72 ₫
+              - generic [ref=e309]: "Original price was: 72 ₫."
+              - insertion [ref=e310]:
+                - generic [ref=e312]: 72 ₫
+              - generic [ref=e313]: "Current price is: 72 ₫."
+            - 'button "Add to cart: “Modi.”" [ref=e315] [cursor=pointer]':
+              - generic [ref=e316]: Add to cart
+          - listitem [ref=e317]:
+            - link "Provident. Product on sale" [ref=e319] [cursor=pointer]:
+              - /url: http://plugin.local/product/provident/
+              - img "Provident." [ref=e320]
+              - generic [ref=e322]:
+                - text: Sale
+                - generic [ref=e323]: Product on sale
+            - heading "Provident." [level=2] [ref=e324]:
+              - link "Provident." [ref=e325] [cursor=pointer]:
+                - /url: http://plugin.local/product/provident/
+            - generic [ref=e327]:
+              - deletion [ref=e328]:
+                - generic [ref=e330]: 71 ₫
+              - generic [ref=e331]: "Original price was: 71 ₫."
+              - insertion [ref=e332]:
+                - generic [ref=e334]: 71 ₫
+              - generic [ref=e335]: "Current price is: 71 ₫."
+            - 'button "Add to cart: “Provident.”" [ref=e337] [cursor=pointer]':
+              - generic [ref=e338]: Add to cart
+          - listitem [ref=e339]:
+            - link "Quia in. Product on sale" [ref=e341] [cursor=pointer]:
+              - /url: http://plugin.local/product/quia-in/
+              - img "Quia in." [ref=e342]
+              - generic [ref=e344]:
+                - text: Sale
+                - generic [ref=e345]: Product on sale
+            - heading "Quia in." [level=2] [ref=e346]:
+              - link "Quia in." [ref=e347] [cursor=pointer]:
+                - /url: http://plugin.local/product/quia-in/
+            - generic [ref=e349]:
+              - deletion [ref=e350]:
+                - generic [ref=e352]: 99 ₫
+              - generic [ref=e353]: "Original price was: 99 ₫."
+              - insertion [ref=e354]:
+                - generic [ref=e356]: 99 ₫
+              - generic [ref=e357]: "Current price is: 99 ₫."
+            - 'button "Add to cart: “Quia in.”" [ref=e359] [cursor=pointer]':
+              - generic [ref=e360]: Add to cart
+          - listitem [ref=e361]:
+            - link "Quisquam. Product on sale" [ref=e363] [cursor=pointer]:
+              - /url: http://plugin.local/product/quisquam/
+              - img "Quisquam." [ref=e364]
+              - generic [ref=e366]:
+                - text: Sale
+                - generic [ref=e367]: Product on sale
+            - heading "Quisquam." [level=2] [ref=e368]:
+              - link "Quisquam." [ref=e369] [cursor=pointer]:
+                - /url: http://plugin.local/product/quisquam/
+            - generic [ref=e371]:
+              - deletion [ref=e372]:
+                - generic [ref=e374]: 95 ₫
+              - generic [ref=e375]: "Original price was: 95 ₫."
+              - insertion [ref=e376]:
+                - generic [ref=e378]: 95 ₫
+              - generic [ref=e379]: "Current price is: 95 ₫."
+            - 'button "Add to cart: “Quisquam.”" [ref=e381] [cursor=pointer]':
+              - generic [ref=e382]: Add to cart
+          - listitem [ref=e383]:
+            - link "Ullam non. Product on sale" [ref=e385] [cursor=pointer]:
+              - /url: http://plugin.local/product/ullam-non/
+              - img "Ullam non." [ref=e386]
+              - generic [ref=e388]:
+                - text: Sale
+                - generic [ref=e389]: Product on sale
+            - heading "Ullam non." [level=2] [ref=e390]:
+              - link "Ullam non." [ref=e391] [cursor=pointer]:
+                - /url: http://plugin.local/product/ullam-non/
+            - generic [ref=e393]:
+              - deletion [ref=e394]:
+                - generic [ref=e396]: 9 ₫
+              - generic [ref=e397]: "Original price was: 9 ₫."
+              - insertion [ref=e398]:
+                - generic [ref=e400]: 9 ₫
+              - generic [ref=e401]: "Current price is: 9 ₫."
+            - 'button "Add to cart: “Ullam non.”" [ref=e403] [cursor=pointer]':
+              - generic [ref=e404]: Add to cart
+          - listitem [ref=e405]:
+            - link "Voluptas. Product on sale" [ref=e407] [cursor=pointer]:
+              - /url: http://plugin.local/product/voluptas/
+              - img "Voluptas." [ref=e408]
+              - generic [ref=e410]:
+                - text: Sale
+                - generic [ref=e411]: Product on sale
+            - heading "Voluptas." [level=2] [ref=e412]:
+              - link "Voluptas." [ref=e413] [cursor=pointer]:
+                - /url: http://plugin.local/product/voluptas/
+            - generic [ref=e415]:
+              - deletion [ref=e416]:
+                - generic [ref=e418]: 93 ₫
+              - generic [ref=e419]: "Original price was: 93 ₫."
+              - insertion [ref=e420]:
+                - generic [ref=e422]: 93 ₫
+              - generic [ref=e423]: "Current price is: 93 ₫."
+            - 'button "Add to cart: “Voluptas.”" [ref=e425] [cursor=pointer]':
+              - generic [ref=e426]: Add to cart
+    - contentinfo [ref=e427]:
+      - generic [ref=e429]:
+        - generic [ref=e430]:
+          - heading "plugin" [level=2] [ref=e433]:
+            - link "plugin" [ref=e434] [cursor=pointer]:
+              - /url: http://plugin.local
+          - generic [ref=e435]:
+            - navigation "2" [ref=e436]:
+              - list [ref=e437]:
+                - listitem [ref=e438]:
+                  - link "Blog" [ref=e439] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e440]:
+                  - link "About" [ref=e441] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e442]:
+                  - link "FAQs" [ref=e443] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e444]:
+                  - link "Authors" [ref=e445] [cursor=pointer]:
+                    - /url: "#"
+            - navigation "3" [ref=e446]:
+              - list [ref=e447]:
+                - listitem [ref=e448]:
+                  - link "Events" [ref=e449] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e450]:
+                  - link "Shop" [ref=e451] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e452]:
+                  - link "Patterns" [ref=e453] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=e454]:
+                  - link "Themes" [ref=e455] [cursor=pointer]:
+                    - /url: "#"
+        - generic [ref=e457]:
+          - paragraph [ref=e458]: Twenty Twenty-Five
+          - paragraph [ref=e459]:
+            - text: Designed with
+            - link "WordPress" [ref=e460] [cursor=pointer]:
+              - /url: https://wordpress.org
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - button:
+              - img
+            - generic:
+              - generic:
+                - paragraph:
+                  - strong: Your cart is currently empty!
+                - generic:
+                  - link:
+                    - /url: http://plugin.local/shop/
+                    - generic: Start shopping

@@ -62,7 +62,7 @@ class SettingsPage extends AbstractModule {
 		}
 
 		$tab = sanitize_key( wp_unslash( $_POST['bpss_active_tab'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
-		$allowed = array( 'general', 'filters' );
+		$allowed = array( 'general', 'filters', 'statistics' );
 
 		if ( ! in_array( $tab, $allowed, true ) ) {
 			// Legacy tab slugs merged into Filters.
@@ -139,9 +139,11 @@ class SettingsPage extends AbstractModule {
 			'bpss-admin-settings',
 			'bpssAdmin',
 			array(
-				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-				'nonce'   => wp_create_nonce( 'bpss_clear_cache' ),
-				'i18n'    => array(
+				'ajaxUrl'       => admin_url( 'admin-ajax.php' ),
+				'nonce'         => wp_create_nonce( 'bpss_clear_cache' ),
+				'statsRestUrl'  => rest_url( 'beplus-fast-product-filter-live-search-for-woocommerce/v1/search-stats' ),
+				'statsNonce'    => wp_create_nonce( 'wp_rest' ),
+				'i18n'          => array(
 					'clearing'       => __( 'Clearing cache…', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 					'cleared'        => __( 'Cache cleared successfully.', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 					'clearError'     => __( 'Could not clear cache. Please try again.', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
@@ -157,6 +159,17 @@ class SettingsPage extends AbstractModule {
 					'warmLabel'      => __( 'With cache', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 					'savedLabel'     => __( 'Estimated saving', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 					'measuredAt'     => __( 'Measured:', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'loading'        => __( 'Loading statistics…', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'noData'         => __( 'No search data recorded yet.', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'loadError'      => __( 'Could not load statistics.', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'resolvedClick'  => __( 'Product click', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'resolvedFallback' => __( 'Closest match', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'refreshing'     => __( 'Refreshing…', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'refresh'        => __( 'Refresh', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'cleanupOld'     => __( 'Cleanup old keywords', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'cleaningUp'     => __( 'Cleaning…', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'cleanedUp'      => __( 'Cleaned up {n} keywords.', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+					'cleanupError'   => __( 'Cleanup failed.', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
 				),
 				'lastCleared' => $last_cleared,
 				'benchmark'   => $benchmark,

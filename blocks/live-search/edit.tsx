@@ -4,15 +4,20 @@ import {
 } from '@wordpress/block-editor';
 import {
 	BaseControl,
+	Button,
 	PanelBody,
 	RangeControl,
 	RadioControl,
+	SelectControl,
 	TextControl,
+	TextareaControl,
 	ToggleControl,
 	ColorPalette,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import type { BlockEditProps } from '@wordpress/blocks';
+import { useEffect, useState } from '@wordpress/element';
+import apiFetch from '@wordpress/api-fetch';
 import ServerSideRender from '@wordpress/server-side-render';
 import CategoryScope from './category-scope';
 import SearchFields from './search-fields';
@@ -24,6 +29,35 @@ export default function Edit( {
 }: BlockEditProps< BlockAttributes > ) {
 	const blockProps = useBlockProps();
 	const isLimited = attributes.searchScope === 'limited';
+	const [ isFetching, setIsFetching ] = useState( false );
+
+	const fetchTopKeywords = async () => {
+		setIsFetching( true );
+		try {
+			const response = await apiFetch< {
+				items: Array< { keyword: string; count: number } >;
+			} >( {
+				path: `/beplus-fast-product-filter-live-search-for-woocommerce/v1/search-stats?per_page=${ attributes.quickSuggestionsCount }`,
+			} );
+			if ( response?.items?.length ) {
+				const keywords = response.items
+					.map( ( item ) => item.keyword )
+					.join( ', ' );
+				setAttributes( { quickSuggestions: keywords } );
+			}
+		} catch {
+			// Silently fail.
+		} finally {
+			setIsFetching( false );
+		}
+	};
+
+	useEffect( () => {
+		if ( attributes.quickSuggestionsAutoSync ) {
+			void fetchTopKeywords();
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [ attributes.quickSuggestionsAutoSync, attributes.quickSuggestionsCount ] );
 
 	return (
 		<div { ...blockProps }>
@@ -34,6 +68,94 @@ export default function Edit( {
 						value={ attributes.placeholder }
 						onChange={ ( value ) => setAttributes( { placeholder: value } ) }
 					/>
+					<RadioControl
+						label={ __( 'Submit button style', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
+						selected={ attributes.submitButtonStyle }
+						options={ [
+							{
+								label: __( 'Text', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+								value: 'text',
+							},
+							{
+								label: __( 'Icon', 'beplus-fast-product-filter-live-search-for-woocommerce' ),
+								value: 'icon',
+							},
+						] }
+						onChange={ ( value ) =>
+							setAttributes( {
+								submitButtonStyle: value as BlockAttributes['submitButtonStyle'],
+							} )
+						}
+					/>
+					{ attributes.submitButtonStyle === 'text' && (
+						<TextControl
+							label={ __( 'Button text', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
+							value={ attributes.submitButtonText }
+							onChange={ ( value ) => setAttributes( { submitButtonText: value } ) }
+						/>
+					) }
+					<ToggleControl
+						label={ __( 'Enable quick suggestions', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
+						checked={ attributes.enableQuickSuggestions !== false }
+						onChange={ ( value ) =>
+							setAttributes( { enableQuickSuggestions: value } )
+						}
+					/>
+					{ attributes.enableQuickSuggestions !== false && (
+						<>
+							{ ! attributes.quickSuggestionsAutoSync && (
+								<TextareaControl
+									label={ __( 'Quick suggestions', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
+									value={ attributes.quickSuggestions }
+									onChange={ ( value ) => setAttributes( { quickSuggestions: value } ) }
+									help={ __(
+										'Comma-separated suggestions shown below the search bar (e.g. t-shirt, jeans, sneakers).',
+										'beplus-fast-product-filter-live-search-for-woocommerce'
+									) }
+								/>
+							) }
+							<SelectControl
+								label={ __( 'Top keywords count', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
+								value={ String( attributes.quickSuggestionsCount ) as '5' | '10' | '15' | '20' }
+								options={ [
+									{ label: '5', value: '5' },
+									{ label: '10', value: '10' },
+									{ label: '15', value: '15' },
+									{ label: '20', value: '20' },
+								] }
+								onChange={ ( value ) =>
+									setAttributes( { quickSuggestionsCount: parseInt( value, 10 ) } )
+								}
+							/>
+							{ ! attributes.quickSuggestionsAutoSync && (
+								<BaseControl
+									id="quick-suggestions-actions"
+									label={ __( 'Fetch top keywords', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
+								>
+									<div style={ { display: 'flex', gap: '8px', alignItems: 'center', marginTop: '4px' } }>
+										<Button
+											variant="secondary"
+											onClick={ fetchTopKeywords }
+											isBusy={ isFetching }
+										>
+											{ __( 'Pull from stats', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
+										</Button>
+									</div>
+								</BaseControl>
+							) }
+							<ToggleControl
+								label={ __( 'Auto-sync from search stats', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
+								checked={ attributes.quickSuggestionsAutoSync }
+								onChange={ ( value ) =>
+									setAttributes( { quickSuggestionsAutoSync: value } )
+								}
+								help={ __(
+									'Automatically use top keywords from search stats as quick suggestions.',
+									'beplus-fast-product-filter-live-search-for-woocommerce'
+								) }
+							/>
+						</>
+					) }
 					<RadioControl
 						label={ __( 'Search scope', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
 						selected={ attributes.searchScope }

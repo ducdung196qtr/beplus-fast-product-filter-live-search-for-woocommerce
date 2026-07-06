@@ -177,11 +177,11 @@ beplus-fast-product-filter-live-search-for-woocommerce/
 <?php
 /**
   * Plugin Name: Beplus Fast Product Filter & Live Search for WooCommerce
- * Plugin URI:  https://beplusthemes.com/
+ * Plugin URI:  https://woo-advanced-filter.beplusthemes.com/demo-live-search/
  * Description: Smart search with autocomplete, live results, and WooCommerce integration.
- * Version:     1.0.0
+ * Version:     1.2.0
  * Author:      Beplus
- * Author URI:  https://beplusthemes.com/
+ * Author URI:  https://woo-advanced-filter.beplusthemes.com/demo-live-search/
  * Text Domain: beplus-fast-product-filter-live-search-for-woocommerce
  * Domain Path: /languages
  * Requires at least: 6.0
@@ -196,7 +196,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'BEPLUS_FAST_PRODUCT_FILTER_LIVE_SEARCH_VERSION', '1.0.0' );
+define( 'BEPLUS_FAST_PRODUCT_FILTER_LIVE_SEARCH_VERSION', '1.2.0' );
 define( 'BEPLUS_FAST_PRODUCT_FILTER_LIVE_SEARCH_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'BEPLUS_FAST_PRODUCT_FILTER_LIVE_SEARCH_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'BEPLUS_FAST_PRODUCT_FILTER_LIVE_SEARCH_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );

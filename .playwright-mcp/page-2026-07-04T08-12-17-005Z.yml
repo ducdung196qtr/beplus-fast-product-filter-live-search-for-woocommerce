@@ -1,0 +1,477 @@
+- generic [active] [ref=f6e1]:
+  - generic [ref=f6e2]:
+    - navigation "Toolbar":
+      - menu:
+        - group [ref=f6e3]:
+          - menuitem "About WordPress" [ref=f6e4] [cursor=pointer]:
+            - generic [ref=f6e6]: About WordPress
+        - group [ref=f6e7]:
+          - menuitem "plugin" [ref=f6e8] [cursor=pointer]
+        - group [ref=f6e9]:
+          - menuitem "Live" [ref=f6e10] [cursor=pointer]
+        - group [ref=f6e11]:
+          - menuitem "Edit Site" [ref=f6e12] [cursor=pointer]
+        - group [ref=f6e13]:
+          - menuitem "1 update available" [ref=f6e14] [cursor=pointer]:
+            - generic [ref=f6e16]: "1"
+            - generic [ref=f6e17]: 1 update available
+        - group [ref=f6e18]:
+          - menuitem "0 Comments in moderation" [ref=f6e19] [cursor=pointer]:
+            - generic [ref=f6e21]: "0"
+            - generic [ref=f6e22]: 0 Comments in moderation
+        - group [ref=f6e23]:
+          - menuitem "New" [ref=f6e24] [cursor=pointer]:
+            - generic [ref=f6e26]: New
+        - group [ref=f6e27]:
+          - menuitem "Edit Page" [ref=f6e28] [cursor=pointer]
+        - group [ref=f6e29]:
+          - menuitem " Manage dummy data" [ref=f6e30] [cursor=pointer]:
+            - generic [ref=f6e31]: 
+            - text: Manage dummy data
+      - menu [ref=f6e32]:
+        - group [ref=f6e33]:
+          - menuitem "Howdy, admin" [ref=f6e34] [cursor=pointer]
+        - group [ref=f6e35]:
+          - menuitem "Search" [ref=f6e36]:
+            - generic [ref=f6e37]:
+              - textbox "Search" [ref=f6e38] [cursor=pointer]
+              - generic [ref=f6e39]: Search
+  - link "Skip to content" [ref=f6e40] [cursor=pointer]:
+    - /url: "#wp--skip-link--target"
+  - generic [ref=f6e41]:
+    - banner [ref=f6e42]:
+      - generic [ref=f6e45]:
+        - paragraph [ref=f6e46]:
+          - link "plugin" [ref=f6e47] [cursor=pointer]:
+            - /url: http://plugin.local
+        - generic [ref=f6e48]:
+          - navigation [ref=f6e49]:
+            - list [ref=f6e54]:
+              - list [ref=f6e55]:
+                - listitem [ref=f6e56]:
+                  - link "Cart" [ref=f6e57] [cursor=pointer]:
+                    - /url: http://plugin.local/cart/
+                - listitem [ref=f6e58]:
+                  - link "Checkout" [ref=f6e59] [cursor=pointer]:
+                    - /url: http://plugin.local/checkout/
+                - listitem [ref=f6e60]:
+                  - link "My account" [ref=f6e61] [cursor=pointer]:
+                    - /url: http://plugin.local/my-account/
+                - listitem [ref=f6e62]:
+                  - link "Sample Page" [ref=f6e63] [cursor=pointer]:
+                    - /url: http://plugin.local/sample-page/
+                - listitem [ref=f6e64]:
+                  - link "Search" [ref=f6e65] [cursor=pointer]:
+                    - /url: http://plugin.local/search/
+                - listitem [ref=f6e66]:
+                  - link "Shop" [ref=f6e67] [cursor=pointer]:
+                    - /url: http://plugin.local/shop/
+          - link "My Account" [ref=f6e69] [cursor=pointer]:
+            - /url: http://plugin.local/my-account/
+            - img [ref=f6e70]
+          - 'button "Number of items in the cart: 31" [ref=f6e74]':
+            - generic [ref=f6e75]:
+              - img [ref=f6e76]
+              - generic [ref=f6e81]: "31"
+    - main [ref=f6e82]:
+      - generic [ref=f6e83]:
+        - heading "Search" [level=1] [ref=f6e84]
+        - search [ref=f6e87]:
+          - generic [ref=f6e88]:
+            - generic [ref=f6e89]:
+              - generic [ref=f6e90]: Category
+              - combobox "Category" [ref=f6e91] [cursor=pointer]:
+                - option "All categories" [selected]
+                - option "Uncategorized"
+                - option "Accessories"
+                - option "Clothing"
+                - option "Decor"
+                - option "Hoodies"
+                - option "Music"
+                - option "Tshirts"
+            - generic [ref=f6e92]:
+              - generic [ref=f6e93]: Search products
+              - combobox "Search products" [ref=f6e95]
+              - button "Search" [ref=f6e96] [cursor=pointer]
+          - status [ref=f6e98]
+    - contentinfo [ref=f6e99]:
+      - generic [ref=f6e101]:
+        - generic [ref=f6e102]:
+          - heading "plugin" [level=2] [ref=f6e105]:
+            - link "plugin" [ref=f6e106] [cursor=pointer]:
+              - /url: http://plugin.local
+          - generic [ref=f6e107]:
+            - navigation "2" [ref=f6e108]:
+              - list [ref=f6e109]:
+                - listitem [ref=f6e110]:
+                  - link "Blog" [ref=f6e111] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=f6e112]:
+                  - link "About" [ref=f6e113] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=f6e114]:
+                  - link "FAQs" [ref=f6e115] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=f6e116]:
+                  - link "Authors" [ref=f6e117] [cursor=pointer]:
+                    - /url: "#"
+            - navigation "3" [ref=f6e118]:
+              - list [ref=f6e119]:
+                - listitem [ref=f6e120]:
+                  - link "Events" [ref=f6e121] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=f6e122]:
+                  - link "Shop" [ref=f6e123] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=f6e124]:
+                  - link "Patterns" [ref=f6e125] [cursor=pointer]:
+                    - /url: "#"
+                - listitem [ref=f6e126]:
+                  - link "Themes" [ref=f6e127] [cursor=pointer]:
+                    - /url: "#"
+        - generic [ref=f6e129]:
+          - paragraph [ref=f6e130]: Twenty Twenty-Five
+          - paragraph [ref=f6e131]:
+            - text: Designed with
+            - link "WordPress" [ref=f6e132] [cursor=pointer]:
+              - /url: https://wordpress.org
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - button:
+              - img
+            - generic:
+              - heading [level=2]:
+                - generic: Your cart
+                - generic: "(items: 31)"
+              - generic:
+                - generic:
+                  - table:
+                    - caption:
+                      - heading [level=2]: Products in cart
+                    - rowgroup:
+                      - row:
+                        - cell:
+                          - link:
+                            - /url: http://plugin.local/product/album/
+                            - img
+                        - cell:
+                          - generic:
+                            - link:
+                              - /url: http://plugin.local/product/album/
+                              - text: Album
+                            - generic:
+                              - generic:
+                                - generic: 15 ₫
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - paragraph: This is a simple, virtual product.
+                            - generic:
+                              - generic:
+                                - spinbutton: "6"
+                                - button: −
+                                - button: ＋
+                              - button:
+                                - img
+                        - cell:
+                          - generic:
+                            - generic:
+                              - generic: 90 ₫
+                      - row:
+                        - cell:
+                          - link:
+                            - /url: http://plugin.local/product/beanie/
+                            - img
+                        - cell:
+                          - generic:
+                            - link:
+                              - /url: http://plugin.local/product/beanie/
+                              - text: Beanie
+                            - generic:
+                              - generic:
+                                - generic: "Previous price:"
+                                - deletion: 20 ₫
+                                - generic: "Discounted price:"
+                                - insertion: 18 ₫
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - paragraph: This is a simple product.
+                            - generic:
+                              - generic:
+                                - spinbutton: "6"
+                                - button: −
+                                - button: ＋
+                              - button:
+                                - img
+                        - cell:
+                          - generic:
+                            - generic:
+                              - generic: 108 ₫
+                            - generic:
+                              - text: Save
+                              - generic: 12 ₫
+                      - row:
+                        - cell:
+                          - link:
+                            - /url: http://plugin.local/product/single/
+                            - img
+                        - cell:
+                          - generic:
+                            - link:
+                              - /url: http://plugin.local/product/single/
+                              - text: Single
+                            - generic:
+                              - generic:
+                                - generic: "Previous price:"
+                                - deletion: 3 ₫
+                                - generic: "Discounted price:"
+                                - insertion: 2 ₫
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - paragraph: This is a simple, virtual product.
+                            - generic:
+                              - generic:
+                                - spinbutton: "4"
+                                - button: −
+                                - button: ＋
+                              - button:
+                                - img
+                        - cell:
+                          - generic:
+                            - generic:
+                              - generic: 8 ₫
+                            - generic:
+                              - text: Save
+                              - generic: 4 ₫
+                      - row:
+                        - cell:
+                          - link:
+                            - /url: http://plugin.local/product/beanie-with-logo/
+                            - img
+                        - cell:
+                          - generic:
+                            - link:
+                              - /url: http://plugin.local/product/beanie-with-logo/
+                              - text: Beanie with Logo
+                            - generic:
+                              - generic:
+                                - generic: "Previous price:"
+                                - deletion: 20 ₫
+                                - generic: "Discounted price:"
+                                - insertion: 18 ₫
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - paragraph: This is a simple product.
+                            - generic:
+                              - generic:
+                                - spinbutton: "3"
+                                - button: −
+                                - button: ＋
+                              - button:
+                                - img
+                        - cell:
+                          - generic:
+                            - generic:
+                              - generic: 54 ₫
+                            - generic:
+                              - text: Save
+                              - generic: 6 ₫
+                      - row:
+                        - cell:
+                          - link:
+                            - /url: http://plugin.local/product/hoodie-with-pocket/
+                            - img
+                        - cell:
+                          - generic:
+                            - link:
+                              - /url: http://plugin.local/product/hoodie-with-pocket/
+                              - text: Hoodie with Pocket
+                            - generic:
+                              - generic:
+                                - generic: "Previous price:"
+                                - deletion: 45 ₫
+                                - generic: "Discounted price:"
+                                - insertion: 35 ₫
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - paragraph: This is a simple product.
+                            - generic:
+                              - generic:
+                                - spinbutton: "4"
+                                - button: −
+                                - button: ＋
+                              - button:
+                                - img
+                        - cell:
+                          - generic:
+                            - generic:
+                              - generic: 140 ₫
+                            - generic:
+                              - text: Save
+                              - generic: 40 ₫
+                      - row:
+                        - cell:
+                          - link:
+                            - /url: http://plugin.local/product/hoodie-with-logo/
+                            - img
+                        - cell:
+                          - generic:
+                            - link:
+                              - /url: http://plugin.local/product/hoodie-with-logo/
+                              - text: Hoodie with Logo
+                            - generic:
+                              - generic:
+                                - generic: 45 ₫
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - paragraph: This is a simple product.
+                            - generic:
+                              - generic:
+                                - spinbutton: "2"
+                                - button: −
+                                - button: ＋
+                              - button:
+                                - img
+                        - cell:
+                          - generic:
+                            - generic:
+                              - generic: 90 ₫
+                      - row:
+                        - cell:
+                          - link:
+                            - /url: http://plugin.local/product/hoodie-with-zipper/
+                            - img
+                        - cell:
+                          - generic:
+                            - link:
+                              - /url: http://plugin.local/product/hoodie-with-zipper/
+                              - text: Hoodie with Zipper
+                            - generic:
+                              - generic:
+                                - generic: 45 ₫
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - paragraph: This is a simple product.
+                            - generic:
+                              - generic:
+                                - spinbutton: "2"
+                                - button: −
+                                - button: ＋
+                              - button:
+                                - img
+                        - cell:
+                          - generic:
+                            - generic:
+                              - generic: 90 ₫
+                      - row:
+                        - cell:
+                          - link:
+                            - /url: http://plugin.local/product/cap/
+                            - img
+                        - cell:
+                          - generic:
+                            - link:
+                              - /url: http://plugin.local/product/cap/
+                              - text: Cap
+                            - generic:
+                              - generic:
+                                - generic: "Previous price:"
+                                - deletion: 18 ₫
+                                - generic: "Discounted price:"
+                                - insertion: 16 ₫
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - paragraph: This is a simple product.
+                            - generic:
+                              - generic:
+                                - spinbutton: "1"
+                                - button [disabled]: −
+                                - button: ＋
+                              - button:
+                                - img
+                        - cell:
+                          - generic:
+                            - generic:
+                              - generic: 16 ₫
+                            - generic:
+                              - text: Save
+                              - generic: 2 ₫
+                      - row:
+                        - cell:
+                          - link:
+                            - /url: http://plugin.local/product/aperiam/
+                            - img
+                        - cell:
+                          - generic:
+                            - link:
+                              - /url: http://plugin.local/product/aperiam/
+                              - text: Aperiam.
+                            - generic:
+                              - generic:
+                                - generic: 66 ₫
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - paragraph: Fugit enim ex labore quam voluptatem cum. Non iusto consectetur fuga corrupti saepe doloribus consequatur.…
+                            - generic:
+                              - generic:
+                                - spinbutton: "2"
+                                - button: −
+                                - button: ＋
+                              - button:
+                                - img
+                        - cell:
+                          - generic:
+                            - generic:
+                              - generic: 132 ₫
+                      - row:
+                        - cell:
+                          - link:
+                            - /url: http://plugin.local/product/aut/
+                            - img
+                        - cell:
+                          - generic:
+                            - link:
+                              - /url: http://plugin.local/product/aut/
+                              - text: Aut.
+                            - generic:
+                              - generic:
+                                - generic: 43 ₫
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - paragraph: Animi harum vitae consequatur est aut fugiat. Consequatur omnis ut quisquam cupiditate et. Voluptatem illo…
+                            - generic:
+                              - generic:
+                                - spinbutton: "1"
+                                - button [disabled]: −
+                                - button: ＋
+                              - button:
+                                - img
+                        - cell:
+                          - generic:
+                            - generic:
+                              - generic: 43 ₫
+              - generic:
+                - generic:
+                  - generic: Subtotal
+                  - generic: 771 ₫
+                  - generic: Shipping and discounts calculated at checkout.
+                - generic:
+                  - link:
+                    - /url: http://plugin.local/cart/
+                    - generic: View my cart
+                  - link:
+                    - /url: http://plugin.local/checkout/
+                    - generic: Go to checkout
+  - status [ref=f6e134]

@@ -1,0 +1,11 @@
+- generic [active] [ref=f4e1]:
+  - generic [ref=f4e2]:
+    - text:              
+    - generic:
+      - text: 
+      - main:
+        - generic [ref=f4e5]:
+          - region "Navigation" [ref=f4e6]
+          - progressbar "Loading …" [ref=f4e15]
+  - paragraph [ref=f4e16]: Notifications
+  - generic [ref=f4e18]: The theme you are currently using does not support this screen.

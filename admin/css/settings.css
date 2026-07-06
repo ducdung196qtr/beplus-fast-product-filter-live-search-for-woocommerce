@@ -630,3 +630,86 @@
 		grid-template-columns: 1fr;
 	}
 }
+
+/* ── Statistics table ── */
+
+.bpss-stats__table-wrap {
+	margin-top: 1rem;
+	max-height: 420px;
+	overflow-y: auto;
+	border: 1px solid #dcdcde;
+}
+
+.bpss-stats__table {
+	border: 0;
+	margin-top: 0;
+}
+
+.bpss-stats__table .col-rank {
+	width: 3rem;
+}
+
+.bpss-stats__table .col-count {
+	width: 6rem;
+	text-align: center;
+}
+
+.bpss-stats__table .col-from {
+	width: 8rem;
+}
+
+.bpss-stats__table .col-date {
+	width: 11rem;
+}
+
+.bpss-stats__empty {
+	color: #646970;
+	text-align: center;
+	padding: 2rem 1rem !important;
+}
+
+.bpss-stats__raw {
+	color: #8c8f94;
+	font-weight: 400;
+	font-size: 0.9em;
+}
+
+.bpss-stats__notice {
+	margin-top: 0.75rem;
+}
+
+.bpss-stats__notice.is-error {
+	color: #d63638;
+}
+
+.bpss-settings__card-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.bpss-stats__actions {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	flex-shrink: 0;
+}
+
+.bpss-stats__cap-note {
+	font-style: italic;
+}
+
+.bpss-settings__card-header .bpss-settings__card-title {
+	margin-bottom: 0;
+}
+
+@media (max-width: 782px) {
+	.bpss-stats__table .col-from {
+		display: none;
+	}
+
+	.bpss-stats__table .col-date {
+		display: none;
+	}
+}
