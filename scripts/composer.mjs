@@ -49,8 +49,12 @@ function downloadComposerPhar() {
 }
 
 async function ensureComposerPhar() {
-	if ( fs.existsSync( COMPOSER_PHAR ) ) {
+	if ( fs.existsSync( COMPOSER_PHAR ) && fs.statSync( COMPOSER_PHAR ).size > 0 ) {
 		return COMPOSER_PHAR;
+	}
+
+	if ( fs.existsSync( COMPOSER_PHAR ) ) {
+		fs.unlinkSync( COMPOSER_PHAR );
 	}
 
 	console.log( 'Downloading Composer phar → tools/composer.phar …' );

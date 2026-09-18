@@ -1,36 +1,36 @@
 === Beplus Fast Product Filter & Live Search for WooCommerce ===
 Contributors: bearsthemes, ducdung2026
-Tags: woocommerce, product filter, live search, ajax search, product search, gutenberg, block editor, shop filter, autocomplete
+Tags: woocommerce, product filter, live search, ajax search, gutenberg
 Requires at least: 6.5
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Source Code: https://github.com/ducdung196qtr/beplus-fast-product-filter-live-search-for-woocommerce
 
-Fast AJAX product filtering and smart live search for WooCommerce. Help customers find products instantly with no page reloads.
+Fast WooCommerce product filtering and live search blocks with instant AJAX results and no page reloads.
 
 == Description ==
 
-**Beplus Fast Product Filter & Live Search for WooCommerce** gives your store two native Gutenberg blocks that replace slow page refreshes with instant AJAX results:
+**Beplus Fast Product Filter & Live Search for WooCommerce** gives your store two native Gutenberg blocks for faster product discovery. Shoppers refine a catalog or search as they type, while results update without a page reload.
 
-**Advanced Woo Search** — A complete product filter panel you drop above your shop grid. Customers narrow products by keyword, category, tag, attributes (Color, Size, etc.), price range, stock status, on-sale, featured, and rating. Every filter change updates the product list immediately via AJAX — no spinning page loads, no lost scroll position.
+**Advanced Woo Search** — A complete product filter panel for a shop template. Customers narrow products by keyword, category, tag, attributes (Color, Size, and more), price range, stock status, on-sale, featured, and rating. Every filter change updates the product list immediately via AJAX.
 
-**Live Search** — A smart autocomplete search bar with dropdown suggestions. As customers type, matching products appear with thumbnail, price, and an instant add-to-cart button. Supports category filtering, typo tolerance, and highlighted search terms.
+**Live Search** — A smart autocomplete search bar with dropdown suggestions. As customers type, matching products appear with a thumbnail, price, and an add-to-cart action. Configure category filtering, quick suggestions, and the submit button from the block settings.
 
 Both blocks work together or independently. Use the filter panel on your shop page, the search bar in your header, or both.
 
 = Key Features =
 
 * **Instant, no-reload filtering** — Category, tag, attribute, price, stock, on-sale, featured, and rating filters that update results via AJAX
-* **Smart autocomplete search** — Live dropdown with product thumbnails, prices, add-to-cart, and typo correction
+* **Smart autocomplete search** — Live dropdown with product thumbnails, prices, add-to-cart, and configurable quick suggestions
 * **Flexible price filter** — Dual range slider or predefined price segments
 * **Product attributes support** — Expose any WooCommerce attribute (Color, Size, Brand, etc.) as a filter
 * **Sidebar or inline layout** — Choose how filters sit on your shop page
 * **Built-in performance cache** — Pre-built filter data with auto-refresh keeps large catalogs fast
 * **Custom taxonomies** — Add any custom product taxonomy as a reusable filter
-* **Block editor ready** — Full InspectorControls for each block, ServerSideRender preview
+* **Block editor ready** — Block settings for each feature, with server-rendered previews
 * **Accessible** — ARIA labels, live regions, keyboard navigation, screen-reader text
 * **Progressive enhancement** — Without JavaScript, filters fall back to standard GET form submission
 * **Translation ready** — Fully internationalized text domain
@@ -63,12 +63,12 @@ Both blocks work together or independently. Use the filter panel on your shop pa
 
 == Installation ==
 
-1. Upload the plugin folder to `/wp-content/plugins/beplus-fast-product-filter-live-search-for-woocommerce/`
-2. Activate through the 'Plugins' menu in WordPress
-3. Make sure WooCommerce is installed and active
-4. Go to **Appearance → Editor → Templates → Product Catalog** (or your shop template)
-5. Insert the **Advanced Woo Search** block above the product collection, or insert the **Live Search** block anywhere on your site
-6. Save the template and visit your shop or search page
+1. Install the ZIP from **Plugins → Add New → Upload Plugin**, or upload the `beplus-fast-product-filter-live-search-for-woocommerce` folder to `/wp-content/plugins/`.
+2. Activate **Beplus Fast Product Filter & Live Search for WooCommerce**.
+3. Install and activate WooCommerce.
+4. Open **Appearance → Editor → Templates → Product Catalog** (or your theme's shop template).
+5. Insert **Advanced Woo Search** above the Product Collection block. Add **Live Search** anywhere a search field is useful, such as a header or search page.
+6. Configure the visible filters in the block sidebar, save the template, then test the shop on the front end.
 
 For development setup (Node, Composer, build), see `README.md` in the plugin folder.
 
@@ -107,6 +107,10 @@ Yes. The plugin relies on WooCommerce product data, taxonomies, and templates. I
 Yes. The plugin handles simple, variable, grouped, and external products. Stock filters and price ranges account for variations.
 
 == Changelog ==
+
+= 1.2.1 =
+* Refined the public plugin documentation, installation steps, and directory presentation.
+* Reduced directory tags to the five most relevant search terms.
 
 = 1.2.0 =
 * Live Search block: Submit button style setting (text label or icon), default is text with customizable label
