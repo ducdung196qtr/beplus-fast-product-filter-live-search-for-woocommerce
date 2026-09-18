@@ -13,7 +13,7 @@ Fast AJAX product filtering and smart live search for WooCommerce. Help customer
 
 == Description ==
 
-**[🌐 Landing Page → beplus-fast-product-filter.vercel.app](https://beplus-fast-product-filter.vercel.app/)**
+**[Landing Page](https://beplus-fast-product-filter.vercel.app/)**
 
 **Beplus Fast Product Filter & Live Search for WooCommerce** gives your store two native Gutenberg blocks that replace slow page refreshes with instant AJAX results:
 
@@ -45,8 +45,8 @@ Both blocks work together or independently. Use the filter panel on your shop pa
 
 = Live Demos =
 
-* **Live Search** — [https://woo-advanced-filter.beplusthemes.com/demo-live-search/](https://woo-advanced-filter.beplusthemes.com/demo-live-search/)
-* **Advanced Woo Search (Shop)** — [https://woo-advanced-filter.beplusthemes.com/shop/](https://woo-advanced-filter.beplusthemes.com/shop/)
+* [Live Search demo](https://woo-advanced-filter.beplusthemes.com/demo-live-search/)
+* [Advanced Woo Search demo](https://woo-advanced-filter.beplusthemes.com/shop/)
 
 = How It Works =
 
