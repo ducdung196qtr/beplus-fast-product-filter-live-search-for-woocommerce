@@ -19,7 +19,7 @@ export interface BlockAttributes {
 	submitButtonStyle: 'text' | 'icon';
 	submitButtonText: string;
 	quickSuggestions: string;
-	quickSuggestionsCount: number;
+	quickSuggestionsCount: '5' | '10' | '15' | '20';
 	quickSuggestionsAutoSync: boolean;
 	enableQuickSuggestions: boolean;
 }

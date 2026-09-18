@@ -125,9 +125,7 @@ if ( $auto_sync ) {
 		$table_name = $wpdb->prefix . BePlusFastProductFilterLiveSearch\Core\Plugin::SEARCH_STATS_TABLE;
 
 		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-		// Table name is built from WordPress's trusted database prefix and a plugin constant.
-		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-		$bpss_rows = $wpdb->get_results(
+		$rows = $wpdb->get_results(
 			$wpdb->prepare(
 				"SELECT keyword FROM {$table_name} ORDER BY count DESC, updated_at DESC LIMIT %d",
 				$sync_count,
@@ -135,24 +133,24 @@ if ( $auto_sync ) {
 		);
 		// phpcs:enable
 
-		if ( is_array( $bpss_rows ) ) {
-			foreach ( $bpss_rows as $bpss_row ) {
-				$quick_suggestions[] = $bpss_row->keyword;
+		if ( is_array( $rows ) ) {
+			foreach ( $rows as $row ) {
+				$quick_suggestions[] = $row->keyword;
 			}
 			set_transient( $cache_key, $quick_suggestions, 30 * MINUTE_IN_SECONDS );
 		}
 	}
 } elseif ( '' !== $quick_suggestions_raw ) {
-	$bpss_parts = explode( ',', $quick_suggestions_raw );
-	foreach ( $bpss_parts as $bpss_part ) {
-		$bpss_cleaned = trim( $bpss_part );
-		if ( '' !== $bpss_cleaned ) {
-			$quick_suggestions[] = $bpss_cleaned;
+	$parts = explode( ',', $quick_suggestions_raw );
+	foreach ( $parts as $part ) {
+		$cleaned = trim( $part );
+		if ( '' !== $cleaned ) {
+			$quick_suggestions[] = $cleaned;
 		}
 	}
 }
 
-$bpss_wrapper_attrs = get_block_wrapper_attributes(
+$wrapper_attrs = get_block_wrapper_attributes(
 	array(
 		'class' => 'beplus-fast-product-filter-live-search-for-woocommerce beplus-fast-product-filter-live-search-for-woocommerce--live-search beplus-fast-product-filter-live-search-for-woocommerce--suggestion-' . $suggestion_layout . ' beplus-fast-product-filter-live-search-for-woocommerce--submit-' . $submit_button_style,
 		'style'                      => '--bpss-accent:' . esc_attr( $accent_color ) . ';--bpss-highlight:' . esc_attr( $attrs['highlightColor'] ) . ';',
@@ -177,7 +175,7 @@ $bpss_wrapper_attrs = get_block_wrapper_attributes(
 );
 
 ?>
-<div <?php echo $bpss_wrapper_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>>
+<div <?php echo $wrapper_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>>
 	<form
 		class="beplus-fast-product-filter-live-search-for-woocommerce__live-form"
 		role="search"
@@ -277,17 +275,17 @@ $bpss_wrapper_attrs = get_block_wrapper_attributes(
 		<span class="beplus-fast-product-filter-live-search-for-woocommerce__live-status screen-reader-text" role="status" aria-live="polite" data-bpss-live-status></span>
 	</form>
 
-	<?php $bpss_enable_quick = ! isset( $attrs['enableQuickSuggestions'] ) || ! empty( $attrs['enableQuickSuggestions'] ); ?>
-	<?php if ( $bpss_enable_quick && ! empty( $quick_suggestions ) ) : ?>
+	<?php $enable_quick = ! isset( $attrs['enableQuickSuggestions'] ) || ! empty( $attrs['enableQuickSuggestions'] ); ?>
+	<?php if ( $enable_quick && ! empty( $quick_suggestions ) ) : ?>
 		<div class="beplus-fast-product-filter-live-search-for-woocommerce__live-quick" data-bpss-live-quick>
 			<span class="beplus-fast-product-filter-live-search-for-woocommerce__live-quick-label"><?php esc_html_e( 'Search for:', 'beplus-fast-product-filter-live-search-for-woocommerce' ); ?></span>
-			<?php foreach ( $quick_suggestions as $bpss_qs ) : ?>
+			<?php foreach ( $quick_suggestions as $qs ) : ?>
 				<button
 					type="button"
 					class="beplus-fast-product-filter-live-search-for-woocommerce__live-quick-tag"
 					data-bpss-quick-tag
-					data-bpss-quick-value="<?php echo esc_attr( $bpss_qs ); ?>"
-				><?php echo esc_html( $bpss_qs ); ?></button>
+					data-bpss-quick-value="<?php echo esc_attr( $qs ); ?>"
+				><?php echo esc_html( $qs ); ?></button>
 			<?php endforeach; ?>
 		</div>
 	<?php endif; ?>

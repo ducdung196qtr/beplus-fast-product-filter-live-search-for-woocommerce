@@ -116,7 +116,7 @@ export default function Edit( {
 							) }
 							<SelectControl
 								label={ __( 'Top keywords count', 'beplus-fast-product-filter-live-search-for-woocommerce' ) }
-								value={ String( attributes.quickSuggestionsCount ) as '5' | '10' | '15' | '20' }
+								value={ attributes.quickSuggestionsCount }
 								options={ [
 									{ label: '5', value: '5' },
 									{ label: '10', value: '10' },
@@ -124,7 +124,7 @@ export default function Edit( {
 									{ label: '20', value: '20' },
 								] }
 								onChange={ ( value ) =>
-									setAttributes( { quickSuggestionsCount: parseInt( value, 10 ) } )
+									setAttributes( { quickSuggestionsCount: value as BlockAttributes['quickSuggestionsCount'] } )
 								}
 							/>
 							{ ! attributes.quickSuggestionsAutoSync && (
