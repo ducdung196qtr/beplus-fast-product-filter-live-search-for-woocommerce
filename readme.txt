@@ -4,7 +4,7 @@ Tags: woocommerce, product filter, live search, ajax search, gutenberg
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Source Code: https://github.com/ducdung196qtr/beplus-fast-product-filter-live-search-for-woocommerce
@@ -115,6 +115,9 @@ Yes. The plugin relies on WooCommerce product data, taxonomies, and templates. I
 Yes. The plugin handles simple, variable, grouped, and external products. Stock filters and price ranges account for variations.
 
 == Changelog ==
+
+= 1.2.4 =
+* Cleaned up landing page and live demo link presentation in readme.
 
 = 1.2.3 =
 * Reduced WordPress.org tags to the permitted five tags.
