@@ -4,7 +4,7 @@ Tags: woocommerce, product filter, live search, ajax search, gutenberg
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.2.4
+Stable tag: 1.2.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Source Code: https://github.com/ducdung196qtr/beplus-fast-product-filter-live-search-for-woocommerce
@@ -17,25 +17,25 @@ Fast AJAX product filtering and smart live search for WooCommerce. Help customer
 
 **Beplus Fast Product Filter & Live Search for WooCommerce** gives your store two native Gutenberg blocks that replace slow page refreshes with instant AJAX results:
 
-**Advanced Woo Search** — A complete product filter panel you drop above your shop grid. Customers narrow products by keyword, category, tag, attributes (Color, Size, etc.), price range, stock status, on-sale, featured, and rating. Every filter change updates the product list immediately via AJAX — no spinning page loads, no lost scroll position.
+**Advanced Woo Search**: A complete product filter panel you drop above your shop grid. Customers narrow products by keyword, category, tag, attributes (Color, Size, etc.), price range, stock status, on-sale, featured, and rating. Every filter change updates the product list immediately via AJAX: no spinning page loads, no lost scroll position.
 
-**Live Search** — A smart autocomplete search bar with dropdown suggestions. As customers type, matching products appear with thumbnail, price, and an instant add-to-cart button. Supports category filtering, typo tolerance, and highlighted search terms.
+**Live Search**: A smart autocomplete search bar with dropdown suggestions. As customers type, matching products appear with thumbnail, price, and an instant add-to-cart button. Supports category filtering, typo tolerance, and highlighted search terms.
 
 Both blocks work together or independently. Use the filter panel on your shop page, the search bar in your header, or both.
 
 = Key Features =
 
-* **Instant, no-reload filtering** — Category, tag, attribute, price, stock, on-sale, featured, and rating filters that update results via AJAX
-* **Smart autocomplete search** — Live dropdown with product thumbnails, prices, add-to-cart, and typo correction
-* **Flexible price filter** — Dual range slider or predefined price segments
-* **Product attributes support** — Expose any WooCommerce attribute (Color, Size, Brand, etc.) as a filter
-* **Sidebar or inline layout** — Choose how filters sit on your shop page
-* **Built-in performance cache** — Pre-built filter data with auto-refresh keeps large catalogs fast
-* **Custom taxonomies** — Add any custom product taxonomy as a reusable filter
-* **Block editor ready** — Full InspectorControls for each block, ServerSideRender preview
-* **Accessible** — ARIA labels, live regions, keyboard navigation, screen-reader text
-* **Progressive enhancement** — Without JavaScript, filters fall back to standard GET form submission
-* **Translation ready** — Fully internationalized text domain
+* **Instant, no-reload filtering**: Category, tag, attribute, price, stock, on-sale, featured, and rating filters that update results via AJAX
+* **Smart autocomplete search**: Live dropdown with product thumbnails, prices, add-to-cart, and typo correction
+* **Flexible price filter**: Dual range slider or predefined price segments
+* **Product attributes support**: Expose any WooCommerce attribute (Color, Size, Brand, etc.) as a filter
+* **Sidebar or inline layout**: Choose how filters sit on your shop page
+* **Built-in performance cache**: Pre-built filter data with auto-refresh keeps large catalogs fast
+* **Custom taxonomies**: Add any custom product taxonomy as a reusable filter
+* **Block editor ready**: Full InspectorControls for each block, ServerSideRender preview
+* **Accessible**: ARIA labels, live regions, keyboard navigation, screen-reader text
+* **Progressive enhancement**: Without JavaScript, filters fall back to standard GET form submission
+* **Translation ready**: Fully internationalized text domain
 
 = Requirements =
 
@@ -51,9 +51,9 @@ Both blocks work together or independently. Use the filter panel on your shop pa
 = How It Works =
 
 1. Drop the **Advanced Woo Search** block above your product collection in the Site Editor
-2. Drop the **Live Search** block anywhere a search bar fits — header, sidebar, or dedicated search page
+2. Drop the **Live Search** block anywhere a search bar fits: header, sidebar, or dedicated search page
 3. Configure which filters to show and how they behave from the block inspector or the global Settings page
-4. Customers filter and search your catalog in real time — no page reloads, just instant results
+4. Customers filter and search your catalog in real time: no page reloads, just instant results
 
 = About BePlus =
 
@@ -63,11 +63,11 @@ Learn more at [beplusthemes.com](https://beplusthemes.com).
 
 == Screenshots ==
 
-1. Performance cache — toggle, auto-refresh interval, auto-clear on changes, and performance benchmark
-2. Sidebar layout and Default filters — collapsible sections, accent color, categories/tags/brand selection modes
-3. Product attributes, price filter, and custom taxonomies — attribute table, price range/segments, additional filters
-4. Live Search block — smart autocomplete search bar with category filter and instant results
-5. Shop page with the Advanced Woo Search block — full filter panel above the product grid
+1. Performance cache: toggle, auto-refresh interval, auto-clear on changes, and performance benchmark
+2. Sidebar layout and Default filters: collapsible sections, accent color, categories/tags/brand selection modes
+3. Product attributes, price filter, and custom taxonomies: attribute table, price range/segments, additional filters
+4. Live Search block: smart autocomplete search bar with category filter and instant results
+5. Shop page with the Advanced Woo Search block: full filter panel above the product grid
 
 == Installation ==
 
@@ -116,6 +116,9 @@ Yes. The plugin handles simple, variable, grouped, and external products. Stock 
 
 == Changelog ==
 
+= 1.2.5 =
+* Refined readme copy for a more natural writing style.
+
 = 1.2.4 =
 * Cleaned up landing page and live demo link presentation in readme.
 
@@ -132,7 +135,7 @@ Yes. The plugin handles simple, variable, grouped, and external products. Stock 
 
 = 1.2.0 =
 * Live Search block: Submit button style setting (text label or icon), default is text with customizable label
-* Live Search block: Quick suggestions below the search bar — manual comma-separated keywords or auto-synced from search stats
+* Live Search block: Quick suggestions below the search bar: manual comma-separated keywords or auto-synced from search stats
 * Search keyword statistics: Tracks resolved keywords (product name on click, closest match on submit) via `navigator.sendBeacon`
 * Admin Statistics tab: Top keywords table with search counts, resolution method, and last-searched date
 
